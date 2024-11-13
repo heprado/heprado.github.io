@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="cubo_frente.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="6.3515625"
+     inkscape:cx="80.137761"
+     inkscape:cy="6.2189422"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="vector-effect:non-scaling-stroke;fill:#7eff00;fill-rule:evenodd;stroke-opacity:0.997783;-inkscape-stroke:hairline"
+       id="rect1"
+       width="16"
+       height="16"
+       x="0"
+       y="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.33911px;line-height:6;font-family:Gabriola;-inkscape-font-specification:Gabriola;letter-spacing:1px;vector-effect:non-scaling-stroke;fill:#ffffff;fill-opacity:0.989865;fill-rule:evenodd;stroke:#000000;stroke-width:0.108478;stroke-dasharray:none;stroke-opacity:1;-inkscape-stroke:hairline"
+       x="4.2269483"
+       y="6.3597889"
+       id="text1"
+       transform="scale(0.64434683,1.5519592)"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="4.2269483"
+         y="6.3597889"
+         style="letter-spacing:1px;stroke-width:0.108478">FRENTE</tspan></text>
+  </g>
+</svg>
