@@ -1,0 +1,152 @@
+body 
+{
+  overflow:hidden;
+  scrollbar-width: 0;
+  border:0%;
+  margin:0%;
+  padding:0%;
+  width:100%;
+  height:100%;
+  font-family:"Constantia", /*Fonte padrão*/
+  "ComicSans",
+  "serif"; /**/
+  font-weight:400px;
+  background-color:gray;
+  color:black;
+}
+
+h1 {
+  text-align:center;
+}
+
+.container {
+  margin-top: 10dvh;
+}
+
+.formas {
+  height:50dvh;
+  width:100dvw;
+  align-items: center;
+  justify-items: center;
+  margin-top:100px;
+  
+  background-color:black;
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 5dvw 5dvw; 
+  grid-template-areas: 
+    "piramide cubo "
+  ; 
+}
+
+
+@media (min-width: 800px) {
+  .formas {
+    margin-right:25dvw;
+    height:50dvh;
+    width:50dvw;
+  }
+}
+  
+
+
+
+#circulo {
+  grid-area: circulo;
+  width:5rem;
+}
+
+#piramide {
+  grid-area: piramide;
+  width:5rem;
+  height:5rem;
+  transform-style: preserve-3d;
+  animation:around_the_world 7s normal linear infinite;
+}
+
+#piramide img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: center top ;
+}
+
+#piramide_norte {
+  transform: rotateY(360deg) rotateX(30deg);
+}
+
+#piramide_leste  {
+  transform: rotateY(90deg) rotateX(30deg);
+}
+
+#piramide_sul {
+  transform:rotateY(0deg) rotateX(-30deg);
+}
+
+#piramide_oeste {
+  transform: rotateY(270deg) rotateX(30deg);
+}
+
+#cubo {
+  grid-area: cubo;
+  width:5rem;
+  height:5rem;
+  transform-style: preserve-3d;
+  animation:around_the_world 20s normal linear infinite;
+}
+
+#cubo img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center -2.5rem;
+}
+
+#cubo_frente {
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+
+#cubo_costas  {
+  transform: rotateX(0deg) rotateY(180deg) rotateZ(0deg);
+}
+
+#cubo_topo {
+  transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+}
+
+#cubo_fundo {
+  transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+}
+
+#cubo_esquerda {
+  transform: rotateX(0deg) rotateY(-90deg) rotateZ(0deg);
+}
+
+#cubo_direita {
+  transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+}
+
+@keyframes around_the_world {
+  from {
+    transform: rotateY(0deg) rotateX(360deg) rotateZ(360deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(-360deg) rotateZ(-360deg);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
