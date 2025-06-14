@@ -11,11 +11,12 @@ body
   "ComicSans",
   "serif"; /**/
   font-weight:400px;
-  background-color:gray;
+  background-color:black;
   color:black;
 }
 
 h1 {
+  color:red;
   text-align:center;
 }
 
@@ -30,6 +31,7 @@ h1 {
   align-items: center;
   justify-items: center;
   margin-top:100px;
+  border: 2px solid #17fe00;
   background-color:black;
   display: grid; 
   grid-template-columns: 1fr 1fr; 
@@ -51,8 +53,12 @@ h1 {
   
 
 a {
-  color: gray;
+  color: black;
   margin-right:50dvw;
+}
+
+a:visited {
+  text-decoration:none;
 }
 
 #circulo {
