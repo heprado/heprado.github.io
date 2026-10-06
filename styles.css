@@ -507,3 +507,8 @@ body:has(#diversoes:target) .nav-diversoes {
   margin: 0;
   border-top: 3px solid var(--secundaria);
 }
+
+.grade-extras ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
