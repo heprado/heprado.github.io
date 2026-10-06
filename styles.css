@@ -91,10 +91,11 @@ html {
   scroll-padding-top: 5rem;
 }
 
-/* No celular o menu quebra em duas linhas e o topo fica mais alto. */
+/* No celular o topo tem duas linhas (botões em cima, abas com a barra de
+   rolagem embaixo): ~8rem. */
 @media (max-width: 48rem) {
   html {
-    scroll-padding-top: 11rem;
+    scroll-padding-top: 9rem;
   }
 }
 
@@ -780,4 +781,87 @@ h1::after {
   border-radius: 0;
   background-image: repeating-linear-gradient(180deg,
     transparent 0 3px, rgb(255 255 255 / 0.04) 3px 4px);
+}
+
+/* ---------- Celular: cartões flutuando sobre o datacenter ---------- */
+
+/* No celular o painel ocupava a tela inteira e o fundo quase não aparecia.
+   Aqui o painel some: o menu e o rodapé viram barras de largura total, e o
+   que ficava solto no painel (títulos, resumo, links) ganha a sua caixa,
+   para continuar legível. O datacenter aparece entre os blocos. */
+@media (max-width: 48rem) {
+  /* Coluna da altura da tela: em abas curtas, o rodapé fica no fim dela. */
+  .pagina {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 0.75rem;
+    background-color: transparent;
+    border: 0;
+  }
+
+  .abas {
+    flex: 1;
+  }
+
+  .topo {
+    margin: 0 -0.75rem;
+    padding: 0.75rem;
+    gap: 0.5rem 0.75rem;
+    background-color: var(--superficie);
+    border-bottom: 3px solid var(--texto);
+  }
+
+  .topo::after {
+    display: none;
+  }
+
+  /* Abas numa linha só, rolando para o lado. A barra de rolagem fica
+     visível (fina, no verde da Tama): no computador a rodinha do mouse só
+     rola na vertical, então é por ela que se arrasta o menu; no celular,
+     ela avisa que há mais abas. Ao soltar, o menu encaixa numa aba. */
+  .abas-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.375rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primaria) transparent;
+    scroll-snap-type: x proximity;
+  }
+
+  .abas-nav a {
+    flex: none;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+
+  .abas {
+    padding: 1.25rem 0 1.5rem;
+  }
+
+  h1 {
+    display: inline-block;
+    padding: 0.375rem 0.75rem 0.5rem;
+    background-color: var(--superficie);
+    border: 2px solid var(--texto);
+  }
+
+  .resumo,
+  .mais {
+    padding: 0.75rem 1rem;
+    background-color: var(--superficie-variante);
+    border: 2px solid var(--texto);
+  }
+
+  .mais {
+    display: inline-block;
+  }
+
+  .rodape {
+    margin: 0 -0.75rem;
+    padding: 1rem 0.75rem 1.25rem;
+    background-color: var(--superficie);
+    border-top: 3px solid var(--texto);
+  }
 }
