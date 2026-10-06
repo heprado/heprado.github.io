@@ -457,8 +457,31 @@ body:has(#diversoes:target) .nav-diversoes {
 .rodape {
   padding: 1.5rem 0 2rem;
   border-top: 1px solid var(--sombra);
+}
+
+.redes {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.redes a {
+  display: inline-flex;
+  padding: 0.5rem;
+  border-radius: 50%;
   color: var(--texto-suave);
-  font-size: 0.875rem;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.redes a:hover {
+  background-color: var(--hover);
+  color: var(--primaria);
+}
+
+.redes svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: currentColor;
 }
 
 /* ---------- Experiências: resumo e extras ---------- */
