@@ -157,10 +157,18 @@ h2 {
 }
 
 .marca {
+  display: inline-flex;
   color: var(--primaria);
-  font-weight: 700;
-  font-size: 1.25rem;
-  text-decoration: none;
+}
+
+.marca:hover {
+  color: var(--secundaria);
+}
+
+.marca svg {
+  width: auto;
+  height: 2.5rem;
+  fill: currentColor;
 }
 
 .abas-nav {
