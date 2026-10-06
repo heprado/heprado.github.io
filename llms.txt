@@ -2,7 +2,7 @@
 
 > Site pessoal de Henrique Prado, desenvolvedor e arquiteto de software em São Paulo, SP, com mais de 6 anos de experiência em datacenter, redes, nuvem e desenvolvimento de software. O site é uma página única, feita só com HTML e CSS, com quatro abas: Sobre mim, Experiências, Projetos e Diversões.
 
-O conteúdo do site está em português do Brasil. Henrique une redes de datacenter (Cisco ACI, VXLAN/MP-BGP EVPN), nuvem (AWS, Azure, GCP) e infraestrutura como código (Terraform, CloudFormation) com desenvolvimento em C#, Python e TypeScript. Fora do trabalho, mantém uma configuração NixOS própria e escreve ferramentas para o desktop Linux (Hyprland, Quickshell, Noctalia). As cores do site são a paleta da Tama, personagem de Gintama, a mesma do desktop dele.
+O conteúdo do site está em português do Brasil. Henrique une redes de datacenter (Cisco ACI, VXLAN/MP-BGP EVPN), nuvem (AWS, Azure, GCP) e infraestrutura como código (Terraform, CloudFormation) com desenvolvimento em C#, Python e TypeScript. Fora do trabalho, mantém uma configuração NixOS própria e escreve ferramentas para o desktop Linux (Hyprland, Quickshell, Noctalia). As cores do site são a paleta da Tama, personagem de Gintama, a mesma do desktop dele, e o ícone do site é o hieróglifo egípcio nfr (nefer, F35 na lista de Gardiner), que significa "bom" ou "belo".
 
 ## Site
 
@@ -11,19 +11,74 @@ O conteúdo do site está em português do Brasil. Henrique une redes de datacen
 - [Projetos](https://heprado.com.br/#projetos): projetos selecionados do GitHub
 - [Diversões](https://heprado.com.br/#diversoes): uma pirâmide e um cubo girando em 3D com CSS, e o link para o WebEssentials, um jogo que roda no navegador
 
+## Resumo profissional
+
+Mais de 6 anos de experiência em datacenter, nuvem e desenvolvimento de software. Experiência em provas de conceito e processos licitatórios, incluindo a implantação ponta a ponta de um fabric Cisco ACI Multi-Site para um grande banco público federal. Une domínio técnico em redes, AWS/Azure/GCP e Terraform com desenvolvimento em C#, Python e TypeScript, além de apresentações técnicas a clientes e parceiros.
+
 ## Experiência profissional
 
-- **Desenvolvedor e Arquiteto de Software, FCamara** (Nov/2025 – Out/2026): APIs RESTful em C# com arquitetura serverless na AWS (Lambda, DynamoDB, SQS, SNS, S3); infraestrutura com CloudFormation e IAM; CI/CD no Azure DevOps; tuning de Aurora PostgreSQL; dashboards de monitoramento em tempo real com React.
-- **Desenvolvedor e Arquiteto de Software, SONDA Tecnologia** (Jan/2024 – Out/2025): arquitetura e desenvolvimento de uma plataforma de DCIM (gestão de infraestrutura de datacenter) para um grande banco público federal, com Angular, C# e SQL Server; integração de monitoramento, automação e governança em ambientes híbridos.
-- **Engenheiro de TI Especialista, F1RST Digital Services** (Jan/2022 – Dez/2023): servidores Linux e Windows on-premises e em nuvem (AWS e Azure); logs e métricas com ELK Stack, Splunk, rsyslog e Grafana; automação de datacenter com Python e PHP.
-- **Engenheiro de Redes, Cisco do Brasil** (Jan/2021 – Dez/2021): responsável individual pela implantação ponta a ponta de um fabric Cisco ACI Multi-Site em prova de conceito para licitação de um grande banco público federal; provas de conceito com ACI, VXLAN/MP-BGP EVPN, FabricPath, vPC, Private VLAN, SAN, VMware vCenter, OpenShift e Kubernetes em nuvens híbridas; apresentações técnicas e automação com Python e Terraform.
-- **Estágio em Engenharia de Redes, Cisco do Brasil** (Jan/2019 – Dez/2020): organização do laboratório de redes e apoio na importação de equipamentos para provas de conceito.
+### Desenvolvedor e Arquiteto de Software
 
-## Formação, certificações e idiomas
+FCamara | São Paulo, SP | Nov/2025 — Out/2026
 
-- Bacharelado em Redes de Computadores, FIAP (conclusão em 2021)
+- Desenvolvimento de APIs RESTful em C# com arquitetura serverless na AWS (Lambda, DynamoDB, SQS, SNS, S3).
+- Provisionamento de nova infraestrutura como código com CloudFormation, gestão de permissões com IAM e criação de pipelines de CI/CD no Azure DevOps.
+- Administração e tuning de banco Aurora PostgreSQL.
+- Desenvolvimento de dashboards de monitoramento em tempo real com React.
+
+Palavras-chave: C#, APIs RESTful, Serverless, AWS, Lambda, DynamoDB, SQS, SNS, S3, Infraestrutura como código, CloudFormation, IAM, CI/CD, Azure DevOps, Aurora PostgreSQL, Tuning de banco, React, Dashboards, Monitoramento em tempo real
+
+### Desenvolvedor e Arquiteto de Software
+
+SONDA Tecnologia | São Paulo, SP | Jan/2024 — Out/2025
+
+- Arquitetura e desenvolvimento de plataforma de DCIM (gestão de infraestrutura de datacenter) para um grande banco público federal, com Angular, C# e SQL Server, hospedada em IIS.
+- Integração de soluções de monitoramento, automação e governança em ambientes híbridos.
+
+Palavras-chave: Arquitetura de software, DCIM, Angular, C#, SQL Server, IIS, Monitoramento, Automação, Governança, Ambientes híbridos
+
+### Engenheiro de TI Especialista
+
+F1RST Digital Services | São Paulo, SP | Jan/2022 — Dez/2023
+
+- Gerenciamento de servidores Linux e Windows em ambientes on-premises e em nuvem (AWS e Azure).
+- Centralização e análise de logs e métricas com ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, rsyslog e Grafana.
+- Automação de processos de datacenter com Python e PHP, integrada a plataformas de auto-delivery.
+
+Palavras-chave: Linux, Windows, On-premises, AWS, Azure, ELK Stack, Elasticsearch, Logstash, Kibana, Splunk, rsyslog, Grafana, Logs e métricas, Python, PHP, Automação de datacenter, Auto-delivery
+
+### Engenheiro de Redes
+
+Cisco do Brasil | São Paulo, SP | Jan/2021 — Dez/2021
+
+- Responsável individual pela implantação ponta a ponta de um fabric Cisco ACI Multi-Site em prova de conceito para licitação de um grande banco público federal: logística dos equipamentos (SP → Brasília), montagem de rack, configuração e execução dos testes de conformidade da RFP.
+- Provas de conceito de redes de datacenter com ACI, VXLAN/MP-BGP EVPN, FabricPath, vPC (Virtual Port Channel), Private VLAN e SAN.
+- Provas de conceito de virtualização e containers com VMware vCenter, OpenShift e Kubernetes, em nuvens híbridas (AWS, Azure, GCP, OCI).
+- Apresentações técnicas a clientes e parceiros e desenvolvimento de scripts de automação com Python e Terraform.
+
+Palavras-chave: Cisco ACI, ACI Multi-Site, Provas de conceito, Licitação, RFP, Montagem de rack, VXLAN, MP-BGP EVPN, FabricPath, vPC, Private VLAN, SAN, Virtualização, Containers, VMware vCenter, OpenShift, Kubernetes, Nuvem híbrida, AWS, Azure, GCP, OCI, Python, Terraform, Apresentações técnicas
+
+### Estágio em Engenharia de Redes
+
+Cisco do Brasil | São Paulo, SP | Jan/2019 — Dez/2020
+
+- Organização do laboratório de redes e apoio na importação de equipamentos para provas de conceito e preparação para certificação CCNA Routing and Switching.
+
+Palavras-chave: Laboratório de redes, Importação de equipamentos, Provas de conceito, CCNA Routing and Switching
+
+## Formação Acadêmica
+
+Bacharelado em Redes de Computadores
+FIAP – Faculdade de Informática e Administração Paulista
+Conclusão: 2021
+
+## Certificações
+
 - CCNA Routing and Switching (expirada)
-- Inglês intermediário (conversação e escrita)
+
+## Idiomas
+
+- Inglês – Intermediário (conversação e escrita)
 
 ## Projetos
 
