@@ -158,9 +158,22 @@ h2 {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem 1.5rem;
-  padding: 1rem 0;
+  /* Avança sobre a margem lateral da .pagina: sem isso, as bolinhas da
+     linha do tempo (que ficam nessa margem) passam por cima do menu. */
+  margin: 0 -1rem;
+  padding: 1rem;
   background-color: var(--superficie);
-  border-bottom: 1px solid var(--sombra);
+}
+
+/* Linha de baixo do menu, alinhada com o conteúdo e não com o fundo. */
+.topo::after {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--sombra);
 }
 
 .marca {
