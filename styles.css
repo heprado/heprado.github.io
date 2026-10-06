@@ -91,6 +91,13 @@ html {
   scroll-padding-top: 5rem;
 }
 
+/* No celular o menu quebra em duas linhas e o topo fica mais alto. */
+@media (max-width: 48rem) {
+  html {
+    scroll-padding-top: 11rem;
+  }
+}
+
 body {
   margin: 0;
   background-color: var(--superficie);
@@ -197,6 +204,7 @@ body:not(:has(.aba:target)) .nav-sobre,
 body:has(#sobre:target) .nav-sobre,
 body:has(#experiencias:target) .nav-experiencias,
 body:has(#projetos:target) .nav-projetos,
+body:has(#pensamentos:target) .nav-pensamentos,
 body:has(#diversoes:target) .nav-diversoes {
   background-color: var(--primaria);
   color: var(--superficie);
