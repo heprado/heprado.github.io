@@ -865,3 +865,26 @@ h1::after {
     border-top: 3px solid var(--texto);
   }
 }
+
+/* ---------- Celular e toque: fundo parado ---------- */
+
+/* No celular, manter o fundo animado travava a página: a camada tem a
+   altura da página inteira (e 800px a mais de largura para o deslize),
+   multiplicada pela densidade de pixels da tela, e os LEDs obrigam o
+   navegador a redesenhá-la 4 vezes por segundo. Aqui o fundo fica parado:
+   versão estática do SVG (LEDs acesos, sem animação), sem deslize e sem
+   parallax, numa camada da largura da tela. */
+@media (max-width: 48rem), (pointer: coarse) {
+  :root { --fundo-datacenter: url("icones/fundo/datacenter-claro-estatico.svg"); }
+  :root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-escuro-estatico.svg"); }
+
+  .fundo {
+    inset: 0;
+    animation: none;
+  }
+}
+
+@media ((max-width: 48rem) or (pointer: coarse)) and (prefers-color-scheme: dark) {
+  :root { --fundo-datacenter: url("icones/fundo/datacenter-escuro-estatico.svg"); }
+  :root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-claro-estatico.svg"); }
+}

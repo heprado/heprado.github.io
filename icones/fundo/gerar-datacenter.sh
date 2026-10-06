@@ -16,8 +16,13 @@
 # direito e sobe até a porta logo acima no topo do rack; quanto mais baixo o
 # equipamento, mais à direita a faixa, então nenhum cabo cruza outro.
 #
-# Uso: gerar-datacenter.sh <claro|escuro> > arquivo.svg
+# Uso: gerar-datacenter.sh <claro|escuro> [estatico] > arquivo.svg
+#   estatico: LEDs acesos, sem animação (a versão usada no celular, onde
+#   redesenhar o fundo a cada piscada trava a página).
 set -euo pipefail
+
+ESTATICO=0
+[[ "${2:-}" == estatico ]] && ESTATICO=1
 
 case "${1:-}" in
   escuro)
@@ -34,7 +39,7 @@ case "${1:-}" in
     VERDE="#3A7550"; AZUL="#4261A1"; DOURADO="#86601A"; VINHO="#8B2C45"; CINZA="#7D848C"
     ABRACADEIRA="#1E2533"; BRILHO="#FFFFFF"; BRILHO_A="0.35"
     ;;
-  *) echo "uso: $0 <claro|escuro>" >&2; exit 1 ;;
+  *) echo "uso: $0 <claro|escuro> [estatico]" >&2; exit 1 ;;
 esac
 
 r() { printf '<rect x="%s" y="%s" width="%s" height="%s" fill="%s"/>\n' "$1" "$2" "$3" "$4" "$5"; }
@@ -49,7 +54,7 @@ N_LED=0
 led() { # x y largura altura cor
   local ritmos=(a b c d) atrasos=(e f g)
   N_LED=$((N_LED + 1))
-  if (( N_LED % 5 == 0 )); then
+  if (( ESTATICO || N_LED % 5 == 0 )); then
     r "$@"
   else
     printf '<rect class="%s %s" x="%s" y="%s" width="%s" height="%s" fill="%s"/>\n' \
@@ -259,7 +264,7 @@ montar() { # x_externo topo faixa0 passo
 
 cat <<EOF
 <svg xmlns="http://www.w3.org/2000/svg" width="$LARGURA_LADRILHO" height="440" viewBox="0 0 $LARGURA_LADRILHO 440" shape-rendering="crispEdges">
-<!-- Fundo de datacenter em pixel art (gerado por icones/fundo/gerar-datacenter.sh, versão $1). -->
+<!-- Fundo de datacenter em pixel art (gerado por icones/fundo/gerar-datacenter.sh, versão $1${2:+ $2}). -->
 <style>
 text { font: 700 8px monospace; letter-spacing: 0.5px; }
 .a { animation: trafego 2s step-end infinite; }
