@@ -1,35 +1,197 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="pt-br">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <title>Formas rodopiantes</title>
-        <meta name="description" content="">
+        <title>Henrique Prado</title>
+        <meta name="description" content="Henrique Prado: sobre mim, experiências, projetos e diversões.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <div class="container">
-            <h1>Site das entidades rodopiantes</h1>
-            <a href="./texto.html">h</a>
-            <a href="./WebEssentials/index.html" style="color:white;">Jogos</a>
-            <div class="formas">
-                <div id="piramide">
-                    <img id="piramide_norte" src="./icones/piramide/piramide_norte.svg"/>
-                    <img id="piramide_sul" src="./icones/piramide/piramide_sul.svg"/>
-                    <img id="piramide_leste" src="./icones/piramide/piramide_leste.svg"/>
-                    <img id="piramide_oeste" src="./icones/piramide/piramide_oeste.svg"/>
-                </div>
-                <div id="cubo">
-                    <img id="cubo_frente" src="./icones/cubo/cubo_frente.svg"/>
-                    <img id="cubo_costas" src="./icones/cubo/cubo_costas.svg"/>
-                    <img id="cubo_topo" src="./icones/cubo/cubo_topo.svg"/>
-                    <img id="cubo_fundo" src="./icones/cubo/cubo_fundo.svg"/>
-                    <img id="cubo_esquerda" src="./icones/cubo/cubo_esquerda.svg"/>
-                    <img id="cubo_direita" src="./icones/cubo/cubo_direita.svg"/>
-                </div>
-            </div>
+        <!-- Botão de tema: o checkbox inverte o modo do sistema (CSS :has). -->
+        <input type="checkbox" id="tema" class="tema-input" aria-label="Alternar modo claro/escuro">
+
+        <div class="pagina">
+            <header class="topo">
+                <a class="marca" href="#sobre">heprado</a>
+                <nav class="abas-nav" aria-label="Seções">
+                    <a href="#sobre" class="nav-sobre">Sobre mim</a>
+                    <a href="#experiencias" class="nav-experiencias">Experiências</a>
+                    <a href="#projetos" class="nav-projetos">Projetos</a>
+                    <a href="#diversoes" class="nav-diversoes">Diversões</a>
+                </nav>
+                <label for="tema" class="tema-botao" title="Alternar modo claro/escuro">
+                    <span class="icone-sol" aria-hidden="true">☀</span>
+                    <span class="icone-lua" aria-hidden="true">☾</span>
+                    <span class="tema-texto"></span>
+                </label>
+            </header>
+
+            <main class="abas">
+                <!-- SOBRE MIM -->
+                <section id="sobre" class="aba">
+                    <h1>Sobre mim</h1>
+                    <div class="cartao">
+                        <!-- TODO(Henrique): escrever o texto do "Sobre mim" aqui. -->
+                        <p class="rascunho">Em breve.</p>
+                    </div>
+                </section>
+
+                <!-- EXPERIÊNCIAS -->
+                <section id="experiencias" class="aba">
+                    <h1>Experiências</h1>
+                    <p class="resumo">Mais de 6 anos entre datacenter, nuvem e desenvolvimento de software: de provas de conceito e licitações com Cisco ACI a APIs serverless na AWS, passando por automação, observabilidade e apresentações técnicas para clientes e parceiros.</p>
+                    <ol class="linha-tempo">
+                        <li class="cartao">
+                            <p class="periodo">Nov/2025 — Out/2026</p>
+                            <h2>Desenvolvedor e Arquiteto de Software</h2>
+                            <p class="empresa">FCamara · São Paulo, SP</p>
+                            <ul>
+                                <li>APIs RESTful em C# com arquitetura serverless na AWS (Lambda, DynamoDB, SQS, SNS, S3).</li>
+                                <li>Infraestrutura como código com CloudFormation, permissões com IAM e pipelines de CI/CD no Azure DevOps.</li>
+                                <li>Administração e tuning de banco Aurora PostgreSQL.</li>
+                                <li>Dashboards de monitoramento em tempo real com React.</li>
+                            </ul>
+                            <p class="tags"><span>C#</span><span>AWS</span><span>CloudFormation</span><span>PostgreSQL</span><span>React</span></p>
+                        </li>
+                        <li class="cartao">
+                            <p class="periodo">Jan/2024 — Out/2025</p>
+                            <h2>Desenvolvedor e Arquiteto de Software</h2>
+                            <p class="empresa">SONDA Tecnologia · São Paulo, SP</p>
+                            <ul>
+                                <li>Arquitetura e desenvolvimento de uma plataforma de DCIM (gestão de infraestrutura de datacenter) para um grande banco público federal, com Angular, C# e SQL Server, hospedada em IIS.</li>
+                                <li>Integração de soluções de monitoramento, automação e governança em ambientes híbridos.</li>
+                            </ul>
+                            <p class="tags"><span>C#</span><span>Angular</span><span>SQL Server</span><span>DCIM</span></p>
+                        </li>
+                        <li class="cartao">
+                            <p class="periodo">Jan/2022 — Dez/2023</p>
+                            <h2>Engenheiro de TI Especialista</h2>
+                            <p class="empresa">F1RST Digital Services · São Paulo, SP</p>
+                            <ul>
+                                <li>Gerenciamento de servidores Linux e Windows on-premises e em nuvem (AWS e Azure).</li>
+                                <li>Centralização e análise de logs e métricas com ELK Stack, Splunk, rsyslog e Grafana.</li>
+                                <li>Automação de processos de datacenter com Python e PHP, integrada a plataformas de auto-delivery.</li>
+                            </ul>
+                            <p class="tags"><span>Linux</span><span>AWS</span><span>Azure</span><span>ELK</span><span>Python</span></p>
+                        </li>
+                        <li class="cartao">
+                            <p class="periodo">Jan/2021 — Dez/2021</p>
+                            <h2>Engenheiro de Redes</h2>
+                            <p class="empresa">Cisco do Brasil · São Paulo, SP</p>
+                            <ul>
+                                <li>Responsável individual pela implantação ponta a ponta de um fabric Cisco ACI Multi-Site em prova de conceito para licitação de um grande banco público federal: logística dos equipamentos (SP → Brasília), montagem de rack, configuração e testes de conformidade da RFP.</li>
+                                <li>Provas de conceito de redes de datacenter com ACI, VXLAN/MP-BGP EVPN, FabricPath, vPC, Private VLAN e SAN.</li>
+                                <li>Provas de conceito de virtualização e containers com VMware vCenter, OpenShift e Kubernetes em nuvens híbridas (AWS, Azure, GCP, OCI).</li>
+                                <li>Apresentações técnicas a clientes e parceiros e scripts de automação com Python e Terraform.</li>
+                            </ul>
+                            <p class="tags"><span>Cisco ACI</span><span>VXLAN EVPN</span><span>Kubernetes</span><span>Terraform</span></p>
+                        </li>
+                        <li class="cartao">
+                            <p class="periodo">Jan/2019 — Dez/2020</p>
+                            <h2>Estágio em Engenharia de Redes</h2>
+                            <p class="empresa">Cisco do Brasil · São Paulo, SP</p>
+                            <ul>
+                                <li>Organização do laboratório de redes e apoio na importação de equipamentos para provas de conceito.</li>
+                                <li>Preparação para a certificação CCNA Routing and Switching.</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <div class="grade-extras">
+                        <div class="cartao">
+                            <h2>Formação</h2>
+                            <p>Bacharelado em Redes de Computadores</p>
+                            <p class="empresa">FIAP · conclusão em 2021</p>
+                        </div>
+                        <div class="cartao">
+                            <h2>Certificações</h2>
+                            <p>CCNA Routing and Switching <span class="empresa">(expirada)</span></p>
+                        </div>
+                        <div class="cartao">
+                            <h2>Idiomas</h2>
+                            <p>Inglês intermediário (conversação e escrita)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PROJETOS -->
+                <section id="projetos" class="aba">
+                    <h1>Projetos</h1>
+                    <ul class="grade-projetos">
+                        <li class="cartao projeto">
+                            <h2><a href="https://github.com/heprado/nexos">nexos</a></h2>
+                            <p>Configurações NixOS declarativas, separadas por máquina e por usuário. Hyprland, Noctalia e uma paleta de cores única (a da Tama) aplicada em todos os apps.</p>
+                            <p class="tags"><span>Nix</span><span>NixOS</span><span>Hyprland</span></p>
+                        </li>
+                        <li class="cartao projeto">
+                            <h2><a href="https://github.com/heprado/noctalia-monitor-settings">noctalia-monitor-settings</a></h2>
+                            <p>Plugin do Noctalia para configurar monitores: arranjo das telas arrastando no canvas, resolução, taxa de atualização, escala e controle DDC/CI completo via ddcutil.</p>
+                            <p class="tags"><span>QML</span><span>Quickshell</span><span>Wayland</span></p>
+                        </li>
+                        <li class="cartao projeto">
+                            <h2><a href="https://github.com/heprado/asus-b150m-pro-gaming-ptt-enabler">asus-b150m-pro-gaming-ptt-enabler</a></h2>
+                            <p>Habilita o Intel PTT (TPM 2.0) na placa-mãe ASUS B150M Pro Gaming, liberando o Windows 11 sem precisar de um módulo TPM dedicado.</p>
+                            <p class="tags"><span>Python</span><span>BIOS</span><span>Firmware</span></p>
+                        </li>
+                        <li class="cartao projeto">
+                            <h2><a href="https://github.com/heprado/LUNA">LUNA</a></h2>
+                            <p>Local Unique Network Advisor.</p>
+                            <p class="tags"><span>C#</span><span>Redes</span></p>
+                        </li>
+                        <li class="cartao projeto">
+                            <h2><a href="https://github.com/heprado/advent-of-code-2024-rust">advent-of-code-2024-rust</a></h2>
+                            <p>Minhas soluções para os problemas do Advent of Code 2024.</p>
+                            <p class="tags"><span>Rust</span></p>
+                        </li>
+                        <li class="cartao projeto">
+                            <h2><a href="https://github.com/heprado/htmx-pokedex">htmx-pokedex</a></h2>
+                            <p>Uma Pokédex feita com htmx.</p>
+                            <p class="tags"><span>htmx</span><span>CSS</span></p>
+                        </li>
+                        <li class="cartao projeto">
+                            <h2><a href="https://github.com/heprado/tama-shell">tama-shell</a></h2>
+                            <p>Shell de desktop em Quickshell (QML/Qt). Por enquanto só o ambiente de desenvolvimento, com Nix e devenv.</p>
+                            <p class="tags"><span>QML</span><span>Nix</span><span>em andamento</span></p>
+                        </li>
+                    </ul>
+                    <p class="mais"><a href="https://github.com/heprado?tab=repositories">Todos os repositórios no GitHub →</a></p>
+                </section>
+
+                <!-- DIVERSÕES -->
+                <section id="diversoes" class="aba">
+                    <h1>Diversões</h1>
+                    <div class="cartao">
+                        <h2>Entidades rodopiantes</h2>
+                        <div class="formas">
+                            <div id="piramide">
+                                <img id="piramide_norte" src="./icones/piramide/piramide_norte.svg" alt="">
+                                <img id="piramide_sul" src="./icones/piramide/piramide_sul.svg" alt="">
+                                <img id="piramide_leste" src="./icones/piramide/piramide_leste.svg" alt="">
+                                <img id="piramide_oeste" src="./icones/piramide/piramide_oeste.svg" alt="">
+                            </div>
+                            <div id="cubo">
+                                <img id="cubo_frente" src="./icones/cubo/cubo_frente.svg" alt="">
+                                <img id="cubo_costas" src="./icones/cubo/cubo_costas.svg" alt="">
+                                <img id="cubo_topo" src="./icones/cubo/cubo_topo.svg" alt="">
+                                <img id="cubo_fundo" src="./icones/cubo/cubo_fundo.svg" alt="">
+                                <img id="cubo_esquerda" src="./icones/cubo/cubo_esquerda.svg" alt="">
+                                <img id="cubo_direita" src="./icones/cubo/cubo_direita.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cartao">
+                        <h2>Jogos</h2>
+                        <p><a href="./WebEssentials/index.html">WebEssentials →</a></p>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="rodape">
+                <a href="https://github.com/heprado">github.com/heprado</a>
+                · <a href="https://linkedin.com/in/heprado">linkedin.com/in/heprado</a>
+            </footer>
         </div>
-        
-        
     </body>
 </html>
