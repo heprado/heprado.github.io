@@ -98,9 +98,99 @@ html {
   }
 }
 
+/* Parallax só com CSS (animação ligada à rolagem): o fundo é uma camada do
+   tamanho da página que, enquanto se rola uma distância S, desce S/2. Na
+   tela, ele anda na metade da velocidade do conteúdo. No fim da rolagem o
+   deslocamento é metade de (altura da página - altura da tela), que é
+   calc(50% - 50vh). Navegadores sem suporte só deixam o fundo rolar junto.
+
+   Além disso, o fundo desliza para a esquerda o tempo todo, como uma câmera
+   passando pelo corredor do datacenter: a camada é uma fileira de racks
+   (800px) mais larga e anda exatamente 800px por ciclo, então o recomeço do
+   loop não aparece. Ele anda de 1 em 1 pixel (steps), como pixel art e com
+   metade do custo de um deslize contínuo. O deslize usa "translate" e o
+   parallax usa "transform", para as duas animações rodarem juntas, sem
+   redesenhar a imagem. */
+.cena {
+  position: relative;
+  /* contém as margens da .pagina, para o fundo cobrir também a de cima */
+  display: flow-root;
+  /* em abas curtas, o fundo ainda cobre a tela toda */
+  min-height: 100vh;
+  /* o fundo deslocado não pode aumentar a área de rolagem */
+  overflow: clip;
+  /* o z-index -1 do fundo fica dentro da cena, atrás do painel */
+  isolation: isolate;
+}
+
+.fundo {
+  position: absolute;
+  /* 800px a mais à direita: o que entra na tela enquanto o fundo desliza */
+  inset: 0 -800px 0 0;
+  z-index: -1;
+  /* véu da cor de fundo por cima do datacenter, para o olho ir ao texto */
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--sombra) 72%, transparent),
+                    color-mix(in srgb, var(--sombra) 72%, transparent)),
+    var(--fundo-datacenter);
+  background-position: left top;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fundo {
+    animation: deslize 40s steps(800) infinite;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .fundo {
+      animation: deslize 40s steps(800) infinite, parallax linear both;
+      animation-timeline: auto, scroll(root);
+    }
+  }
+}
+
+@keyframes deslize {
+  from { translate: 0 0; }
+  to { translate: -800px 0; }
+}
+
+@keyframes parallax {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(50% - 50vh)); }
+}
+
+/* Cantos em degraus de pixel, como os blocos da arte riso. */
+:root {
+  --degraus: polygon(
+    0 8px, 4px 8px, 4px 4px, 8px 4px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 4px, calc(100% - 4px) 4px, calc(100% - 4px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 4px) calc(100% - 8px), calc(100% - 4px) calc(100% - 4px), calc(100% - 8px) calc(100% - 4px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 4px), 4px calc(100% - 4px), 4px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+  --degraus-p: polygon(
+    0 2px, 2px 2px, 2px 0,
+    calc(100% - 2px) 0, calc(100% - 2px) 2px, 100% 2px,
+    100% calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%,
+    2px 100%, 2px calc(100% - 2px), 0 calc(100% - 2px)
+  );
+}
+
+/* Fundo: um datacenter em pixel art (racks com switches, roteadores,
+   firewalls, load balancers e servidores, ligados por cabos), nas cores
+   da Tama. Como CSS não muda as cores de dentro de uma imagem, há uma
+   versão por tema; ambas saem de icones/fundo/gerar-datacenter.sh. */
+:root { --fundo-datacenter: url("icones/fundo/datacenter-claro.svg"); }
+:root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-escuro.svg"); }
+
+@media (prefers-color-scheme: dark) {
+  :root { --fundo-datacenter: url("icones/fundo/datacenter-escuro.svg"); }
+  :root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-claro.svg"); }
+}
+
 body {
   margin: 0;
-  background-color: var(--superficie);
+  background-color: var(--sombra);
   color: var(--texto);
   font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
   line-height: 1.6;
@@ -142,10 +232,25 @@ h2 {
   line-height: 1.3;
 }
 
+/* Painel liso por cima dos cabos: moldura de impressão com borda grossa. */
 .pagina {
   max-width: 60rem;
-  margin: 0 auto;
+  margin: 2.5rem auto;
   padding: 0 1rem;
+  background-color: var(--superficie);
+  border: 3px solid var(--texto);
+}
+
+@media (max-width: 64rem) {
+  .pagina {
+    margin: 1.5rem 1.25rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .pagina {
+    margin: 0.75rem 0.75rem 1.25rem;
+  }
 }
 
 /* ---------- Topo / navegação ---------- */
@@ -256,7 +361,8 @@ body:has(#diversoes:target) .nav-diversoes {
   background-color: var(--hover);
 }
 
-.tema-input:focus-visible ~ .pagina .tema-botao {
+#tema:focus-visible ~ .cena label[for="tema"],
+#sem-fundo:focus-visible ~ .cena .fundo-botao {
   outline: 2px solid var(--secundaria);
   outline-offset: 2px;
 }
@@ -273,6 +379,63 @@ body:has(#diversoes:target) .nav-diversoes {
 
 .tema-texto::after {
   content: var(--rotulo-tema);
+}
+
+/* ---------- Botão de fundo ---------- */
+
+/* Fica à esquerda do botão de tema; é ele que empurra o par para a direita. */
+.fundo-botao + .tema-botao {
+  margin-left: 0;
+}
+
+.icone-fundo {
+  color: var(--primaria);
+}
+
+.fundo-texto::after {
+  content: "Sem fundo";
+}
+
+/* Fundo desligado: some o datacenter (e com ele os LEDs, o deslize e o
+   parallax) e a página volta para a cor de antes, a mesma do painel. */
+:root:has(#sem-fundo:checked) .fundo {
+  display: none;
+}
+
+:root:has(#sem-fundo:checked) body {
+  background-color: var(--superficie);
+}
+
+:root:has(#sem-fundo:checked) .fundo-texto::after {
+  content: "Com fundo";
+}
+
+/* Quem pede menos movimento começa sem o fundo; aí o botão o liga (parado:
+   LEDs, deslize e parallax já ficam desligados para essa preferência). */
+@media (prefers-reduced-motion: reduce) {
+  .fundo {
+    display: none;
+  }
+
+  body {
+    background-color: var(--superficie);
+  }
+
+  .fundo-texto::after {
+    content: "Com fundo";
+  }
+
+  :root:has(#sem-fundo:checked) .fundo {
+    display: block;
+  }
+
+  :root:has(#sem-fundo:checked) body {
+    background-color: var(--sombra);
+  }
+
+  :root:has(#sem-fundo:checked) .fundo-texto::after {
+    content: "Sem fundo";
+  }
 }
 
 /* ---------- Abas ---------- */
@@ -540,4 +703,81 @@ body:has(#diversoes:target) .nav-diversoes {
 .grade-extras ul {
   margin: 0;
   padding-left: 1.25rem;
+}
+
+/* ---------- Estética riso/pixel ---------- */
+
+/* Sublinhado dos títulos: pontos de costura nas cores da Tama. */
+h1::after {
+  width: 6.75rem;
+  height: 6px;
+  border-radius: 0;
+  background: repeating-linear-gradient(90deg,
+    var(--primaria) 0 18px, transparent 18px 22px,
+    var(--secundaria) 22px 40px, transparent 40px 44px,
+    var(--terciaria) 44px 62px, transparent 62px 66px,
+    var(--erro) 66px 84px, transparent 84px 88px);
+}
+
+/* Abas e ícones com cantos em degrau, sem arredondado. */
+.abas-nav a,
+.redes a {
+  border-radius: 0;
+  clip-path: var(--degraus-p);
+}
+
+/* Botão de tema: bloco impresso com sombra chapada, que "afunda" ao clicar. */
+.tema-botao {
+  border: 2px solid var(--texto);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 var(--texto);
+  font-weight: 500;
+}
+
+.tema-botao:active {
+  translate: 2px 2px;
+  box-shadow: 1px 1px 0 var(--texto);
+}
+
+/* Cartões: papel com contorno grosso. */
+.cartao {
+  border: 2px solid var(--texto);
+  border-radius: 0;
+}
+
+.projeto,
+.grade-extras .cartao {
+  border-top: 2px solid var(--texto);
+}
+
+/* Tags: blocos chapados com cantinhos em degrau. */
+.tags span {
+  border-radius: 0;
+  clip-path: var(--degraus-p);
+  font-weight: 500;
+}
+
+/* Linha do tempo: costura tracejada e marcadores quadrados. */
+.linha-tempo {
+  border-left: 0;
+  background: repeating-linear-gradient(180deg,
+    var(--primaria) 0 10px, transparent 10px 16px) left top / 3px 100% no-repeat;
+}
+
+.linha-tempo > li::before {
+  left: calc(-1.25rem - 5px);
+  width: 13px;
+  height: 13px;
+  border-radius: 0;
+  border: 0;
+  background-color: var(--secundaria);
+  box-shadow: 0 0 0 3px var(--superficie);
+}
+
+/* Palco das formas: tela de pixels com contorno chapado. */
+.formas {
+  border: 2px solid var(--texto);
+  border-radius: 0;
+  background-image: repeating-linear-gradient(180deg,
+    transparent 0 3px, rgb(255 255 255 / 0.04) 3px 4px);
 }

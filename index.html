@@ -63,7 +63,14 @@
     <body>
         <!-- Botão de tema: o checkbox inverte o modo do sistema (CSS :has). -->
         <input type="checkbox" id="tema" class="tema-input" aria-label="Alternar modo claro/escuro">
+        <!-- Botão de fundo: o checkbox inverte o padrão (ligado, ou desligado
+             para quem pede menos movimento no sistema). -->
+        <input type="checkbox" id="sem-fundo" class="tema-input" aria-label="Ligar/desligar o fundo de datacenter">
 
+        <!-- Cena do parallax: o fundo de datacenter fica numa camada atrás,
+             rolando na metade da velocidade do conteúdo (só CSS). -->
+        <div class="cena">
+        <div class="fundo" aria-hidden="true"></div>
         <div class="pagina">
             <header class="topo">
                 <!-- Hieróglifo nfr (F35 de Gardiner), vetorizado do PNG da wikihiero. -->
@@ -82,6 +89,10 @@
                     <a href="#pensamentos" class="nav-pensamentos">Pensamentos</a>
                     <a href="#diversoes" class="nav-diversoes">Diversões</a>
                 </nav>
+                <label for="sem-fundo" class="tema-botao fundo-botao" title="Ligar/desligar o fundo de datacenter">
+                    <span class="icone-fundo" aria-hidden="true">▦</span>
+                    <span class="fundo-texto"></span>
+                </label>
                 <label for="tema" class="tema-botao" title="Alternar modo claro/escuro">
                     <span class="icone-sol" aria-hidden="true">☀</span>
                     <span class="icone-lua" aria-hidden="true">☾</span>
@@ -309,6 +320,7 @@
                     </a>
                 </nav>
             </footer>
+        </div>
         </div>
     </body>
 </html>
