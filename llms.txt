@@ -15,7 +15,7 @@ O conteúdo do site está em português do Brasil. Henrique une redes de datacen
 
 ## Resumo profissional
 
-Mais de 6 anos de experiência em datacenter, nuvem e desenvolvimento de software. Experiência em provas de conceito e processos licitatórios, incluindo a implantação ponta a ponta de um fabric Cisco ACI Multi-Site para um grande banco público federal. Une domínio técnico em redes, AWS/Azure/GCP e Terraform com desenvolvimento em C#, Python e TypeScript, além de apresentações técnicas a clientes e parceiros.
+Mais de 6 anos de experiência em datacenter, nuvem e desenvolvimento de software. Experiência em provas de conceito de redes de datacenter e nuvem. Une domínio técnico em redes, AWS/Azure/GCP e Terraform com desenvolvimento em C#, Python e TypeScript, além de apresentações técnicas a clientes e parceiros.
 
 ## Experiência profissional
 
@@ -53,12 +53,11 @@ Palavras-chave: Linux, Windows, On-premises, AWS, Azure, ELK Stack, Elasticsearc
 
 Cisco do Brasil | São Paulo, SP | Jan/2021 — Dez/2021
 
-- Responsável individual pela implantação ponta a ponta de um fabric Cisco ACI Multi-Site em prova de conceito para licitação de um grande banco público federal: logística dos equipamentos (SP → Brasília), montagem de rack, configuração e execução dos testes de conformidade da RFP.
 - Provas de conceito de redes de datacenter com ACI, VXLAN/MP-BGP EVPN, FabricPath, vPC (Virtual Port Channel), Private VLAN e SAN.
 - Provas de conceito de virtualização e containers com VMware vCenter, OpenShift e Kubernetes, em nuvens híbridas (AWS, Azure, GCP, OCI).
 - Apresentações técnicas a clientes e parceiros e desenvolvimento de scripts de automação com Python e Terraform.
 
-Palavras-chave: Cisco ACI, ACI Multi-Site, Provas de conceito, Licitação, RFP, Montagem de rack, VXLAN, MP-BGP EVPN, FabricPath, vPC, Private VLAN, SAN, Virtualização, Containers, VMware vCenter, OpenShift, Kubernetes, Nuvem híbrida, AWS, Azure, GCP, OCI, Python, Terraform, Apresentações técnicas
+Palavras-chave: Cisco ACI, ACI Multi-Site, Provas de conceito, VXLAN, MP-BGP EVPN, FabricPath, vPC, Private VLAN, SAN, Virtualização, Containers, VMware vCenter, OpenShift, Kubernetes, Nuvem híbrida, AWS, Azure, GCP, OCI, Python, Terraform, Apresentações técnicas
 
 ### Estágio em Engenharia de Redes
 

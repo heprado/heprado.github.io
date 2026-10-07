@@ -269,10 +269,11 @@ local filtro = {
 
   -- [[Nota]]: link para a página dela; sem página, fica só o texto.
   -- Links externos mortos (links-rot.txt) ganham " (ROT)" depois; os
-  -- censurados (com █ no endereço) não levam a lugar nenhum e viram texto.
+  -- censurados (com █ no endereço) e os do OneNote (apontam pro OneDrive
+  -- da empresa) não levam a lugar nenhum e viram texto.
   Link = function(el)
     if not el.classes:includes("wikilink") then
-      if el.target:find("█") then return pandoc.Span(el.content) end
+      if el.target:find("█") or el.target:match("^onenote:") then return pandoc.Span(el.content) end
       if ROT[el.target] then return { el, pandoc.Str(" (ROT)") } end
       return nil
     end
