@@ -1,0 +1,14 @@
+# Links das anotações que não têm mais o conteúdo original (link rot).
+# O gerador (gerar.lua) acrescenta " (ROT)" depois de cada um deles.
+# Uma URL por linha, exatamente como está na nota; linhas com # são ignoradas.
+# Checados em 07/10/2026, abrindo cada link num Chromium:
+
+# Página 404 da Intel.
+https://www.intel.com/content/www/us/en/architecture-and-technology/intel-volume-management-device-overview.html
+
+# VMware virou Broadcom: redireciona para a página inicial do TechDocs.
+https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.install.doc/GUID-7EA5F174-9D29-45DF-BDE8-94EAE57F9B62.html
+
+# Documentação do AppDynamics saiu do ar (certificado inválido no domínio).
+https://docs.appdynamics.com/21.5/en/application-monitoring/configure-instrumentation/configure-instrumentation-overview/scope-configuration-model
+https://docs.appdynamics.com/4.5.x/en/application-monitoring/configure-instrumentation/backend-detection-rules

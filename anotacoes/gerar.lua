@@ -221,6 +221,13 @@ for _, n in ipairs(notas) do
   por_titulo[sem_acento(n.titulo)] = por_titulo[sem_acento(n.titulo)] or n
 end
 
+-- Links externos que perderam o conteúdo (veja anotacoes/links-rot.txt).
+local ROT = {}
+for linha in (ler(path.join({ SAIDA, "links-rot.txt" })) .. "\n"):gmatch("(.-)\r?\n") do
+  linha = linha:match("^%s*(.-)%s*$")
+  if linha ~= "" and not linha:match("^#") then ROT[linha] = true end
+end
+
 -- ------------------------------------------------------------ conversão
 
 local usadas = {}
@@ -261,8 +268,14 @@ local filtro = {
   end,
 
   -- [[Nota]]: link para a página dela; sem página, fica só o texto.
+  -- Links externos mortos (links-rot.txt) ganham " (ROT)" depois; os
+  -- censurados (com █ no endereço) não levam a lugar nenhum e viram texto.
   Link = function(el)
-    if not el.classes:includes("wikilink") then return nil end
+    if not el.classes:includes("wikilink") then
+      if el.target:find("█") then return pandoc.Span(el.content) end
+      if ROT[el.target] then return { el, pandoc.Str(" (ROT)") } end
+      return nil
+    end
     local alvo = por_titulo[sem_acento((el.target:gsub("#.*$", "")))]
     if not alvo then return pandoc.Span(el.content) end
     el.target = alvo.slug .. ".html"
