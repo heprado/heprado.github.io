@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- Modelo das páginas da aba Anotações (pandoc). Gerado por
+     anotacoes/gerar.lua: não edite as páginas .html, edite este modelo e a
+     vault. O topo e o rodapé são cópias dos do index.html. -->
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>RPC Style API | Anotações | Henrique Prado</title>
+        <meta name="description" content="Anotação de estudo de Henrique Prado: RPC Style API (Programação / APIs).">
+        <meta name="author" content="Henrique Prado">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
+        <meta name="theme-color" content="#EAEAEA" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#171A21" media="(prefers-color-scheme: dark)">
+        <link rel="icon" href="../icones/nefer.svg" type="image/svg+xml">
+        <link rel="icon" href="../icones/favicon-32.png" type="image/png" sizes="32x32">
+        <link rel="apple-touch-icon" href="../icones/apple-touch-icon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body class="nota">
+        <!-- Botão de tema: o checkbox inverte o modo do sistema (CSS :has). -->
+        <input type="checkbox" id="tema" class="tema-input" aria-label="Alternar modo claro/escuro">
+        <!-- Botão de fundo: o checkbox inverte o padrão (ligado, ou desligado
+             para quem pede menos movimento no sistema). -->
+        <input type="checkbox" id="sem-fundo" class="tema-input" aria-label="Ligar/desligar o fundo de datacenter">
+
+        <!-- Cena do parallax: o fundo de datacenter fica numa camada atrás,
+             rolando na metade da velocidade do conteúdo (só CSS). -->
+        <div class="cena">
+        <div class="fundo" aria-hidden="true"></div>
+        <div class="pagina">
+            <header class="topo">
+                <!-- Hieróglifo nfr (F35 de Gardiner), vetorizado do PNG da wikihiero. -->
+                <a class="marca" href="../index.html#sobre" aria-label="heprado, início" title="heprado">
+                    <svg viewBox="0 0 240 760" aria-hidden="true">
+                        <g transform="translate(0,760) scale(0.1,-0.1)">
+                            <path d="M998 7163 c-4 -600 27 -555 -398 -563 -364 -7 -395 -22 -395 -200 0 -178 31 -193 395 -200 314 -6 335 -11 374 -86 29 -53 39 -2306 11 -2400 -19 -65 -50 -91 -153 -128 -109 -39 -127 -51 -186 -122 -30 -36 -84 -90 -120 -120 -36 -30 -66 -59 -66 -64 0 -5 -42 -51 -94 -103 -82 -83 -96 -101 -115 -159 -46 -140 -103 -196 -224 -222 l-27 -6 0 -979 0 -979 47 -11 c101 -25 198 -142 351 -421 40 -74 94 -161 118 -192 53 -68 83 -131 84 -175 l0 -33 605 0 605 0 0 29 c0 40 35 87 105 141 84 64 229 281 273 406 61 173 100 228 173 243 l34 7 0 978 0 979 -50 12 c-74 19 -130 84 -183 211 l-43 100 -207 211 c-216 219 -226 227 -344 269 -103 37 -134 63 -153 128 -28 94 -18 2347 11 2400 39 75 60 80 374 86 364 7 395 22 395 200 0 178 -31 193 -395 200 -425 8 -394 -37 -398 563 l-3 437 -199 0 -199 0 -3 -437z m397 -4123 c202 -20 319 -113 405 -324 24 -57 48 -95 91 -141 68 -72 80 -101 108 -257 21 -116 36 -168 91 -322 53 -149 43 -289 -35 -491 l-58 -150 -8 -145 c-12 -233 -55 -308 -169 -297 -143 13 -202 84 -221 270 -13 124 -30 159 -105 211 -35 25 -76 67 -101 103 -106 151 -274 140 -445 -30 -132 -131 -130 -128 -139 -267 -12 -186 -52 -246 -161 -238 -113 8 -164 74 -182 236 -11 90 -20 123 -55 199 -62 135 -85 505 -45 718 8 44 23 130 34 190 32 187 38 204 109 280 26 28 63 79 81 114 42 79 238 283 295 307 91 38 314 53 510 34z m-72 -1860 c32 -37 47 -107 47 -214 0 -45 7 -127 15 -182 45 -298 -27 -496 -201 -551 -146 -46 -204 64 -204 384 1 382 33 497 159 561 87 44 149 45 184 2z"/>
+                            <path d="M1129 2590 c-63 -11 -105 -34 -170 -94 -31 -28 -81 -73 -112 -99 -115 -98 -167 -268 -100 -327 81 -72 164 -64 248 25 111 117 243 119 368 5 67 -60 106 -80 159 -80 218 1 214 215 -10 428 -139 133 -236 169 -383 142z"/>
+                        </g>
+                    </svg>
+                </a>
+                <nav class="abas-nav" aria-label="Seções">
+                    <a href="../index.html#sobre" class="nav-sobre">Sobre mim</a>
+                    <a href="../index.html#experiencias" class="nav-experiencias">Experiências</a>
+                    <a href="../index.html#projetos" class="nav-projetos">Projetos</a>
+                    <a href="../index.html#diversoes" class="nav-diversoes">Diversões</a>
+                    <a href="../index.html#anotacoes" class="nav-anotacoes">Anotações</a>
+                    <a href="../index.html#pensamentos" class="nav-pensamentos">Pensamentos</a>
+                </nav>
+                <label for="sem-fundo" class="tema-botao fundo-botao" title="Ligar/desligar o fundo de datacenter">
+                    <span class="icone-fundo" aria-hidden="true">▦</span>
+                    <span class="fundo-texto"></span>
+                </label>
+                <label for="tema" class="tema-botao" title="Alternar modo claro/escuro">
+                    <span class="icone-sol" aria-hidden="true">☀</span>
+                    <span class="icone-lua" aria-hidden="true">☾</span>
+                    <span class="tema-texto"></span>
+                </label>
+            </header>
+
+            <main class="abas">
+                <article class="nota-conteudo">
+                    <p class="trilha"><a href="../index.html#anotacoes">Anotações</a> / Programação / APIs</p>
+                    <h1>RPC Style API</h1>
+                    <p class="periodo"><time datetime="2020-08-19">19/08/2020</time></p>
+                    <p class="tags"><span>apis</span><span>webdev</span><span>automation</span></p>
+                    <div class="cartao nota-corpo">
+<img src="img/7321d4e74fd64db18875dc5774281d70.png" loading="lazy" />
+<p>RPC significa Remote Procedure Call, ela difere de REST no quesito
+que é como se o cliente estivesse executando uma função remota no
+servidor, o problema de RPC é que ela utiliza muitos headers de controle
+diferente de uma REST API com JSON.</p>
+<p>RPC é uma arquitetura assim como o REST, uma das mais famosas
+utilizações do RPC é o <strong>SOAP(Simple Object Access
+Protocol)</strong> abaixo uma requisição utilizada só para pegar as
+infos de um usuario pelo nome:<br />
+<img src="img/84874b26673c41c59d36ce9d606ab312.png"
+loading="lazy" /></p>
+<p>SOAP é pesado que nem os inferno.</p>
+<p>JSON-RPC</p>
+<p>Outra utilização do RPC é o JSON-RPC, conseguimos chamar uma função
+em um servidor passando parâmetros como no exemplo abaixo:</p>
+<img src="img/4bca8cc51cf149c385cc47aa416047ea.png" loading="lazy" />
+<p><strong>XML-RPC</strong></p>
+<p>É parecido com SOAP só que menos estruturado, por isso mais leve:</p>
+<img src="img/1a3596130bb74ac89d8ece1e003cd2b9.png" loading="lazy" />
+                    </div>
+                    <p class="mais"><a href="../index.html#anotacoes">← Todas as anotações</a></p>
+                </article>
+            </main>
+
+            <footer class="rodape">
+                <nav class="redes" aria-label="Redes sociais">
+                    <a href="https://github.com/heprado" aria-label="GitHub" title="GitHub">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/heprado" aria-label="LinkedIn" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://x.com/hepraga" aria-label="X (Twitter)" title="X (Twitter)">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                    </a>
+                    <a href="https://www.last.fm/user/tidebinder" aria-label="Last.fm" title="Last.fm">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.584 17.21l-.88-2.392s-1.43 1.594-3.573 1.594c-1.897 0-3.244-1.649-3.244-4.288 0-3.382 1.704-4.591 3.381-4.591 2.42 0 3.189 1.567 3.849 3.574l.88 2.749c.88 2.666 2.529 4.81 7.285 4.81 3.409 0 5.718-1.044 5.718-3.793 0-2.227-1.265-3.381-3.63-3.931l-1.758-.385c-1.21-.275-1.567-.77-1.567-1.595 0-.934.742-1.484 1.952-1.484 1.32 0 2.034.495 2.144 1.677l2.749-.33c-.22-2.474-1.924-3.492-4.729-3.492-2.474 0-4.893.935-4.893 3.932 0 1.87.907 3.051 3.189 3.601l1.87.44c1.402.33 1.869.907 1.869 1.704 0 1.017-.99 1.43-2.86 1.43-2.776 0-3.93-1.457-4.59-3.464l-.907-2.75c-1.155-3.573-2.997-4.893-6.653-4.893C2.144 5.333 0 7.89 0 12.233c0 4.18 2.144 6.434 5.993 6.434 3.106 0 4.591-1.457 4.591-1.457z"/></svg>
+                    </a>
+                </nav>
+            </footer>
+        </div>
+        </div>
+    </body>
+</html>

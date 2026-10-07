@@ -323,21 +323,34 @@ h2 {
   color: var(--texto);
 }
 
-/* Aba ativa: a do :target, ou "Sobre mim" quando não há âncora. */
-body:not(:has(.aba:target)) .nav-sobre,
+/* Aba ativa: a do :target, ou "Sobre mim" quando não há âncora. Nas
+   páginas de cada anotação (body.nota), a ativa é Anotações. */
+body:not(.nota):not(:has(.aba:target)) .nav-sobre,
 body:has(#sobre:target) .nav-sobre,
 body:has(#experiencias:target) .nav-experiencias,
 body:has(#projetos:target) .nav-projetos,
+body:has(#anotacoes:target) .nav-anotacoes,
+body.nota .nav-anotacoes,
 body:has(#pensamentos:target) .nav-pensamentos,
 body:has(#diversoes:target) .nav-diversoes {
   background-color: var(--primaria);
   color: var(--superficie);
 }
 
+/* No computador, menu e botões numa linha só: com seis abas, o
+   espaçamento é um pouco mais justo para caber em 60rem. */
 @media (min-width: 48rem) {
+  .topo {
+    column-gap: 1rem;
+  }
+
   .abas-nav {
     order: 0;
     width: auto;
+  }
+
+  .abas-nav a {
+    padding: 0.375rem 0.5rem;
   }
 }
 
@@ -575,6 +588,208 @@ body:has(#diversoes:target) .nav-diversoes {
 
 .mais {
   margin-top: 1.5rem;
+}
+
+/* ---------- Anotações ---------- */
+
+/* Aba: uma caixa por categoria, que abre a lista (details, sem JS). */
+.anotacoes-categoria {
+  padding: 0;
+}
+
+.anotacoes-categoria summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.anotacoes-categoria summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Seta em pixel: um quadradinho que vira "aberto". */
+.anotacoes-categoria summary::before {
+  content: "▸";
+  color: var(--primaria);
+  font-weight: 700;
+}
+
+.anotacoes-categoria[open] summary::before {
+  content: "▾";
+}
+
+.anotacoes-categoria summary h2 {
+  margin: 0;
+  flex: 1;
+}
+
+.anotacoes-categoria summary:hover h2 {
+  color: var(--primaria);
+}
+
+.contagem {
+  padding: 0.125rem 0.5rem;
+  background-color: var(--hover);
+  clip-path: var(--degraus-p);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.anotacoes-categoria h3 {
+  margin: 1rem 1.25rem 0.25rem;
+  color: var(--secundaria);
+  font-size: 0.875rem;
+}
+
+.anotacoes-categoria ul {
+  margin: 0;
+  padding: 0 1.25rem 0 2.5rem;
+  columns: 2 16rem;
+  column-gap: 2rem;
+}
+
+.anotacoes-categoria ul:last-child {
+  padding-bottom: 1rem;
+}
+
+.anotacoes-categoria li {
+  break-inside: avoid;
+}
+
+/* Página de cada nota. */
+.nota-conteudo {
+  padding-bottom: 1rem;
+}
+
+.trilha {
+  margin: 0 0 0.75rem;
+  color: var(--texto-suave);
+  font-size: 0.875rem;
+}
+
+.nota-conteudo > .tags {
+  margin: -0.5rem 0 1.25rem;
+}
+
+.nota-corpo {
+  overflow-wrap: break-word;
+}
+
+.nota-corpo h2,
+.nota-corpo h3,
+.nota-corpo h4 {
+  margin: 1.75rem 0 0.75rem;
+}
+
+.nota-corpo > :first-child {
+  margin-top: 0;
+}
+
+.nota-corpo p,
+.nota-corpo ul,
+.nota-corpo ol {
+  margin: 0 0 0.75rem;
+}
+
+.nota-corpo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border: 2px solid var(--texto);
+  background-color: #FFFFFF;
+}
+
+.nota-corpo figure {
+  margin: 1rem 0;
+}
+
+.nota-corpo figcaption {
+  color: var(--texto-suave);
+  font-size: 0.875rem;
+}
+
+.nota-corpo code {
+  padding: 0.0625rem 0.25rem;
+  background-color: var(--hover);
+  font-size: 0.875em;
+}
+
+.nota-corpo pre {
+  overflow-x: auto;
+  padding: 0.75rem 1rem;
+  background-color: var(--superficie);
+  border: 2px solid var(--texto);
+  line-height: 1.45;
+}
+
+.nota-corpo pre code {
+  padding: 0;
+  background: none;
+}
+
+/* Realce de código do pandoc, com as cores do tema. */
+.nota-corpo .kw,
+.nota-corpo .cf { color: var(--erro); font-weight: 600; }
+.nota-corpo .st,
+.nota-corpo .ch { color: var(--primaria); }
+.nota-corpo .dt,
+.nota-corpo .fu { color: var(--terciaria); }
+.nota-corpo .dv,
+.nota-corpo .fl,
+.nota-corpo .bn { color: var(--secundaria); }
+.nota-corpo .co { color: var(--texto-suave); font-style: italic; }
+.nota-corpo pre a { color: inherit; text-decoration: none; }
+
+.nota-corpo table {
+  display: block;
+  overflow-x: auto;
+  margin: 1rem 0;
+  border-collapse: collapse;
+}
+
+.nota-corpo th,
+.nota-corpo td {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--contorno);
+  text-align: left;
+}
+
+.nota-corpo blockquote {
+  margin: 1rem 0;
+  padding: 0.25rem 1rem;
+  border-left: 4px solid var(--contorno);
+  color: var(--texto-suave);
+}
+
+/* Callouts do Obsidian ("> [!NOTE]"). */
+.callout {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--texto);
+  border-left: 6px solid var(--terciaria);
+  background-color: var(--superficie);
+}
+
+.callout > :last-child {
+  margin-bottom: 0;
+}
+
+/* ==destaque== e os destaques coloridos do Obsidian (span com fundo), que
+   no tema escuro ficariam ilegíveis com a cor original. */
+.nota-corpo .mark,
+.nota-corpo span[style*="background"] {
+  padding: 0 0.125rem;
+  background: color-mix(in srgb, var(--secundaria) 30%, transparent) !important;
+  color: inherit;
+}
+
+.nota-corpo math[display="block"] {
+  overflow-x: auto;
+  margin: 1rem 0;
 }
 
 /* ---------- Diversões: entidades rodopiantes ---------- */
@@ -861,6 +1076,23 @@ h1::after {
 
   .mais {
     display: inline-block;
+  }
+
+  .trilha,
+  .nota-conteudo > .periodo {
+    display: inline-block;
+    padding: 0.25rem 0.625rem;
+    background-color: var(--superficie);
+    border: 2px solid var(--texto);
+  }
+
+  .nota-conteudo > .periodo {
+    margin-bottom: 1rem;
+  }
+
+  .nota-corpo pre {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
   }
 
   .rodape {
