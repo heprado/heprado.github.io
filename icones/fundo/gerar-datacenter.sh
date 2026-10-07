@@ -16,13 +16,22 @@
 # direito e sobe até a porta logo acima no topo do rack; quanto mais baixo o
 # equipamento, mais à direita a faixa, então nenhum cabo cruza outro.
 #
-# Uso: gerar-datacenter.sh <claro|escuro> [estatico] > arquivo.svg
-#   estatico: LEDs acesos, sem animação (a versão usada no celular, onde
-#   redesenhar o fundo a cada piscada trava a página).
+# Uso: gerar-datacenter.sh <claro|escuro> estatico > arquivo.svg
+#      gerar-datacenter.sh <claro|escuro> quadro <0-15> > arquivo.svg
+#   estatico: LEDs acesos (a versão usada no celular).
+#   quadro N: o ladrilho no instante N × 0,25 s do pisca-pisca dos LEDs. Os
+#   16 quadros formam o ciclo de 4 s, e gerar-animacao.sh os junta num WebP
+#   animado. (Um SVG com animação CSS como fundo fazia o navegador
+#   redesenhar os ~1500 retângulos a cada piscada; o WebP só troca de
+#   quadro, já desenhado.)
 set -euo pipefail
 
 ESTATICO=0
-[[ "${2:-}" == estatico ]] && ESTATICO=1
+case "${2:-}" in
+  estatico) ESTATICO=1 ;;
+  quadro) QUADRO=${3:?informe o quadro, de 0 a 15} ;;
+  *) echo "uso: $0 <claro|escuro> <estatico|quadro N>" >&2; exit 1 ;;
+esac
 
 case "${1:-}" in
   escuro)
@@ -39,26 +48,42 @@ case "${1:-}" in
     VERDE="#3A7550"; AZUL="#4261A1"; DOURADO="#86601A"; VINHO="#8B2C45"; CINZA="#7D848C"
     ABRACADEIRA="#1E2533"; BRILHO="#FFFFFF"; BRILHO_A="0.35"
     ;;
-  *) echo "uso: $0 <claro|escuro> [estatico]" >&2; exit 1 ;;
+  *) echo "uso: $0 <claro|escuro> <estatico|quadro N>" >&2; exit 1 ;;
 esac
 
 r() { printf '<rect x="%s" y="%s" width="%s" height="%s" fill="%s"/>\n' "$1" "$2" "$3" "$4" "$5"; }
 t() { printf '<text x="%s" y="%s" fill="%s">%s</text>\n' "$1" "$2" "$ROTULO" "$3"; }
 
-# LEDs piscam como tráfego de rede: cada um recebe um ritmo (a-d) e um
-# atraso (e-g) que variam de LED para LED; um em cada cinco fica aceso fixo.
-# Todos os tempos (durações, pontos de troca e atrasos) caem numa grade de
-# 0,25 s: a imagem só muda 4 vezes por segundo, e o navegador não precisa
-# redesenhar o fundo a cada quadro.
+# LEDs piscam como tráfego de rede: cada um recebe um ritmo e um atraso que
+# variam de LED para LED; um em cada cinco fica aceso fixo. Todos os tempos
+# (durações, pontos de troca e atrasos) caem numa grade de 0,25 s, então o
+# ciclo inteiro cabe em 16 quadros. Em quarto de segundo:
+#   ritmos: "tráfego" (apaga em 2/8-3/8 e 6/8-7/8 do ciclo) e "rajada"
+#           (apaga em 1/8-2/8 e 3/8-4/8), cada um com ciclo de 8 ou 16;
+#   atrasos: 1, 4 ou 7.
+# Apagado, o LED fica com opacidade 0,15.
 N_LED=0
 led() { # x y largura altura cor
-  local ritmos=(a b c d) atrasos=(e f g)
+  local ciclos=(8 16 8 16) atrasos=(1 4 7)
   N_LED=$((N_LED + 1))
   if (( ESTATICO || N_LED % 5 == 0 )); then
     r "$@"
+    return
+  fi
+  local ritmo=$(( (N_LED * 7) % 4 ))
+  local ciclo=${ciclos[$ritmo]}
+  # em que oitavo do ciclo o LED está neste quadro
+  local oitavo=$(( (QUADRO + atrasos[(N_LED * 5) % 3]) % ciclo * 8 / ciclo ))
+  local apagado
+  if (( ritmo < 2 )); then
+    apagado=$(( oitavo == 2 || oitavo == 6 ))
   else
-    printf '<rect class="%s %s" x="%s" y="%s" width="%s" height="%s" fill="%s"/>\n' \
-      "${ritmos[$(( (N_LED * 7) % 4 ))]}" "${atrasos[$(( (N_LED * 5) % 3 ))]}" "$1" "$2" "$3" "$4" "$5"
+    apagado=$(( oitavo == 1 || oitavo == 3 ))
+  fi
+  if (( apagado )); then
+    printf '<rect x="%s" y="%s" width="%s" height="%s" fill="%s" opacity="0.15"/>\n' "$@"
+  else
+    r "$@"
   fi
 }
 
@@ -264,19 +289,9 @@ montar() { # x_externo topo faixa0 passo
 
 cat <<EOF
 <svg xmlns="http://www.w3.org/2000/svg" width="$LARGURA_LADRILHO" height="440" viewBox="0 0 $LARGURA_LADRILHO 440" shape-rendering="crispEdges">
-<!-- Fundo de datacenter em pixel art (gerado por icones/fundo/gerar-datacenter.sh, versão $1${2:+ $2}). -->
+<!-- Fundo de datacenter em pixel art (gerado por icones/fundo/gerar-datacenter.sh, versão $1 ${@:2}). -->
 <style>
 text { font: 700 8px monospace; letter-spacing: 0.5px; }
-.a { animation: trafego 2s step-end infinite; }
-.b { animation: trafego 4s step-end infinite; }
-.c { animation: rajada 2s step-end infinite; }
-.d { animation: rajada 4s step-end infinite; }
-.e { animation-delay: -0.25s; }
-.f { animation-delay: -1s; }
-.g { animation-delay: -1.75s; }
-@keyframes trafego { 0% { opacity: 1; } 25% { opacity: 0.15; } 37.5% { opacity: 1; } 75% { opacity: 0.15; } 87.5% { opacity: 1; } }
-@keyframes rajada { 0% { opacity: 1; } 12.5% { opacity: 0.15; } 25% { opacity: 1; } 37.5% { opacity: 0.15; } 50% { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { rect { animation: none; } }
 </style>
 EOF
 

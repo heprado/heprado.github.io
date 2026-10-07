@@ -135,6 +135,7 @@ html {
                     color-mix(in srgb, var(--sombra) 72%, transparent)),
     var(--fundo-datacenter);
   background-position: left top;
+  image-rendering: pixelated;
   pointer-events: none;
 }
 
@@ -180,13 +181,17 @@ html {
 /* Fundo: um datacenter em pixel art (racks com switches, roteadores,
    firewalls, load balancers e servidores, ligados por cabos), nas cores
    da Tama. Como CSS não muda as cores de dentro de uma imagem, há uma
-   versão por tema; ambas saem de icones/fundo/gerar-datacenter.sh. */
-:root { --fundo-datacenter: url("icones/fundo/datacenter-claro.svg"); }
-:root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-escuro.svg"); }
+   versão por tema. O pisca-pisca dos LEDs vem pré-renderizado num WebP
+   animado (icones/fundo/gerar-animacao.sh): como SVG animado, o navegador
+   redesenhava os ~1500 retângulos a cada piscada e a página gastava ~37%
+   de um núcleo parada; o WebP só troca de quadro (~20%). image-rendering
+   mantém os pixels nítidos em telas de alta densidade. */
+:root { --fundo-datacenter: url("icones/fundo/datacenter-claro.webp"); }
+:root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-escuro.webp"); }
 
 @media (prefers-color-scheme: dark) {
-  :root { --fundo-datacenter: url("icones/fundo/datacenter-escuro.svg"); }
-  :root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-claro.svg"); }
+  :root { --fundo-datacenter: url("icones/fundo/datacenter-escuro.webp"); }
+  :root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-claro.webp"); }
 }
 
 body {
@@ -866,25 +871,28 @@ h1::after {
   }
 }
 
-/* ---------- Celular e toque: fundo parado ---------- */
+/* ---------- Celular e toque: fundo sem deslize ---------- */
 
-/* No celular, manter o fundo animado travava a página: a camada tem a
+/* No celular, o fundo com o deslize travava a página: a camada tem a
    altura da página inteira (e 800px a mais de largura para o deslize),
-   multiplicada pela densidade de pixels da tela, e os LEDs obrigam o
-   navegador a redesenhá-la 4 vezes por segundo. Aqui o fundo fica parado:
-   versão estática do SVG (LEDs acesos, sem animação), sem deslize e sem
-   parallax, numa camada da largura da tela. */
+   multiplicada pela densidade de pixels da tela. Aqui o fundo não desliza
+   nem tem parallax, e fica numa camada da largura da tela. Os LEDs
+   continuam piscando: o WebP só troca de quadro, sem redesenhar o SVG. */
 @media (max-width: 48rem), (pointer: coarse) {
-  :root { --fundo-datacenter: url("icones/fundo/datacenter-claro-estatico.svg"); }
-  :root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-escuro-estatico.svg"); }
-
   .fundo {
     inset: 0;
     animation: none;
   }
 }
 
-@media ((max-width: 48rem) or (pointer: coarse)) and (prefers-color-scheme: dark) {
+/* Quem pede menos movimento e liga o fundo pelo botão recebe a versão
+   parada (LEDs acesos, sem pisca-pisca). */
+@media (prefers-reduced-motion: reduce) {
+  :root { --fundo-datacenter: url("icones/fundo/datacenter-claro-estatico.svg"); }
+  :root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-escuro-estatico.svg"); }
+}
+
+@media (prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) {
   :root { --fundo-datacenter: url("icones/fundo/datacenter-escuro-estatico.svg"); }
   :root:has(#tema:checked) { --fundo-datacenter: url("icones/fundo/datacenter-claro-estatico.svg"); }
 }

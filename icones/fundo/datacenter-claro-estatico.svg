@@ -2,16 +2,6 @@
 <!-- Fundo de datacenter em pixel art (gerado por icones/fundo/gerar-datacenter.sh, versão claro estatico). -->
 <style>
 text { font: 700 8px monospace; letter-spacing: 0.5px; }
-.a { animation: trafego 2s step-end infinite; }
-.b { animation: trafego 4s step-end infinite; }
-.c { animation: rajada 2s step-end infinite; }
-.d { animation: rajada 4s step-end infinite; }
-.e { animation-delay: -0.25s; }
-.f { animation-delay: -1s; }
-.g { animation-delay: -1.75s; }
-@keyframes trafego { 0% { opacity: 1; } 25% { opacity: 0.15; } 37.5% { opacity: 1; } 75% { opacity: 0.15; } 87.5% { opacity: 1; } }
-@keyframes rajada { 0% { opacity: 1; } 12.5% { opacity: 0.15; } 25% { opacity: 1; } 37.5% { opacity: 0.15; } 50% { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { rect { animation: none; } }
 </style>
 <rect x="0" y="0" width="800" height="440" fill="#C9CDD3"/>
 <rect x="0" y="0" width="800" height="38" fill="#B3B8C0"/>
