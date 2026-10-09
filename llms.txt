@@ -1,6 +1,6 @@
 # Henrique Prado
 
-> Site pessoal de Henrique Prado, desenvolvedor e arquiteto de software em São Paulo, SP, com mais de 6 anos de experiência em datacenter, redes, nuvem e desenvolvimento de software. O site é uma página única, feita só com HTML e CSS, com seis abas: Sobre mim, Experiências, Projetos, Diversões, Anotações e Pensamentos.
+> Site pessoal de Henrique Prado, técnico de redes de computadores em São Paulo, SP, com mais de 6 anos de experiência em datacenter, redes, nuvem e desenvolvimento de software. O site é uma página única, feita só com HTML e CSS, com seis abas: Sobre mim, Experiências, Projetos, Diversões, Anotações e Pensamentos.
 
 O conteúdo do site está em português do Brasil. Henrique une redes de datacenter (Cisco ACI, VXLAN/MP-BGP EVPN), nuvem (AWS, Azure, GCP) e infraestrutura como código (Terraform, CloudFormation) com desenvolvimento em C#, Python e TypeScript. Fora do trabalho, mantém uma configuração NixOS própria e escreve ferramentas para o desktop Linux (Hyprland, Quickshell, Noctalia). As cores do site são a paleta da Tama, personagem de Gintama, a mesma do desktop dele, e o ícone do site é o hieróglifo egípcio nfr (nefer, F35 na lista de Gardiner), que significa "bom" ou "belo".
 
