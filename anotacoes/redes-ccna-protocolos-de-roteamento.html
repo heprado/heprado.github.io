@@ -46,9 +46,18 @@
                     <a href="../index.html#sobre" class="nav-sobre">Sobre mim</a>
                     <a href="../index.html#experiencias" class="nav-experiencias">Experiências</a>
                     <a href="../index.html#projetos" class="nav-projetos">Projetos</a>
-                    <a href="../index.html#diversoes" class="nav-diversoes">Diversões</a>
                     <a href="../index.html#anotacoes" class="nav-anotacoes">Anotações</a>
+                    <a href="../index.html#diversoes" class="nav-diversoes">Diversões</a>
                     <a href="../index.html#pensamentos" class="nav-pensamentos">Pensamentos</a>
+                    <button type="button" class="nav-mais" popovertarget="nav-mais-lista">Mais<span aria-hidden="true"> ▾</span></button>
+                    <div id="nav-mais-lista" class="nav-mais-lista" popover>
+                        <a href="../index.html#sobre" class="nav-sobre">Sobre mim</a>
+                        <a href="../index.html#experiencias" class="nav-experiencias">Experiências</a>
+                        <a href="../index.html#projetos" class="nav-projetos">Projetos</a>
+                        <a href="../index.html#anotacoes" class="nav-anotacoes">Anotações</a>
+                        <a href="../index.html#diversoes" class="nav-diversoes">Diversões</a>
+                        <a href="../index.html#pensamentos" class="nav-pensamentos">Pensamentos</a>
+                    </div>
                 </nav>
                 <label for="sem-fundo" class="tema-botao fundo-botao" title="Ligar/desligar o fundo de datacenter">
                     <span class="icone-fundo" aria-hidden="true">▦</span>

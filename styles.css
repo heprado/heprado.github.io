@@ -302,23 +302,28 @@ h2 {
   fill: currentColor;
 }
 
+/* Abas sempre numa linha: as que não cabem vão para o "Mais" (veja abaixo). */
 .abas-nav {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem;
   order: 3;
   width: 100%;
 }
 
-.abas-nav a {
+.abas-nav a,
+.nav-mais {
+  flex: none;
   padding: 0.375rem 0.75rem;
   border-radius: 999px;
   color: var(--texto-suave);
   text-decoration: none;
   font-weight: 500;
+  white-space: nowrap;
 }
 
-.abas-nav a:hover {
+.abas-nav a:hover,
+.nav-mais:hover {
   background-color: var(--hover);
   color: var(--texto);
 }
@@ -337,6 +342,63 @@ body:has(#diversoes:target) .nav-diversoes {
   color: var(--superficie);
 }
 
+/* ---------- Mais ---------- */
+
+/* Sem JS não dá para saber se o menu quebrou, então quem decide quantas
+   abas cabem são as faixas de largura do fim deste trecho, medidas com a
+   IBM Plex e com a fonte reserva (a mais larga das duas manda). As abas
+   que saem da linha aparecem no painel, um popover: abre e fecha pelo
+   botão, e fecha sozinho com Esc ou tocando fora dele. */
+.nav-mais {
+  display: none;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  anchor-name: --nav-mais;
+}
+
+.nav-mais-lista {
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 10rem;
+  margin: 0.5rem 0 0;
+  padding: 0.375rem;
+  border: 2px solid var(--texto);
+  box-shadow: 3px 3px 0 var(--texto);
+  background-color: var(--superficie);
+  color: var(--texto);
+  /* Embaixo do botão, alinhado pela direita dele; sem espaço, vira. */
+  position-anchor: --nav-mais;
+  inset: auto;
+  position-area: block-end span-inline-start;
+  position-try-fallbacks: flip-inline;
+}
+
+/* Fechado, o popover some pelo próprio navegador; o display só vale aberto. */
+.nav-mais-lista:popover-open {
+  display: flex;
+}
+
+.nav-mais-lista a {
+  display: none;
+}
+
+/* Navegador sem posicionamento por âncora: painel no canto, sob o topo. */
+@supports not (position-area: block-end) {
+  .nav-mais-lista {
+    top: 4.5rem;
+    right: 1rem;
+  }
+
+  @media (max-width: 48rem) {
+    .nav-mais-lista {
+      top: 7.5rem;
+      right: 0.75rem;
+    }
+  }
+}
+
 /* No computador, menu e botões numa linha só: com seis abas, o
    espaçamento é um pouco mais justo para caber em 60rem. */
 @media (min-width: 48rem) {
@@ -349,8 +411,108 @@ body:has(#diversoes:target) .nav-diversoes {
     width: auto;
   }
 
-  .abas-nav a {
+  .abas-nav a,
+  .nav-mais {
     padding: 0.375rem 0.5rem;
+  }
+}
+
+/* Quantas abas vão para o "Mais", por largura. Cada faixa é a largura
+   mínima em que as abas restantes e o botão cabem sem quebrar o topo, com a
+   fonte mais larga (Plex ou reserva) e 8px de folga. Até 48rem as abas têm
+   a linha de baixo inteira; acima, dividem a linha com a marca e os botões,
+   por isso a contagem volta a subir em 48rem. Mudou o nome de uma aba, a
+   ordem delas, a fonte ou o tamanho dos botões? Meça de novo.
+   As abas saem sempre do fim, por posição; o "Mais" acende quando a aba
+   ativa está numa dessas posições, então reordenar o HTML (as duas listas
+   iguais) não quebra o destaque. */
+@media (width < 21.75rem) {
+  .abas-nav > a:nth-of-type(n + 2) { display: none; }
+  .nav-mais-lista a:nth-of-type(n + 2) { display: block; }
+  .nav-mais { display: block; }
+
+  body:not(.nota):not(:has(.aba:target)) .abas-nav:has(> .nav-sobre:nth-of-type(n + 2)) > .nav-mais,
+  body:has(#sobre:target) .abas-nav:has(> .nav-sobre:nth-of-type(n + 2)) > .nav-mais,
+  body:has(#experiencias:target) .abas-nav:has(> .nav-experiencias:nth-of-type(n + 2)) > .nav-mais,
+  body:has(#projetos:target) .abas-nav:has(> .nav-projetos:nth-of-type(n + 2)) > .nav-mais,
+  body:has(#diversoes:target) .abas-nav:has(> .nav-diversoes:nth-of-type(n + 2)) > .nav-mais,
+  body:has(#anotacoes:target) .abas-nav:has(> .nav-anotacoes:nth-of-type(n + 2)) > .nav-mais,
+  body:has(#pensamentos:target) .abas-nav:has(> .nav-pensamentos:nth-of-type(n + 2)) > .nav-mais,
+  body.nota .abas-nav:has(> .nav-anotacoes:nth-of-type(n + 2)) > .nav-mais {
+    background-color: var(--primaria);
+    color: var(--superficie);
+  }
+}
+
+@media (21.75rem <= width < 27.5rem), (48rem < width < 48.5rem) {
+  .abas-nav > a:nth-of-type(n + 3) { display: none; }
+  .nav-mais-lista a:nth-of-type(n + 3) { display: block; }
+  .nav-mais { display: block; }
+
+  body:not(.nota):not(:has(.aba:target)) .abas-nav:has(> .nav-sobre:nth-of-type(n + 3)) > .nav-mais,
+  body:has(#sobre:target) .abas-nav:has(> .nav-sobre:nth-of-type(n + 3)) > .nav-mais,
+  body:has(#experiencias:target) .abas-nav:has(> .nav-experiencias:nth-of-type(n + 3)) > .nav-mais,
+  body:has(#projetos:target) .abas-nav:has(> .nav-projetos:nth-of-type(n + 3)) > .nav-mais,
+  body:has(#diversoes:target) .abas-nav:has(> .nav-diversoes:nth-of-type(n + 3)) > .nav-mais,
+  body:has(#anotacoes:target) .abas-nav:has(> .nav-anotacoes:nth-of-type(n + 3)) > .nav-mais,
+  body:has(#pensamentos:target) .abas-nav:has(> .nav-pensamentos:nth-of-type(n + 3)) > .nav-mais,
+  body.nota .abas-nav:has(> .nav-anotacoes:nth-of-type(n + 3)) > .nav-mais {
+    background-color: var(--primaria);
+    color: var(--superficie);
+  }
+}
+
+@media (27.5rem <= width < 34.5rem), (48.5rem <= width < 52.5rem) {
+  .abas-nav > a:nth-of-type(n + 4) { display: none; }
+  .nav-mais-lista a:nth-of-type(n + 4) { display: block; }
+  .nav-mais { display: block; }
+
+  body:not(.nota):not(:has(.aba:target)) .abas-nav:has(> .nav-sobre:nth-of-type(n + 4)) > .nav-mais,
+  body:has(#sobre:target) .abas-nav:has(> .nav-sobre:nth-of-type(n + 4)) > .nav-mais,
+  body:has(#experiencias:target) .abas-nav:has(> .nav-experiencias:nth-of-type(n + 4)) > .nav-mais,
+  body:has(#projetos:target) .abas-nav:has(> .nav-projetos:nth-of-type(n + 4)) > .nav-mais,
+  body:has(#diversoes:target) .abas-nav:has(> .nav-diversoes:nth-of-type(n + 4)) > .nav-mais,
+  body:has(#anotacoes:target) .abas-nav:has(> .nav-anotacoes:nth-of-type(n + 4)) > .nav-mais,
+  body:has(#pensamentos:target) .abas-nav:has(> .nav-pensamentos:nth-of-type(n + 4)) > .nav-mais,
+  body.nota .abas-nav:has(> .nav-anotacoes:nth-of-type(n + 4)) > .nav-mais {
+    background-color: var(--primaria);
+    color: var(--superficie);
+  }
+}
+
+@media (34.5rem <= width < 41rem), (52.5rem <= width < 59rem) {
+  .abas-nav > a:nth-of-type(n + 5) { display: none; }
+  .nav-mais-lista a:nth-of-type(n + 5) { display: block; }
+  .nav-mais { display: block; }
+
+  body:not(.nota):not(:has(.aba:target)) .abas-nav:has(> .nav-sobre:nth-of-type(n + 5)) > .nav-mais,
+  body:has(#sobre:target) .abas-nav:has(> .nav-sobre:nth-of-type(n + 5)) > .nav-mais,
+  body:has(#experiencias:target) .abas-nav:has(> .nav-experiencias:nth-of-type(n + 5)) > .nav-mais,
+  body:has(#projetos:target) .abas-nav:has(> .nav-projetos:nth-of-type(n + 5)) > .nav-mais,
+  body:has(#diversoes:target) .abas-nav:has(> .nav-diversoes:nth-of-type(n + 5)) > .nav-mais,
+  body:has(#anotacoes:target) .abas-nav:has(> .nav-anotacoes:nth-of-type(n + 5)) > .nav-mais,
+  body:has(#pensamentos:target) .abas-nav:has(> .nav-pensamentos:nth-of-type(n + 5)) > .nav-mais,
+  body.nota .abas-nav:has(> .nav-anotacoes:nth-of-type(n + 5)) > .nav-mais {
+    background-color: var(--primaria);
+    color: var(--superficie);
+  }
+}
+
+@media (41rem <= width < 45rem), (59rem <= width < 62.75rem) {
+  .abas-nav > a:nth-of-type(n + 6) { display: none; }
+  .nav-mais-lista a:nth-of-type(n + 6) { display: block; }
+  .nav-mais { display: block; }
+
+  body:not(.nota):not(:has(.aba:target)) .abas-nav:has(> .nav-sobre:nth-of-type(n + 6)) > .nav-mais,
+  body:has(#sobre:target) .abas-nav:has(> .nav-sobre:nth-of-type(n + 6)) > .nav-mais,
+  body:has(#experiencias:target) .abas-nav:has(> .nav-experiencias:nth-of-type(n + 6)) > .nav-mais,
+  body:has(#projetos:target) .abas-nav:has(> .nav-projetos:nth-of-type(n + 6)) > .nav-mais,
+  body:has(#diversoes:target) .abas-nav:has(> .nav-diversoes:nth-of-type(n + 6)) > .nav-mais,
+  body:has(#anotacoes:target) .abas-nav:has(> .nav-anotacoes:nth-of-type(n + 6)) > .nav-mais,
+  body:has(#pensamentos:target) .abas-nav:has(> .nav-pensamentos:nth-of-type(n + 6)) > .nav-mais,
+  body.nota .abas-nav:has(> .nav-anotacoes:nth-of-type(n + 6)) > .nav-mais {
+    background-color: var(--primaria);
+    color: var(--superficie);
   }
 }
 
@@ -942,6 +1104,7 @@ h1::after {
 
 /* Abas e ícones com cantos em degrau, sem arredondado. */
 .abas-nav a,
+.nav-mais,
 .redes a {
   border-radius: 0;
   clip-path: var(--degraus-p);
@@ -1035,25 +1198,6 @@ h1::after {
 
   .topo::after {
     display: none;
-  }
-
-  /* Abas numa linha só, rolando para o lado. A barra de rolagem fica
-     visível (fina, no verde da Tama): no computador a rodinha do mouse só
-     rola na vertical, então é por ela que se arrasta o menu; no celular,
-     ela avisa que há mais abas. Ao soltar, o menu encaixa numa aba. */
-  .abas-nav {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 0.375rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primaria) transparent;
-    scroll-snap-type: x proximity;
-  }
-
-  .abas-nav a {
-    flex: none;
-    white-space: nowrap;
-    scroll-snap-align: start;
   }
 
   .abas {
