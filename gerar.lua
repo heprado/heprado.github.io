@@ -13,9 +13,11 @@
 --     _anotacoes/, copia as imagens usadas para anotacoes/img/ e depois faz o
 --     mesmo que --gerar. Nota removida da vault some do site também.
 --
--- Modelos (_modelos/): index.tpl e nota.tpl são as páginas; topo.tpl e
--- rodape.tpl são partials que as duas incluem com ${topo()} e ${rodape()}.
--- A pasta começa com "_", como _anotacoes/, e o GitHub Pages não a publica.
+-- Modelos (_modelos/): index.tpl e nota.tpl são as páginas; o resto são
+-- partials. cabeca, controles, topo e rodape entram nas duas páginas, como
+-- ${topo()}; experiencia, projeto e pensamento são os cartões do index, um
+-- por item de _dados/conteudo.lua. As pastas que começam com "_" (_modelos,
+-- _anotacoes, _dados) o GitHub Pages não publica.
 --
 -- Atenção: a vault precisa estar com os prints sensíveis já censurados
 -- (ambiente de cliente, conta AWS, abas do navegador...). O gerador publica
@@ -32,6 +34,8 @@ local SAIDA = "anotacoes"
 local IMG = path.join({ SAIDA, "img" })
 local DADOS = "_anotacoes"
 local MODELOS = "_modelos"
+-- Experiências, projetos e pensamentos do index (cartões em _modelos/).
+local CONTEUDO = "_dados/conteudo.lua"
 
 -- Abas do topo, na ordem em que aparecem (a linha e o painel do "Mais").
 -- Mudou nome ou ordem? Meça de novo os breakpoints do "Mais" no styles.css.
@@ -464,6 +468,7 @@ local function montar_site(notas)
   limpar(SAIDA, "%.html$")
   for _, n in ipairs(notas) do
     escrever(path.join({ SAIDA, n.slug .. ".html" }), aplicar(nota, {
+      raiz = "../",
       base = "../index.html",
       abas = ABAS,
       titulo = n.titulo,
@@ -475,10 +480,16 @@ local function montar_site(notas)
     }))
   end
 
+  local conteudo = dofile(CONTEUDO)
+  for _, p in ipairs(conteudo.pensamentos) do p["data-br"] = data_br(p.data) end
   local lista, n_categorias = lista_anotacoes(notas)
   escrever("index.html", aplicar(modelo("index"), {
+    raiz = "",
     base = "",
     abas = ABAS,
+    experiencias = conteudo.experiencias,
+    projetos = conteudo.projetos,
+    pensamentos = conteudo.pensamentos,
     anotacoes = lista,
   }))
   print(("%d notas, %d categorias"):format(#notas, n_categorias))
