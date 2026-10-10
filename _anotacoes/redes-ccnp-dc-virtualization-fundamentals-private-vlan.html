@@ -45,9 +45,9 @@ o outro lado sabe que a VLAN 101 é community então encaminhar o tráfego
 para essa VLAN.</p>
 <p>Promiscuous Trunk - Quando um frame originado de uma vlan secundaria
 bater nesse trunk ele envia a tag da VLAN primaria, isso é util quando
-queremos utilizar router on a stick, pois assim podemos rotear o tráfego
-entre VLANs primarias, quando frames chegam nesse trunk ele não mexe em
-nenhuma tag.</p>
+queremos utilizar subinterfaces com <code>encapsulation dot1q</code>,
+pois assim podemos rotear o tráfego entre VLANs primarias, quando frames
+chegam nesse trunk ele não mexe em nenhuma tag.</p>
 <p>Isolated Trunk ou Secondary Trunk - Nesse modo quando um frame de uma
 VLAN secundaria bater no trunk, o trunk envia com a TAG da VLAN
 Secundaria, assim podendo estender essa VLAN para switches que não
