@@ -1,0 +1,15 @@
+<img src="img/7d85c60f6c7f40f0b7e21e7d1ea54600.png" loading="lazy" />
+<p>Por padrão no K8s um Pod nunca pode ser recriado igualzinho a
+anteriormente, então como fazemos para uma aplicação ter somente um IP e
+DNS ?</p>
+<p>Fazemos isso utilizando Services, eles recebem todo o tráfego e
+enviam para os Pods que fazem parte desse Service, ele também faz o
+update de roteamento para que todos os nós saibam onde um Pod está.</p>
+<p>Quando definimos um serviço, definimos uma label que todos os pods
+que fazem parte do serviço precisam ter:</p>
+<img src="img/dafe83fb0e5d4e7db75d0444ebc57617.png" loading="lazy" />
+<p>No caso acima o Service tem um selector chamado MyApp, todos os pods
+que forem participar desse serviço precisam ter a label MyApp para
+fazerem parte desse serviço.</p>
+<p>Todos os nodes que tiverem um pod rodando a label MyApp vão expor o
+Service na porta 80 do IP do Node, para acessarmos</p>

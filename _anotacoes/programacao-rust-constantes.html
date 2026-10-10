@@ -1,0 +1,25 @@
+<p>Constantes em Rust diferentes de variáveis são imutáveis, após a
+inicialização da constante, o valor dela não poderá ser mudado
+nunca.</p>
+<p>Por exemplo:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main () <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Criando a variavel VERMELHO com a Sequencia de escape ANSI </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">//para vermelho</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> VERMELHO <span class="op">=</span> <span class="st">&quot;</span><span class="sc">\x1b</span><span class="st">[31m&quot;</span><span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> VERMELHO <span class="op">=</span> <span class="st">&quot;</span><span class="sc">\</span><span class="er">1</span><span class="st">b[35m&quot;</span><span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>O código a cima não irá compilar pois estamos redeclarando uma
+constante com o mesmo nome no MESMO ESCOPO.</p>
+<p>Constantes são úteis para valores que não mudam, como códigos ANSII
+de sequencias de escape, podemos definir a constante no escopo global do
+nosso programa colocando a constante fora da <code>main()</code>, assim
+ela nunca será mudada e poderá ser acessada por todos.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> VERMELHO <span class="op">=</span> <span class="st">&quot;</span><span class="sc">\x1b</span><span class="st">[31m&quot;</span><span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> RESETAR_COR <span class="op">=</span> <span class="st">&quot;</span><span class="sc">\x1b</span><span class="st">[0m&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;{} Oieeee {}&quot;</span><span class="op">,</span>VERMELHO<span class="op">,</span>RESETAR_COR)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>

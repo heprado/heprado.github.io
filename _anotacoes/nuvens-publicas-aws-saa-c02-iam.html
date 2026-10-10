@@ -1,0 +1,28 @@
+<p>IAM é utilizado para authentication(QUEM?) e authorization(Que que
+esse mlk pode fazer).</p>
+<img src="img/ff31789f077f40fc86ff52055bfd60b5.png" loading="lazy" />
+<p>As duas formas de authentication que temos são Roles e Users as
+principais diferenças são:</p>
+<ul>
+<li>Roles</li>
+</ul>
+<p>Utilizada geralmente para serviços da AWS, esse tipo de autenticação
+não gera um access key id e uma secret access key estatica como os
+Users.</p>
+<p>Um exemplo seria uma aplicação dentro de uma EC2 precisa acessar um
+bucket S3, poderiamos criar um User e gravar estaticamente o access key
+id e a secret access key dentro da aplicação, com role podemos pegar
+essa credencias nos metadados da EC2, só precisamos de um SDK da
+AWS.</p>
+<img src="img/6300b48f6f494b28a45fba2707ed1ef1.png" loading="lazy" />
+<ul>
+<li>Users</li>
+</ul>
+<p>Utilizada geralmente para acessos de usuários reais, como um
+engenheiro que precisa de acessos a sua conta da AWS.</p>
+<ul>
+<li>Policies</li>
+</ul>
+<p>São o que os Users ou Roles que tiverem essa policy configurada neles
+podem fazer.</p>
+<img src="img/84867d1cb7ba4c4faf33c08b428d0876.png" loading="lazy" />

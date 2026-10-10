@@ -1,0 +1,26 @@
+<p>Arrays são ajuntamentos de dados com tamanho definido que possuem o
+mesmo tipo, ou seja, só podemos colocar strings <strong>OU</strong>
+números <strong>OU</strong> booleanos e desses valores só podemos
+adicionar até o tamanho definido.</p>
+<h4 id="exemplo-1---strings">Exemplo 1 - Strings</h4>
+<p>Por exemplo eu tenho diversos nomes e quero guardar dentro de uma
+variável só e acessar elas pelo index, para fazer isso é só escrever o
+seguinte:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>String<span class="op">[]</span> nomes <span class="op">=</span> <span class="kw">new</span> <span class="dt">string</span><span class="op">[</span><span class="dv">3</span><span class="op">]</span> <span class="op">{</span><span class="st">&quot;Felipe&quot;</span><span class="op">,</span><span class="st">&quot;Eduardo&quot;</span><span class="op">,</span><span class="st">&quot;Henrique&quot;</span><span class="op">};</span> <span class="co">//Criando array e adicionando valores</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> henrique <span class="op">=</span> nomes<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="co">// Acessando o index 2 e pegando &quot;Henrique&quot;</span></span></code></pre></div>
+<p>O código acima pode ser interpretado da seguinte maneira, vamos criar
+um array de strings dentro desse array vamos alocar espaço para 3
+strings e adicionar Felipe, Eduardo e Henrique dentro dele, após isso
+vamos criar uma constante chamada henrique com o valor dentro do index 2
+do array.</p>
+<h4 id="exemplo-2---números">Exemplo 2 - Números</h4>
+<p>Se quisermos criar um array de números inteiros com no máximo 3
+números podemos fazer o seguinte:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span><span class="op">[]</span> numbers <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span><span class="dv">3</span><span class="op">]</span> <span class="co">// Criando array</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>numbers<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> <span class="co">//Adicionando valor</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>numbers<span class="op">[</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="dv">2</span><span class="op">;</span> <span class="co">//Adicionando valor</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>numbers<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> <span class="dv">3</span><span class="op">;</span> <span class="co">//Adicionando valor</span></span></code></pre></div>
+<p>Int[] numbers cria um array chamado numbers, utilizamos o new int[3]
+porque precisamos alocar memoria para o array, abaixo disso ele está
+adicionando valores dentro desse array.</p>

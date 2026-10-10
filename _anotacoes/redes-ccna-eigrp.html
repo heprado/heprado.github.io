@@ -1,0 +1,50 @@
+<p>Protocolo Advanced Distance Vector, utiliza hello packets igual ao
+OSPF para manter vizinhança.</p>
+<p>Ele cria uma rota principal para cada destino e uma rota chamada
+Feasible Successor que é a rota de Backup.</p>
+<p><strong>Terminologia</strong>:</p>
+<p>Feasible Distance: Distancia de um roteador para um destino(ROTA)</p>
+<p>Advertised Distance:</p>
+<p>Distacia do proximo salto para esse destino(ROTA)</p>
+<img src="img/75d6466540ef470f9ef2236eb35cac18.png" loading="lazy" />
+<p>Successor: Rota principal na Topology Table</p>
+<p>Feasible Successor: Rota de Backup na Topology Table</p>
+<p>Active Route: é uma rota tentando achar uma rota de backup na
+Topology Table</p>
+<p>Passive Route: Uma rota que está funcionando na Topology Table.</p>
+<p><strong>Tabelas EIGRP</strong></p>
+<p>Ele mantém 3 tabelas:</p>
+<p>Neighbor Table:<br />
+Tabela de roteadores vizinhos</p>
+<p>Topology Table:<br />
+Nessa tabela temos as informações de todas as Successor Routes(ROTAS
+PRINCIPAIS) e Feasible Sucessor(ROTAS SECUNDARIAS)</p>
+<p>Routing Table:<br />
+Tabela de roteamento, onde vão estar todas as rotas que o EIGRP vai
+estar usando.</p>
+<p><strong>Mensagens do EIGRP</strong><br />
+<img src="img/a04d35fda2cd4f19bb4bc0e772f57acf.png"
+loading="lazy" /></p>
+<p><strong>K VALUES</strong></p>
+<img src="img/e669d882b343448ca1528c91d368ff38.png" loading="lazy" />
+<p>O EIGRP por padrão utiliza somente o Bandwidth e o Delay para
+calcular sua metrica, mas ele pode utilizar todas as outras.</p>
+<p>OS K VALUES DEVEM SER IGUAIS EM AMBOS OS ROTEADORES PARA QUE A
+VIZINHANÇA SEJÁ FORMADA.</p>
+<p><a
+href="https://www.practicalnetworking.net/stand-alone/eigrp-feasibility-condition/"
+class="uri">https://www.practicalnetworking.net/stand-alone/eigrp-feasibility-condition/</a></p>
+<p><strong>DUAL</strong></p>
+<p>É o processo de perguntar uma rota para um neighbor caso a Successor
+Route e a Feasible Route tiverem caido.</p>
+<p>Ele faz isso mandando um query para o neighbor, que responde com o
+reply dizendo se tem uma rota ou não para a rede.</p>
+<p><strong>Hello Timers e Hold Timers</strong></p>
+<p>Hello Timer: Tempo em que o roteador vai enviar um Hello Packet.</p>
+<p>Hold timer: Caso um roteador não receba um hello nesse tempo,
+considerar ele morto.</p>
+<p>O Hold Timer sempre é 3 vezes o tempo do Hello Timer, por padrão o
+EIGRP coloca 5 segundos para links considerados rapidos e 60 segundos
+para links considerados lentos.</p>
+<p>Então em um link FastEthernet o Hello Timer seria 5 segundos e o Hold
+Timer seria 15 segundos.</p>

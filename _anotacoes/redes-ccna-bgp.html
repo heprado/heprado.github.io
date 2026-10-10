@@ -1,0 +1,20 @@
+<p>Border Gateway Protocol, é o único protocolo EGP existente no mundo
+atualmente.</p>
+<p>Ele é usado para conectar os AS do mundo inteiro, e é o único
+protocolo que não pensa na maneira mais rápida para chegar em algum
+lugar, nem o caminho mais confiável, ele pensa em manter a internet
+viva.</p>
+<p>Se uma rede cai, o BGP espera um pouco até ela voltar antes de avisar
+para o mundo todo que a rede caiu, caso ela volte ele também espera um
+pouco antes de avisar o mundo inteiro que ela voltou, se ela ficar
+caindo e voltando, o BGP coloca ela na Penalty BOX, até ela voltar ao
+normal.</p>
+<p>O BGP é um protocolo untrusted, ou seja, ele não fecha adjacência com
+qualquer um que nem EIGRP e OSPF que só precisam bater ASN/AREA, os AS
+precisam mesmo querer fechar adjacência e configurar tudo na mão.</p>
+<p><strong>Configurando BGP</strong></p>
+<p>Router bgp 5000<br />
+Neighbor-id ” ip do neighbor” remote-as “as do neighbor”<br />
+Network 1.0.4.0 mask 255.0.0.0 (VOCÊ PRECISA TER ESSA ROTA NA SUA TABELA
+DE ROTEAMENTO, PODEMOS CONFIGURAR UMA ROTA ESTATICA PRA NULL0, ASSIM A
+ROTA SERÁ ANUNCIADA NORMALMENTE)</p>

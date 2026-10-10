@@ -1,0 +1,19 @@
+<p>A metrica OSPF é baseado em custo, o custo é calculado da seguinte
+forma:</p>
+<img src="img/62cedd1002444658ada6447f9a8e046b.png" loading="lazy" />
+<p>É só pegar a bandwidth da interface em MBPS e dividir por 100,
+simples não?</p>
+<p>Imagine que temos 3 roteadores da seguinte forma:</p>
+<img src="img/148bc0d92e69463292048eb05c014638.png" loading="lazy" />
+<p>Quando o roteador da rede 10.0.0.0/24 enviar o LSA dele ele diz para
+o roteador do meio que o custo dele para essa rede é 1, o roteador do
+meio adiciona o custo dele até o roteador da rede 10.0.0.0/24 ficando 11
+o custo, o roteador da rede 192.168.0.0/24 faz a mesma coisa.</p>
+<p>Tabela de custos:</p>
+<img src="img/cd9ac59baa0847ca9eb8bc730abe837d.jpg" loading="lazy" />
+<p>A partir de 100MBPS a metrica não muda, mas podemos mudar esse
+comportamento configurando o valor que dividiremos a bandwidth em mbps,
+podemos mudar para 1000 por exemplo, 10000 etc.</p>
+<p>Para fazermos isso utilizamos o comando auto-cost reference-bandwidth
+1000 por exemplo, assim o 100MBps seria custo 10 e o 1GBPs seria custo 1
+e assim por diante.</p>

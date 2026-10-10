@@ -1,0 +1,24 @@
+<p>LAYER 1</p>
+<p>Utilização do protocolo Ethernet 802.3 na WAN, isso só foi possivel
+por conta da criação da fibra otica que consegue ir grandes
+distancias.</p>
+<p>Com isso conseguimos ter na WAN uma experiencia parecida com a LAN, a
+operadora só entrega um link para a gente em cada Branch, e para nos
+customers seria como um grande switch(meio fisico) conectando nossos
+roteadores.</p>
+<img src="img/f44b5de3d0674255b1381b6616deeaf8.png" loading="lazy" />
+<p>Desse jeito a operadora consegue conectar as branches do customer em
+sua “nuvem”, lá dentro eles consegue definir como será a topologia do
+customer(partial mesh, full mesh, point to point, hub and spoke), eles
+fazem isso utilizando protocolos como MPLS(Layer2/3).</p>
+<img src="img/06a627a12c694aca81ecb34b7c6e6406.png" loading="lazy" />
+<p>O padrão ethernet só fornece velocidade multiplos de
+10(1mbps,10mbps,100mbps,1gbps,10 gbps,100 gbps), se um cliente quiser um
+link de 200mbps o provider vai precisar fazer um Bandwidth Profile, em
+uma porta de 1GBPS.</p>
+<p>Se você tiver um link de 200MBPS, e passar dessa quantidade de
+trafégo o Service Provider vai começar a dropar seus frames, para isso
+precisamos configurar o Traffic Shaping e o Policing.</p>
+<p>Traffic Shaping: Fazemos com que o roteador aguarde um pouco antes de
+enviar os frames, assim não batendo nunca os 200mbps do link e fazendo
+com que o service provider não tenha que dropar nenhum frame.</p>

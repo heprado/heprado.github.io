@@ -1,0 +1,16 @@
+<img src="img/549abc6bf9674df9b5565de855f86df7.png" loading="lazy" />
+<p>Geneve é um protocolo de underlay utilizado pela Vmware para fechar
+tuneis de data plane entre os hosts ESXi, é praticamente igual ao VXLAN,
+a principal diferença é que o GENEVE foi criado pensando em não só
+transportar o VNI da rede overlay, mas também possibilitar outras
+implementações em cima do protocolo.</p>
+<img src="img/6cad45e024354ed0855ab0248b510f4f.png" loading="lazy" />
+<p>Principais partes do header :</p>
+<ul>
+<li>Protocol Type, fala qual protocolo está encapsulado dentro do tunel
+geralmente é Ethernet.</li>
+<li>VNI, o ID do tunel</li>
+<li>Variable Lenght Options, espaço onde podemos inserir novas
+funcionalidades ao GENEVE, sem o IETF lançar uma revisão nova do
+protocolo.</li>
+</ul>

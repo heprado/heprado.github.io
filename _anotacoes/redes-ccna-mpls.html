@@ -1,0 +1,36 @@
+<p>Multi Protocol Label Switching</p>
+<p>Ele se chama Multi protocol, pois suporta diversos protocolos Layer
+2(PPP,HDLC,ATM,FRAME RELAY).</p>
+<p>O Cliente pode ter diversos tipos de links, e conectar eles pela rede
+MPLS do Service provider, pois o MPLS retira o header layer 2 e coloca
+outro.</p>
+<img src="img/90e6bae7b0b44e6a9f75a3db7bdb01f2.png" loading="lazy" />
+<p>MPLS também consegue usar QoS, por exemplo pacotes VOIP podem ter
+prioridades sobre um pacote HTTP, pois VOIP precisa de muito mais
+velocidade.</p>
+<p>No MPLS o service provider precisa saber sobre o plano de
+endereçamento do Cliente, pois ele precisa redestribuir essas rotas na
+sua rede MPLS.</p>
+<p><strong>NO MPLS OS ROTEADORES DO CLIENTE SÓ FECHAM ADJACENCIA COM O
+ROTEADOR DO SERVICE PROVIDER, OS ROTEADORES DO SERVICE PROVIDER FAZEM A
+REDISTRIBUÇÃO DAS ROTAS VIA MPBGP E ENVIA SOMENTE AS ROTAS
+REDISTRIBUIDAS ROTAS PARA O OUTRO ROTEADOR DO CLIENTE.</strong></p>
+<img src="img/f527aa03cc8b473a9b63e758edab6de9.png" loading="lazy" />
+<p><strong>OSPF com MPLS</strong></p>
+<p>Se você for usar o protocolo OSPF como protocolo de roteamento entre
+suas branches, a rede MPLS do Service Provider vai funcionar como a area
+0 do seu OSPF.(Imagem 1)</p>
+<img src="img/c4bc2f84df01457f8c6f8b6b9bd3d855.png" loading="lazy" />
+<p>Mas um cliente nem sempre consegue fazer isso, pois as vezes já pode
+ter sua area 0 configurada, ele pode ter sua area 0 normalmente, só
+precisara fechar vizinhança com a area 0 da rede MPLS da operadora.</p>
+<img src="img/f8a40976cf524a10b5341d50108fbc41.png" loading="lazy" />
+<p><strong>EIGRP com MPLS</strong></p>
+<p>Já que o MPLS redistribui as rotas entre os PE usando MPBGP, podemos
+usar ASN diferentes entre os roteadores EIGR<strong>P.</strong><br />
+<img src="img/8e3600b03d93439296fbd3d06fff83a1.png"
+loading="lazy" /></p>
+<p>Mas o recomendado seria usar o mesmo ASN mesmo assim, pois assim
+receberiamos metricas mais realistas da rede, pois la dentro da rede
+MPLS também tem EIGRP rodando com varios ASNs.</p>
+<img src="img/fb3410d9826a4a8a9b3f12b2a6f433f7.png" loading="lazy" />

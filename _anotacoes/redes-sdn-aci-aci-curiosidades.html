@@ -1,0 +1,36 @@
+<p>Servidores só se conectam aos Leaves<br />
+Leafs só se conectam aos Spines<br />
+Spines não se conectam diretamente</p>
+<p>Podemos ligar um roteador num Spine somente se formos fazer um
+multi-site fabric de ACI.</p>
+<p><strong>ACI NÃO FAZ NAT</strong></p>
+<p>Fabric node shells<br />
+- CLI<br />
+- VSH<br />
+- VSH-LC<br />
+- Broadcom shell*</p>
+<p>Para conectarmos um APIC no Fabric, precisamos desabilitar o LLDP da
+CIMC, pois a CIMC irá roubar os packets do sistema operacional do
+APIC.</p>
+<p>Se nomearmos um switch com o nome errado e quisermos mudar ele,
+precisaremos descomissionar ele do fabric, e refazer toda a configuração
+dele.</p>
+<p>Domain Types</p>
+<p>Domain 1 - Bare Metal Server<br />
+Domain 2 - L2-OUT(Para um switch ACI conversar com um switch da rede
+legado)<br />
+Domain 3 - L3-OUT(Para um switch ACI conversar com um roteador.)<br />
+Domain 4 - Virtual Machine<br />
+Domain 5 - Fibre Channel</p>
+<p>Bridge Domain, funciona como se fosse uma VLAN, todos os Endpoints
+que estiverem em um EPG vão ouvir o Broadcast de um servidor, não
+importa o lugar, se o seu Bridge Domain existir em dois data centers
+distantes, os servers vão ouvir.</p>
+<p>Um EPG L2_OUT é um EPG onde estarão todos os servidores da rede que
+não usa ACI.</p>
+<p>O ACI não utiliza por padrão o Protocolo ARP, ele utiliza outro
+protocolo chamado Hardware Proxy.</p>
+<p>Se você estiver utilizando uma rede legado, ativar o protocolo ARP
+onde você for conectar a rede legado.</p>
+<img src="img/79374c8d884f4617acac3e5e620fb969.png" loading="lazy" />
+<img src="img/f843ed6523d74c8bb485c13673509105.png" loading="lazy" />

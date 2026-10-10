@@ -1,0 +1,63 @@
+<p>Protocolo de roteamento Link State, utiliza como sua metrica o custo,
+e possui distancia administrativa de 110</p>
+<p>Atualiza sua tabela de roteamento através de um calculo(Shortest Path
+First) feito com base em dados que estão na sua LSDB(Link State Data
+Base), ele atualiza a LSDB utilizando dados recebidos por LSAs(Link
+State Advertsiment), que os roteadores trocam entre si.</p>
+<p>Formação de Vizinhança</p>
+<p>Link State Updates: É assim que são chamados os pacotes que enviam os
+LSAs para os roteadores.</p>
+<p>Quando dois roteadores OSPF são conectados no mesmo meio fisico eles
+começam a receber hello packets um do outro, com esses hello packets
+eles formam a vizinhança.</p>
+<p>Após isso cada roteador manda para o outro quais LSAs ele já tem para
+eles não trocarem LSAs repetidos, com isso ele envia somente LSAs uteis,
+esse processo é chamado de DBD(Database Description).</p>
+<img src="img/116f6386573046daa632c5452890bf73.png" loading="lazy" />
+<p>O processo de formação de vizinhança só chega a FULL com o DR e BDR,
+com os outros roteadores do segmento de rede, eles ficam em 2-way, pois
+quem atualiza a LSDB é o DR, eles não precisam chegar a esse ponto com o
+Drothers.</p>
+<img src="img/d2caeb78c81b40d280e1ef4b5e2d013e.png" loading="lazy" />
+<p><img src="img/3ebae186dcd14c6f8aa457ea1dbe8338.png"
+loading="lazy" /><br />
+<strong>Router ID</strong></p>
+<p>É a identificação de um Roteador dentro de uma area OSPF.</p>
+<p>Caso não tiver um router id configurado diretamente no conft(router
+ospf) , o roteador vai escolher o IP da interface <strong>ATIVA</strong>
+que tiver o maior IP para ser o router ID, e se tivermos uma interface
+Loopback ele vai escolher o maior IP entre as interfaces loopback.</p>
+<p><strong>Tipos de Roteadores</strong></p>
+<ul>
+<li>ABR : Area Border Router, roteadores que tem injetam o resumo de
+rota de uma área dentro da AREA 0.</li>
+<li>DR : Designated router, roteador que tem como função deixar a LSDB
+de todos os roteadores do mesmo segmento de rede atualizados, ele recebe
+os updates de todos os roteador no endereço 224.0.0.6 e envia de volta
+para todos os roteadores da área no 224.0.0.5, todos os roteadores da
+área formam adjacência FULL com o DR.</li>
+<li>BDR: Backup do Designated Router, também recebe os updates no
+224.0.0.6 mas não faz ação nenhuma até o DR cair.</li>
+</ul>
+<p><strong>Eleição do DR</strong></p>
+<p>É escolhido um Designated Router por <strong>SEGMENTO DE
+REDE,</strong> os criterios são:</p>
+<ul>
+<li>Prioridade da porta: o padrão é todos os roteadores OSPF terem
+prioridade 1 na porta, quem tiver a maior prioridade se torna o DR.</li>
+<li>Router ID: Para desempate temos o router-id, o router-id pode ser
+hardcoded no OSPF, ou podemos criar uma interface loopback e colocarmos
+ip ospf area “0”, ou ele vai pegar o maior IP do roteador e usar como o
+router-id, o maior router-id ganha a eleição.</li>
+</ul>
+<p><strong>MUITAS PESSOAS CRIAM ROUTER-IDS EM INTERFACES LOOPBACK, DESSE
+JEITO O IP SERÁ PINGAVEL, DIFERENTE SE CONFIGURARMOS DIRETO NO PROTOCOLO
+OSPF.</strong></p>
+<p><strong>Métrica OSPF</strong></p>
+<img src="img/1f2507e3347f4d83905f2988e47eb6b8.png" loading="lazy" />
+<p><strong>100/Bandwidth</strong></p>
+<p><strong>Na epoca em que o OSPF foi criado os links mais rapidos
+existentes eram os FastEthernet que são de 100MBPS, hoje em dia temos
+links de 10 GBPS ou 100GBPS , para isso precisamos ajustar o custo das
+rotas.</strong></p>
+<p><strong>Auto-cost reference-bandwidth “NUMEROS EM MBPS”</strong></p>

@@ -1,0 +1,11 @@
+<p>O Forwarding Plane ou Data Plane é onde residem a FIB ou LFIB, a
+principal diferença entre a FIB e a RIB é que a FIB é programada direta
+no hardware dos ASICs, sem passar por software nenhum, fazendo assim o
+forwarding de pacotes MUITO mais rapido, pois não precisa consultar o
+control plane.</p>
+<p>Já o Control Plane é onde residem os protocolos de roteamento e a
+RIB( Routing Information Base) ou tabela de roteamento, a RIB informa a
+FIB quais são os caminhos que ela deve escolher para certo pacote.</p>
+<p>Pensando bem alto nivel, o Control Plane reside nas CPUs dos
+Switches/Roteadores e o Data Plane resite nos ASICs dos mesmos.</p>
+<img src="img/ba09f7a9c57b4d8cb1f8d29bbe99ac18.jpg" loading="lazy" />

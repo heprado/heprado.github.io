@@ -1,0 +1,57 @@
+<p>Flow Analysis - Analisar somente os headers do pacote, para saber
+quem está se comunicando com o que.</p>
+<p>Packet Analysis - O pacote inteiro, incluindo o payload, usado
+bastante para parte de segurança.</p>
+<p><strong>Tipos de Packet Monitoring</strong></p>
+<p>OOB - Cria uma copia do pacote e joga para uma rede separada, para
+assim o pacote ser analisado. (SPAN/RSPAN/TAP)</p>
+<p>Inline - A rede de packet broker fica no meio da produção, enviando
+os pacotes para as ferramentas de monitoramento, essas que podem
+escolher dropar o tráfego caso ele seja malicioso, geralmente gera
+latencia pois vc está adicionando mais um hop na sua rede. Muito usado
+para mandar tráfego para um appliance de IPS, para ela tomar uma decisão
+de encaminhamento como fazer blackhole desse trafégo.</p>
+<img src="img/bb7cf21e65de4752ab2731f9a88d27a7.png" loading="lazy" />
+<img src="img/c2d7432037a94338a6cd99bdf155d8c9.png" loading="lazy" />
+<p>Nexus Data Broker Architecture</p>
+<img src="img/a31a21aa7c0e471399b60549d0893598.png" loading="lazy" />
+<p>NDB Switching Layer - Feita de Switches Nexus com todas as
+funcionalidades de switching e routing desabilitadas, são os switches
+que vão receber a copia ou se estiverem in-line o tráfego real e enviar
+para as ferramentas de monitoramento, IPS/IDS/Wireshark/Gigamon etc…
+OBS: Você ainda precisa de spanning-tree rodando na sua rede mesmo que
+ele não faça switching, acredito que de alguma forma os switches broker
+devem fazer alguma comunicação broadcast então, ninguem gosta de
+broadcast storm….</p>
+<p>NDB Controller Layer - É a controladora onde criamos todas as regras
+de brokering, exemplo seria pacotes UDP para a porta 1574 vão para certa
+ferramenta de monitoramento, pacotes TCP para porta 443 vão para um IPS,
+a contorladora configura os switches broker através de NX-API ou
+Open-Flow.</p>
+<p>Essa controladora pode estar em uma VM ou dentro de um switch Nexus
+com GUEST SHELL, a principal diferença é que se você subir dentro de um
+switch com guest shell você só vai poder gerenciar aquele switch broker
+então esse modelo não é recomendado para ambientes maiores, já na VM
+podemos gerenciar diversos switches broker.</p>
+<p>NDB Automation Customer Application - A controladora ainda expoe uma
+REST API para você criar ferramentas de automação, parecida com o ACI.
+Você pode configurar a controladora inteira via programabilidade.</p>
+<p>Packet Modification at Ingress</p>
+<p>Dot1q Tagging - Você pode escolher taggear o tráfego que estiver
+chegando em certa porta para uma certa VLAN, para casos de identificação
+do tráfego.</p>
+<p>VLAN and MPLS Label Stripping - Possui a capacidade de remover os
+headers de 802.1Q e de MPLS, assim vc fica somente com os headers do
+frame sem ser encapsulado em algum outro protocolo.</p>
+<p>PTP Time-Stamping - Consegue fazer time stamping dos pacotes/frames ,
+funciona somente com o PTP, então nada de NTP por aqui…</p>
+<p>Truncation - Você pode escolher remover os headers e mandar somente o
+payload para a ferramente de monitoramento e fazer também o inverso
+disso, remover o payload e mandar somente os headers. Isso entra na
+parte de Flow Analysis ou Packet Monitoring, se você for fazer flow
+analysis pode fazer truncation do payload e mandar somente os headers, e
+o inverso para packet monitoring.</p>
+<p><strong><mark>IMPORTANTE - O NDB só consegue cortar um pacote a
+partir de um offset, vc não consegue remover somente uma parte de um
+header por exemplo, ou ele remove tudo a partir de um offset ou não
+remove nada.</mark></strong></p>

@@ -1,0 +1,25 @@
+<p>Transaction Snapshots são análises detalhadas de uma transação,
+conseguimos fazer o drilldown de toda a transação, quais metodos foram
+chamados na aplicação etc.</p>
+<img src="img/7d114da1532249c09ee93ab1eb22c0b2.png" loading="lazy" />
+<p>Esses snapshots são feitos quando uma transação apresenta algum
+problema e entra nas seguintes categorias:</p>
+<ul>
+<li>Error</li>
+<li>Slow</li>
+<li>Very Slow</li>
+<li>Stalled</li>
+</ul>
+<p><strong>TODAS AS TRANSAÇÕES COM PROBLEMAS SÃO GUARDADAS EM
+SNAPSHOTS.</strong></p>
+<p>Transações podem ser capturadas de forma <strong>full call
+graph</strong> ou <strong>partial call graph</strong>, a diferença entre
+as duas é que a full call graph pega todos os metodos que foram
+executados do começo ao fim da transação, o partial call graph pega
+somente da parte que começou a dar erro na transação.</p>
+<p>Podemos também tirar Machine Snapshots, assim o AppDynamics consegue
+correlacionar problemas a nivel de OS/Hardware com algum problema que
+está acontecendo em uma transação.</p>
+<p>Period Transactions são o motivo das transações serem capturadas, por
+padrão o App Dynamics tira um snapshot de uma transação a cada 10
+minutos, mas essa configuração pode ser alterada.</p>

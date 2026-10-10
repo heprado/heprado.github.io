@@ -1,0 +1,29 @@
+<p>NETCONF é um protocolo baseado na arquitetura RPC para configuração
+de equipamentos de rede, ele possui quatro camadas:</p>
+<ul>
+<li><p>Content Layer, as configurações que vão ser enviadas pro
+equipamento.</p></li>
+<li><p>Operational Layer, aqui é onde passamos o que vamos fazer , temos
+varias operações como &lt;get-config&gt;, &lt;edit-config&gt;, parece
+com os verbos do HTTP que ficam na REQUEST-LINE.</p></li>
+<li><p>Message Layer, é aqui que definimos o encodamento da mensagem,
+pode ser message,reply ou notification.</p></li>
+<li><p>Secure Transport Layer, faz a segurança entre o cliente e o
+servidor.</p></li>
+</ul>
+<img src="img/64691efc3b064dae8e30febad4c18405.png" loading="lazy" />
+<p>Ele faz uma sessão entre o cliente e o servidor que é geralmente um
+router/switch, após a sessão estar feita ele manda as configurações que
+estão encapsuladas em XML.</p>
+<ol type="1">
+<li><p>Sessão é feita</p></li>
+<li><p>Trocam informações da capacidade de cada um deles:<br />
+<img src="img/7fc0edffd1eb44b699a5085c0916e624.png"
+loading="lazy" /></p></li>
+<li><p>Manda a requisição NETCONF:<br />
+<img src="img/ff1872ff37a1439c90c4648191cba48e.png"
+loading="lazy" /></p></li>
+<li><p>Fecha a sessão:<br />
+<img src="img/195a0f8419c847949118d2bae149fcc7.png"
+loading="lazy" /></p></li>
+</ol>

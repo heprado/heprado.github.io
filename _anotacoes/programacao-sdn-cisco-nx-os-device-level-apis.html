@@ -1,0 +1,75 @@
+<p><strong>MDP (Model Driven Programmability)</strong></p>
+<p>O NX-OS usa exatamente a mesma estrutura que o ACI, a MIT do ACI é o
+MDP do NX-OS.</p>
+<p>Um exemplo seria para configurar uma instancia de BGP:</p>
+<p>A URI seria “/api/mo/sys/bgp.json”, embaixo dessa uri tem o objeto
+parente chamado bgpInst, então o payload seria:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;bgpInst&quot;</span><span class="fu">:{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;attributes&quot;</span><span class="fu">:{</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;asn&quot;</span><span class="fu">:</span><span class="st">&quot;100&quot;</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;rn&quot;</span><span class="fu">:</span><span class="st">&quot;inst&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>	<span class="fu">},</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;children&quot;</span><span class="fu">:</span><span class="ot">[</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>	<span class="st">&quot;... contentremovedfor brevity...&quot;</span><span class="fu">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;bgpDom&quot;</span><span class="fu">:{</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;attributes&quot;</span><span class="fu">:{</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;name&quot;</span><span class="fu">:</span><span class="st">&quot;vrf1&quot;</span><span class="fu">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;rn&quot;</span><span class="fu">:</span><span class="st">&quot;dom-vrf1&quot;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>	<span class="fu">},</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;children&quot;</span><span class="fu">:</span><span class="ot">[</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>		<span class="fu">{</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>		<span class="dt">&quot;bgpPeer&quot;</span><span class="fu">:{</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>		<span class="dt">&quot;attributes&quot;</span><span class="fu">:{</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>		<span class="dt">&quot;addr&quot;</span><span class="fu">:</span><span class="st">&quot;10.1.1.1&quot;</span><span class="fu">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>		<span class="dt">&quot;inheritContPeerCtrl&quot;</span><span class="fu">:</span><span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>		<span class="dt">&quot;rn&quot;</span><span class="fu">:</span><span class="st">&quot;peer-</span><span class="er">\[</span><span class="st">10.1.1.1</span><span class="er">\]</span><span class="st">&quot;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>		<span class="fu">}</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Formas de automatização NX-OS</strong></p>
+<img src="img/c1ec289a34164851a0456e5e6cb73549.png" loading="lazy" />
+<p><strong>NX-API CLI</strong></p>
+<p>Esse metodo é bem maneiro pois conseguimos mandar comandos de CLI via
+HTTPs, encapsulamos ele dentro do body da requisição e a NX-API vai
+responder o comando como se tivesse sido jogado dentro da CLI.</p>
+<img src="img/2ebee5b1dee948eebd9fc8bec2ee3773.png" loading="lazy" />
+<p>Podemos ver ali na chave “input” da requisição, temos o comando “show
+clock” sendo enviado, no body da resposta da requisição temos a chave
+“simple_time” mostrando o horario do dispositivo.</p>
+<p><strong>NX-API REST</strong></p>
+<p>É uma API REST exposta pelo NX-OS, ela não segue o padrão RESTCONF
+porque quando ela foi feita o draft do IETF não estava pronto ainda,
+então essa é a principal diferença entre as duas.</p>
+<p>O recomendável é utilizar a RESTCONF, assim seu script terá maior
+compatibilidade com varias ferramentas, inclusive de concorrentes da
+Cisco.</p>
+<p><strong>YANG Clients</strong></p>
+<p>RESTCONF,NETCONF e gRPC são utilizados como transporte para
+requisições baseadas no modelo YANG.</p>
+<p><strong>NX-OS SDK</strong></p>
+<p>Plugin utilizado para fazer automação, funciona tanto para C++ quanto
+Go e Python.</p>
+<p>Pode ser rodado tanto dentro quanto fora da caixa(RPC)</p>
+<p><strong>Onbox Python</strong></p>
+<p>O NXOS já vem com Python pre-instalado, junto com um modulo chamado
+cisco, podemos utilizar ele para fazer comando de CLI:</p>
+<p>Funções principais :</p>
+<ul>
+<li><p>cisco.cli(show hostname) , vai rodar o comando na CLI e te voltar
+o output em string pura.</p></li>
+<li><p>cisco.clip(show hostname), vai rodar o comando na CLI e printar
+na tela pra você o resultado.</p></li>
+<li><p>cisco.clid(show hostname), vai rodar o comando e te voltar uma
+string em formato de dicionario, só precisamos fazer um json.loads no
+resultado para transformamos em dicionario.</p></li>
+</ul>
+<p><strong>EEM</strong></p>
+<img src="img/0c0be3186570457682aa53cf5bba65b0.png" loading="lazy" />
+<p>Com o EEM conseguimos fazer com que o equipamento execute comandos
+caso algo aconteça, no caso acima ele faz todas as “actions” caso o
+evento da OID de HIGH CPU aconteça, inclusive um dos comandos eu vão ser
+executados é um script em python, por exemplo para matar alguns
+processos.</p>
+<p>**</p>

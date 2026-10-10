@@ -1,0 +1,37 @@
+<p>Uma AREA OSPF é um subdominio do OSPF, os LSAs de tipo 1 e 2 ficam
+presos dentro de uma área só, diminuindo bastante o processamento de
+todos os roteadores e o tamanho da tabela de roteamento.</p>
+<p>Backbone Area - É uma area standard em que todas as outras areas se
+conectam, não possui nada de diferente.</p>
+<p>Standard Area - Recebe todos os LSAs normalmente.</p>
+<p>Stub Area - É uma area que não recebe rotas externas de um ASBR,
+basicamente ela não recebe LSAs do Tipo 5 (AS External LSA), todos os
+roteadores em uma area stub devem ser stub routers, e não podemos ter
+ASBRs dentro da area, também não podemos conectar virtual links em uma
+area STUB.<br />
+Os roteadores IR recebem uma rota default vindo do ABR, recebe uma LSA
+Type 3.</p>
+<p>Totally Stub Area - É uma area que não recebe Network Summary
+LSAs(Type 3) somente uma rota default do ABR(o ABR envia Type 3 pros
+Internal Routers), também não recebe LSAs AS External Type 5, o ABR
+envia suas rotas da area interna normalmente, para dentro da area
+interna ele só envia uma rota default. Essa Area so recebe LSAs Type 1 e
+Type 2. Quando configurar uma area Totally Stub todos os roteadores
+precisam ser stub.</p>
+<img src="img/aa66060f9dd4476cb06b3a998f76fbc7.png" loading="lazy" />
+<p>Not So Stubby Area - Uma area STUB não permite LSAs type 5
+internamente, então não conseguimos conectar um ASBR nesse tipo de area,
+se quisermos conectar um ASBR numa area STUB precisamos utilizar uma
+area Not So Stubby, o que ela faz é basicamente criar um novo tipo de
+LSA o tipo 7(NSSA External LSA), o ASBR manda esse LSA para o ABR, o ABR
+faz a tradução dele para o LSA type 5 e manda para a Area 0. Assim
+continuamos não permitindo rotas externas vindo da area 0 mas
+conseguimos enviar rotas externas para a area 0.</p>
+<p>Totally Not so Stubby Area - A mesma coisa que a Not so Stubby,
+somente não permitimos LSAs Type 3 (Summary LSAs) internamente dentro da
+area, o que significa que todos os roteadores vão ter uma rota default
+pro next-hop.<br />
+Lembrar que quando for configurar uma area Totally not so Stubby,
+configurar o ABR como area “id” nssa no-summary, o restante dos
+roteadores colocar somente NSSA, se não os roteador não vão receber o
+LSA type 3 do ABR contendo a rota default.</p>

@@ -1,0 +1,13 @@
+<p>Hoje em dia os sistemas estão muito integrados então temos um
+problema, caso um sistema depende de informações de outro quando algo
+mudar, ele ia precisar ficar perguntando como na imagem abaixo:</p>
+<img src="img/de9b80fd00bf4123acbf2378a376c410.png" loading="lazy" />
+<p>Isso é ruim pra caramba, varias requisições sendo feitas só pra ver
+se tem algo novo, para isso existem os <strong>WEBHOOKS,</strong> que
+faz com que a API mande uma request falando que algo novo aconteceu:</p>
+<img src="img/027e226979eb40cca48c20ed30f82ba4.png" loading="lazy" />
+<p>Funciona da forma inversa, o cliente faz um POST para se subscrever
+nesse webhook passando informações sobre que porta ele vai ficar ouvindo
+essas notificações e quais ele quer ouvir, também autenticação, ai toda
+vez que um evento ocorrer a API vai avisar o cliente fazendo um POST
+Request pro cliente.</p>

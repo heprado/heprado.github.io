@@ -1,0 +1,15 @@
+<img src="img/4f6187fb8dad4e3c8c119fc3826d8cb8.png" loading="lazy" />
+<p>ARP Table - Essa tabela é utilizada para a controladora informar para
+todos os hosts ESXi que tiverem esse VNI associado, que o IP e o MAC
+estão no Host ESXi “x”.</p>
+<p>MAC Table - Essa tabela é utilizada para a controladora popular os
+TEPs, ela informa qual MAC está embaixo de qual TEP, informa também o IP
+desse TEP, também informa o host ESXi que esse TEP pertence. Assim todos
+os TEPs conseguem ter informação de qual MAC-address está embaixo de
+qual TEP remoto.</p>
+<p>TEP Table - o TEP é uma interface virtual então ela tem IP e MAC, os
+outros TEPs precisam saber essas informações para fazer forwarding dos
+pacotes para os outros TEPs, após consultar e decidir onde está o MAC de
+destino que uma VM quer acessar, o TEP precisa encapsular o pacote em
+GENEVE assim ele precisa do MAC e do IP do TEP remoto onde a VM de
+destino está.</p>

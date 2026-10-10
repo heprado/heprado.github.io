@@ -1,0 +1,55 @@
+<p>Em data centers, VLANs eram usadas para alem de diminuir o dominio de
+falha, segregar o tráfego entre os servidores, mas a quantidade de
+VLANs(4096) geralmente é muito pouco para um Data Center, então criar
+uma VLAN para cada grupo de servidores que podiam se conversar na mesma
+VLAN era impossivel.</p>
+<p>Com isso a cisco criou a private VLAN, com isso podemos ter varias
+VLANs dentro de uma VLAN.</p>
+<p>A VLAN principal é chamada de VLAN Primary, nela configuramos todas
+as outras VLANs que vão estar dentro dela.</p>
+<img src="img/a8cb9ed220b944f8a4ee02e0f7ba6f0b.png" loading="lazy" />
+<p>Já nas VLANs secundarias podemos ter dois tipos, community e
+isolated:</p>
+<p>Community - Todos os servidores que estiverem nessa VLAN community
+podem se conversar.</p>
+<img src="img/5995be0571b5478c91345930c4051b9a.png" loading="lazy" />
+<p>Isolated - Todos os servidores que estiverem nessa VLAN isolated não
+podem se conversar.</p>
+<img src="img/a599e26065e043e1b340d982d1ce5365.png" loading="lazy" />
+<p>Para configurarmos uma porta para estar numa PVLAN Isolated, só
+precisamos mapear a VLAN Isolated nela. (VLAN 100 Primary , 20 Secondary
+Isolated)<br />
+<img src="img/f4df4a89b7ff4588a075f3d5a72a0f91.png"
+loading="lazy" /></p>
+<p>Para configurarmos uma porta para estar numa PVLAN Isolated, só
+precisamos mapear a VLAN Isolated nela. (VLAN 100 Primary , 10 Secondary
+Community)</p>
+<img src="img/732c26d217574967a6e122b3252de88e.png" loading="lazy" />
+<p>Também podemos ter uma porta chamada de prosmicuous , essa porta ouve
+todas as VLANs dentro da vlan primaria, desde as ISOLATED as
+COMMUNITY.</p>
+<p>Na configuração abaixo, configuramos uma interface para ouvir a
+primary VLAN 100 e as VLANs secondary 10 e 20.</p>
+<img src="img/adab65a7ae7542d0bbf0717ff47fcac6.png" loading="lazy" />
+<p>Geralmente fazemos essa configuração em portas conectadas a firewalls
+e routers.</p>
+<p>Também podemos criar uma interface VLAN para rotearmos esse tráfego
+das secondary VLANS, para fazermos isso utilizamos os comandos
+abaixo.<br />
+<img src="img/ac81374a63d64da4ba8ce72fb5b7ea58.png"
+loading="lazy" /></p>
+<p><strong>Tipos de Private VLAN Trunk</strong></p>
+<p>Trunk comum - Taggeia com o ID da onde estiver vindo, se vier de uma
+VLAN community 101 por exemplo, ele vai mandar pelo trunk com a TAG 101,
+o outro lado sabe que a VLAN 101 é community então encaminhar o tráfego
+para essa VLAN.</p>
+<p>Promiscuous Trunk - Quando um frame originado de uma vlan secundaria
+bater nesse trunk ele envia a tag da VLAN primaria, isso é util quando
+queremos utilizar router on a stick, pois assim podemos rotear o tráfego
+entre VLANs primarias, quando frames chegam nesse trunk ele não mexe em
+nenhuma tag.</p>
+<p>Isolated Trunk ou Secondary Trunk - Nesse modo quando um frame de uma
+VLAN secundaria bater no trunk, o trunk envia com a TAG da VLAN
+Secundaria, assim podendo estender essa VLAN para switches que não
+entendem Private VLAN, quando os frames chegam nesse trunk ele não mexe
+em nenhuma tag.</p>

@@ -1,0 +1,42 @@
+#!/bin/sh
+# Bloqueia o push se algum commit enviado tem páginas desatualizadas em
+# relação aos modelos (_modelos/) e às notas (_anotacoes/): roda
+# `pandoc lua gerar.lua --gerar` numa cópia do commit e vê se algo muda.
+# Confere o commit que vai subir, não a pasta de trabalho: gerado mas não
+# commitado não conta.
+#
+# Ativação (uma vez por clone): git config core.hooksPath .githooks
+# Pular numa emergência: git push --no-verify
+
+zero=0000000000000000000000000000000000000000
+status=0
+
+# pandoc do sistema, ou o do nix-shell.
+if command -v pandoc >/dev/null 2>&1; then
+    gerar() { pandoc lua gerar.lua --gerar; }
+else
+    gerar() { nix-shell -p pandoc --run 'pandoc lua gerar.lua --gerar'; }
+fi
+
+while read -r _ref_local sha_local _ref_remoto _sha_remoto; do
+    # Branch sendo apagada no remoto: nada a conferir.
+    [ "$sha_local" = "$zero" ] && continue
+    # Commit de antes dos modelos: nada a conferir.
+    git cat-file -e "$sha_local:_modelos/index.tpl" 2>/dev/null || continue
+
+    pasta=$(mktemp -d)
+    git worktree add --quiet --detach "$pasta" "$sha_local"
+    if ! saida=$(cd "$pasta" && gerar 2>&1); then
+        echo "pre-push: o gerar.lua falhou em $(git rev-parse --short "$sha_local"):" >&2
+        echo "$saida" | tail -5 | sed 's/^/  /' >&2
+        status=1
+    elif [ -n "$(git -C "$pasta" status --porcelain)" ]; then
+        echo "pre-push: páginas desatualizadas em $(git rev-parse --short "$sha_local"):" >&2
+        git -C "$pasta" status --porcelain | sed 's/^/  /' >&2
+        echo "Rode \`pandoc lua gerar.lua --gerar\`, faça commit e tente de novo." >&2
+        status=1
+    fi
+    git worktree remove --force "$pasta"
+done
+
+exit $status

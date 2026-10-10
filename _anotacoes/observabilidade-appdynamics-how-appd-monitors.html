@@ -1,0 +1,31 @@
+<p>Agentes precisam ser instalados no servidor onde a aplicação está
+rodando, existem 3 tipos principais de agentes:</p>
+<ul>
+<li>App Agent, monitora uma aplicação rodando no servidor,
+Java/Python/Node.JS etc.</li>
+<li>Machine Agent, monitora o hardware do servidor, para podermos saber
+se um problema na aplicação está acontecendo por conta de falha de
+hardware.</li>
+<li>Database Agent, monitora databases, oracle/mysql/mongodb etc.</li>
+</ul>
+<p>Com os agentes instalados podemos monitorar as transações entre as
+diversas partes da aplicação, o agente faz isso criando um GUID(Global
+Unique Identifier) para cada metodo sendo chamado no codigo, assim
+conseguimos fazer o tracking dessa chamada para outra parte da
+aplicação. Isso vale também para queries em banco.</p>
+<p>Para injetar em GUID dentro das transações o agente do AppDynamics
+utiliza ByteCode Instrumentation(BCI), que é uma forma de injetar
+codigos dentro de outro codigo enquanto ele está rodando ou sendo
+compilado,</p>
+<p>O agente funciona da seguinte maneira:</p>
+<img src="img/ccda60b5192d40ef80d25eefea23e522.png" loading="lazy" />
+<ul>
+<li>Sempre é o agente que começa a comunicação utilizando HTTP ou HTTPS
+para a controladora.</li>
+<li>O agente faz um pull na controladora pedindo as configurações que
+devem ser aplicadas nele, esse pull é feito a cada 60 segundos.</li>
+<li>Ele reporta metricas sobre as transaçoes para a controladora a cada
+60 segundos.</li>
+<li>Se essa transação for uma transação nova que o agente não tinha
+conhecimento ele reporta para a controladora 10 segundos após.</li>
+</ul>

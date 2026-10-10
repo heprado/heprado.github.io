@@ -1,0 +1,28 @@
+<p>No Per VLAN STP, os switches conseguem ter uma instancia de Spanning
+Tree por VLAN, isso se torna possivel por conta do Extended System ID
+que fica dentro da BPDU junto com a Priority e MAC.</p>
+<p>Uma coisa interessante que reparei foi que em switches que tem PVSTP,
+quando damos um show spanning-tree, ele nunca mostra a priority como
+32768 ele sempre mostra como 32769, isso por conta do Extended System ID
+que adiciona 1 se for a VLAN 1, adicionaria 2 se fosse a VLAN 2 e assim
+por diante.</p>
+<p>Os switches também reconhecem a qual VLAN aquela BPDU pertence pelo
+TAG do 802.1Q</p>
+<p><strong>Multiple Spanning Tree</strong></p>
+<p>O Per VLAN STP não é padrão aberto pois foi criado pelo cisco, a
+versão do PVSTP padrão aberto seria o Multiple Spanning Tree, diferente
+de protocolos como HSRP(Cisco) e VRRP(Aberto) que tem configurações
+parecidas, o MST é bem diferente do PVSTP.</p>
+<p>O MST é composto pelos seguintes componentes:</p>
+<p>Região : Um numero alfanumérico de 32 bytes, escolhemos um nome para
+essa região, por exemplo DC1-Region, eu gosto de pensar nessa região
+como se fosse o numero de AS do BGP.</p>
+<p>Numero da Revisão: Um numero que define a versão da revisão para a
+região inteira.</p>
+<p>Mapeamento de VLANs para Instancias: Onde mapeamos uma VLAN a uma
+instancia, podemos ter varias VLANs na mesma instancia, diferente do Per
+VLAN Spanning.</p>
+<p>Exemplo de config :</p>
+<img src="img/a6973b6def544c0fbc43cd28f2466861.png" loading="lazy" />
+<p>Principais diferenças entre os dois :</p>
+<img src="img/c17d12dceefc4766bfeeeea2bb29f869.png" loading="lazy" />

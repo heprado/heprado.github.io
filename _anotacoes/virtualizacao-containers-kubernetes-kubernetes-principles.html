@@ -1,0 +1,16 @@
+<img src="img/0eaaff57631d4b2996d97e831e38e5a1.png" loading="lazy" />
+<p>Desired State - Para termos uma aplicação rodando dentro do
+Kubernetes precisamos definir o estado dessa aplicação, fazemos isso
+através de arquivos de configuração que são interpretados pelo API
+Server do K8s, esses arquivos de configuração são utilizados para que as
+controladodoras conversem com o kubelet em cada node do cluster e façam
+a aplicação rodar.</p>
+<p>Controllers - Configuram e verificam o estado da aplicação, elas
+fazem isso consultando o etcd(banco de dados com todas as informações
+das aplicações) e chamando o kubelet de cada node para manter as
+aplicações rodando.</p>
+<p>Kubernetes API - É a API que interagimos com o Cluster de Kubernetes,
+nela que enviamos os arquivos de configurações e checamos o estado do
+cluster, também é onde o cluster conversa entre si, para que todos os
+nodes do cluster tenham uma visão geral do sistema inteiro do Cluster
+Kubernetes.</p>

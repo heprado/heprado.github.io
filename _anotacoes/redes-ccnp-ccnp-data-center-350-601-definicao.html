@@ -1,0 +1,18 @@
+<p>Protocolo link-state, utiliza o endereço 224.0.0.5 para achar
+roteadores vizinhos e 224.0.0.6 para falar com todos os DRs e BDRs, o
+equivalente IPv6 é FF02::5 e FF02::6.</p>
+<p>O hello packet é utilizado para começar a comunicação entre
+roteadores OSPF, mas também é utilizado para manter a adjancencia UP, o
+OSPF possui dois timers, HELLO TIMER e DEAD-INTERVAL, o hello timer diz
+de quanto em quanto tempo o OSPF vai mandar um hello packet e o
+DEAD-INTERVAL quando tempo o OSPF espera sem receber hello packets para
+perceber que algo de errado aconteceu com o vizinho.</p>
+<p>Quando um roteador OSPF ativa o OSPF em sua interface ele começa a
+mandar hello packets esperado uma resposta, caso ele receba eles começam
+o processo de adjacencia, quando todo o processo estiver OK eles começam
+a enviar LSAs(Link State Advertisement) que são descrições de quais
+rotas eles possuem na RIB deles, também possui o custo da interface e
+informações sobre o link, esses LSAs vão dentro de um pacote chamado
+LSU(Link State Update), que só envia os LSAs que um roteador já não
+possui, eles checam quais rotas cada um possui na hora da
+adjancencia.</p>

@@ -1,0 +1,26 @@
+<p>Protocolo utilizado para definirmos dinamicamente o estado de um
+porta pensando no protocolo 802.1Q, esse protocolo é bem útil pois caso
+um PC se conecte a uma porta de um switch, não precisamos configurar
+essa porta para switchport mode access manualmente, podemos só deixar
+como está que ele vai tomar conta do resto.</p>
+<p>Para configurarmos dinamicamente qual será o protocolo usado no trunk
+(ISL ou 802.1Q) pode usar o comando:</p>
+<p>Switchport trunk encapsulation negotiate</p>
+<p>O DTP já vem ativo em todas as portas nos switches atuais e para
+configurarmos uma interface para o DTP caso não esteja é só utilizar o
+comando:</p>
+<p>Switchport mode dynamic “desirable/auto”</p>
+<ul>
+<li>Desirable - Sempre vai tentar fechar um trunk com o outro lado.</li>
+<li>Auto - Aguarda receber alguma comunicação de um link trunk ou
+desirable, caso receba muda seu modo operacional para trunk.</li>
+</ul>
+<p>Por padrão todas as portas de um switch vem como switchport mode
+dynamic auto, com isso o switch não vai tentar fechar um trunk em uma
+interface ligada a um PC, mas caso ele se conecte a um switch com uma
+porta configurada como trunk ou desirable, ele faz o trunk.</p>
+<img src="img/cedbca96d8ec4c3fbe1dbdd3fde46e57.png" loading="lazy" />
+<p>Por boas praticas a cisco diz para desabilitarmos o DTP nas
+interfaces e configurarmos na mão, principalmente para links trunk, para
+fazer isso:</p>
+<p>Switchport nonegotiate</p>

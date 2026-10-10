@@ -1,0 +1,27 @@
+<p>Em switches Nexus o Rapid Spanning-tree, funciona da seguinte
+maneira:</p>
+<p><strong>Configurações de Portas</strong></p>
+<p>Edge Ports - São portas conectadas a hosts ou outros tipos de
+equipamentos, sem ser Switches ou Bridges, essas portas não passam pelo
+estado de Listening e Learning, elas vão direto de blocking para
+forwarding. Esse tipo de porta também não deve receber nenhum tipo de
+BPDU.</p>
+<p>Point-To-Point Ports - Portas ligadas entre switches que utilizam
+full duplex, essas portas conseguem utilizar o Rapid-Spanning Tree.</p>
+<p>Shared Ports - Interfaces conectadas a mais de dois switches através
+de um hub ou conectadas a outro switch half-duplex.</p>
+<p><strong>Rapid Spanning Tree Ports</strong></p>
+<p>Disabled - Não participa do spanning tree, por estar shutdown ou
+down/up, também podemos ter um no spanning-tree na porta.</p>
+<p>Root Port - A porta com o melhor path cost para o root.</p>
+<p>Designated Port - A porta com a BPDU superior em um segmento, por
+exemplo um cabo entre dois switches, o switch com a melhor BPDU fica
+Designated a outra fica em Alternate Port.</p>
+<p>Alternate Port - Substituta da Blocked Port do Spanning-Tree, única
+coisa que muda é que ela sobe quase que automaticamente caso a root port
+falhe.</p>
+<p>Backup Port - Uma porta que recebou um BPDU dela mesmo em outra
+porta.</p>
+<p><strong>Port States no RSTP</strong></p>
+<p>No RSTP os estados disabled,blocking e listening foram fundidos em um
+estado chamado discarding.</p>

@@ -1,0 +1,13 @@
+<p>Hello Packets - Utilizados para descobrir neighbors e manter a
+adjacencia, manda um desse de 10 em 10 segundos por padrão</p>
+<p>DBD - Data base Description, no momento que dois roteadores estão
+fechando adjacencia um envia para o outro um pacote DBD falando quais
+LSAs eles possuem em sua LSDB, caso um esteja faltando algum, eles
+enviam um LSR.</p>
+<p>LSR - Link State Request, quando um roteador recebe um DBD e percebe
+que tem um LSA que ele não tem, ele manda um LSR pedindo aquele LSA.</p>
+<p>LSU - Link State Update, quando um roteador recebe um LSR ele envia
+um LSU contendo os LSAs que foram pedidos no LSR.</p>
+<p>LSAck - Link State Acknoledgment, como o OSPF não usa TCP nem UDP,
+ele possui embutido nele um pacote chamado LSAck para garantir que o
+roteador vizinho recebeu o LSU.</p>

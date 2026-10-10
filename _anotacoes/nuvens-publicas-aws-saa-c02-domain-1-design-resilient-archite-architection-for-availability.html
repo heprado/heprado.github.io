@@ -1,0 +1,121 @@
+<p>É comum a gente não saber qual a diferença entre Availability e
+Resilience/Reliability:</p>
+<p>Resilience/Reliability - É a capacidade de uma aplicação se recuperar
+de algum problema que aconteça nela.</p>
+<p>Availability - Availability != Uptime, é como quantificamos a
+Resilience de uma aplicação, é a quantidade de tempo que uma aplicação
+atua como o esperado, se tivermos 10 EC2 com um load balancer na frente
+e 5 dessas EC2 falharem, o usuario vai sentir lentidão, então ela não
+está “Available” da forma correta.</p>
+<img src="img/6bb98b97535749b2ae5d7ea61141a155.png" loading="lazy" />
+<p><strong>Calculando Availability de uma aplicação</strong></p>
+<p>Digamos que o SLA de sua aplicação especifique que ela necessita de
+99,9% de Availability e a arquitetura de sua aplicação na AWS é a
+seguinte:</p>
+<img src="img/597e6c32a815477fbd67f3ad04c9defe.png" loading="lazy" />
+<p>Para calcularmos a Availability da aplicação inteira precisamos levar
+em consideração qual a Availability de cada componente especificada no
+SLA da AWS:</p>
+<ul>
+<li>4 EC2, Availability de 90%</li>
+<li>1 ELB, Avaibility de 99,99%</li>
+<li>1 EFS, Availability de 99,99%</li>
+<li>RDS, em multiplas availability zones tem availability de 99,95%</li>
+</ul>
+<p><strong>EC2</strong></p>
+<p>Como a Availability de cada EC2 é 90%, precisamos de 4 para chegarmos
+aos 99,9% necessarios:</p>
+<p>Failure Rate = 10% x 10% x 10% x 10% = 0,01%</p>
+<p>Avaibility total das 4 EC2 = 100% - 0,01% =
+<strong>99,99%</strong></p>
+<p><strong>ELB</strong></p>
+<p>Agora precisamos multiplicar a availability de todas as EC2 com a
+Availability do ELB:</p>
+<p>Availability total até o momento = 99,99% x 99,99% =
+<strong>99,98%</strong></p>
+<p><strong>EFS</strong></p>
+<p>Agora precisamos multiplicar a availability das EC2 e ELB com o EFS
+:</p>
+<p>Availability total até o momento = 99,98% x 99,99% =
+<strong>99,97%</strong></p>
+<p><strong>RDS</strong></p>
+<p>Agora vamos multiplicar a Availability de tudo até o momento com o
+RDS em multiplas AZs:</p>
+<p><strong>Availability total da aplicação = 99,97% x 99,95% =
+99,92%</strong></p>
+<p><strong>Loose Coupling</strong></p>
+<img src="img/4961b0ac17e94fa180b771c49777c0c2.png" loading="lazy" />
+<p>Redundancia em si não garante Availability, para isso precisamos
+utilizar uma arquitetura Loose Coupled, na aplicação citada acima, temos
+varias EC2 trabalhando em conjunto para mostrar um site, isso só é
+possivel graças ao ELB, com que os usuarios acessam e ele faz o proxy
+para cada EC2, com isso também conseguimos escalar cada parte da
+aplicação separadamente conseguindo melhorar a performance da aplicação
+caso necessario.</p>
+<p><strong>Simple Queue Service (SQS)</strong></p>
+<p>Com o SQS conseguimos fazer o Loose Coupling de Instancias EC2 (VMs),
+imagine uma aplicação de web que faz com que o video que enviamos pra
+ela fique todo azul, dentro da EC2 temos tanto a interface WEB da
+aplicação quanto o serviço que faz o video ficar azul, isso é chamado de
+aplicação monolitica.</p>
+<img src="img/a10e00454b0f40a49098840a9a470f96.png" loading="lazy" />
+<p>Se separarmos esses dois processos estamos usando outro tipo de
+arquitetura chamada Micro Serviços:</p>
+<img src="img/94dafcd545c24d25abcc4d92291cae1a.png" loading="lazy" />
+<p>A vantagem de utilizarmos microserviços é que conseguimos fazer
+upgrade do software separadamente, um update necessario em uma parte da
+aplicação não afetará a outra, conseguimos também escalar só uma parte
+da aplicação e conseguimos ter mais availability por conta da
+redundância dessa arquitetura.</p>
+<p>Mas onde o SQS entra nessa historia ?</p>
+<p>O SQS é um serviço da AWS em que criamos uma fila de mensagens, no
+caso da aplicação de video acima, o web service vai mandar a mensagem
+para a fila e o video processing service vai pegar essa mensagem e
+processar o video, assim fazendo a comunicação entre os dois
+serviços.</p>
+<img src="img/8ff8e63a8e68490aa4310b871c20fde3.png" loading="lazy" />
+<p><strong>Elastic Container Service</strong></p>
+<p>Se estivermos usando uma arquitetura de micro serviços, em uma
+instancia EC2 só conseguimos rodar um serviço, para resolver isso e
+conseguirmos isolar o serviço da instancia foi criado o Container, pense
+no container como varias “VMs” rodando dentro de uma VM, cada uma
+totalmente isolada da outra, com isso conseguimos ter uma instancia
+rodando tanto um container de interface WEB, quando o de processamento
+de video, mas elas estão desacopladas, um erro em um container não afeta
+o outro.</p>
+<p>Com isso conseguimos ter mais availability, pense no caso de duas EC2
+rodando um serviço, caso uma caia, você pode ter lentidão na aplicação,
+agora com Containers, caso um container falhe, você tem varios dentro da
+mesma instancia, a aplicação não vai perder performance, além de que
+você consegue colocar diversos checks do Docker para ver a saude do
+container, caso ele falhe o docker restarta ele.</p>
+<img src="img/f173fea6253745b28e5679d5c0f6f934.png" loading="lazy" />
+<p>Quando criamos um cluster ECS escolhemos quantas instancias EC2 vamos
+utilizar nele(Isso se você não estiver usando Fargate), quando ele
+estiver criado, vamos criar os serviços e escolher quantas replicas por
+EC2 Instance vamos querer, essas replicas são chamadas de
+tasks(containers).</p>
+<p>Cloud Native Application</p>
+<p>Uma aplicação Cloud Native nada mais é do que uma aplicação escrita
+para utilizar os serviços da nuvem, no caso AWS, são serviços que não
+estão disponiveis no data center tradicional, não conseguimos baixar um
+pacote em algum server linux e pronto temos o mesmo serviço que a AWS
+prove.</p>
+<p>Um exemplo de aplicação Cloud Native seria a mesma que estamos
+utilizando desde o inicio:</p>
+<p><strong>Static Web-Interface e Video Storage</strong> - Amazon S3
+Bucket</p>
+<p><strong>Video Processing</strong> - Amazon Lambda</p>
+<p><strong>Database</strong> - DynamoDB</p>
+<p>Todos esses são serviços que vou explicar mais para frente, mas todos
+eles são serviços regidos pela AWS, você não precisa pensar em NADA do
+hardware, isso não existe em um DC tradicional.</p>
+<p><strong>Trusted Advisor</strong></p>
+<p>Não podemos criar serviços da AWS ilimitados, todas as contas possuem
+um limite de recursos para cada tipo de serviço e por região, o padrão
+por exemplo para VPC é 5 VPCs por região, por conta.</p>
+<p>Para consultar quanto de recursos ainda podemos criar em certa região
+para certa conta, basta acessar a pagina do Trusted Advisor.</p>
+<img src="img/d87688c8ff8845bf86ed2a4ceb904a81.png" loading="lazy" />
+<p><strong>Você pode pedir um aumento da quantidade para a
+AWS.</strong></p>

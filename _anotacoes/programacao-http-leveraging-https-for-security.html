@@ -1,0 +1,25 @@
+<p>HTTP é o protocolo mais utilizado na internet, o problema dele é que
+ele não é criptografado então qualquer um na internet consegue ver o que
+está passando em uma conexão HTTP, para isso foi criado o HTTPS, que
+nada mais é do que HTTP com uma camada de TLS por cima encriptando todos
+os dados do HTTP.</p>
+<p>Ele funciona da seguinte maneira, o servidor WEB possui uma chave
+publica conhecida pelas CAs da internet, essa chave publica é usada pra
+criptografar o datagrama HTTP, e somente a chave privada que fechou a
+conexão com ele consegue abrir esse datagrama.</p>
+<p>Uma analogia é uma caixa, o servidor tem a chave publica que consegue
+fechar a caixa e você o cliente tem a chave privada que consegue abrir a
+caixa. E vocês conseguem isso pois a fechadura da chave é baseada no
+formato das duas chaves.</p>
+<img src="img/8e6bbab035674be69f1a680f20012ef9.png" loading="lazy" />
+<ol type="1">
+<li>Cliente manda um hello para começar a comunição TLS.</li>
+<li>Server manda um hello para começarem a comunicação TLS.</li>
+<li>Server manda a sua chave publica para o Cliente.</li>
+<li>Cliente então pergunta pra CA se essa chave publica é realmente
+valida, se sim proximo passo.</li>
+<li>Cliente manda uma chave aleatoria encriptada com a chave publica do
+servidor.</li>
+<li>Servidor então pega essa chave aleatoria e os dois utilizam ela para
+se comunicar atráves de HTTP.</li>
+</ol>

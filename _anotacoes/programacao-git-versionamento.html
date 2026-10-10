@@ -1,0 +1,76 @@
+<p>Git é um software de gerenciamento de código criado pelo Linus
+Torvalds para controlar o desenvolvimento do Linux.</p>
+<img src="img/7b061442c6e74a0c9d9555d129c20d95.jpg" loading="lazy" />
+<ul>
+<li><p>Repositório remoto, é o repositório lá no GitHub ou GitLab, onde
+todos os outros desenvolvedores vão editar o código.</p></li>
+<li><p>Repositório local, é uma versão do repositório na sua maquina,
+esse repositório fica salvo dentro da pasta .git .</p></li>
+<li><p>Staging Area, é onde preparamos o commit, vamos dando git add de
+todos os arquivos que modificamos e queremos que as mudanças sejam
+salvas no repositório local, para depois fazermos o commit logo após o
+push para o repositório remoto.</p></li>
+<li><p>Working Directory, são os arquivos e pastas do projeto que estão
+no seu computador.</p></li>
+</ul>
+<h3 id="comandos-do-git">Comandos do GIT</h3>
+<h4 id="git-config">git config</h4>
+<p>Configurar variáveis de configuração que o git utiliza, por exemplo
+para definir o usuário do Git:</p>
+<pre><code>git config --global user.name &quot;Henrique Prado&quot; 
+
+git config --global user.email &quot;voce@exemplo.com</code></pre>
+<h4 id="git-init">git init</h4>
+<p>Com esse comando criamos um repositório local.</p>
+<pre><code>git init nome_do_meu_repositorio</code></pre>
+<h4 id="git-remote-add">git remote add</h4>
+<p>Adicionar um repositório remote ao seu repositório local após um git
+init.</p>
+<pre><code>git remote add https://github.com/voce/seu_repositorio_remoto.git</code></pre>
+<h4 id="git-add">git add</h4>
+<p>Com esse comando adicionamos um arquivo ou diretório para dentro da
+área de staging para fazermos o commit</p>
+<pre><code>git add teste.py ou git add ~/Projeto</code></pre>
+<h4 id="git-rm">git rm</h4>
+<p>Com esse comando tiramos um arquivo ou diretório de dentro da área de
+staging, útil caso não queiramos mais esse arquivo ou pasta dentro do
+commit.</p>
+<pre><code>git rm teste.py</code></pre>
+<h4 id="git-status">git status</h4>
+<p>Mostra quais arquivos estão e quais não estão na sua area de staging,
+isso baseado nos arquivos do ultimo commit do repositório local.</p>
+<img src="img/11b1df584c864d39a28eb56fef012bf8.png" loading="lazy" />
+<h4 id="git-commit">git commit</h4>
+<p>Com esse comando estamos pegando os arquivos que adicionamos com o
+<strong>git add</strong> na area de staging e adicionando ao commit.</p>
+<pre><code>git commit -m &quot;Nesse commit eu estudei sobre git&quot; </code></pre>
+<h4 id="git-pull">git pull</h4>
+<p>Pega todos os arquivos de dentro do repositório remoto e e atualiza o
+seu repositório local.</p>
+<h4 id="git-push">git push</h4>
+<p>Envia todos os seus commits da area de staging para o repositório
+remoto.</p>
+<h4 id="git-stash">git stash</h4>
+<p>Salva a configuração de tudo que você adicionou na area de staging,
+para caso você precise fazer outras modificações no repositório local
+<strong>SEM AS ALTERAÇÕES QUE VOCÊ JÁ FEZ.</strong></p>
+<pre><code>
+git add meu_novo_arquivo
+
+# Salva o arquivo que você adicionou e volta o repositorio para o estado anterior
+git stash 
+
+# Volta o repositorio para o estado antes do git stash.
+git stash pop 
+</code></pre>
+<h4 id="git-clone">git clone</h4>
+<p>Faz uma copia do repositório remoto e já cria um repositório para
+você começar a fazer commits no repositório.</p>
+<p>Temos duas formas de fazer clone, isso determina qual será o
+protocolo de rede será utilizado para enviar os commits então tenha
+cuidado.</p>
+<pre><code>#Repósitorio clonado via HTTPs
+git clone https://github.com/voce/seu_repositorio_remoto.git
+
+#Repósitorio clonado via SSH
+git clone ssh://voce@github.com/voce/seu_repositorio_remoto.git</code></pre>

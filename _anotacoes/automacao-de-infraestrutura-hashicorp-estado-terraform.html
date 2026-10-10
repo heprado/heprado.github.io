@@ -1,0 +1,82 @@
+<h3 id="descrição-do-arquivo-de-estado">Descrição do arquivo de
+estado</h3>
+<p>Como sempre falamos o Terraform mantem o estado da infraestrutura,
+ele faz isso mantendo todas as configurações que foram aplicadas na
+infraestrutura em um arquivo chamado
+<strong>terraform.tf.state</strong>, por isso é tão importante que todas
+as mudanças feitas na infraestrutura sejam feitas no Terraform pois ele
+não consegue saber sobre o que ele não fez, ele só sabe o que ele fez
+por conta desse arquivo.</p>
+<h4 id="formato-json">Formato JSON</h4>
+<p>Esse arquivo diferente de outros arquivos do Terraform não é escrito
+em HCL e sim em JSON, não é recomendado mexer nele manualmente.</p>
+<h4 id="mapeamento-de-recursos-e-metadados">Mapeamento de recursos e
+metadados</h4>
+<p>Se refere a todos os dados que ele guarda da infraestrutura e também
+de si próprio, um exemplo de metadados seria a versão de terraform que
+criou esse arquivo.</p>
+<h4 id="locking">Locking</h4>
+<p>Se o seu tf.state estiver guardado em um repositório remoto em que
+todos tem acesso, o terraform suporta o <strong>Locking</strong>, que é
+nada mais do que travar o arquivo enquanto o terraform está aplicando as
+configurações, assim ninguém consegue dar terraform apply na mesma
+infraestrutura.</p>
+<h4 id="localização-do-arquivo">Localização do arquivo,</h4>
+<p>Por padrão o Terraform guarda o arquivo tf.state na mesma pasta onde
+o Terraform foi executado e encontrou arquivos .tf, mas podemos utilizar
+repositórios remotos como um bucket na AWS ou um blob no Azure ou na
+própria nuvem da Hashicorp.</p>
+<h3 id="informações-no-arquivo-de-estado">Informações no arquivo de
+estado</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;version&quot;</span><span class="fu">:</span><span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;terraform_version&quot;</span><span class="fu">:</span> <span class="st">&quot;1.2.3&quot;</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;serial&quot;</span><span class="fu">:</span> <span class="dv">10</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;lineage&quot;</span> <span class="fu">:</span> <span class="st">&quot;&quot;</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;outputs&quot;</span> <span class="fu">:</span> <span class="fu">{},</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;resources&quot;</span> <span class="fu">:</span> <span class="ot">[]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<h4 id="version">Version</h4>
+<p>A versão do <strong>terraform.tf.state</strong>, é incrementado cada
+vez que executamos o terraform apply.</p>
+<h4 id="terraform_version">Terraform_version</h4>
+<p>Esse é interessante, o Terraform checa essa chave e vê se o Terraform
+que está executando o terraform apply ou plan está numa versão anterior
+a que criou esse <strong>terraform.tf.state</strong>, se for uma versão
+inferior ele não deixa executar.</p>
+<h4 id="serial">Serial</h4>
+<p>Se executarmos o comando <em>terraform plan –out</em> ele gera um
+arquivo chamado <strong>tfplan</strong> com o plano de execução de
+automações na infraestrutura, esse arquivo é um JSON que possui a mesma
+chave serial do arquivo <strong>terraform.tf.state</strong>, se alguma
+modificação for feita no <strong>terraform.tf.state</strong> esse número
+serial será incrementando fazendo com que o <strong>tfplan</strong>
+esteja num serial inferior ao do estado atual da infraestrutura, com
+isso o Terraform consegue saber que esse plano(<strong>tfplan</strong>)
+não pode ser executado em conjunto com o comando <em>terraform
+apply</em></p>
+<h4 id="lineage">Lineage</h4>
+<p><font color="#ff0000">//TODO FUCK AROUND AND FIND OUT</font><br />
+Ninguém sabe, talvez alguém fosse fã de Lineage 2 KKKKK</p>
+<h4 id="outputs">Outputs</h4>
+<p>Em um arquivo de configuração do terraform podemos definir outputs,
+esses dados além de serem salvos no terraform.tf.state, são
+disponibilizados logo após o terraform executar as tarefas de automações
+definidas em seu módulo terraform, possibilitando que outros módulos
+terraform utilizem os outputs que você definiu para alguma tomada de
+decisão.</p>
+<p><strong>Exemplo de output</strong></p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;outputs&quot;</span><span class="er">:</span> <span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;igw_id&quot;</span> <span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;value&quot;</span><span class="fu">:</span><span class="st">&quot;igw-1234567&quot;</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>	<span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;string&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<h4 id="resources">Resources</h4>
+<p>Todas as configurações que foram feitas pelo terraform na
+infraestrura, ele salva todos os valores necessários para configuração
+do recurso, com isso quando precisamos atualizar algo na infraestrutura
+o terraform consulta os valores desse recurso para ver se precisam ser
+atualizados.</p>

@@ -1,0 +1,43 @@
+<p>Servidores AAA são usados para nos autenticarmos numa rede, imagine
+que você tem 100 switches, você vai realmente ir em cada um deles e
+escrever:</p>
+<p>Switch(config)#username henrique secret SEGREDINHO</p>
+<p>Fazer isso não é nada simples, então criaram um servidor chamado
+AAA(Authentication, Authorization, Accounting) com eles conseguimos
+criar diversos usuarios e utilizar eles pela rede, aumentando bastante a
+segurança.</p>
+<p>Existem dois tipos de servidores AAA:</p>
+<p>TACACS+ : Servidores criados pela cisco, ele pode ser instalado em
+Unix, e uma das coisas mais legais dele é que podemos criar usuarios
+nele e setarmos exatamente quais comandos da CLI ele pode usar(MUITO
+MANEIRO).</p>
+<p><strong>TACACS USA TCP</strong></p>
+<p>Os pacotes no TACACS+ também são totalmente encriptados, no RADIUS só
+a senha é encriptada.</p>
+<p>RADIUS: Servidor padrão aberto, podem ser instalados em diversos
+SO.</p>
+<p><strong>RADIUS USA UDP</strong></p>
+<img src="img/88f8126e23434fa88aa62b971a213ad2.png" loading="lazy" />
+<p>Configurando AAA:</p>
+<p>TACACS+ -</p>
+<p>O NOME DO ROTEADOR E A SENHA QUE VC ENVIOU VÃO ESTAR CONFIGURADOS NO
+SERVIDOR TACACS+</p>
+<p>Aaa new-model<br />
+Tacacs-server host “IP”<br />
+Tacacs-server key “senha” (para o roteador se autenticar no
+servidor)<br />
+Aaa authentication enable default group tacacs+ local (Nessa sequencia o
+tacacs+ vai ser usado por padrão, mas caso o servidor não esteja UP, ele
+tenta se autenticar localmente)<br />
+Aaa authentication login default group tacacs+ local</p>
+<p>RADIUS</p>
+<p>O NOME DO ROTEADOR E A SENHA QUE VC ENVIOU VÃO ESTAR CONFIGURADOS NO
+SERVIDOR RADIUS</p>
+<p>Aaa new-model<br />
+radius-server host “IP”<br />
+radius-server key “senha” (para o roteador se autenticar no
+servidor)<br />
+Aaa authentication enable default group radius local (Nessa sequencia o
+radius vai ser usado por padrão, mas caso o servidor não esteja UP, ele
+tenta se autenticar localmente)<br />
+Aaa authentication login default group radius local</p>

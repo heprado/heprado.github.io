@@ -1,0 +1,25 @@
+<p>Protocolo usado para enviar mensagens de LOG para um servidor, esse
+servidor também roda syslog.</p>
+<p>Syslog usa UDP porta 514.</p>
+<p>Syslog envia logs para um servidor centralizado, onde mais tarde uma
+pessoa pode ir lá verificar esses logs, isso é util.</p>
+<p>As mensagens que aparecem de uma porta subindo, uma porta sendo
+colocada como administrative down, são mensagens syslog.</p>
+<img src="img/9f82edb3a81845c782f61b8374720050.png" loading="lazy" />
+<p>Formato da mensagem:</p>
+<p>1- Timestamp<br />
+2- Lugar onde aconteceu o evento<br />
+3- Codigo do Log<br />
+4- Resumo do Log<br />
+5- Texto explicando de fato oque aconteceu.</p>
+<p>Para configurarmos um switch/router para enviar logs para um servidor
+Syslog:</p>
+<p>Logging host “ip”</p>
+<p>Também podemos guardar as mensagens na memoria RAM (não
+recomendado):</p>
+<p>Router(config)#Logging buffered</p>
+<p><strong>DECORE</strong></p>
+<img src="img/16b44858988c49c4a61593949eb1ecb0.png" loading="lazy" />
+<p><strong>(E)very (A)wesome (C)isco (E)ngineer (W)ill (N)eed (I)cecream
+(D)aily</strong></p>
+<p>Frase para você se lembrar.</p>

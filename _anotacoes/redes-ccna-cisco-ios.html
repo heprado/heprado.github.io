@@ -1,0 +1,44 @@
+<ul>
+<li><strong>Memorias de um switch</strong><br />
+****</li>
+</ul>
+<p><strong>RAM:</strong> Memoria onde ficam as configurações que o
+switch estão usando atualmente.</p>
+<p><strong>Flash</strong>: Onde fica guardada a imagem IOS do switch</p>
+<p><strong>ROM</strong>: Onde fica guardado o bootstrap que é o programa
+que boota a imagem do IOS.</p>
+<p><strong>NVRAM</strong>: É onde fica guardado a startup-config.</p>
+<img src="img/da5da0f552734057b3c2c781163280c8.png" loading="lazy" />
+<p><strong>Comandos massa</strong></p>
+<p>Hostname&gt;enable</p>
+<p>Hostname#conf t</p>
+<p>Hostname(config)#hostname Switch1</p>
+<p>Switch1(config)#ip domain-name “exemplo.com”</p>
+<p>Switch1(config)#crypto key generate rsa modulus 1024</p>
+<p>Switch1(config)#username admin secret 1234</p>
+<p>Switch1(config)#line vty 0 15</p>
+<p>Switch1(config-line)#login local</p>
+<p>Switch1(config-line)#transport input ssh(vai permitir somente trafego
+SSH no terminal OTIMO NINGUEM MERECE TELNET FODA-SE)</p>
+<img src="img/6706ce9a698f458087805dfdf84c483c.png" loading="lazy" />
+<p><strong>Comandos massa</strong></p>
+<p>Hostname(config)#interface f0/1</p>
+<p>Hostname(config-if)#switchport port-security(ativa o port
+security)</p>
+<p>Hostname(config-if)# switchport port-security maximum (define o
+maximo de mac-address que vão ficar atrelados a porta)</p>
+<p>Hostname(config-if)# switchport port-security violation
+“protect,restrict,shutdown”(define o que vai acontecer caso seja
+detectado um frame de um MAC não registrado)</p>
+<p>Hostname(config-if)#switch port-security mac-address sticky (vai
+atrelar os mac address dinamicamente, quando o primeiro frame for
+recebido na porta vai atrelar o source mac address a essa porta)</p>
+<p>Hostname(config-if)#switch port-security mac-address
+“MAC-ADDRESS”(Registra o Mac-address que você digitar na porta.)</p>
+<p><strong>Se tu só ativar o port-security sem definer nada ele vai usar
+os padrões que são , maximum 1 , sticky , violation vai ser
+shutdown.</strong></p>
+<hr />
+<p><strong>O COMANDO SHOW MAC-ADDRESS TABLE DYNAMIC NÃO VAI RETORNAR
+MAIS NADA SE VOCÊ ATIVAR O PORT-SECURITY, AGORA VOCÊ TEM QUE USAR O SHOW
+MAC-ADDRESS TABLE SECURE.</strong></p>

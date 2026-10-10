@@ -1,0 +1,90 @@
+<p>APIS Web são APIs que funcionam em cima de HTTP, elas utilizam os
+métodos PUT,GET,PATCH,POST e as requisições e respostas como forma de
+comunicação entre os diferentes sistemas.</p>
+<p><strong>HTTP Verbs</strong></p>
+<img src="img/b6710653669949088415708c917cebac.png" loading="lazy" />
+<ul>
+<li><p>GET, é utilizado para buscar informações dentro de uma API, não
+faz nenhuma mudança.</p></li>
+<li><p>POST, é utilizado para criar algo no lado do servidor, precisamos
+passar um body com um JSON/XML.</p></li>
+<li><p>DELETE, como o nome já diz deleta algo do lado do
+servidor.</p></li>
+<li><p>PUT, usado para modificar todo o conteudo da URL que vc
+apontar.</p></li>
+<li><p>PATCH, usado para fazer uma modificação parcial em algum
+recurso.</p></li>
+<li><p>HEAD, usado para puxar somente os headers, é parecido com o GET
+só que você não recebe o BODY da requisição.</p></li>
+</ul>
+<p><strong>HTTP Status Code</strong></p>
+<p>Status code são as mensagens que vem na resposta das requisições, no
+campo Status-Line depois da versão do protocolo utilizada na conversa
+entre o client/server.</p>
+<img src="img/8a99d9ab988944a58ccad470ae12ac00.png" loading="lazy" />
+<p>Os códigos são guardados em 5 grandes categorias, um codigo 404 por
+exemplo está em Client Error mas siginfica Not Found, o servidor
+entendeu sua requisição mas falou pra você o cliente, cara o que vc ta
+procurando não existe.</p>
+<ul>
+<li><p>Informational(100-199), a maioria dos codigos dessa categoria
+respondem algo como tipo, recebemos sua requisição, mas espera um pouco,
+pouco usado.</p></li>
+<li><p>Successful(200-299), os codigos nessa categoria dizem que
+conseguiram achar o recurso pedido pelo cliente com sucesso.</p></li>
+</ul>
+<p>Os mais comuns são o 200 que é o OK, por exemplo quando vamos fazer
+um Post ele responde OK, o 201 quer dizer Created, conseguiram criar o
+que vc pediu, por exemplo um Put, e o 204 No Content que significa que
+eles receberam a requisição mas não tinha nada no body.</p>
+<ul>
+<li><p>Redirection(300-399), avisam que o que você está procurando foi
+redirecionado , os mais famosos são o 301 Moved Permanently, que diz que
+o arquivo não está mais ali e foi mudado permanentemente para outra URL,
+temos o 302 Found diz que ele encontrou o recurso só que ele estava em
+outra URI.</p></li>
+<li><p>Client Error(400-499), avisam que o cliente fez algo de errado e
+o servidor não pode entregar a resposta, os maios famosos são 400 Bad
+Request, a requisição está mal formada ou contem parametros que o web
+server não aceita, 401 Unauthorized, a requisição precisa de parametros
+como usuario e senha para ser efetivada, 402 Forbidden , o servidor
+recebeu a requisição ele só não consegue tomar nenhuma ação sobre isso e
+o famoso 404 Not Found, o que o cliente pediu para o web server não
+existe.</p></li>
+<li><p>Server Error(500-599), avisam que o servidor não consegue
+responder essa requisição agora, 500 Internal Error, mensagem generica
+de erro, geralmente um F5 resolve, 501 Not Implemented , você tenta
+fazer um PUT mas o webserver não suporta, 503 Service Unavaible, esse
+aqui o F5 não resolve, deu pau no servidor e ele não consegue responder
+as requisições corretamente.</p></li>
+</ul>
+<p><strong>HTTP Headers</strong></p>
+<p>São parametros utilizados para passar informações adicionais sobre
+uma requisição, alguns são mais comuns em requisições outros em
+respostas então vou separar:</p>
+<ul>
+<li>Os mais comuns</li>
+</ul>
+<p>Date - Manda um timestamp do horario</p>
+<p>Connection - Persistencia da conexão</p>
+<p>Cache-Control - Parametros de cache da pagina.</p>
+<p>Content-Type - O conteudo que estou mandando está em XML ou JSON por
+exemplo application/json</p>
+<p>Content-Languague - Em que lingua(pt-br) está o conteudo no body.</p>
+<p>Content-Lenght - Tamanho do Body</p>
+<ul>
+<li>Requisições</li>
+</ul>
+<p>Authorization - Geralmente passamos parametros de autenticação
+aqui.</p>
+<p>Cookie - Enviamos o Cookie</p>
+<p>Host - Header com a URI da onde vc quer acessar.</p>
+<p>User-Agent - Qual browser está sendo usado.</p>
+<ul>
+<li>Resposta<br />
+Age - Tempo que essa resposta foi gerada</li>
+</ul>
+<p>Location - Usado para redirecionar o cliente para outra URI</p>
+<p>Server - Informações sobre o software utilizado como webserver( NGINX
+APACHE BLA BLA)</p>
+<p>Set-Cookies - Utilizado para enviar cookies do server pro client.</p>

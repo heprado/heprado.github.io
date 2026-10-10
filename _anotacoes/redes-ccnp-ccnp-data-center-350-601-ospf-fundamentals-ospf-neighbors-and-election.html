@@ -1,0 +1,42 @@
+<p>Quando ativamos o protocolo OSPF num roteador a primeira coisa que o
+roteador faz é decidir qual o router-id dele o processo funciona da
+seguinte forma:</p>
+<p>1º - Escolhe o maior IP entre todas as interfaces do roteador,
+imagine um roteador com 3 interfaces, 10.0.0.1, 172.16.0.1 e
+192.168.0.1, o router-id vai ser 192.168.0.1.</p>
+<p>2º- A regra de cima só vale caso não tenhamos nenhuma interface
+loopback, interfaces loopback tem preferencia, imagine o mesmo roteador
+a cima com todas as mesmas interfaces só que uma interface loopback com
+IP 1.1.1.1, esse seria o router-id do roteador.</p>
+<p><strong>Um router-id precisa ser único dentro de uma area OSPF,
+também é desejavel que os ASBR tenham router-ids diferentes por conta
+dos LSAs Type 5 deles irem para outras áreas, então todos os roteadores
+vão ter um LSA desses caras.</strong></p>
+<p>Após isso ele começa a adicionar todas as interfaces com o ip ospf
+“process id” area “numero” na sua LSDB, para poder enviar os LSAs type 1
+dessas redes para os outros roteadores e também procurar outros
+roteadores OSPF nessa rede.</p>
+<p>Vamos dizer que temos um novo link entre 2 roteadores OSPF, eles dois
+fazem todos os processos acima e começam o a fechar adjacencia da
+seguinte forma:</p>
+<p>1º - Enviam um hello packet um para o outro contendo seu router-id,
+netmask da interface, area-id, authentication password, neighbors
+etc…</p>
+<p>2º - Decidem quem é o master e quem é o slave, isso decide quem vai
+enviar sua DBD primeiro basicamente, na epoca que o OSPF foi
+desenvolvido isso era importante para manter o link o menos ocupado
+possivel. O Master é sempre quem tiver o maior router-id entre os 2.</p>
+<p>3º - O slave checa o DBD enviado pelo master e pede um LSR pedindo os
+LSAs que ele não tem na sua LSDB.</p>
+<p>4º O slave envia a DBD dele pro master , o master checa a LSDB dele e
+envia um LSR pedindo os LSAs que ele não tem.</p>
+<p>5º Ambos enviam LSU com os LSAs faltantes no roteador vizinho.</p>
+<p>6º Ambos enviam LSACKs após terem recebido os LSAs.</p>
+<p>7º Ficam em estado FULL.</p>
+<p>Todos os passos acimas podem ser mostrados nessa imagem :</p>
+<img src="img/3d41e1df9e434b0e8a0c42bf5c7865c5.png" loading="lazy" />
+<p>O primeiro e segundo passo está dentro do Init e 2-way states, o 3
+acontece no ex-start , o 4 acontece no Exchange o 5 e 6 acontecem no
+Loading.</p>
+<p>Agora os roteadores podem rodar o SPF com os dados dentro da LSDB e
+criar sua tabela de roteamento YAYYYYYYY.</p>

@@ -1,0 +1,70 @@
+<p><strong>Spanning Tree</strong></p>
+<p>Frames Ethernet não tem um TTL como pacotes IP, então um frame
+broadcast pode gerar um loop e fazer a rede sentar. Para combater esse
+problema foi inventado um protocolo chamado Spanning Tree, ele bloqueia
+portas que poderiam gerar esses loops.</p>
+<p>Quando os switches são ligados começa uma eleição, ela é composta
+pelos seguintes componentes:</p>
+<p>Bridge Priority(4 bits): O valor da Priority é 32768, ela vai de 0 a
+61440, e só pode conter valores multiplos de 4096.</p>
+<p>Extended System ID(12 bits): Utilizando para diferenciar os Bridge
+Ids quando temos diversas instancias do spanning tree no mesmo
+switch.</p>
+<p>Switch Mac Address(6 bytes): Um MAC address do switch, é diferente do
+MAC address das portas, geralmente vem da supervisora ou do chassi.</p>
+<p>O switch com o menor Bridge ID(Bridge Priority + Switch MAC) ganha a
+eleição e se torna o root bridge.</p>
+<p>Agora os switches precisam calcular o melhor caminho para o root
+bridge, eles utilizam os seguintes valores para definir isso:</p>
+<p>Path Cost: O mais importante de todos, um switch non root recebe nas
+suas portas BPDUs com o path cost até o switch root, o menor caminho até
+o root é escolhido como Root port. Importante saber que quem manda as
+BPDUs são o root bridge, ai a cada switch que ele passa vai aumenta o
+valor, dependendo do custo do caminho.</p>
+<img src="img/4df16a2b7e4a461a918031f63a705799.png" loading="lazy" />
+<p>Caso um switch receba dois BPDUs com o mesmo path cost para o root,
+ele utiliza o port ID para desempatar:</p>
+<p>Port Priority: Valor configurado na porta dos switches, podemos usar
+eles para manipularmos o spanning-tree, sendo os valores 0, 32, 64, 96,
+128 (default), 160, 192, ou 224, quando menor melhor.</p>
+<p>Port Index: Depende de qual porta estamos falando, em switches nexus
+a ethernet 1/1 tem valor de 129, ethernet 1/2 130 e assim adiante.</p>
+<img src="img/5e10f982184b42768dfef20ff13c37dd.jpg" loading="lazy" />
+<p><strong>BPDU DEATH MATCH</strong></p>
+<p><strong>Lowest root bridge ID -</strong> o menor bridge id ganha a
+eleição de root bridge.<br />
+<strong>Lowest path cost to root bridge -</strong> O menor path cost
+fica como root port/ forwarding.<br />
+<strong>Lowest sender bridge ID -</strong> Caso um switch receba duas
+BPDUs com o mesmo custo para o root bridge, ele vai escolher o BPDU com
+o menor bridge ID e essa porta vai ser root port/ forwarding.<br />
+<strong>Lowest port ID -</strong> Caso seja o mesmo bridge ID também,
+ele escolhe a porta com o menor PORT ID(Port Priority + Port Index).</p>
+<p>Em um mesmo segmento, tirando o que vai para o root bridge, só
+podemos ter uma porta como designated port, as outras tem que ficar como
+blocking:</p>
+<img src="img/983591e3cd5e46c1ad15bbfb90854938.png" loading="lazy" />
+<p>Isso é decidido através da BPDU Death Match, tirando a eleição do
+root bridge, eles começam pelo menor caminho para o root bridge, no caso
+acima os dois tem o mesmo custo para o root bridge, então eles vão para
+o bridge ID deles mesmos, no caso o switch C tem um Bridge ID maior que
+o switch B, então a porta Switch C e1/6 fica em blocking e a do Switch B
+e1/5 fica em Designated port/ forwarding.</p>
+<p><strong>Port States - Spanning Tree</strong></p>
+<p>Disabled - A porta está desligada, geralmente com um shutdown na
+porta ou sem o cabo desconectado.</p>
+<p>Blocked - Não envia tráfego nem aprende endereços MAC, somente recebe
+BPDUs, caso uma porta que esteja em root port/forwarding caia, essa
+porta em blocking começara a enviar tráfego somente depois de passar por
+todos os outros estados, Listening Learning. Sempre que ocorrer um erro
+em alguma porta o spanning-tree espera o Max Age Timer antes de começar
+a utilizar outra interface como root port.</p>
+<p>Listening - Nesse estado a porta não envia e nem recebe BPDUs somente
+espera o tempo definido no Forward Delay do Spanning-tree, caso a root
+port anterior não volte no tempo do forward delay, ela move para o
+proximo passo.</p>
+<p>Learning - A interface fica nesse estado pelo tempo configurado no
+forward delay, esse estado existe somente para a interface aprender
+alguns MAC-ADDRESSES.</p>
+<p>Forwarding - A interface está pronta para enviar tráfego, Designated
+Ports e Root Ports ficam nesse estado.</p>

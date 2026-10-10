@@ -1,0 +1,18 @@
+<img src="img/64f19fc16f914e55bb34e4374e59aec8.png" loading="lazy" />
+<p>A API do Kubernetes é uma API Restful baseada em HTTP usando
+<strong>JSON</strong>, então podemos fazer qualquer metodo de requisição
+HTTP como GET/POST/PUT/PATCH/DELETE etc.</p>
+<p>Ela é a única forma de interagir com o cluster de K8s e dentro delas
+temos os API Objects, que são objetos que a API cria dentro do etcd com
+toda a configuração do cluster, é nela também que definimos o estado da
+aplicação e do cluster em si.</p>
+<p>Temos duas formas de interagir com a API:</p>
+<ul>
+<li>Declaratively : Escrevemos um yaml file com as configurações que
+desejamos aplicar no cluster e enviamos para a API, ela interpreta
+serializa os dados aplica as configurações e salva tudo dentro do
+ETCD.</li>
+<li>Imperatively : Nesse modo interagimos com o K8s atráves de uma CLI
+como a kubectl ou kubeadm, e escrevemos comandos que mandam o cluster
+K8s agir de certa forma.</li>
+</ul>

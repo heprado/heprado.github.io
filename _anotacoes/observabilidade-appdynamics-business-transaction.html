@@ -1,0 +1,36 @@
+<p>Business Transactions são grupos de metodos ou funções que são
+executadas na sua aplicação, esses grupos possuem geralmente uma
+funcionalidade por exemplo LOGIN, conseguimos então mapear quais metodos
+e funções são chamadas no codigo para a funcionalidade LOGIN da
+aplicação, assim caso tenhamos problemas no login conseguimos examinar
+as transações para vermos o que pode estar acontecendo.</p>
+<p><strong>MAX de 200 business transactions por aplicação.</strong></p>
+<img src="img/196c7cf3e24d42fc9b568d54ecb7f79f.png" loading="lazy" />
+<p>Na imagem a cima temos uma aplicação java servindo um front end e um
+back-end chamando o banco de dados, a imagem também mostra as
+requisições que estão sendo feitas entre os diversos nodes, a soma de
+todas essas requisições são uma Business Transaction, por exemplo o
+mz_ui recebeu uma requisição HTTP do end user e demorou 39ms para
+processar ela, após isso ela enviou uma requisição HTTP para o
+mz_service que demorou 32.2ms para processar ela e fazer uma requisição
+para o MySQL.</p>
+<p>Podemos configurar as business transactions no menu de business
+transactions:</p>
+<ul>
+<li>Rename, podemos renomear uma transação para um nome mais
+descritivo.</li>
+<li>Delete, podemos deletar a business transaction, o problema é que ela
+pode ser redescoberta.</li>
+<li>Exclude, dessa forma deleteamos a business transactions e o agente
+não redescobre ela.</li>
+<li>Group, podemos agrupar várias business transactions.</li>
+</ul>
+<p><strong>Perfomance Thresholds</strong></p>
+<img src="img/83f7ee6d3f8b4ae791592e5ae66adc0d.png" loading="lazy" />
+<p>O AppDynamics cria uma baseline de acordo em como sua aplicação
+responde as requisições, ele usa essa baseline e compara com os
+thresholds definidos para categorizar a velocidade das requisições em
+normal/slow/very slow/stalled.</p>
+<p>Podemos configurar esses thresholds para ele classificar as
+requisições :</p>
+<img src="img/578a420b514e40e9b0b13900338a49a1.png" loading="lazy" />

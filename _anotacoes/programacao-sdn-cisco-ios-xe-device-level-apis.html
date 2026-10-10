@@ -1,0 +1,60 @@
+<p><strong>Intent Based Network</strong></p>
+<p>O IOS-XE é um sistema operacional baseado nessa filosofia de IBN,
+Intent based network significa pegar o que o negocio ou aplicação
+precisa e traduzir isso para politicas de rede, como configurações de
+protocolos de roteamento, VLANs etc.</p>
+<p>IOS-XE é um software utilizado tanto em Routers quanto Switches,
+Access Points e controladoras Wireless, assim conseguimos automatizar a
+rede campus por completo.</p>
+<p><strong>Automatizando o IOS-XE</strong></p>
+<img src="img/f2cad0f2cf0b465495b9bc407c82d4c0.png" loading="lazy" />
+<p>Temos três formas de automatizar o IOS-XE:</p>
+<ul>
+<li><p>Utilizando DNA Center, esse equipamento é a controladora da Cisco
+para redes Campus, é uma controladora que abstrae diversas propriedades
+da rede e faz com que você configure tudo atraves somente da sua
+intenção.</p></li>
+<li><p>Utilizando outra controladora de SDN ou NMS Servers, o IOS-XE tem
+uma NBI(North Bound interface) que podemos utilizar para fazermos
+integrações com outras ferramentas.</p></li>
+<li><p>DIY, basicamente escrever um script em python que vai configurar
+todos os equipamentos, suporta tanto NETCONF(XML) quanto
+RESTCONF(JSON).</p></li>
+</ul>
+<p><strong>IOS-XE APIs</strong></p>
+<img src="img/5fdc40d7674a4ceabbbc9114d46ad9be.png" loading="lazy" />
+<p><strong>NETCONF</strong></p>
+<img src="img/61446eb943f447d889c825fcfd4080cd.png" loading="lazy" />
+<p>Com netconf conseguimos configurar o equipamento tanto utilizando
+YANG Models representados em XML, como comandos da CLI, o mais comum
+hoje em dia é YANG MODEL.</p>
+<p>O Protocolo utilizado para comunicação entre a controladora e o
+equipamento é SSHv2 então a porta 22 precisa estar liberada.</p>
+<p>NETCONF utiliza RPC( Remote Procedure Call ), e suporta diversos
+comando que precisamos passar no body da requisição como
+&lt;get-config&gt;.</p>
+<p><strong>RESTCONF</strong></p>
+<p>Com RESTCONF a coisa já começa a ficar boa né, já utilizamos HTTP
+como protocolo de transporte (OBRIGADO)</p>
+<p>Os Headers Content-Type e Accept precisam ser passados, para dizermos
+ao equipamento qual o conteudo do body e o que esperamos receber de
+resposta, os mais comuns são:</p>
+<ul>
+<li><strong>application/vnd.yang.data+json for JSON</strong></li>
+<li><strong>application/vnd.yang.data+xml for XML</strong><br />
+<strong><br />
+</strong>gNMI<strong><br />
+</strong><br />
+<em>gNMI é um protocolo criado pela Google, ele utiliza o gRPC como
+protocolo de transporte, e podemos utilizar YANG models para
+configurarmos os equipamentos</em></li>
+</ul>
+<p><strong>Python IOS-XE</strong></p>
+<img src="img/4533cb1f1b814151a0a5676f9d34f15a.png" loading="lazy" />
+<p>Existem duas formas de usarmos python para configurar um equipamentos
+IOS-XE, utilizando o script python em nossa maquina e conversando com o
+IOS através de SSH com NETCONF, o chato desse tipo de comunicação é que
+precisamos nos autenticar para executarmos os comandos. Ou utilizando o
+Guest Shell, que é um Linux dentro do IOS-XE, podemos executar o script
+python dentro do proprio equipamento assim não precisamos nos autenticar
+:)</p>

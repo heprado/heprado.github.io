@@ -1,0 +1,41 @@
+<img src="img/aa62abd270b44fdbba961f1d41340674.png" loading="lazy" />
+<p><strong>LSA Type 1 - Router LSA</strong></p>
+<p>É um LSA enviado somente dentro de uma area OSPF. Ele envia
+informaçõe sobre quais links estão utilizando OSPF no roteador e quais
+seus respectivos Ips, também envia o custo, caso o link seja point to
+point ele envia informações sobre quem é o DR do link, também envia
+informações de qual o tipo de link (Transit Network, Stub Network,
+etc.)</p>
+<p><strong>LSA Type 2 - Network LSA</strong></p>
+<p>É um LSA enviado pelo DR para todos os outros roteadores da rede, ele
+envia informações sobre o ele(DR) , BDR e todos os outros roteadores da
+rede Broadcast ou NBMA.</p>
+<p><strong>LSA Type 3 - Network Summary LSA</strong></p>
+<p>É um LSA enviado pelo ABR tanto de dentro da AREA 1(Exemplo) para a
+AREA 0, quanto da AREA 0 para a AREA 1, esse LSA esconde os detalhes da
+rota(qual o router-id do roteador que enviou a rota etc), o ABR só manda
+o LSA e fala, eu tenho essa rota meu custo pra ela é esse, os outros
+routers só vão adicionar o custo deles até o ABR da rota especifica.</p>
+<p><strong>LSA Type 4 - AS Summary LSA</strong></p>
+<img src="img/ab6a65b176c14ecca061ec9917cddfbe.png" loading="lazy" />
+<p>Esse LSA começa a ser enviado quando um roteador dentro de uma area é
+um ASBR ou seja, possui redistribuição de rotas acontecendo nele, seja
+EIGRP BGP IS-IS tanto faz, o ABR recebe um Router LSA que é modificado
+para identificar que o roteador virou um ASBR, a partir desse momento o
+ABR começa a enviar o LSA Type 4 dentro da AREA 0, falando que para
+chegar nesse ASBR ele é o caminho, todos os outros roteadores ABR também
+encaminhar esse Summary ASBR LSA para dentro de suas respectivas
+areas.</p>
+<p><strong>LSA Type 5 - AS External LSA</strong></p>
+<p>Esse LSA é enviado pelo ASBR para todos os outros roteador na area,
+quando o ABR receber esse LSA ele encaminha para dentro da AREA 0, e
+esse LSA é espalhado entre todas as areas, por isso que vemos uma rota
+como OSPF E1 ou E2.</p>
+<img src="img/cb352978ea804e03b0bb807f7b7acdda.png" loading="lazy" />
+<p><strong>LSA Type 7 - NSSA External LSA</strong></p>
+<p>Esse LSA é enviado pelo ASBR quando a area está configurada com NSSA
+ou Totally NSSA, o ASBR envia esse LSA que tem uma rede externa ali nele
+e suas rotas, o ABR recebe e envia para a AREA 0 e traduz esse LSA para
+type 5, esse LSA só existe pois areas Stub e Totally not stubby não
+permitem LSAs type 5 internamente, então inventaram o Type 7 só pra
+conseguir conectar um ASBR numa area STUB/Totally Stubby.</p>

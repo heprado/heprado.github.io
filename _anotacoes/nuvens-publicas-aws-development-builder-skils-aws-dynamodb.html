@@ -1,0 +1,124 @@
+<p>DynamoDB é um banco de dados de pares de chaves e valores não
+relacional, utilizando a AWS conseguimos escalar ele horizontalmente e
+verticalmente o quanto quiser, inclusive entre regiões da AWS.</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Latencia de &lt;9 ms</li>
+<li>Replicação automatica em 3 SSDs aumentando throughput.</li>
+<li>Autenticação e autorização de acesso aos dados.</li>
+<li>Cache na memoria.</li>
+</ul>
+<h3 id="componentes">Componentes</h3>
+<p>Ele possui tabelas, com items dentro, cada item possui primary keys
+para identificação UNICA dentro da tabela, os items não possuem um
+schema definido então os itens podem OU NÃO possuir os mesmos
+atributos(valores de um item).<br />
+<img src="img/pasted-image-20250725093205.png" loading="lazy" /></p>
+<h3 id="primary-keys">Primary Keys</h3>
+<img src="img/pasted-image-20250725100130.png" loading="lazy" />
+<h4 id="partition-key">Partition Key</h4>
+<p>Uma partition key é gerada utilizando um hash da localização FISICA
+onde o dado está salvo, para facilitar pense o hash de uma VALOR
+ATRIBUIDO (TIPO UM ID) + LUN + PARTIÇÃO + CAMINHO DO ARQUIVO DENTRO DO
+FILE SYSTEM, esse hash é utilizado para identificar um item UNICO na
+tabela e para localizar ele fisicamente.</p>
+<p>Numa tabela que só possui uma partition key ela é utilizada como
+primary key, então o <em>VALOR ATRIBUIDO DEVE SER UNICO</em>, pois ai o
+hash vai ser único tbm.</p>
+<p>Lembre-se: O DynamoDB gera partições automáticas das suas tabelas,
+geralmente 3 partições por zona de availability da sua região</p>
+<h4 id="sort-key">Sort Key</h4>
+<p>Quando utilizamos uma sort keys temos uma Composite Key(Partition Key
++ Sort Key) a chave é gerada com um hash da Partition Key + Sort Key,
+então podemos ter Partition Keys iguais, só não podemos ter uma
+combinação de Partition Key + Sort Key iguais se não o hash não seria
+unico.</p>
+<h3 id="modelos-de-consistência">Modelos de consistência</h3>
+<h4 id="eventually-consistente-reads-default">Eventually Consistente
+Reads (Default)</h4>
+<p>Basicamente garante que o dado TALVEZ esteja consistente, ou seja se
+alguem pedir para ler os dados de uma tabela e alguem tiver ACABADO de
+escrever nela, talvez esse dado que foi escrito recentemente não aparece
+na leitura.</p>
+<h4 id="strongly-consistent-reads">Strongly Consistent Reads</h4>
+<p>O inverso de Eventually Consistent Reads, uma leitura SEMPRE vai
+retornar os valores salvos com sucesso.</p>
+<h4 id="acid-transactions">ACID (Transactions)</h4>
+<p>Uma transação trava a leitura de todas as tabelas envolvidas nela(
+pode ser só uma), a leitura só é permitida após a transação ter
+terminado, com sucesso ou não, numa transação podemos inserir diversos
+dados, mas se algum der errado no meio, NENHUM é inserido, todas as
+operações da transação são canceladas e voltamos a base ao estado
+anteriorr antes da transação.</p>
+<h3 id="formas-de-leitura-e-escrita">Formas de Leitura e Escrita</h3>
+<p>Temos duas formas para leitura ou escrita para uma TABELA,
+PROVISIONED ou ON-DEMAND.</p>
+<h4 id="provisioned">Provisioned</h4>
+<p>Nesse modo você define a quantidade de RCUs e WCUs por segundo que
+sua aplicação precisa, é possivel fazer escalonamento automatico
+utilizando mudanças na quantidade de trafego (Leitura/Escrita) sendo
+feito para o DynamoDB.</p>
+<p>É util para você não receber uma conta absurrda da AWS do nada.</p>
+<h5 id="rcu-read-capacity-unit">RCU (Read Capacity Unit)</h5>
+<p>É o valor utilizado para calcular quando você vai pagar por leitura,
+uma RCU representa uma leitura STRONGLY CONSISTENT READ ou duas
+EVENTUALLY CONSISTENTE READS para um item de até 4KB de tamanho POR
+SEGUNDO, se você precisar de um item maior que 4KB RCUs adicionais serão
+consumidas.</p>
+<h5 id="wcu-write-capacity-unit">WCU (Write Capacity Unit)</h5>
+<p>É o valor utilizado para calcular uma escrita por segundo para um
+item de até 1KB de tamanho, se o item for maior WCUs serão
+consumidas.</p>
+<h4 id="on-demand">On-Demand</h4>
+<p>Se a tabela for configurada para ser on-demand você pagara por
+requisição de leitura/escrita feitas, o dynamoDB vai escalar
+automaticamente para se adequar a quantidade de leituras e escritas
+sendo feitas.</p>
+<h5 id="read-request-units-rrus">Read Request Units (RRUs)</h5>
+<p>É o valor utilizado para calcular quando você vai pagar por leitura,
+uma RRU representa uma leitura STRONGLY CONSISTENT READ ou duas
+EVENTUALLY CONSISTENTE READS para um item de até 4KB de tamanho POR
+SEGUNDO, se você precisar de um item maior que 4KB RRUs adicionais serão
+consumidas.</p>
+<h5 id="write-request-units-wrus">Write Request Units (WRUs)</h5>
+<p>É o valor utilizado para calcular uma escrita por segundo para um
+item de até 1KB de tamanho, se o item for maior WRUs serão
+consumidas.</p>
+<h3 id="full-backup">Full Backup</h3>
+<p>Você pode executar backups completos do banco de dados quando quiser,
+você só paga o espaço em disco utilizado para guardar, ele é mantido
+para sempre então precisa ser deletado se você não quiser mais ele, o
+backup pode ser feito via CLI ou API da AWS.</p>
+<h3 id="point-in-time-recovery-pitr">Point in Time Recovery (PITR)</h3>
+<p>Automaticamente faz backups incrementais por um periodo fixo de 35
+dias, você pode escolher qualquer segundo especifico desses 35 dias para
+restaurar esse backup, uma nova tabela é criada na restauração.</p>
+<h3 id="streams">Streams</h3>
+<p>É um historico das modificações de um item de um tabela, essa opção
+pode ser ativada e o historico é apagado automaticamente em 24h.</p>
+<p>Cada stream tem um numero de sequencia que reflete a ordem das
+modificações, ela guarda a primary key (Partition Key ou Composite Key)
+e os atributos do item que foram modificados, você também pode adicionar
+items adicionais como a hora que a modificação foi realizada.</p>
+<img src="img/pasted-image-20250725130011.png" loading="lazy" />
+<p>No exemplo a cima uma aplicação executa mudanças numa tabela, essas
+mudanças são então salvas num shard que automaticamente chamada um
+Lambda para processar essas mudanças.</p>
+<h3 id="dax">DAX</h3>
+<p>Você pode habilitar o DAX na sua tabela para cachear leituras feitas
+na sua tabela em memoria RAM, melhorando e muito a latencia de leituras,
+além de diminuir a quantidade de leituras feitas diretamente na tabela,
+reduzindo a quantidade de RCUs consumidas.</p>
+<p>O DAX só funciona para Eventually Consistent Reads.</p>
+<p>Requests feitas pro DAX de uma EC2 são de graça dentro de uma
+availability zone, entre availability zones são pagas.</p>
+<img src="img/pasted-image-20250725133847.png" loading="lazy" />
+<p>Explicação do exemplo a cima</p>
+<ol type="1">
+<li>Aplicacação consulta o cache.</li>
+<li>O cache não possui os dados (cache miss) e executa a consulta no
+dynamoDB.</li>
+<li>DynamoDB responde a consulta e o DAX salva no cache para consultas
+iguais subsequentes</li>
+<li>DAX retorna a consulta para a aplicação.</li>
+</ol>

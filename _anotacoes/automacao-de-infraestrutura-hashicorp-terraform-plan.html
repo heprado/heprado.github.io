@@ -1,0 +1,19 @@
+<p>O terraform plan tem 5 passos:</p>
+<img src="img/435079cf137940988c2bf71ee560feef.png" loading="lazy" />
+<ul>
+<li><p>Inspect State , ele inspeciona o tf.state para ver o que já esta
+configurado e compara isso com o arquivo de configuração.</p></li>
+<li><p>Depency Graph, ele verifica qual resource depende de qual para
+saber qual criar primeiro.</p></li>
+<li><p>Additions, Updates and Deletions, atráves do que ele viu no
+tf.state ele sabe o que precisa ser criado, modificado ou
+deletado.</p></li>
+<li><p>Parallel Execution, ele faz tudo que foi definido no arquivo de
+configuração paralelamente, então você não precisa uma resource ser
+criada para outra que não depende dela também ser criada, isso faz o
+processo ser MUITO mais rapido.</p></li>
+<li><p>Save the plan, terraform plan - out [nomedoarquivo], salva o
+plano em um arquivo para poder ser revisado por alguem por ou um
+sofware, assim que aprovado podemos fazer o terraform apply
+[nomedoarquivo].</p></li>
+</ul>

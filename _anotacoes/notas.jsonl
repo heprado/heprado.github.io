@@ -1,0 +1,225 @@
+{"slug":"automacao-de-infraestrutura-ansible-ansible-config-file","titulo":"Ansible Config File","categoria":"Automação de Infraestrutura","grupo":"Ansible","criado":"2021-07-28","tags":["ansible","configuration","configuration_management"]}
+{"slug":"automacao-de-infraestrutura-ansible-ansible-inventories","titulo":"Ansible Inventories","categoria":"Automação de Infraestrutura","grupo":"Ansible","criado":"2021-07-28","tags":["ansible","yaml","configuration_management"]}
+{"slug":"automacao-de-infraestrutura-ansible-core-components","titulo":"Core Components","categoria":"Automação de Infraestrutura","grupo":"Ansible","criado":"2021-07-26","tags":["ansible","configuration_management"]}
+{"slug":"automacao-de-infraestrutura-hashicorp-estado-terraform","titulo":"Terraform Files","categoria":"Automação de Infraestrutura","grupo":"Hashicorp","criado":"2020-12-28","tags":["hashicorp","infrastructure_as_code","configuration"]}
+{"slug":"automacao-de-infraestrutura-hashicorp-funcoes-terraform","titulo":"Terraform Functions","categoria":"Automação de Infraestrutura","grupo":"Hashicorp","criado":"2021-05-18","tags":["hashicorp","infrastructure_as_code","programming","hcl"]}
+{"slug":"automacao-de-infraestrutura-hashicorp-sintaxe-terraform","titulo":"Terraform Syntax","categoria":"Automação de Infraestrutura","grupo":"Hashicorp","criado":"2021-01-19","tags":["hashicorp","hcl","infrastructure_as_code","programming"]}
+{"slug":"automacao-de-infraestrutura-hashicorp-termos-infraestrutura-como-codigo","titulo":"IAC Definitions","categoria":"Automação de Infraestrutura","grupo":"Hashicorp","criado":"2020-11-03","tags":["hashicorp","infrastructure_as_code","concepts"]}
+{"slug":"automacao-de-infraestrutura-hashicorp-terraform-plan","titulo":"Terraform Plan","categoria":"Automação de Infraestrutura","grupo":"Hashicorp","criado":"2021-01-19","tags":["hashicorp","infrastructure_as_code","command"]}
+{"slug":"automacao-de-infraestrutura-hashicorp-terraform-provisioner","titulo":"Terraform Provisioner","categoria":"Automação de Infraestrutura","grupo":"Hashicorp","criado":"2021-01-20","tags":["hashicorp","hcl","infrastructure_as_code","programming"]}
+{"slug":"gamedev-camera-ortogonal","titulo":"Câmera Ortogonal","categoria":"Gamedev","grupo":""}
+{"slug":"linux-como-configurar-prompts-de-comando-usando-variaveis-de-ambiente","titulo":"Customizar Prompt de comando com variaveis de ambiente","categoria":"Linux","grupo":"","tags":["linux","configuration","cores","operating_systems"]}
+{"slug":"linux-gerenciadores-de-pacotes","titulo":"Gerenciadores de Pacotes","categoria":"Linux","grupo":"","criado":"2020-03-24","tags":["linux","configuration","operating_systems"]}
+{"slug":"linux-linux-commands","titulo":"Linux Commands","categoria":"Linux","grupo":"","criado":"2020-02-11","tags":["linux","command","operating_systems"]}
+{"slug":"linux-linux-distros","titulo":"Linux Distros","categoria":"Linux","grupo":"","criado":"2019-12-12","tags":["linux","operating_systems"]}
+{"slug":"nuvens-publicas-aws-development-builder-skils-aws-cognito","titulo":"AWS Cognito","categoria":"Nuvens Públicas","grupo":"AWS / Development / Builder Skils","tags":["aws","segurança","authentication","authorization","programming"]}
+{"slug":"nuvens-publicas-aws-development-builder-skils-aws-dynamodb","titulo":"AWS DynamoDB","categoria":"Nuvens Públicas","grupo":"AWS / Development / Builder Skils","tags":["aws","database","nosql"]}
+{"slug":"nuvens-publicas-aws-development-builder-skils-database-basics","titulo":"Database Basics","categoria":"Nuvens Públicas","grupo":"AWS / Development / Builder Skils","tags":["aws","database"]}
+{"slug":"nuvens-publicas-aws-development-builder-skils-iam-identity-and-access-management","titulo":"IAM (Identity and Access Management)","categoria":"Nuvens Públicas","grupo":"AWS / Development / Builder Skils","tags":["aws","authorization","authentication"]}
+{"slug":"nuvens-publicas-aws-development-builder-skils-security","titulo":"Security","categoria":"Nuvens Públicas","grupo":"AWS / Development / Builder Skils","tags":["segurança","observability","automation","aws"]}
+{"slug":"nuvens-publicas-aws-saa-c02-domain-1-design-resilient-archite-architection-for-availability","titulo":" Architection for Availability","categoria":"Nuvens Públicas","grupo":"AWS / SAA - C02 / Domain 1 - Design Resilient Archite","criado":"2020-10-27","tags":["aws"]}
+{"slug":"nuvens-publicas-aws-saa-c02-domain-1-design-resilient-archite-setting-up-aws-account","titulo":" Setting up AWS Account","categoria":"Nuvens Públicas","grupo":"AWS / SAA - C02 / Domain 1 - Design Resilient Archite","criado":"2020-10-28","tags":["aws","configuration"]}
+{"slug":"nuvens-publicas-aws-saa-c02-iam","titulo":"IAM","categoria":"Nuvens Públicas","grupo":"AWS / SAA - C02","criado":"2021-05-25","tags":["aws","authentication","authorization"]}
+{"slug":"nuvens-publicas-aws-saa-c02-referencia-para-explicacoes-dos-servicos","titulo":"Referencia para explicações dos Serviços","categoria":"Nuvens Públicas","grupo":"AWS / SAA - C02","criado":"2020-10-27","tags":["aws"]}
+{"slug":"observabilidade-appdynamics-automatic-leak-detection","titulo":"Automatic Leak Detection","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-14","tags":["appdynamics","observability","programming","java","cisco","monitoring"]}
+{"slug":"observabilidade-appdynamics-backend-detection","titulo":"Backend Detection","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-19","tags":["appdynamics","observability","cisco","monitoring"]}
+{"slug":"observabilidade-appdynamics-baselines","titulo":"Baselines","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-14","tags":["appdynamics","observability","cisco","monitoring"]}
+{"slug":"observabilidade-appdynamics-business-transaction","titulo":"Business Transaction","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-07","tags":["appdynamics","observability","apis","cisco"]}
+{"slug":"observabilidade-appdynamics-custom-dashboard","titulo":"Custom Dashboard","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-30","tags":["appdynamics","observability","cisco"]}
+{"slug":"observabilidade-appdynamics-data-collectors","titulo":"Data Collectors","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-20","tags":["appdynamics","telemetry","cisco"]}
+{"slug":"observabilidade-appdynamics-development-level-monitoring","titulo":"Development Level Monitoring","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-14","tags":["appdynamics","monitoring","cisco"]}
+{"slug":"observabilidade-appdynamics-diagnostic-session","titulo":"Diagnostic Session","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-14","tags":["appdynamics","monitoring","observability","cisco"]}
+{"slug":"observabilidade-appdynamics-errors","titulo":"Errors","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-14","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-events","titulo":"Events","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-08-02","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-health-rule","titulo":"Health Rule","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-08-02","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-how-appd-monitors","titulo":"How AppD Monitors","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-07","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-how-user-monitoring-works","titulo":"How User Monitoring Works","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-07","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-information-points","titulo":"Information Points","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-19","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-jmx-monitoring","titulo":"JMX Monitoring","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-19","tags":["cisco","appdynamics","monitoring","java"]}
+{"slug":"observabilidade-appdynamics-metrics","titulo":"Metrics","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-08","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-monitoring-structure","titulo":"Monitoring Structure","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-05","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-object-instance-tracking","titulo":"Object Instance Tracking","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-14","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-personas","titulo":"Personas","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-05","tags":["observability","concepts","appdynamics","cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-reports","titulo":"Reports","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-08-03","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-runbooks-automation","titulo":"Runbooks Automation","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-08-03","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-scopes","titulo":"Scopes","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-19","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-service-endpoint","titulo":"Service Endpoint","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-19","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-servlet","titulo":"Servlet","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-19","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-transaction-detection","titulo":"Transaction Detection","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-15","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-transaction-snapshots","titulo":"Transaction Snapshots","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-07","tags":["cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-appdynamics-what-is-appdynamics","titulo":"What is AppDynamics","categoria":"Observabilidade","grupo":"AppDynamics","criado":"2021-07-05","tags":["observability","appdynamics","cisco","appdynamics","monitoring"]}
+{"slug":"observabilidade-cwom","titulo":"CWOM","categoria":"Observabilidade","grupo":"","criado":"2020-04-23","tags":["cisco","morto"]}
+{"slug":"observabilidade-garbage-collection-java","titulo":"Garbage Collection (Java)","categoria":"Observabilidade","grupo":"","criado":"2021-08-05","tags":["programming","java"]}
+{"slug":"observabilidade-nexus-data-broker","titulo":"Nexus Data Broker","categoria":"Observabilidade","grupo":"","criado":"2021-03-18","tags":["cisco","monitoring","morto"]}
+{"slug":"observabilidade-nir-nia-nae","titulo":"NIR,NIA,NAE","categoria":"Observabilidade","grupo":"","criado":"2020-01-29","tags":["aci","cisco","observability"]}
+{"slug":"programacao-apis-api-authentication-mechanisms","titulo":"API Authentication Mechanisms","categoria":"Programação","grupo":"APIs","criado":"2020-08-26","tags":["apis","webdev","automation"]}
+{"slug":"programacao-apis-apis-data-formats","titulo":"APIs Data Formats","categoria":"Programação","grupo":"APIs","criado":"2020-06-30","tags":["apis","webdev","automation"]}
+{"slug":"programacao-apis-common-api-constraints","titulo":"Common API Constraints","categoria":"Programação","grupo":"APIs","criado":"2020-08-25","tags":["apis","webdev","automation"]}
+{"slug":"programacao-apis-http-applied-to-web-based-apis","titulo":"HTTP Applied to Web-Based APIs","categoria":"Programação","grupo":"APIs","criado":"2020-08-14","tags":["apis","webdev","automation"]}
+{"slug":"programacao-apis-rest-style-api","titulo":"REST Style API","categoria":"Programação","grupo":"APIs","criado":"2020-08-24","tags":["apis","webdev","automation"]}
+{"slug":"programacao-apis-rise-of-apis-in-software-design","titulo":"Rise of APIs in Software Design","categoria":"Programação","grupo":"APIs","criado":"2020-06-30","tags":["apis","webdev","automation"]}
+{"slug":"programacao-apis-rpc-style-api","titulo":"RPC Style API","categoria":"Programação","grupo":"APIs","criado":"2020-08-19","tags":["apis","webdev","automation"]}
+{"slug":"programacao-apis-serialization-and-deserialization","titulo":"Serialization and Deserialization","categoria":"Programação","grupo":"APIs","criado":"2020-07-02","tags":["apis","webdev","automation"]}
+{"slug":"programacao-c-dotnet-maui-introducao","titulo":"Arquitetura MAUI","categoria":"Programação","grupo":"C# / Dotnet / MAUI","criado":"2024-02-14","tags":["c-sharp","dotnet","microsoft","concepts"]}
+{"slug":"programacao-c-introducao","titulo":"Introdução - C","categoria":"Programação","grupo":"C","criado":"2024-09-15","tags":["programming","c-lang"]}
+{"slug":"programacao-c-sequencias-de-escape","titulo":"Sequencias de escape","categoria":"Programação","grupo":"C","tags":["c-lang","programming"]}
+{"slug":"programacao-c-sintaxe-array","titulo":"Array","categoria":"Programação","grupo":"C# / Sintaxe","criado":"2020-05-14","tags":["programming","c-sharp","microsoft"]}
+{"slug":"programacao-c-sintaxe-c-basics","titulo":"C# Basics","categoria":"Programação","grupo":"C# / Sintaxe","criado":"2020-05-13","tags":["programming","c-sharp","microsoft","concepts","jit","clr","cil"]}
+{"slug":"programacao-c-sintaxe-classes","titulo":"Classes","categoria":"Programação","grupo":"C# / Sintaxe","criado":"2020-05-14","tags":["c-sharp","microsoft","programming","oop"]}
+{"slug":"programacao-c-sintaxe-data-types","titulo":"Data Types","categoria":"Programação","grupo":"C# / Sintaxe","criado":"2020-05-13","tags":["c-sharp","concepts","programming","microsoft"]}
+{"slug":"programacao-c-sintaxe-enum","titulo":"Enum","categoria":"Programação","grupo":"C# / Sintaxe","criado":"2020-05-14","tags":["c-sharp","microsoft","programming"]}
+{"slug":"programacao-c-sintaxe-operators","titulo":"Operators","categoria":"Programação","grupo":"C# / Sintaxe","criado":"2020-05-13","tags":["c-sharp","microsoft"]}
+{"slug":"programacao-c-sintaxe-overflowing","titulo":"Overflowing","categoria":"Programação","grupo":"C# / Sintaxe","criado":"2020-05-13","tags":["programming"]}
+{"slug":"programacao-c-sintaxe-strings","titulo":"Strings","categoria":"Programação","grupo":"C# / Sintaxe","criado":"2020-05-14","tags":["programming","microsoft","c-sharp"]}
+{"slug":"programacao-c-sintaxe-type-conversion","titulo":"Type Conversion","categoria":"Programação","grupo":"C# / Sintaxe","criado":"2020-05-13","tags":["programming","dotnet","microsoft"]}
+{"slug":"programacao-cs50-ascii","titulo":"ASCII","categoria":"Programação","grupo":"CS50","tags":["programming"]}
+{"slug":"programacao-cs50-unario-decimal-e-binario","titulo":"Unário,Decimal e Binário","categoria":"Programação","grupo":"CS50","tags":["programming","matematica"]}
+{"slug":"programacao-desenvolvimento-desenvolvimento-moderno-de-software-aplicacoes-desktop-mobile-e-web","titulo":"Aplicações Desktop, Mobile e Web","categoria":"Programação","grupo":"Desenvolvimento / Desenvolvimento Moderno de Software","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-desenvolvimento-moderno-de-software-back-end","titulo":"Back-end","categoria":"Programação","grupo":"Desenvolvimento / Desenvolvimento Moderno de Software","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-desenvolvimento-moderno-de-software-design-de-interface-de-usuario","titulo":"Design de Interface de Usuário","categoria":"Programação","grupo":"Desenvolvimento / Desenvolvimento Moderno de Software","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-desenvolvimento-moderno-de-software-experiencia-de-usuario-ux","titulo":"UX","categoria":"Programação","grupo":"Desenvolvimento / Desenvolvimento Moderno de Software","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-desenvolvimento-moderno-de-software-framework","titulo":"Framework","categoria":"Programação","grupo":"Desenvolvimento / Desenvolvimento Moderno de Software","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-desenvolvimento-moderno-de-software-front-end","titulo":"Frotn-end","categoria":"Programação","grupo":"Desenvolvimento / Desenvolvimento Moderno de Software","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-desenvolvimento-moderno-de-software-garantia-de-qualidade-qa","titulo":"QA","categoria":"Programação","grupo":"Desenvolvimento / Desenvolvimento Moderno de Software","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-metodologias-software-development-metodologies","titulo":"Metodologias","categoria":"Programação","grupo":"Desenvolvimento / Metodologias","criado":"2020-07-16","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-metodologias-test-driven-development","titulo":"Test-Driven Development","categoria":"Programação","grupo":"Desenvolvimento / Metodologias","criado":"2020-07-17","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-pensamento-computacional-abstracoes","titulo":"Abstrações","categoria":"Programação","grupo":"Desenvolvimento / Pensamento computacional","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-pensamento-computacional-algoritmos","titulo":"Algoritmos","categoria":"Programação","grupo":"Desenvolvimento / Pensamento computacional","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-pensamento-computacional-decomposicao","titulo":"Decomposição","categoria":"Programação","grupo":"Desenvolvimento / Pensamento computacional","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-pensamento-computacional-o-que-e","titulo":"Pensamento Computacional - O que é","categoria":"Programação","grupo":"Desenvolvimento / Pensamento computacional","tags":["programming"]}
+{"slug":"programacao-desenvolvimento-pensamento-computacional-padroes","titulo":"Padrões","categoria":"Programação","grupo":"Desenvolvimento / Pensamento computacional","tags":["programming"]}
+{"slug":"programacao-design-architecture-and-design-pattern","titulo":"Architecture and Design Pattern","categoria":"Programação","grupo":"Design","criado":"2020-08-13","tags":["programming"]}
+{"slug":"programacao-design-architecture-and-design-pattern-oop","titulo":"Architecture And Design Pattern(OOP)","categoria":"Programação","grupo":"Design","criado":"2020-08-12","tags":["programming"]}
+{"slug":"programacao-design-modular-design-benefits","titulo":"Modular Design Benefits","categoria":"Programação","grupo":"Design","criado":"2020-08-12","tags":["programming"]}
+{"slug":"programacao-design-modular-software-design","titulo":"Modular Software Design","categoria":"Programação","grupo":"Design","criado":"2020-07-17","tags":["programming"]}
+{"slug":"programacao-design-mvc","titulo":"MVC","categoria":"Programação","grupo":"Design","criado":"2020-08-13","tags":["programming"]}
+{"slug":"programacao-git-branches","titulo":"Git Branches","categoria":"Programação","grupo":"Git","criado":"2020-07-16","tags":["versionamento","programming"]}
+{"slug":"programacao-git-code-review","titulo":"Code Review","categoria":"Programação","grupo":"Git","criado":"2020-07-17","tags":["versionamento","programming"]}
+{"slug":"programacao-git-collaborative-software-development","titulo":"Collaborative Software Development","categoria":"Programação","grupo":"Git","criado":"2020-07-08","tags":["versionamento","programming"]}
+{"slug":"programacao-git-versionamento","titulo":"Version Control with Git","categoria":"Programação","grupo":"Git","criado":"2020-07-16","tags":["versionamento","programming"]}
+{"slug":"programacao-http-http-content-negotiation","titulo":"HTTP Content Negotiation","categoria":"Programação","grupo":"HTTP","criado":"2020-08-19","tags":["programming","webdev","apis"]}
+{"slug":"programacao-http-http-overview","titulo":"HTTP Overview","categoria":"Programação","grupo":"HTTP","criado":"2020-08-14","tags":["programming","webdev","apis"]}
+{"slug":"programacao-http-leveraging-https-for-security","titulo":"Leveraging HTTPS for Security","categoria":"Programação","grupo":"HTTP","criado":"2020-08-26","tags":["programming","webdev","apis"]}
+{"slug":"programacao-http-using-http-authentication","titulo":"Using HTTP Authentication","categoria":"Programação","grupo":"HTTP","criado":"2020-08-26","tags":["programming","webdev","apis"]}
+{"slug":"programacao-http-webhooks","titulo":"Webhooks","categoria":"Programação","grupo":"HTTP","criado":"2020-08-24","tags":["programming","webdev","apis"]}
+{"slug":"programacao-php-como-surgiu-o-php","titulo":"Como surgiu o PHP","categoria":"Programação","grupo":"PHP","tags":["programming","php"]}
+{"slug":"programacao-php-erros-e-exceptions","titulo":"Erros e Exceções","categoria":"Programação","grupo":"PHP","tags":["programming","php"]}
+{"slug":"programacao-php-gerenciador-de-pacotes","titulo":"Gerenciador de Pacotes","categoria":"Programação","grupo":"PHP","tags":["programming","php"]}
+{"slug":"programacao-php-o-que-e","titulo":"PHP - O que é","categoria":"Programação","grupo":"PHP","tags":["programming","php"]}
+{"slug":"programacao-rust-cargo","titulo":"Básico do Cargo","categoria":"Programação","grupo":"Rust","criado":"2024-02-28","tags":["programming","command","rust"]}
+{"slug":"programacao-rust-compilando-de-windows-para-linux","titulo":"Compilando do Windows para Linux","categoria":"Programação","grupo":"Rust","tags":["rust","programming","compiladores","linux","microsoft"]}
+{"slug":"programacao-rust-constantes","titulo":"Constantes","categoria":"Programação","grupo":"Rust","tags":["rust","programming"]}
+{"slug":"programacao-rust-ferramentas-do-rust","titulo":"Ferramentas do Rust","categoria":"Programação","grupo":"Rust","criado":"2024-02-28","tags":["rust","command"]}
+{"slug":"programacao-rust-funcoes","titulo":"Funções","categoria":"Programação","grupo":"Rust","tags":["rust","programming"]}
+{"slug":"programacao-rust-numeros-literais","titulo":"Números literais","categoria":"Programação","grupo":"Rust","tags":["rust","programming"]}
+{"slug":"programacao-rust-porque-rust","titulo":"Porquê Rust","categoria":"Programação","grupo":"Rust","criado":"2024-02-28","tags":["rust","programming","memory","segurança"]}
+{"slug":"programacao-rust-tipos-compostos","titulo":"Tipos Compostos","categoria":"Programação","grupo":"Rust","tags":["programming","rust","data"]}
+{"slug":"programacao-rust-tipos-de-dados","titulo":"Tipos de dados","categoria":"Programação","grupo":"Rust","tags":["rust","programming","data"]}
+{"slug":"programacao-rust-tipos-escalares","titulo":"Tipos Escalares","categoria":"Programação","grupo":"Rust","tags":["rust","programming","data"]}
+{"slug":"programacao-rust-variaveis","titulo":"Variáveis","categoria":"Programação","grupo":"Rust","tags":["rust","programming","memory"]}
+{"slug":"programacao-sdn-automating-cisco-network-operations","titulo":"Automating Cisco Network Operations","categoria":"Programação","grupo":"SDN","criado":"2020-09-01","tags":["cisco","programming","redes"]}
+{"slug":"programacao-sdn-cisco-collab-apis","titulo":"Cisco Collab APIs","categoria":"Programação","grupo":"SDN","criado":"2020-08-27","tags":["cisco","apis","programming","redes"]}
+{"slug":"programacao-sdn-cisco-collaboration-platforms","titulo":"Cisco Collaboration Platforms","categoria":"Programação","grupo":"SDN","criado":"2020-08-27","tags":["cisco","redes"]}
+{"slug":"programacao-sdn-cisco-controller-apis","titulo":"Cisco Controller APIs","categoria":"Programação","grupo":"SDN","criado":"2020-10-13","tags":["cisco","apis","programming","redes"]}
+{"slug":"programacao-sdn-cisco-ios-xe-device-level-apis","titulo":"Cisco IOS-XE Device-Level APIs","categoria":"Programação","grupo":"SDN","criado":"2020-09-01","tags":["cisco","apis","programming","redes"]}
+{"slug":"programacao-sdn-cisco-network-management-platforms","titulo":"Cisco Network Management Platforms in the Cloud","categoria":"Programação","grupo":"SDN","criado":"2020-08-31","tags":["cisco","sdn"]}
+{"slug":"programacao-sdn-cisco-network-management-platforms-2","titulo":"Cisco Network Management Platforms","categoria":"Programação","grupo":"SDN","criado":"2020-08-27","tags":["cisco","redes"]}
+{"slug":"programacao-sdn-cisco-nx-os-device-level-apis","titulo":"Cisco NX-OS Device-Level APIs","categoria":"Programação","grupo":"SDN","criado":"2020-09-01","tags":["cisco","data_center","apis","programming"]}
+{"slug":"programacao-sdn-cisco-security-apis","titulo":"Cisco Security APIs","categoria":"Programação","grupo":"SDN","criado":"2020-08-27","tags":["cisco","segurança","apis","programming"]}
+{"slug":"programacao-sdn-cisco-security-platform","titulo":"Cisco Security Platform","categoria":"Programação","grupo":"SDN","criado":"2020-08-27","tags":["cisco","redes","segurança"]}
+{"slug":"programacao-sdn-netconf","titulo":"NETCONF","categoria":"Programação","grupo":"SDN","criado":"2020-08-24","tags":["cisco","apis","programming","automation","redes"]}
+{"slug":"redes-ccna-802-1x","titulo":"802.1x","categoria":"Redes","grupo":"CCNA","criado":"2019-10-27","tags":["redes","segurança"]}
+{"slug":"redes-ccna-aaa","titulo":"AAA","categoria":"Redes","grupo":"CCNA","criado":"2019-11-27","tags":["redes","authentication","authorization","enlace","rede"]}
+{"slug":"redes-ccna-bgp","titulo":"BGP","categoria":"Redes","grupo":"CCNA","criado":"2019-11-26","tags":["redes","roteamento"]}
+{"slug":"redes-ccna-cisco-ios","titulo":"CISCO IOS","categoria":"Redes","grupo":"CCNA","criado":"2019-10-24","tags":["cisco","redes","command"]}
+{"slug":"redes-ccna-csma-cd","titulo":"CSMA/CD","categoria":"Redes","grupo":"CCNA","criado":"2019-12-07","tags":["redes","fisica"]}
+{"slug":"redes-ccna-eigrp","titulo":"EIGRP","categoria":"Redes","grupo":"CCNA","criado":"2019-11-12","tags":["redes","roteamento","rede"]}
+{"slug":"redes-ccna-etherchannel","titulo":"Etherchannel","categoria":"Redes","grupo":"CCNA","criado":"2019-10-27","tags":["redes","agregacao","enlace"]}
+{"slug":"redes-ccna-ethernet","titulo":"Ethernet","categoria":"Redes","grupo":"CCNA","criado":"2019-10-24","tags":["redes","enlace"]}
+{"slug":"redes-ccna-gerenciamento-de-redes","titulo":"Gerenciamento de Redes","categoria":"Redes","grupo":"CCNA","criado":"2019-11-28","tags":["monitoring","observability","redes"]}
+{"slug":"redes-ccna-hsrp","titulo":"HSRP","categoria":"Redes","grupo":"CCNA","criado":"2019-11-26","tags":["redes","rede","roteamento","agregacao","balanceamento"]}
+{"slug":"redes-ccna-ios-boot-process","titulo":"IOS Boot Process","categoria":"Redes","grupo":"CCNA","criado":"2019-10-28","tags":["cisco","redes","configuration"]}
+{"slug":"redes-ccna-ios-licensing","titulo":"IOS Licensing","categoria":"Redes","grupo":"CCNA","criado":"2019-10-31","tags":["cisco","morto"]}
+{"slug":"redes-ccna-ipv4","titulo":"IPv4","categoria":"Redes","grupo":"CCNA","criado":"2019-10-24","tags":["redes","rede","internet_protocol"]}
+{"slug":"redes-ccna-ipv6","titulo":"IPv6","categoria":"Redes","grupo":"CCNA","criado":"2019-11-19","tags":["redes","rede","internet_protocol"]}
+{"slug":"redes-ccna-meio-fisico","titulo":"Meio Físico","categoria":"Redes","grupo":"CCNA","criado":"2019-10-24","tags":["redes","fisica"]}
+{"slug":"redes-ccna-metro-ethernet","titulo":"Metro Ethernet","categoria":"Redes","grupo":"CCNA","criado":"2019-11-24","tags":["redes","enlace","rede"]}
+{"slug":"redes-ccna-modelo-osi","titulo":"Modelo OSI","categoria":"Redes","grupo":"CCNA","criado":"2019-10-24","tags":["redes"]}
+{"slug":"redes-ccna-mpls","titulo":"MPLS","categoria":"Redes","grupo":"CCNA","criado":"2019-11-24","tags":["redes","enlace"]}
+{"slug":"redes-ccna-ospf","titulo":"OSPF","categoria":"Redes","grupo":"CCNA","criado":"2019-10-31","tags":["redes","roteamento"]}
+{"slug":"redes-ccna-port-security","titulo":"Port-Security","categoria":"Redes","grupo":"CCNA","criado":"2019-11-30","tags":["redes","segurança","enlace"]}
+{"slug":"redes-ccna-pppserial","titulo":"PPP/Serial","categoria":"Redes","grupo":"CCNA","criado":"2019-11-22","tags":["redes","enlace"]}
+{"slug":"redes-ccna-protocolos-de-roteamento","titulo":"Protocolos de Roteamento","categoria":"Redes","grupo":"CCNA","criado":"2019-10-31","tags":["redes","roteamento","internet_protocol"]}
+{"slug":"redes-ccna-qos","titulo":"QoS","categoria":"Redes","grupo":"CCNA","criado":"2019-11-27","tags":["redes","qualidade","enlace","rede","transporte"]}
+{"slug":"redes-ccna-revisao-aaa","titulo":"Revisão AAA","categoria":"Redes","grupo":"CCNA","criado":"2019-12-07","tags":["redes","authentication","authorization","enlace","rede"]}
+{"slug":"redes-ccna-revisao-dtp","titulo":"Revisão DTP","categoria":"Redes","grupo":"CCNA","criado":"2019-12-06","tags":["rede","enlace"]}
+{"slug":"redes-ccna-sdn","titulo":"SDN","categoria":"Redes","grupo":"CCNA","criado":"2019-12-04","tags":["redes","sdn"]}
+{"slug":"redes-ccna-spanning-tree-importante","titulo":"Spanning-Tree(Importante)","categoria":"Redes","grupo":"CCNA","criado":"2019-10-27","tags":["redes","enlace"]}
+{"slug":"redes-ccna-speed-auto-e-duplex-auto","titulo":"Speed Auto e Duplex Auto","categoria":"Redes","grupo":"CCNA","criado":"2019-12-06","tags":["redes","qualidade"]}
+{"slug":"redes-ccna-stack","titulo":"Stack","categoria":"Redes","grupo":"CCNA","criado":"2019-10-27","tags":["redes","fisica"]}
+{"slug":"redes-ccna-syslog","titulo":"Syslog","categoria":"Redes","grupo":"CCNA","criado":"2019-12-07","tags":["redes","monitoring","observability"]}
+{"slug":"redes-ccna-tcp-udp","titulo":"TCP/UDP","categoria":"Redes","grupo":"CCNA","criado":"2019-10-24","tags":["redes","transporte"]}
+{"slug":"redes-ccna-vpn","titulo":"VPN","categoria":"Redes","grupo":"CCNA","criado":"2019-11-25","tags":["redes","rede","segurança"]}
+{"slug":"redes-ccnp-ccnp-data-center-350-601-definicao","titulo":"1 - OSPF Fundamentals","categoria":"Redes","grupo":"CCNP / CCNP Data Center 350-601","criado":"2020-04-20","tags":["redes","roteamento"]}
+{"slug":"redes-ccnp-ccnp-data-center-350-601-ospf-fundamentals-area-types","titulo":"1.6 Area Types","categoria":"Redes","grupo":"CCNP / CCNP Data Center 350-601 / OSPF Fundamentals","criado":"2020-04-21","tags":["redes","roteamento"]}
+{"slug":"redes-ccnp-ccnp-data-center-350-601-ospf-fundamentals-dr-and-bdr-in-broadcast-network","titulo":"1.3 DR and BDR in Broadcast Networks","categoria":"Redes","grupo":"CCNP / CCNP Data Center 350-601 / OSPF Fundamentals","criado":"2020-04-21","tags":["redes","roteamento"]}
+{"slug":"redes-ccnp-ccnp-data-center-350-601-ospf-fundamentals-lsa-types","titulo":"1.7 LSA Types","categoria":"Redes","grupo":"CCNP / CCNP Data Center 350-601 / OSPF Fundamentals","criado":"2020-04-20","tags":["redes","roteamento"]}
+{"slug":"redes-ccnp-ccnp-data-center-350-601-ospf-fundamentals-network-types","titulo":"1.4 Network Types","categoria":"Redes","grupo":"CCNP / CCNP Data Center 350-601 / OSPF Fundamentals","criado":"2020-04-20","tags":["redes","roteamento"]}
+{"slug":"redes-ccnp-ccnp-data-center-350-601-ospf-fundamentals-ospf-in-nexus","titulo":"1.9 OSPF in Nexus","categoria":"Redes","grupo":"CCNP / CCNP Data Center 350-601 / OSPF Fundamentals","criado":"2020-04-22","tags":["redes","roteamento"]}
+{"slug":"redes-ccnp-ccnp-data-center-350-601-ospf-fundamentals-ospf-metric","titulo":"1.8 OSPF Metric","categoria":"Redes","grupo":"CCNP / CCNP Data Center 350-601 / OSPF Fundamentals","criado":"2020-04-21","tags":["redes","roteamento"]}
+{"slug":"redes-ccnp-ccnp-data-center-350-601-ospf-fundamentals-ospf-neighbors-and-election","titulo":"1.2 OSPF Neighbors and Election","categoria":"Redes","grupo":"CCNP / CCNP Data Center 350-601 / OSPF Fundamentals","criado":"2020-04-21","tags":["redes","roteamento"]}
+{"slug":"redes-ccnp-ccnp-data-center-350-601-ospf-fundamentals-tipos-de-pacotes-ospf","titulo":"1.5 Tipos de Pacotes OSPF","categoria":"Redes","grupo":"CCNP / CCNP Data Center 350-601 / OSPF Fundamentals","criado":"2020-04-20","tags":["redes","roteamento"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-802-3-ethernet-on-data-centers","titulo":"802.3(Ethernet) on Data Centers","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-03-25","tags":["data_center","redes","fisica"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-data-center-topologies","titulo":"Data Center Topologies","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-03-26","tags":["data_center","redes","fisica"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-melhores-praticas-para-vlans-em-dc","titulo":"Melhores Praticas para VLANs em DC","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-04-07","tags":["data_center","redes","enlace"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-per-vlan-stp-e-multiple-spanning-tree","titulo":"Per Vlan STP e Multiple Spanning Tree","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-03-30","tags":["data_center","redes","enlace"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-primordios-da-virtualicao-da-rede","titulo":"Primórdios da Virtualição da Rede / VLANS","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-03-27","tags":["data_center","redes","virtualization"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-private-vlan","titulo":"Private VLAN","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-03-30","tags":["data_center","redes","enlace"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-rapid-spanning-tree","titulo":"Rapid Spanning-Tree","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-03-30","tags":["data_center","redes","enlace"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-rib-e-fib-control-plane-e-data-pla","titulo":"RIB e FIB (Control Plane e Data Plane)","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-04-07","tags":["data_center","redes","sdn","roteamento","configuration"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-spanning-tree","titulo":"Spanning Tree","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-03-29","tags":["data_center","redes","enlace"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-vdcs","titulo":"VDCs","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-04-07","tags":["data_center","redes","fisica","virtualization"]}
+{"slug":"redes-ccnp-dc-virtualization-fundamentals-vrf","titulo":"VRF","categoria":"Redes","grupo":"CCNP / DC Virtualization Fundamentals","criado":"2020-04-07","tags":["data_center","redes","rede","virtualization"]}
+{"slug":"redes-interfaces-vistas-num-data-center","titulo":"Datacenter Interfaces","categoria":"Redes","grupo":"","criado":"2019-08-20","tags":["redes","data_center"]}
+{"slug":"redes-san-arquitetura-de-pod","titulo":"The Architecture Pod","categoria":"Redes","grupo":"SAN","criado":"2020-08-05","tags":["redes","armazenamento"]}
+{"slug":"redes-san-definicao","titulo":"SAN","categoria":"Redes","grupo":"SAN","criado":"2020-11-23","tags":["redes","armazenamento"]}
+{"slug":"redes-san-direct-attached-storage","titulo":"Direct Attached Storage","categoria":"Redes","grupo":"SAN","criado":"2019-12-12","tags":["redes","armazenamento"]}
+{"slug":"redes-san-nvme-sas-e-sata","titulo":"NVMe/SAS/Sata","categoria":"Redes","grupo":"SAN","criado":"2020-07-27","tags":["redes","armazenamento"]}
+{"slug":"redes-san-o-basico","titulo":"The Basics","categoria":"Redes","grupo":"SAN","criado":"2020-08-04","tags":["redes","armazenamento"]}
+{"slug":"redes-san-tipos-de-storages-e-redes","titulo":"Tipos de Storages e Redes","categoria":"Redes","grupo":"SAN","criado":"2020-11-23","tags":["redes","armazenamento"]}
+{"slug":"redes-sdn-aci-access-policies","titulo":"Access Policies","categoria":"Redes","grupo":"SDN / ACI","criado":"2020-01-08","tags":["cisco","aci","rede","virtualization"]}
+{"slug":"redes-sdn-aci-aci-curiosidades","titulo":"ACI Curiosidades","categoria":"Redes","grupo":"SDN / ACI","criado":"2019-10-07","tags":["cisco","aci","rede","virtualization"]}
+{"slug":"redes-sdn-aci-cisco-ave","titulo":"Cisco AVE","categoria":"Redes","grupo":"SDN / ACI","criado":"2020-01-08","tags":["cisco","aci","rede","virtualization"]}
+{"slug":"redes-sdn-aci-logical-model","titulo":"Logical Model","categoria":"Redes","grupo":"SDN / ACI","criado":"2020-01-14","tags":["cisco","aci","virtualization","redes"]}
+{"slug":"redes-sdn-aci-o-basico","titulo":"Basics","categoria":"Redes","grupo":"SDN / ACI","criado":"2020-01-08","tags":["sdn","aci","cisco","data_center","rede","virtualization"]}
+{"slug":"redes-sdn-aci-rbac","titulo":"RBAC","categoria":"Redes","grupo":"SDN / ACI","criado":"2020-02-18","tags":["cisco","aci","rede","virtualization"]}
+{"slug":"redes-sdn-aci-topologia-clos","titulo":"Spine-Leaf","categoria":"Redes","grupo":"SDN / ACI","criado":"2020-01-08","tags":["cisco","aci","rede","virtualization"]}
+{"slug":"redes-sdn-nsx-geneve","titulo":"GENEVE","categoria":"Redes","grupo":"SDN / NSX","criado":"2021-06-01","tags":["redes","virtualization","vmware"]}
+{"slug":"redes-sdn-nsx-nsx-t-architecture","titulo":"NSX-T Architecture","categoria":"Redes","grupo":"SDN / NSX","criado":"2021-06-02","tags":["redes","virtualization","vmware"]}
+{"slug":"redes-sdn-nsx-nsx-t-control-plane-overview","titulo":"NSX-T Control Plane Overview","categoria":"Redes","grupo":"SDN / NSX","criado":"2021-06-02","tags":["redes","virtualization","vmware"]}
+{"slug":"redes-sdn-nsx-nsx-t-in-a-nutshell","titulo":"NSX-T in a Nutshell","categoria":"Redes","grupo":"SDN / NSX","criado":"2021-05-27","tags":["redes","virtualization","vmware"]}
+{"slug":"redes-sdn-nsx-transport-node","titulo":"Transport Node","categoria":"Redes","grupo":"SDN / NSX","criado":"2021-06-02","tags":["redes","virtualization","vmware"]}
+{"slug":"redes-sdn-nsx-transport-zones","titulo":"Transport Zones","categoria":"Redes","grupo":"SDN / NSX","criado":"2021-06-02","tags":["redes","virtualization","vmware"]}
+{"slug":"seguranca-analise-dos-header-do-tcp-e-udp","titulo":"Analise dos header do TCP e UDP","categoria":"Segurança","grupo":"","criado":"2020-05-12","tags":["redes","segurança","transporte"]}
+{"slug":"seguranca-analise-dos-headers-do-ip","titulo":"Analise dos Headers do IP","categoria":"Segurança","grupo":"","criado":"2020-05-12","tags":["redes","segurança","rede"]}
+{"slug":"seguranca-o-que-e-cybersecurity","titulo":"O que é Cybersecurity","categoria":"Segurança","grupo":"","criado":"2020-05-11","tags":["redes","segurança"]}
+{"slug":"seguranca-o-que-e-seguranca-da-informacao","titulo":"O que é segurança da Informação","categoria":"Segurança","grupo":"","criado":"2020-05-11","tags":["segurança","data"]}
+{"slug":"seguranca-tipos-de-ataques","titulo":"Tipos de Ataques","categoria":"Segurança","grupo":"","criado":"2020-05-11","tags":["segurança"]}
+{"slug":"servidores-active-directory","titulo":"Active Directory","categoria":"Servidores","grupo":"","criado":"2019-08-23","tags":["microsoft"]}
+{"slug":"servidores-hyperflex-intel-vmd-for-nvme-drivers","titulo":"Intel VMD for NVMe Drivers","categoria":"Servidores","grupo":"HyperFlex","criado":"2020-07-27","tags":["armazenamento","cisco"]}
+{"slug":"servidores-ucs-ucs-central","titulo":"UCS Central","categoria":"Servidores","grupo":"UCS","criado":"2019-09-05","tags":["cisco","data_center","aci"]}
+{"slug":"servidores-ucs-ucs-interface-types","titulo":"UCS Interface Types","categoria":"Servidores","grupo":"UCS","criado":"2020-07-13","tags":["cisco","data_center","rede"]}
+{"slug":"servidores-ucs-ucs-networking","titulo":"UCS Networking","categoria":"Servidores","grupo":"UCS","criado":"2020-07-29","tags":["cisco","data_center","redes"]}
+{"slug":"virtualizacao-containers-docker-arquitetura-do-docker","titulo":"Arquitetura do Docker","categoria":"Virtualização","grupo":"Containers / Docker","criado":"2020-01-08","tags":["virtualization","container"]}
+{"slug":"virtualizacao-containers-docker-docker-commands","titulo":"Docker Commands","categoria":"Virtualização","grupo":"Containers / Docker","criado":"2020-01-07","tags":["virtualization","container","configuration"]}
+{"slug":"virtualizacao-containers-docker-docker-curiosidades","titulo":"Docker Curiosidades","categoria":"Virtualização","grupo":"Containers / Docker","criado":"2020-01-07","tags":["virtualization","container"]}
+{"slug":"virtualizacao-containers-kubernetes-api-objects-controllers","titulo":"Controllers","categoria":"Virtualização","grupo":"Containers / Kubernetes / API Objects","criado":"2021-04-22","tags":["container","virtualization","kubernetes"]}
+{"slug":"virtualizacao-containers-kubernetes-api-objects-pods","titulo":"Pods","categoria":"Virtualização","grupo":"Containers / Kubernetes / API Objects","criado":"2021-04-22","tags":["container","virtualization","kubernetes"]}
+{"slug":"virtualizacao-containers-kubernetes-api-objects-services","titulo":"Services","categoria":"Virtualização","grupo":"Containers / Kubernetes / API Objects","criado":"2021-04-22","tags":["container","virtualization","kubernetes"]}
+{"slug":"virtualizacao-containers-kubernetes-api-objects-storage","titulo":"Storage","categoria":"Virtualização","grupo":"Containers / Kubernetes / API Objects","criado":"2021-04-22","tags":["container","virtualization","kubernetes"]}
+{"slug":"virtualizacao-containers-kubernetes-definicao","titulo":"Containers","categoria":"Virtualização","grupo":"Containers / Kubernetes","criado":"2019-08-28","tags":["kubernetes","virtualization","container"]}
+{"slug":"virtualizacao-containers-kubernetes-kubernetes-api","titulo":"Kubernetes API","categoria":"Virtualização","grupo":"Containers / Kubernetes","criado":"2021-04-22","tags":["kubernetes","virtualization","container"]}
+{"slug":"virtualizacao-containers-kubernetes-kubernetes-master-control-plane-no","titulo":"Kubernetes Master (Control Plane Node)","categoria":"Virtualização","grupo":"Containers / Kubernetes","criado":"2021-04-23","tags":["virtualization","container","kubernetes"]}
+{"slug":"virtualizacao-containers-kubernetes-kubernetes-principles","titulo":"Kubernetes Principles","categoria":"Virtualização","grupo":"Containers / Kubernetes","criado":"2021-04-22","tags":["kubernetes","container","virtualization"]}
+{"slug":"virtualizacao-containers-kubernetes-node-worker-nodes","titulo":"Node (Worker Nodes)","categoria":"Virtualização","grupo":"Containers / Kubernetes","criado":"2021-04-23","tags":["virtualization","container","kubernetes"]}
+{"slug":"virtualizacao-containers-kubernetes-o-que-e-kubernetes","titulo":"What is Kubernetes","categoria":"Virtualização","grupo":"Containers / Kubernetes","criado":"2021-04-16","tags":["virtualization","container","kubernetes"]}

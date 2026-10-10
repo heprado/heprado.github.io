@@ -1,0 +1,18 @@
+<p>Em redes broadcast como a Ethernet, sempre teremos um DR(Designated
+Router) e BDR(Backup Designated Router), esses caras são responsaveis em
+manter a LSDB de todos os outros DROthers(todos os roteadores que não
+são DR ou BDR) atualizada.</p>
+<p>Nesse tipo de rede os DROthers só fecham adjacencia FULL com o DR e
+BDR, mas porque não com todos os outros roteadores?</p>
+<p>Pelo simples motivo de que uma topologia FULL MESH de adjacencias
+traria grandes problemas no processamento dos roteadores.</p>
+<p>Imagine uma rede com 40 roteadores, todos com adjacencia full,
+imagine que a rede do roteador 1 falhou, ele vai enviar para TODOS os
+outros 40 roteadores que a rede 1 falhou, e TODOS os outros vão mandar
+pra TODOS os outros que a rede do Roteador 1 falhou, consegue ver o
+problemão certo?</p>
+<p>Agora com o DR e BDR, o roteador 1 só mandaria para o DR E BDR que a
+rede dele caiu, isso na rede multicast 224.0.0.6, o DR e BDR iam que a
+rede certamente caiu e enviar para todos os outros roteadores que estão
+escutando no 224.0.0.5 que a rede do roteador 1 caiu, consegue ver como
+é mais eficiente?</p>

@@ -1,0 +1,51 @@
+<p><strong>Provisioners</strong></p>
+<p>Provisioners são recursos que você pode utilizar dentro do terraform
+para fazer certas funções, como por exemplo ler um arquivo dentro da
+propria pasta, fechar SSH com uma maquina remota e executar comandos
+PowerShell ou Bash e ate executar comando Powershell ou Bash localmente,
+temos até um que cria chaves SSL é bem legal.</p>
+<p>Uma coisa a se lembrar é que eles não são considerados uma boa
+pratica, pois o terraform não consegue manter no tf.state as
+configurações que foram feitas utilizando eles, o terraform não foi
+criado para isso, então o recomendado para fazer tarefas como configurar
+um NGINX dentro de um servidor, criar uma chave SSL e configurar no
+servidor é utilizar ferramentas como Ansible, Puppet e Chef que são
+Configuration Managers.</p>
+<p>Os provisioners ficam dentro de resources e podemos ter diversos
+deles para fazermos diversas coisas, quando precisamos que um
+provisioner faça algo sem que uma resource seja chamada por exemplo do
+provider da AWS, podemos utilizar o <strong>resource “null-resouce”
+“label_two”</strong>, ela é uma resource que não depende de nenhum
+provider e só executa os provisioners que vc colocar lá.</p>
+<p>Abaixo alguns dos mais utilizados:</p>
+<ul>
+<li><strong>File</strong></li>
+</ul>
+<p>Esse provisioner é bem util e serve basicamente para copiarmos
+arquivos locais para um destino.</p>
+<img src="img/b4bf657d5b2b477782d5c6a48c7d0607.png" loading="lazy" />
+<p>Connection - Nessa bloco o provisioner está fazendo a conexão com o
+servidor que vamos configurar, passamos o <strong>type</strong> da
+conexão (ssh), o <strong>user</strong> que vamos logar (root), a
+<strong>private_key</strong> que vamos utilizar para fechar a conexão e
+por final o <strong>host</strong> (ip ou FQDN).</p>
+<p>Source e destination - Origem e destino do arquivo que vamos
+copiar.</p>
+<ul>
+<li><strong>Local-exec</strong></li>
+</ul>
+<p>Esse é um dos que eu mais gosto, podemos executar comandos dentro da
+maquina que está rodando o terraform, como criar um arquivo com touch,
+ou criar uma chave SSL com o ssh-keygen, é super util.</p>
+<img src="img/7c450cd17d574f68bbd244643231038b.png" loading="lazy" />
+<ul>
+<li><strong>Remote-exec</strong></li>
+</ul>
+<img src="img/6f02ea2373d049c6894c2875b45d8319.png" loading="lazy" />
+<img src="img/969467d2fc6a439e8c17f41b79d000b3.png" loading="lazy" />
+<p>Scripts ou script(somente 1) - ele vai ler seus scripts locais e
+executar na maquina remota. OBS: ele não suporta argumentos então se vc
+quiser passar argumentos copia o script com o provisioner file e usa o
+inline para executar os arquivos com argumentos.</p>
+<p>Inline - Você escreve os scripts diretamente no arquivo de
+configuração.</p>

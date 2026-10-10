@@ -1,0 +1,57 @@
+<p>A AWS prove serviços e ferramentas para controlar auditar e
+visualizar seus recursos na nuvem, iguais ao utilizadas em data centers
+virtualizados on-premises com a vantagem da agilidade e automação que
+uma plataforma de nuvem publica traz.</p>
+<h4 id="aws-config-service">AWS Config Service</h4>
+<p>Esse serviço te ajuda a visualizar a diferença entre mudanças nos
+seus recursos da AWS, bem simples mesmo, talvez seja parecido com o diff
+de um tfstate?</p>
+<h4 id="aws-cloud-trail">AWS Cloud Trail</h4>
+<p>Utilizado para observabilidade de aplicações, eu não conheço
+<em>AINDA</em> mas acredito que seja uma forma de coleta de telemetria
+dos recursos PaaS,IaaS ou SaaS da AWS, talvez usando OpenTelemetry
+exportando telemetria para um OpenSearch(Elastic Search da Amazon) e um
+dashboard bonitinho para consultar.</p>
+<h3 id="principio-do-menor-privilegio">Principio do menor
+privilegio</h3>
+<p>Ninguém ter acesso a NADA de inicio e somente ir adicionando
+permissões conforme pessoas necessitarem e tiverem aprovação. Utilizando
+o IAM da AWS lógico.</p>
+<h3 id="rastreamento">Rastreamento</h3>
+<p>Rastreamento de tudo que foi criado e mudado nos seus recursos da
+AWS, esses logs podem ser exportados para outras ferramentas caso você
+queria agregar todos os logs.</p>
+<h3 id="segurança-em-todas-as-camadas">Segurança em todas as
+camadas</h3>
+<p>Segurança na Rede, aplicação e base de dados, requerendo autenticação
+e se os pacotes vem de uma rede que você CONFIA, além disso garantir que
+os usuarios possuem permissão para acessar as chaves de descriptografia
+para processar dados criptografados.</p>
+<h3 id="automatizar-segurança">Automatizar segurança</h3>
+<p>Utilizar ferramentas de infraestrutura como codigo como #Terraform e
+#Pulumi ou as proprias #APIs da #AWS para criar ambientes seguros e
+padronizados com suas permissões, configurações de rede, proteção de
+dados e monitoramento.<br />
+Dessa forma é possivel o operador não ter acesso DIRETO aos recursos,
+somente através de automações PRÉ-DEFINIDAS.</p>
+<h3 id="proteger-dados-em-transito-e-armazenados.">Proteger dados em
+transito e armazenados.</h3>
+<p>Para isso a AWS consegue prover acesso controlado a recursos dentro
+da sua conta, habilidade para criar e controlar todas as chaves de
+#encriptação usadas, selecionar qual algoritmo de #encriptação que você
+quer e quanto tempo os dados ficam retidos.</p>
+<p>Classificar seus dados em leveis de sensibilidade implementando uma
+forma de tageamento dos dados é recomendando, utilizar TLS para dados em
+transito também.</p>
+<h3 id="preparo-para-eventos-de-segurança">Preparo para eventos de
+segurança</h3>
+<p>Criar processos para isolar partes do sistema que estão sendo
+afetadas e restaurar a operação para um estado NORMAL.</p>
+<h3 id="minimizar-a-área-de-ataque">Minimizar a área de ataque</h3>
+<p>Escalar recursos verticalmente ou horizontalmente para absorver a
+quantidade de ataques e bloquear acessos de #IPs que estão te
+atacando.</p>
+<h3 id="responsabilidade-compartilhada">Responsabilidade
+compartilhada</h3>
+<p>https://aws.amazon.com/pt/compliance/shared-responsibility-model/</p>
+<img src="img/pasted-image-20250724121250.png" loading="lazy" />

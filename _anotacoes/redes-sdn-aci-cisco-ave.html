@@ -1,0 +1,22 @@
+<p>Cisco AVE veio para substituir o antigo AVS, o AVS era um switch
+virtual que instalavamos no kernel do ESXi, e por ele controlar as redes
+virtuais do ESX com o ACI, isso não é mais possivel pois a vmware fechou
+o kernel dele para todos os 3rd party switches.</p>
+<p><strong>Cisco AVE</strong></p>
+<p>É uma VM que se conecta com o ACI, para podermos usar as seguintes
+features do ACI :</p>
+<img src="img/d414c35289d24b2ba19017547cdb43cb.png" loading="lazy" />
+<p>Para ele funcionar, temos que direcionar todo o trafego dos hosts
+ESXi do vCenter para a maquina virtual do AVE, a infraestrutura ficaria
+assim:</p>
+<img src="img/a6650dc014ef49428d8c5384d69c73ea.png" loading="lazy" />
+<p>Caso vc já tenha feito a integração do ACI com o vDS, os port-groups
+já serão automaticamente criados, só precisamos colocar a interface
+inside do AVE no mesmo portgroup que essas private vlans.</p>
+<p>Para o trafego sair para a internet ou para outro lugar na rede,
+precisamos utilizar um trunk para fora do host ESX, esse trafego vai
+sair por uma vmnic conectada ao ACI, a interface virtual do AVE vai
+fazer um tunel VxLAN com o ACI.</p>
+<p>E tambem temos a interface de gerencia que vamos conectar no
+portgroup mgmt, para podermos fazer ssh no AVE.</p>
+<img src="img/117186dcf35744cf8d1b2d6cc1cf5352.png" loading="lazy" />

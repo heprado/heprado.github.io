@@ -1,0 +1,65 @@
+<h4 id="blocos"><strong>Blocos</strong></h4>
+<p>Na linguagem da Hashicorp chamada HCL(Hashicorp Configuration
+Language), tudo é definido em blocos de código, segue exemplo abaixo da
+sintaxe:</p>
+<pre class="hcl"><code>tipo_do_bloco nome_do_recurso id_do_recurso {
+	minha_config = &quot;valor_da_minha_config&quot;
+	minha_config_complexa {
+		key = value
+	}
+}</code></pre>
+<h5 id="tipo-do-bloco-tipo_do_bloco">Tipo do bloco (tipo_do_bloco)</h5>
+<p>O tipo que esse bloco inteiro representa, os mais comuns são
+“resource” que determina a criação de um recurso, “data” que busca
+alguma informação e “variable” que define uma variável do módulo.</p>
+<h5 id="nome-do-recurso-nome_do_recurso">Nome do recurso
+(nome_do_recurso)</h5>
+<p>Esse valor define qual recurso do provider/módulo que estamos
+utilizando neste bloco.</p>
+<h5 id="id-do-recurso-id_do_recurso">Id do recurso (id_do_recurso)</h5>
+<p>Esse valor é utilizado para nós referenciarmos a esse bloco inteiro
+em outra parte do código. EX: Se quisermos pegar o valor de minha_config
+dentro do bloco podemos escrever o seguinte:</p>
+<pre class="hcl"><code>nome_do_recurso.id_do_recurso.minha_config</code></pre>
+<p>Isso nós retornaria o valor que essa chave contém que é
+“valor_da_minha_config”.</p>
+<h5 id="chaves-minha_config">Chaves (minha_config)</h5>
+<p>São valores que vamos passar dentro de um bloco para definirmos a
+configuração por exemplo:</p>
+<ul>
+<li>Se estivermos criando uma subnet precisamos da CIDR dela,
+então:</li>
+</ul>
+<pre><code>cidr = &quot;172.16.0.0/16&quot;</code></pre>
+<ul>
+<li>Caso for uma máquina virtual e quiséssemos dar um nome para ela,
+então:</li>
+</ul>
+<pre><code>nome = &quot;nome-da-minha-vm&quot;</code></pre>
+<h5 id="blocos-embutidos-minha_config_complexa">Blocos embutidos
+(minha_config_complexa)</h5>
+<p>Uma configuração que precisa de varias chaves, então definimos esse
+bloco embutido para dentro dele definirmos as chaves necessárias para
+essa configuração.</p>
+<h5 id="object-types">Object Types</h5>
+<p>São os tipos de objetos que podemos utilizar no terraform, igual a
+qualquer linguagem de programação temos string,int/float,boolean, arrays
+e maps.</p>
+<pre class="hcl"><code>string = &quot;minha_string&quot;
+
+number = 1234
+
+bool = true
+
+array = [&quot;oi&quot;,&quot;tchau&quot;]
+
+map = {nome = &quot;João&quot; , idade = 27}</code></pre>
+<p>String - Uma string também conhecida como vetor de caracteres.</p>
+<p>Number - Um int/float, ele pode ser tanto numeros inteiros quanto com
+casas decimais.</p>
+<p>Array - Contem diversas strings, ou numbers, ou booleans, sendo que
+todos os valores <strong>DEVEM SER DO MESMO TIPO</strong>, cada uma
+delas tem um index que começa em 0, então se eu fizer array[1]
+receberíamos “tchau”.</p>
+<p>Map - Podemos ter diversos tipos de objetos dentro e podemos chamar
+eles através das chaves, se fizermos map[nome] receberíamos “João”.</p>

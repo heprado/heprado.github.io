@@ -1,0 +1,70 @@
+<p><strong>GERAL</strong><br />
+<img src="img/8179f9240cbe4472ba88b36b9df74bf9.png"
+loading="lazy" /></p>
+<p>Para conexão de servidor UCS Blade utilizamos 2 FI(Fabric
+Interconnect) esse hardware contem o cerebro da rede de UCS, nele reside
+um software chamado UCS Manager, esse cara controla todas as blades
+abaixo dele através de policies(parecidas com o do ACI), nelas podemos
+definir como o servidor vai bootar, configurações de BIOS e claro
+configurações de Networking.</p>
+<img src="img/22b827486c544818980ddf2fe7c00121.png" loading="lazy" />
+<p>Na imagem acima conseguir ver que temos os Fabric Interconnect e os
+Fabric Extenders(IOM), os Fabric Extenders nada mais são do que uma
+extensão das portas do Fabric Interconnect DIRETO dentro do Chassi das
+blades(UCS 5108), esse hardware da a conexão física das blades. Caso não
+estejamos usando blades e sim servidores de RACK como C220,C240 etc
+fazemos a conexão deles com o fabric interconnect através de VICs ao em
+vez de FEX.</p>
+<p>Dentro das blades também temos VICs(mLOMs), a principal diferença é
+que elas ficam dentro do servidor e na realidade não possuem nenhuma
+porta física de conexão, elas criam as portas VIRTUAIS, essas que vão
+ser apresentadas para o sistema operacional hospedeiro como interfaces
+físicas. Todas essas interfaces virtuais na realidade estão conectadas
+ao FEX, e quem controla essas interfaces físicas e virtuais nada mais é
+do que o cérebro da coisa toda, o UCS Manager.</p>
+<p><strong>Fabric Interconnect</strong></p>
+<p>Por padrão todas as portas do Fabric interconnect veem desabilitadas,
+precisamos escolher qual tipo a porta vai ser, os tipos são :</p>
+<img src="img/966168c5281d436f971864f8459de7dc.png" loading="lazy" />
+<p>Esses tipos de portas são definidos dentro do UCS Manager, temos uma
+aba com a cara do Fabric Inteconnect, clicamos nas portas e definimos os
+tipos.<br />
+<img src="img/67f8c9861ccb468c9b4928ee598ad032.jpg"
+loading="lazy" /></p>
+<p>Fisicamente as portas também tem tipos, que são :</p>
+<ul>
+<li>Unified Ports - Portas que rodam ambos os protocolos Ethernet e
+Fibre Channel.</li>
+<li>Ethernet Ports - Portas que rodam somente o protocolo Ethernet</li>
+<li>FC Ports - Portas que rodam somente o protocolo Fibre Channel</li>
+</ul>
+<p>Para sabermos qual porta é qual precisamos olhar no datasheet, pois é
+algo característico do hardware e não do software, exemplo abaixo.</p>
+<img src="img/feb4e421c79c49de9d1349a9d793e35f.png" loading="lazy" />
+<p><strong>FEX(IOM)</strong></p>
+<img src="img/5874e44b5ca346b3a39879d01656169a.png" loading="lazy" />
+<p>Agora uma parte um pouco mais abstrata, temos 2 tipos de interfaces
+do FEX e dos Fabric Interconnect:</p>
+<ul>
+<li><strong>NIF</strong> - São as interfaces reais do IOM, considerada
+as Uplink Ports do IOM no UCSM aparecem como <strong>Fabric
+Ports</strong></li>
+<li><strong>HIF</strong> - São as interfaces que as VICs dos servidores
+vão conversar, são as Downlink Ports do IOM e a quantidade difere de
+modelo para modelo, o IOM 2208XP tem 16 dessas portas, no UCSM aparecem
+como <strong>Backplane Ports</strong>.</li>
+</ul>
+<p>Para elas funcionarem precisamos fazer um pinning dessas interfaces,
+HIF para NIF, na imagem acima podemos ver que cada blade tem 8 HIFs 4
+indo para cada Fabric, nesse caso podemos configurar um LACP no sistema
+operacional da blade para que o tráfego seja balanceado entre FABRIC A e
+FABRIC B.</p>
+<p><strong>VICs</strong></p>
+<p>Essas são as placas que dão conectividade para as blades, existem
+dois tipos delas as de 3rd party e as da Cisco chamadas de VICs.</p>
+<img src="img/c0be43cbe7164ad7b536ef146893aee5.png" loading="lazy" />
+<p>Existem 2 tipos de interfaces que são criadas dentro de uma VIC:</p>
+<p>DCEs - Essas interfaces fazem o uplink das VICs para os IOMs</p>
+<p>vNICs - Essas interfaces são criadas e apresentadas ao sistema
+operacional hospedeiro como interfaces fisicas da blade, mas na
+realidade são só barramentos PCI com a VNTAGs diferentes.</p>

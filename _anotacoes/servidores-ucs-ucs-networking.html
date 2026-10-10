@@ -1,0 +1,19 @@
+<p>Os Fabric interconnect utilizam a arquitetura de um switch, parecem
+um switch, mas não tem nada a ver com um switch pois ele não faz
+switching.</p>
+<p>Fabric Interconnect aparece para rede como um end-host uma nic a mais
+na rede, ele não aprende MAC-Address da LAN em cima dele, ele aprende os
+MACs somente dos servidores designados a ele, para caso um servidor
+precise falar com outro eles não subirem até a LAN só pra isso.</p>
+<img src="img/ae03c72467904569b47ec68f69e9b28e.png" loading="lazy" />
+<p>Mas como o Fabric Interconnect sabe para qual interface ele vai
+mandar os frames, se ele não tem tabela MAC da LAN? Resolvemos isso
+fazendo um pinning das interfaces dos servidores com o UPLINK para a
+LAN, assim caso venha um frame para um MAC que não seja dos servidores
+embaixo do Fabric Interconnect, ele sabe que tem que enviar atráves do
+UPLINK.</p>
+<p>Outra coisa diferente em UCS é que caso estejamos utilizando
+Portchannel entre os Fabric Interconnects e a LAN, <strong><mark>OS
+SWITCHES UPLINKS PRECISAM ESTAR COM LACP</mark></strong>, Fabric
+interconnect só utilizam LACP nos portchannels deles então precisamos de
+LACP do outro lado se não o link não vai subir.</p>

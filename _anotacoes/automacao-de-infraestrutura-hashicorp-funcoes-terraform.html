@@ -1,0 +1,6 @@
+<h4 id="merge"><strong>Merge</strong></h4>
+<p>Junta dois maps em somente um, assim se uma resource aceitar somente
+um map, podemos pegar dois e juntar em um.</p>
+<pre class="hcl"><code>tags = merge(local.common_tags, {Name = &quot;${var.environment_tag}-vpc&quot;})</code></pre>
+<p>No caso acima estamos juntando o map que está dentro da variável
+local “common_tags”, com o map ao lado depois da virgula.</p>

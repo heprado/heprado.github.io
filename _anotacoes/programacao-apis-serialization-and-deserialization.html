@@ -1,0 +1,17 @@
+<p>Serialização e Deserialização é um metodo utilizado para uma
+informação ser transformada em algo entendido em algum lugar, um exemplo
+seria uma ligação, vc fala no telefone ele transforma(serializa) sua
+fala em bits(packets) que a rede consegue entender, chega até o outro
+lado da linha e transforma os bits em sons de novo(deserialização).</p>
+<p>Em APIs temos o mesmo processo:</p>
+<img src="img/ca54fcd2e3c74f1391c537bf9a69107d.png" loading="lazy" />
+<p>Na imagem acima temos um objeto com o parametro nome como John,
+fazemos o processo de serialização para guardar esse objeto em um
+arquivo para se tornar um dado persistente, na imagem acima o arquivo
+vai ser um .json então ele guarda {name:John} que é o dado do parametro
+name do objeto.</p>
+<p>Python Libraries para serialização e deserialização de json,xml e
+yaml</p>
+<img src="img/00e7434944554e5797f1d28e9d1abef6.png" loading="lazy" />
+<p>O PyYAML suporta YAML na especificação 1.1, caso precise usar a
+especificação 1.2 utilizar o ruamel.yaml</p>

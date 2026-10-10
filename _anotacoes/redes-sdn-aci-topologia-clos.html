@@ -1,0 +1,17 @@
+<p>Num Data Center tradicional eram utilizados switches de agregação,
+esses switches delimitivam o dominio Layer 2 do Data Center, ou seja, a
+conexão deles com os switches de acesso era Layer 2 e a conexão com os
+Switches Core era Layer 3, cada Dominio Layer 2 era chamado de POD,
+agora caso um servidor ligado em switch de acesso quisesse se comunicar
+com um switch em outro POD, eles tinham que passar pelo Layer 3, serem
+roteados e isso trazia muitos problemas de QoS e Jitter para o Data
+Center.</p>
+<p>Além de tudo isso os Pods tinham sempre o STP bloqueando algumas
+portas para não gerar loops, isso fazia com que o Data Center gastasse
+muito dinheiro com redundancia que não está sendo utilizada,
+desperdiçando dinheiro.</p>
+<img src="img/9c338e5991904220bda686f493c6a056.jpg" loading="lazy" />
+<p>Então criaram topologias Spine-Leaf, nela os switches leaf são
+conectados via layer 3 aos switches spines, evitando o uso de
+spanning-tree e para aumentar a bandwidth basta adicionar um switch
+Spine.</p>

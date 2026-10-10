@@ -1,0 +1,23 @@
+<p>Software Defined Network, divide a rede em 3 planos.</p>
+<p>Data Plane - Um switch precisa da sua tabela MAC para saber onde
+repassar os frames, um roteador precisa de uma tabela de roteamento para
+encaminhar pacotes, essas coisas que estão atreladas a enviar
+frames/pacotes ficam no Data Plane, o Data Plane fica dentro do
+equipamento.</p>
+<p>Control Plane - Tudo que controla o Data Plane, protocolos de
+roteamento são consideras Control Plane pois eles controlam o que está
+dentro da Routing Table que o roteador irá usar para encaminhar pacotes,
+o STP também é considera um protocolo de Control Plane, pois ele
+controla o Data Plane fazendo com que loops não ocorram na rede.</p>
+<p>Management Plane - É onde estão os protocolos que permitem o
+engenheiro de redes configurar os equipamentos, os mais utilizados são
+Telnet,SSH,SNMP,SYSLOG e HTTP.</p>
+<img src="img/087a73bb010a46e9b82f027aa404e769.png" loading="lazy" />
+<p>Controladora - Um servidor/equipamento em que o control plane de
+todos os switches/roteadores da rede está centralizado.</p>
+<img src="img/8ae8748baaf2445e9f8d5a325432d133.png" loading="lazy" />
+<p>SBI - Southbound Interface, é uma interface entre o programa dentro
+da controladora e um programa dentro do Switch/Router. ( API )</p>
+<p>NBI - Northbound Interface, é onde o programador vai usar o codigo
+dele para gerenciar a controladora.</p>
+<img src="img/630c1a1f69254689a0c766ae5f17a594.jpg" loading="lazy" />

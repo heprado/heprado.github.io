@@ -1,0 +1,125 @@
+<p>Quality of Service, protocolo usado para gerenciarmos diversos tipos
+de pacotes, podemos dar preferencia para pacotes de video/audio, sobre
+pacotes de dados por exemplo, ou pacotes de requisições HTTP/HTTPS, com
+isso conseguimos dar prioridade em alguns serviços sobre outros.</p>
+<p>Esse protocolo pode ser tanto usado em switches quanto em routers,
+mas temos algumas diferenças entre eles.</p>
+<img src="img/dcdb72bfb15e477e8924ce29189fdaec.png" loading="lazy" />
+<p>Principais componentes do QoS:</p>
+<ul>
+<li><p>Bandwidth - Quantidade de pacotes que uma interface pode
+repassar, geralmente medido em Mbps ou Gbps.</p></li>
+<li><p>Delay - Tempo que um pacote demora para chegar e voltar do
+destino, geralmente medido em milissegundos</p></li>
+<li><p>Jitter - Variação de delay, enviar um pacote e ter uma variação
+no tempo de envio e resposta, exemplo enviei 10 pacotes e eles foram e
+voltaram nas seguintes velocidades:</p>
+<ul>
+<li>10ms</li>
+<li>15ms</li>
+<li>20ms</li>
+<li>10ms</li>
+<li>10ms</li>
+<li>10ms</li>
+<li>7ms</li>
+<li>10ms</li>
+<li>30ms</li>
+<li>40ms</li>
+</ul></li>
+</ul>
+<p>Para calcular precisamos fazer a media de velocidade de todos</p>
+<p><strong>(10 + 15 + 20 + 10 + 10 +10 + 7 + 10 + 30 + 40) /
+10</strong></p>
+<p>16,2ms/10 = <strong>16ms e 2 ns</strong></p>
+<p>Agora precisamos encontrar os desvios de cada valor, fazemos isso
+checando se o valor é ou não maior que a media, se ele for maior tiramos
+o desvio da subtração da media com o valor, se for menor o desvio é a
+subtração do valor com a media.</p>
+<p>Abaixou vou calcular o desvio de cada pacote:</p>
+<ul>
+<li>Pacote 1 - 10 é menor que 16,2 então 16,2 - 10 =
+<strong>6.2</strong></li>
+<li>Pacote 2 - 15 é menor que 16,2 então 16,2 - 15 =
+<strong>1,2</strong></li>
+<li>Pacote 3 - 20 é maior que 16,2 então 20 - 16.2 =
+<strong>3,8</strong></li>
+<li>Pacote 4 - 10 é menor que 16,2 então 16,2 - 10 =
+<strong>6,2</strong></li>
+<li>Pacote 5 - 10 é menor que 16,2 então 16,2 - 10 =
+<strong>6,2</strong></li>
+<li>Pacote 6 -10 é menor que 16,2 então 16,2 - 10 =
+<strong>6,2</strong></li>
+<li>Pacote 7 - 7 é menor que 16,2 então 16,2 - 7 =
+<strong>9,2</strong></li>
+<li>Pacote 8 - 10 é menor que 16,2 então 16,2 - 10 =
+<strong>6.2</strong></li>
+<li>Pacote 9 - 30 é maior que 16,2 então 30 - 16,2 =
+<strong>13,8</strong></li>
+<li>Pacote 10 - 40 é maior que 16,2 então 40 - 16,2 =
+<strong>23,8</strong></li>
+</ul>
+<p>Para encontrarmos quanto um valor devio</p>
+<ul>
+<li>Loss - Perda de pacotes.</li>
+</ul>
+<p>Principais ferramentas do QoS:</p>
+<p>Essas ferramentas do QoS usam os componentes acima para
+funcionarem.</p>
+<p>Classification - Marca um pacote dependendo do tipo dele, com isso o
+roteador sabe em qual fila colocar ele, para depois dependendo da
+prioridade, pegar ele ou não. ISSO DENTRO DO ROTEADOR</p>
+<p>Marking - Marca o header de um pacote com uma classe, esse header vai
+junto com o IP e campo é chamado de DSCP, com isso o próximo roteador
+sabe olha esse DSCP e não precisa processar o pacote todo igual o outro
+roteador, ele ve a classe marcada no DSCP e coloca na fila pertencente a
+essa classe. Além disso o engenheiro não precisa ficar configurando QoS
+em todos os roteadores da rede.</p>
+<p>NBAR - Muitas vezes usamos ACL para classificar os pacotes para o
+QoS, mas as vezes podemos querer diferenciar até o mesmo trafego,
+imagine uma conferencia de vídeo e youtube, os dois são vídeos, podemos
+criar uma ACL para marcar os vídeos, mas não a vídeo conferencia em
+especifico, para isso existe o NBAR, ele cria vários outros DSCP e marca
+o pacote com eles.</p>
+<p>Queueing - Ele faz uma fila dos pacotes, e envia para frente da fila
+os que tiverem a maior prioridade, e vai enviando conforme a bandwidth
+vai liberando.</p>
+<p>FIFO(First-in First-out) faz uma fila, e envia os que chegaram
+primeiro, sem levar em consideração o tipo de pacote.</p>
+<p>Existem outros tipos de queueing que fazem varias filas diferentes
+para cada tipo de pacote, assim o priorization consegue definir qual
+pacote enviar primeiro.</p>
+<p>Congestion Avoidance - Essa ferramenta faz com que o roteador drope
+certo tipos de pacotes da fila do Queueing para liberar espaço e não
+lotar as filas do roteador, ele faz isso dropando alguns pacotes e
+esperando que o Windowing do TCP diminua o tamanho das janelas,
+diminuindo assim a quantidade de tráfego nas queues.</p>
+<p>Priorization - Priorizar certos pacotes acima de outros.</p>
+<p>Round robin priorization - Dependendo da Queueing utilizada, vamos
+ter diversas queues, o round robin vai passando em cada uma, e
+encaminhando uma de uma outro de outra até voltar na mesma, e vai
+indo.</p>
+<p>Weight Round Robin - Ele faz a mesma coisa que o Round Robin, mas ele
+tenta deixar as queus balanceadas na porcentagem que você setar.</p>
+<img src="img/aff6acef3473417a89925c04ed8173b7.png" loading="lazy" />
+<p>LLQ - Low Latency Queueing, tambem separa o tráfego em filas, mas da
+total prioridade para uma delas, isso é usado para chamadas de voz e
+vídeo, o problema dessa tipo de fila é que se o tráfego de voz for maior
+que a bandwidth da interface as outras filas vão ficar paradas, para
+isso existe Policing e Shaping :)</p>
+<img src="img/e732cbe40b5c47dba8a31b7ae41ebcd7.png" loading="lazy" />
+<p>Shaping - Ele pega certos tipos de pacote como SIP, e define uma
+Bandwidth só pra ele, depois pega outro tipo de pacote como Database e
+define outra, assim polindo o link e caso o link fique cheio ele vai
+colocando na fila.</p>
+<p>Policing - Ele pega certos tipos de pacote como SIP, e define uma
+Bandwidth só pra ele, depois pega outro tipo de pacote como Database e
+define outra, assim polindo o link e caso o link fique cheio ele
+dropa.</p>
+<p>WRED - Dropar ou deixar mais lerdo certos tipos de pacotes em
+momentos específicos.</p>
+<p><strong>QoS no Layer 2</strong></p>
+<p>No Layer 2 conseguimos fazer QoS usando o CoS(Class of Service), num
+frame encapsulado 802.1Q temos um field chamado PCP, neles podemos
+marcar a classe do frame. Isso significa que o QoS só pode ser usado na
+camada 2 quando tivermos links trunk.</p>
+<img src="img/a2b02fd79a2b4bcea0d7efca47b07e87.png" loading="lazy" />

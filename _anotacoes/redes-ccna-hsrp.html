@@ -1,0 +1,29 @@
+<p>Protocolo FHRP(First Hop Redundancy Protocol)</p>
+<p>Protocolo utilizado para criarmos gateways redundantes, os roteadores
+irão usar um IP virtual que será o gateway das maquinas, e um mac
+virtual.</p>
+<p>O MAC Virtual é necessario pois os computadores vão manter o MAC do
+Roteador salvo por até 5 minutos, ele não vai mandar uma ARP request
+imediatamente, assim perdendo a comunicação. Com o MAC Virtual os dois
+roteadores compartilham do mesmo MAC Address.</p>
+<p>GARP - Quando um roteador falha no HSRP, o roteador que assumir o
+controle vai enviar um GARP(Gratuitous ARP),<br />
+com origem sendo o mac virtual e destino FF:FF:FF:FF:FF:FF, atualizando
+a tabela MAC de todos os switches, para saberem qual porta ele está
+conectado.</p>
+<p>HSRP V1 -</p>
+<ul>
+<li><p>Hello Timer de no minimo 1 segundo.</p></li>
+<li><p>256 grupos standby</p></li>
+<li><p>MAC VIRTUAL PADRÃO 0000.00c7.ac01(os ultimos dois digitos
+significam o numero do grupo)</p></li>
+</ul>
+<p>HSRP V2 -</p>
+<ul>
+<li><p>Hello timer podem ser configurados para milisegundos.</p></li>
+<li><p>4096 grupos standby(um pra cada VLAN)</p></li>
+<li><p>MAC VIRTUAL PADRÃO 0000.0c9f.f213( os ultimos tres digitos
+significam o numero do grupo)</p></li>
+</ul>
+<p><strong>A versão de HSRP TEM QUE BATER NOS DOIS ROTEADORES, UM
+ROTEADOR VERSÃO 1 NÃO FECHA GRUPO COM UM VERSÃO 2</strong></p>

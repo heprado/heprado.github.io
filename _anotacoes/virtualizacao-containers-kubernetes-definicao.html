@@ -1,0 +1,40 @@
+<img src="img/cd2b992cc3644e26a2775fb16f484cf2.jpg" loading="lazy" />
+<p>A principal diferença entre um container e uma VM é que cada VM tem
+um OS, o Container usa o Kernel do OS que está instalado no
+servidor.</p>
+<p>Um container por conta do seu tamanho, pode ser estabelecido em
+segundos, já uma VM as vezes precisa de minutos para subir, por conta do
+sistema operacional pesado que está junto com ela.</p>
+<p>Kubernetes<br />
+<img src="img/82ee7f0fc73c4a348171cca3d6db27af.png"
+loading="lazy" /></p>
+<p>Nodes</p>
+<ul>
+<li>são maquinas onde seus containers estão rodando.</li>
+<li>Tem kubelet rodando neles, kubelet serve para verificar se todos os
+containers estão rodando como esperado no node.</li>
+</ul>
+<p>Clusters<br />
+- É um conjunto de nodes juntos.<br />
+- Divide o load entre os nodes.</p>
+<p>Master<br />
+- É um outro node que tem o K8s instalado, ele controla os outros nodes
+do cluster.<br />
+- Ele que gerencia o load-balance dos nodes.<br />
+- Caso um Node falhe ele passa para outro node, ou cria outro node e
+passa para ele os workloads.<br />
+- Interagimos com ele via API,exemplo CLI.<br />
+- Scheduler executa as tarefas programas, um exemplo seria criar um
+container no node, caso o workload esteja muito alto.<br />
+- Etcd armazena as informações sobre como os clusters estão organizados
+e logs.<br />
+- Controller, responsavel por analisar o ambiente, ele repara se algum
+node caiu e manda o scheduler subir outro.</p>
+<p>Kubectl<br />
+- Usamos para controlar o nodes.<br />
+- Kubectl run,executa uma aplicação<br />
+- Kubectl cluster-info,mostra as informações do cluster<br />
+- Kubectl get nodes,mostra as informações dos nodes.</p>
+<p>Minikube<br />
+- Ferramenta usada para cria um master e um node só.<br />
+- Usada para rodar kubernetes no seu notebook,etc (testes)</p>

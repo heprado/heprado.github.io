@@ -1,0 +1,54 @@
+<p><strong>Endpoint Groups</strong></p>
+<p>São onde os mainframes, servidores, maquinas virtuais, containers, se
+concentram no ACI, dentro de um EPG todos os hosts podem se comunicar
+entre si por padrão, podemos habilitar o Isolamento Interno do EPG(Intra
+EPG Isolation<br />
+) para desabilitar isso.</p>
+<p>Para comunicação entre EPGs precisamos de um contrato, pois por
+padrão os EPGs dentro de um Bridge Domain não conseguem se
+conversar.</p>
+<p>Temos três tipos de Endpoint no ACI:</p>
+<p>Physical: Endpoints bare-metal conectados diretamente ao ACI.<br />
+Virtual: Endpoint virtuais, eles são reconhecidos quando a integração do
+ACI com o vDS do vCenter é ativado, ele sabe que são virtuais pois estão
+conectados em Dominio Virtual ( LER ACCESS POLICIES E VER OS TIPOS DE
+DOMINIOS)<br />
+External: É um endpoint que está se conectando ao ACI através de um
+equipamento não ACI, como um switch nexus com NX-OS.</p>
+<p>Temos também três tipos de EPG no ACI:</p>
+<p>External : É um EPG externo onde os Endpoint conectados atraves de
+uma rede legado vão ficar.<br />
+Micro Segmentation : É um EPG onde todos os Endpoints não podem se
+conversar por padrão, temos que ir liberando a comunicação de pouco em
+pouco.<br />
+Traditional : Se não for nenhum dos outros ele é um EPG tradicional.</p>
+<p>Existem quatro jeitos de um host se conectar a um EPG:</p>
+<p>Port-to-VLAN: Podemos especificar um MAC em certa porta do LEAF,
+acessado o fabric por um VLAN especifica.</p>
+<p>Source IP: Um IP especifico pertence a esse EPG</p>
+<p>Source MAC: Um MAC especifico pertence a esse EPG</p>
+<p>VMM Integration : Através das APIs do vCenter,System Certer ou
+OpenStack, o ACI consegue identificar qual maquina virtual pertence a
+qual EPG.</p>
+<p><strong>Contracts</strong></p>
+<p>Por padrão os EPGs não conseguem se comunicar no ACI, para
+permitirmos a comunicação precisamos criar um contrato.</p>
+<p>Contratos são como ACLs, definimos o provider(quem está permitindo
+receber trafego em certa destination port) e o consumer ( quem está
+mandando o trafégo para essa destination port).</p>
+<p>Um contrato é composto de Subjects e Filters:</p>
+<p>Filters - São como regras de ACL, permito todo o trafégo na porta 80
+com origem da rede 192.168.1.0/24</p>
+<p>Subjects - São um junção desses filtros, esses subjects são aplicados
+ao contrato.</p>
+<p><strong>Application Network Profile</strong></p>
+<p>É onde definimos os EPGs e os Contracts, serve como uma maneira de
+criar uma junção de todos os EPGs de uma certa aplicação.</p>
+<p>Por exemplo, temos o ANP Website, dentro desse ANP teriamos os EPGs
+Usuarios,Servidor Web e Banco de Dados, também teriamos os contratos
+permitindo a comunicação entre cada um desses EPGs.</p>
+<p>A vantagem disso que é que o ANP tem um Health Score que podemos
+verificar, então se a aplicação Website estiver lenta, podemos fazer
+troubleshooting em cima desses Health Scores do ACI.</p>
+<p>Isso não é muito útil se vc estiver usando Network-Centric Model
+:)</p>

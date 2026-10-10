@@ -1,0 +1,47 @@
+<p><strong>Call Manager</strong></p>
+<p>O CUCM utiliza APIs baseadas em SOAP então é somente XML que
+utilizamos para nos comunicarmos com a API dele, não conseguimos
+utilizar JSON.</p>
+<p>A API dele se chama AXL API, e podemos utilizar ela para gerenciar
+dispositivos, criar usuarios e pegar informações sobre o sistema em
+sí.</p>
+<p>A AXL API utiliza HTTP/1 e a autenticação dela é feita através de
+Basic HTTP Authentication, mandamos um header Authentication com a
+string “usuario:senha” encodada em Base64.</p>
+<p>Temos tbm a UDS API que é utilizada para integrações de aplicações
+Web com o Call Manager.</p>
+<p><strong>Finesse</strong></p>
+<p>Ele possui diversas APIs e muitas delas são internas do sistema:</p>
+<ul>
+<li>Finesse Desktop API, utilizada para ver informações do desktop como
+ligações ativas, quem está usando etc.</li>
+<li>Finesse Configuration API, servem para configurarmos o ambiente
+inteiro por ela.</li>
+<li>Finesse Serviciability API, informações de log basicamente</li>
+<li>Finesse Notifications API, manda notificações como, tal funcionario
+saiu da mesa e foi almoçar.</li>
+</ul>
+<p><strong>Cisco Webex Teams</strong></p>
+<p>Conseguimos criar bots, gerenciar espaços, ler mensagens, etc.</p>
+<p>Os metodos aceitados são:</p>
+<ul>
+<li>PUT</li>
+<li>GET</li>
+<li>POST</li>
+<li>DELETE</li>
+</ul>
+<p>Como autenticação eles aceitam Oauth e access token, precisamos criar
+um token especifico pra um bot tbm.</p>
+<p><strong>Cisco Webex Meetings</strong></p>
+<p>O meetings possui 4 tipos de APIs:</p>
+<ul>
+<li>XML API, essa é utilizada para fazer tudo que quisermos
+automaticamente dentro do Webex Meetings, o cEVENT da cisco utiliza as
+APIs XML para criar os eventos por exemplo.</li>
+<li>URL Based API, utilizada para integrar portais já existentes de uma
+empresa, tipo entrar em uma chamada através do portal da sua empresa, os
+parametros das requisições são passados via URL.</li>
+<li>TAPI, essa é utilizada para fazer integrações de outros sistemas de
+teleconferencia com o Webex Meetings, exemplo seria o Teams da Microsoft
+com o Webex Meetings lá dentro.</li>
+</ul>

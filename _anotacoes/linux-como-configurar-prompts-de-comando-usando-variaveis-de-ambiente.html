@@ -1,0 +1,152 @@
+<p>There are several variables that can be set to control the appearance
+of the bash command prompt: PS1, PS2, PS3, PS4 and PROMPT_COMMAND the
+contents are executed just as if they had been typed on the command
+line.</p>
+<p>PS1 – Default interactive prompt (this is the variable most often
+customized)<br />
+PS2 – Continuation interactive prompt (when a long command is broken up
+with  at the end of the line) default=“&gt;”<br />
+PS3 – Prompt used by “select” loop inside a shell script<br />
+PS4 – Prompt used when a shell script is executed in debug mode (“<a
+href="https://ss64.com/bash/set.html">set</a> -x” will turn this on)
+default =“++”<br />
+PROMPT_COMMAND - If this variable is set and has a non-null value, then
+it will be executed just before the PS1 variable.</p>
+<p>Set your prompt by changing the value of the PS1 environment
+variable, as follows:</p>
+<p>$ export PS1=‘My simple prompt$’<br />
+My simple prompt$</p>
+<p>It is recommended <a
+href="https://tanelpoder.com/posts/how-to-stay-safe-in-shell/">not to
+use a ‘&gt;’</a> in your PS1 Command Prompt as if copy/pasted by
+accident that can cause a redirection and file overwrite.</p>
+<p>This change can be made permanent by placing the export
+PS1 definition in your <a
+href="https://ss64.com/bash/syntax-bashrc.html">~/.bashrc</a> file.<br />
+To see what is currently defined in your .bashrc/.bash_profile use grep
+‘PS1’ $HOME/.bash{rc,_profile}<br />
+The default value on many distros is ‘-’</p>
+<h3 id="special-prompt-variable-characters">Special prompt variable
+characters:</h3>
+<p>he date, in “Weekday Month Date” format (e.g., “Tue May 26”).</p>
+<p><strong> The </strong>hostname**, up to the first .
+(e.g. deckard)<br />
+he hostname. (e.g. deckard.SS64.com)</p>
+<p>The number of jobs currently managed by the shell.</p>
+<p>The basename of the shell’s terminal device name.</p>
+<p>The name of the shell, the <a
+href="https://ss64.com/bash/basename.html">basename</a> of
+<code>$0</code> (the portion following the final slash).</p>
+<p>he time, in 24-hour HH:MM:SS format.<br />
+The time, in 12-hour HH:MM:SS format.<br />
+@ The time, in 12-hour am/pm format.</p>
+<p><strong> The </strong>username** of the current user.</p>
+<p>he version of Bash (e.g., 2.00)</p>
+<p>The release of Bash, version + patchlevel (e.g., 2.00.0)</p>
+<p><strong>* The current </strong>working directory**.<br />
+The <a href="https://ss64.com/bash/basename.html">basename</a> of
+<code>$PWD</code>.</p>
+<p>! The history number of this command.<br />
+# The command number of this command.</p>
+<p>$ If you are not root, inserts a “$”; if you are root, you get a “#”
+(root uid = 0)</p>
+<p>_nnn_ The character whose ASCII code is the octal value
+<em>nnn</em>.</p>
+<p>\n A newline.<br />
+\r A carriage return.<br />
+\e An escape character (typically a color code).<br />
+\a A bell character.<br />
+\  A backslash.</p>
+<p>[ Begin a sequence of non-printing characters. (like color escape
+sequences). This<br />
+allows bash to calculate word wrapping correctly.</p>
+<p>] End a sequence of non-printing characters.</p>
+<blockquote>
+<p>Using <strong>single</strong> quotes instead of <a
+href="https://ss64.com/bash/syntax-quoting.html">double quotes</a> when
+exporting your PS variables is recommended, it makes the prompt a tiny
+bit faster to evaluate.</p>
+<p>Command/History Numbers</p>
+<p>The command number and the <a
+href="https://ss64.com/bash/history.html">history</a> number are usually
+different: the history number of a command is its position in the
+history list, which can include commands restored from the history file,
+while the command number is the position in the sequence of commands
+executed.</p>
+<p>After the string is decoded, it is expanded via parameter expansion,
+command substitution, arithmetic expansion, and quote removal, subject
+to the value of the <code>promptvars</code> shell option.</p>
+</blockquote>
+<h3 id="color-codes-ansi-escape-sequences">Color Codes (ANSI Escape
+Sequences)</h3>
+<blockquote>
+<p>Foreground colors, Normal (non-bold) is the default, so the 0; prefix
+is optional.</p>
+<p>(https://ss64.com/bash/tput.html), this will read the terminfo
+database with all the escape codes necessary for interacting with your
+terminal.<br />
+If you use tput instead of hard-coding the escape sequences, you can set
+the TERM variable to control whether color codes are output. This also
+makes the output portable to terminals other than xterm.</p>
+</blockquote>
+<h4 id="examples">Examples</h4>
+<p>Set a prompt like: hostname:~/CurrentWorkingDirectory$</p>
+<blockquote>
+<p>export PS1=‘$’</p>
+</blockquote>
+<p>Set a prompt like: [username@hostname:~/CurrentWorkingDirectory]$</p>
+<blockquote>
+<p>export PS1=‘<strong>[**<span class="citation"
+data-cites="*">@*</span><em></em>]</strong>$’</p>
+</blockquote>
+<p>Set a prompt
+like [username@hostname:~/CurrentWorkingDirectory]$<br />
+With the foreground color red, note the escapes for the non printing
+characters [ ] become [ and ], these ensure that readline can keep track
+of the cursor position correctly. The 0m at the end resets the color
+back to default.</p>
+<blockquote>
+<p>export
+PS1=’<strong>[</strong>[31m<strong>]</strong>*[<strong>[0m</strong>]** ’</p>
+</blockquote>
+<p>Set a prompt like [username@hostname:~/CurrentWorkingDirectory]$ with
+the foreground and background colors, set via <a
+href="https://ss64.com/bash/tput.html">tput</a>:</p>
+<blockquote>
+<p>magenta=$(tput setaf 5)<br />
+blue=$(tput setaf 4)<br />
+reset=$(tput sgr0)<br />
+export PS1=’**[<strong>[$magenta]</strong>[$reset]**<span
+class="citation"
+data-cites="*">@*</span>*[$magenta]:[$blue]***[$reset]**]**$ ’</p>
+</blockquote>
+<p>Use the $PIPESTATUS array to capture the exit status of every piped
+command and set a prompt like username@hostname $</p>
+<blockquote>
+<p>export PROMPT_COMMAND=”<br />
+_RES=${PIPESTATUS[*]};<br />
+_RES_STR=’’;<br />
+for res in $_RES; do<br />
+if <span> ( \$res &gt; 0 ) </span>; then<br />
+_RES_STR=" [$_RES]";<br />
+fi;<br />
+done”</p>
+<p>export PS1=“$_RES_STR\$ ”</p>
+</blockquote>
+<img src="img/whatsapp-image-2024-10-20-at-21-11-00-cc8d7698.jpg"
+loading="lazy" />
+<p>“There is a time for departure even when there’s no certain place to
+go” ~ Tennessee Williams</p>
+<h4 id="related-linux-commands">Related Linux commands</h4>
+<p><a href="https://ss64.com/bash/env.html">env</a> - Display, set, or
+remove environment variables.<a
+href="https://ss64.com/bash/export.html"><br />
+export</a> - Set an environment variable.<br />
+<a href="https://www.kirsle.net/wizards/ps1.html">Bash $PS1
+generator</a> - Generate a custom colorful bash prompt. (tput
+codes).<br />
+<a href="https://tldp.org/HOWTO/Bash-Prompt-HOWTO/index.html">Bash
+Prompt HowTo</a><br />
+Windows equivalent: <a
+href="https://ss64.com/nt/prompt.html">PROMPT</a> - Change the command
+prompt.</p>

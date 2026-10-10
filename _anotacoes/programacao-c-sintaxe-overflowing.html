@@ -1,0 +1,13 @@
+<p>Caso você utilize por exemplo o tipo de dado byte:</p>
+<p>Byte numero = 255 ;</p>
+<p>O tamanho maixmo do dado byte é 255 se vc adicionar por exemplo:</p>
+<p>Numero = numero + 1</p>
+<p>O numero vai virar 256, que passa do valor maximo do byte, com isso
+temos um overflow e na hora que printarmos esse valor por exemplo o
+terminal só vai me mostrar o numero 0.</p>
+<p>Para checar se o numero está dando overflow fazer o seguinte:</p>
+<p>checked{<br />
+Byte numero = 255 ;<br />
+Numero = 255 + 1;<br />
+}</p>
+<p>Assim na hora que compilar ele vai da erro.</p>

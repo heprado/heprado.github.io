@@ -1,0 +1,45 @@
+<p>Tabela de Roteamento</p>
+<p>Contém as rotas que o roteador está usando atualmente.</p>
+<p>Criterios de escolha para uma rota:</p>
+<ul>
+<li><p>Next Hop: O próximo salto para a rede precisa ser de uma rede que
+o Roteador conheça.</p></li>
+<li><p>Route Specificity: Quanto mais especifica for a rota melhor, por
+exemplo , recebi duas rotas 10.0.0.0/8 via int 1/1 e 10.0.1.0/24 via int
+1/2, o roteador escolheria a rota da interface 1/2</p></li>
+<li><p>Administrative Distance:</p></li>
+</ul>
+<img src="img/63787039f3124451a130132b5cc649ed.jpg" loading="lazy" />
+<p>Se um roteador tiver duas rotas para o mesmo lugar, mas de protocolos
+diferentes, ele utiliza a distancia administrativa para fazer o
+desempate, quanto menor for a distancia administrativa, mais confiável a
+rota será.</p>
+<ul>
+<li>Metric:</li>
+</ul>
+<p>O ultimo critério de desempate é a métrica, cada protocolo tem sua
+métrica, e utiliza isso para escolher as melhores rotas, exemplo seria
+HOP COUNT do RIP, quanto menos roteadores eu passar para chegar em uma
+rede, melhor.</p>
+<p><strong>O ROTEADOR SEMPRE VAI ESCOLHER A ROTA ESPECIFICA MESMO SE A
+DISTANCIA ADMINISTRATIVA E A METRICA FOR MENOR.</strong></p>
+<ul>
+<li><strong>Floating Route = Uma rota estática com distancia
+administrativa maior que a dos protocolos de roteamento.</strong></li>
+</ul>
+<p><strong>Tipos de Protocolos de Roteamento</strong></p>
+<ul>
+<li><strong>Link State :</strong></li>
+</ul>
+<p>Tem um mapa com a rede toda, utiliza mais memoria, e não precisa de
+nada para prevenir loops</p>
+<ul>
+<li><strong>Distance Vector:</strong></li>
+</ul>
+<p>Conhece somente as rotas que o roteador vizinho divulgou para ele,
+utiliza menos memoria e precisa de mecanismos para prevenir loops.</p>
+<p>Um dos mecanismos que previnem loops são os números de AS (BGP) e
+split horizon (RIP e EIGRP).</p>
+<p>Caso o split horizon esteja ativo em um roteador EIGRP/RIP, ele não
+vai enviar rotas pelas portas que ele recebeu essas rotas, assim
+evitando loops.</p>

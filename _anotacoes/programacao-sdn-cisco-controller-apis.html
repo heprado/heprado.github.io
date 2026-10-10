@@ -1,0 +1,79 @@
+<p>As controladoras de SDN da Cisco são:</p>
+<ul>
+<li><p>ACI, utilizado em DATA CENTERS</p></li>
+<li><p>Meraki, utilizado em redes campus ou menores, é mais simples que
+o DNA Center, a<br />
+controladora só existe na Cloud.</p></li>
+<li><p>SD-WAN, utilizado para conexões na WAN.</p></li>
+<li><p>NOS, utilizado muito em service providers que possuem diversos
+vendors dentro de suas infraestruturas.</p></li>
+<li><p>DNA Center, utilizado em redes campus de grande porte e empresas
+que precisam de diversas funcionalidades na sua rede, temos tbm o DNA
+Spaces que o DNA Center na Cloud, pois o DNA Center é
+on-premises.</p></li>
+</ul>
+<p><strong>Meraki</strong></p>
+<p>Com as APIs da meraki você , puxar informações ou configurar os
+devices da sua rede, ele oferece 5 tipos de API:</p>
+<ul>
+<li>Dashboard API</li>
+</ul>
+<p>Gerencia tudo que podemos fazer na dashboard da Meraki, como criar
+organizações, VLANs, redes etc., também podemos pegar informações para
+exportamos para uma dashboard única, como por exemplo quantos usuarios
+temos na nossa infra.</p>
+<ul>
+<li>Scanning API</li>
+</ul>
+<p>Conseguimos puxar informações sobre quem está conectado na rede ,
+tanto devices wifi quanto bluetooth.</p>
+<ul>
+<li>mvSense API</li>
+</ul>
+<img src="img/cbf57ba90bac41dd8a0b8a54d670260f.png" loading="lazy" />
+<p>Prove API Endpoints para conseguirmos puxar informações das cameras
+da meraki.</p>
+<ul>
+<li>External Captive Portal</li>
+</ul>
+<p>Prove APIs para autenticação externa do Captive Portal da Meraki, se
+você não sabe oq é captive portal é aquelas paginas que a gente se
+conecta no wifi do Starbucks.</p>
+<ul>
+<li>Wireless Health API</li>
+</ul>
+<p>São APIs utilizadas para puxarmos informações sobre a rede Wifi, como
+saúde da rede e latência.</p>
+<p><strong>DNA Center</strong></p>
+<ul>
+<li>Intent API</li>
+</ul>
+<p>Nos da informações como as configurações das redes virtuais(VXLAN),
+saude da rede, devices conectados, quais VLANs estão configuradas em
+cada porta dos Switches.</p>
+<ul>
+<li>SWIM API</li>
+</ul>
+<p>Para controlar as versões das imagens que estão ou que vão ser
+configuradas nos switches e routers.</p>
+<ul>
+<li>PnP API</li>
+</ul>
+<p>Utilizada para gerenciarmos as configurações de device Plug and
+Play(PnP).</p>
+<ul>
+<li>Operational Tools</li>
+</ul>
+<p>Gerenciar templates da CLI dos equipamentos, descobrir caminho entre
+duas aplicações na rede etc.</p>
+<ul>
+<li>Authentication API</li>
+</ul>
+<p>Nesse ENDPOINT fazemos a autenticação e recebemos um token que deve
+ser passado em toda requisição.</p>
+<ul>
+<li>Integration API</li>
+</ul>
+<p>API utilizada para fazermos integrações com ITSM(Service Now), outro
+exemplo seria com o ACI para fazermos a politica de conexão de um
+usuario fim a fim, do campus até o Data Center.</p>

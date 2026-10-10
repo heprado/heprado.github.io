@@ -1,0 +1,14 @@
+<p>Os switches Cisco já vem com padrão o comando speed auto e duplex
+auto nas interfaces, com isso ele consegue identificar a velocidade dos
+links e não causar problemas no link.</p>
+<p>A maioria dos equipamentos usa o 802.3u que é um protocolo do IEEE de
+auto negociação da velocidade dos links, com isso conseguimos ter portas
+plug and play em empresas, pois pense em um PC que tem interface 10/100
+Full Duplex e um switch com interfaces 10/100/1000, os dois usam o
+802.3u eles conseguem decidir qual a melhor velocidade a ser usada, que
+nesse caso seria 100mb e full duplex.</p>
+<p>Mas agora imagine um equipamento que tem auto negociação e um que não
+tem como um hub, os switches conseguem sentir a velocidade do link
+usando o 802.3u, com isso ele ve se o link é 10mb,100mb ou 1000mb, se
+for 10 ou 100mb o duplex sempre será HALF, agora se for 1000mb sempre
+será FULL.</p>

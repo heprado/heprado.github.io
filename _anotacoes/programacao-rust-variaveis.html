@@ -1,0 +1,120 @@
+<h4 id="pontos-chave">Pontos chave</h4>
+<ul>
+<li>São imutáveis por padrão, isso significa, após serem inicializadas o
+valor dela não pode ser alterado de forma alguma.</li>
+<li>Para tornarmos uma variável mutável devemos utilizar a palavra-chave
+<code>mut</code></li>
+<li>Quando tentarmos compilar um código rust com uma variável imutável
+sendo atribuída valores múltiplas vezes, o compilador avisa.</li>
+<li>Se precisarmos mudar o valor de uma variável imutável devemos criar
+um novo escopo.</li>
+</ul>
+<h3 id="mutabilidade-imutabilidade">Mutabilidade / Imutabilidade</h3>
+<p>Em Rust precisamos especificar se uma variável após sua criação pode
+ter seu valor alterado, pois por padrão todas as variáveis são imutáveis
+ou seja não podem ter seu valor alterado após a inicialização.</p>
+<p>Declarando uma variável imutável :</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> variavel<span class="op">:&amp;</span><span class="dt">str</span> <span class="op">=</span> <span class="st">&quot;Valor&quot;</span></span></code></pre></div>
+<p>Declarando uma variável mutável:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Note a palavra chave mut.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> <span class="kw">mut</span> variavel<span class="op">:&amp;</span><span class="dt">str</span> <span class="op">=</span> <span class="st">&quot;Valor&quot;</span></span></code></pre></div>
+<h4 id="imutabilidade">Imutabilidade</h4>
+<p>De uma olhada:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Variável imutável</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">//O tipo é um ponteiro para uma string.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> nome<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span> <span class="op">=</span> <span class="st">&quot;Henrique&quot;</span><span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;Oi meu nome é {}&quot;</span><span class="op">,</span>nome)<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Tentando alterar o valor da variável.</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Não ira funcionar.</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  nome <span class="op">=</span> <span class="st">&quot;Outro nome&quot;</span><span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;Oi meu nome é {}&quot;</span><span class="op">,</span>nome)<span class="op">;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>O código acima não compilaria por conta de termos uma variável
+imutável e estarmos adicionando outro valor, em
+<code>nome = "Outro Nome"</code>.</p>
+<h4 id="mutabilidade">Mutabilidade</h4>
+<p>Para podermos modificar o valor de uma variável precisamos utilizar a
+palavra-chave <code>mut</code> :</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Variável mutável</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Tipo é um ponteiro para uma string.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> <span class="kw">mut</span> nome<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span> <span class="op">=</span> <span class="st">&quot;Henrique&quot;</span><span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;Oi meu nome é {}&quot;</span><span class="op">,</span>nome)<span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Atualizando a variável nome.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Isso funciona por conta da variável ser let mut</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  nome <span class="op">=</span> <span class="st">&quot;Outro nome&quot;</span><span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="pp">println!</span>(<span class="st">&quot;Oi meu novo nome é {}&quot;</span><span class="op">,</span>nome)<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>O código acima compilaria e teria a saída dessa forma:</p>
+<p><code>Oi meu nome é Henrique</code><br />
+<code>Oi meu novo nome é Outro nome</code></p>
+<p>Variáveis mutáveis são uteis para quando precisamos alterar o valor
+da variável múltiplas vezes.</p>
+<h3 id="sombreamento">Sombreamento</h3>
+<h4 id="escopos">Escopos</h4>
+<p>Mesmo uma variável sendo imutável nada te impede de criar uma nova
+variável com o mesmo nome que a anterior só que em um novo escopo, veja
+o exemplo abaixo:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">//Ponteiro imutável()  </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">//para uma string.  </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> nome<span class="op">:&amp;</span> <span class="dt">str</span> <span class="op">=</span> <span class="st">&quot;Henrique&quot;</span><span class="op">;</span>  </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">//Imprimindo no STDIN o nome dentro da variável nome  </span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="pp">println!</span>(<span class="st">&quot;Nome no escopo 0 {}&quot;</span><span class="op">,</span> nome)<span class="op">;</span>  </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">//Criando um novo escopo  </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="op">{</span>  </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Criando outro ponteiro imutável para uma string, </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">//utilizando o   mesmo nome de variável.  </span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Isso só é possivel pois estamos em outro escopo.    </span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> nome<span class="op">:&amp;</span> <span class="dt">str</span> <span class="op">=</span> <span class="st">&quot;Sombra Henrique&quot;</span><span class="op">;</span>  </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Imprimindo no STDIN o novo nome dentro da variavel nome  </span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Nome no escopo 1 {}&quot;</span><span class="op">,</span> nome)<span class="op">;</span>  </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>O código acima só compila pois criamos um novo escopo e definimos uma
+nova variável com o mesmo nome, isso faz com que o compilador entenda
+que até o fim da execução daquele escopo o valor da variável será o
+novo.</p>
+<h4 id="escopos-com-condições">Escopos com condições</h4>
+<p>Escopos podem estar em qualquer lugar do seu código, veja por exemplo
+a criação de um escopo baseado em uma condição:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Ponteiro imutável(Não pode ser outra string em tempo de execução)  </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">//para uma string.  </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> nome<span class="op">:&amp;</span><span class="dt">str</span> <span class="op">=</span> <span class="st">&quot;Henrique&quot;</span><span class="op">;</span>  </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">//Imprimindo no STDIN o nome dentro da variável nome  </span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="pp">println!</span>(<span class="st">&quot;Nome no escopo {}&quot;</span><span class="op">,</span> nome)<span class="op">;</span>  </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">//Criando um novo escopo caso o nome seja Henrique.  </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> nome <span class="op">==</span> <span class="st">&quot;Henrique&quot;</span> <span class="op">{</span>  </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Criando outro ponteiro imutável para uma string,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">//utilizando o mesmo nome de variável.  </span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Isso só é possivel pois estamos em outro escopo.    </span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">//O interessante aqui é que estamos dentro de um escopo contextual, </span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">//podemos criar um escopo diferente para cada valor atribuido a  </span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">//variavel quando ela for inicializada.    </span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> nome<span class="op">:&amp;</span><span class="dt">str</span> <span class="op">=</span> <span class="st">&quot;Sombra Henrique&quot;</span><span class="op">;</span>  </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="pp">println!</span>(<span class="st">&quot;Nome dentro do escopo do if {}&quot;</span><span class="op">,</span> nome)<span class="op">;</span>  </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>No caso acima o escopo só será criado caso o valor dentro da variável
+for a string “Henrique”.</p>

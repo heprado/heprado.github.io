@@ -1,0 +1,39 @@
+<p><strong>Particionamento de Redes</strong></p>
+<p>As redes foram criadas para os dispositivos conseguirem trocar
+informações livremente, diferente de mainframes e seus terminais, os
+computadores comuns são entidades individuais, o Ethernet não se importa
+quem é o cliente e o servidor, isso ficou na mão do desenvolvedor de
+software e para a Camada de Transporte.</p>
+<p>A rede ethernet é ótima isso todos sabemos, o único problema é
+exatamente o fato de todos conseguirem se comunicar, nem sempre queremos
+que um host se comunique com outro, também podemos ter grandes problemas
+como muito tráfego broadcast na rede, imagine um switch somente com a
+VLAN Nativa e a rede sendo um /8, só nisso já conseguimos ver o caos que
+seria caso não tivéssemos VLAN.</p>
+<p>Tudo dito acima vale para uma rede campus, um problema adicional
+existente em Data Centers é o domínio de falha, um exemplo seria se
+tivéssemos uma rede com spanning-tree comum, caso tivéssemos um loop
+TODOS os switches da rede iam travar. Já com VLANs e PVSTP+ somente os
+switches com essas VLANs iam travar, diminuindo muito o domínio de
+falha.</p>
+<p><strong>VLANs</strong></p>
+<p>Mesmo com a substituição dos Hubs+Bridges pelos switches, ainda
+tinhamos muito tráfego broadcast na rede, para isso foram criadas as
+VLANs, cada VLAN é um domínio de broadcast, somente dispositivos na
+mesma VLAN conseguem se conversar sem serem roteados,VLANs são
+configuradas nas portas dos switches, o que ocorre no fim das contas é
+que cada VLAN tem uma tabela MAC, as portas configuradas nessas VLANs
+começam a participar dessa tabela MAC. Para estender essas VLANs para
+outros switches foi criado o 802.1Q(Trunk), ele taggeia o tráfego com o
+ID da VLAN entre os links dos switches, assim o switch de destino sabe a
+qual VLAN pertence esse frame.</p>
+<img src="img/ecf95672e3ab4c2e94c0903fd8a6ca05.png" loading="lazy" />
+<p>Tag Protocol Indentifier : Identifica que esse header é um header
+802.1Q, o valor padrão dele é 8100.</p>
+<p>Priority Code Points: Contem o valor da prioridade do frame, é como
+se fosse o DSCP do header IPV4, para QoS no Layer 2.</p>
+<p>Canonical Format Indicator: Inutil em switches ethernet, servia para
+compatibilidade com redes token ring.</p>
+<p>VLAN ID:Aqui é onde o tráfego é taggeado, os valores vão de 0 a 4096,
+então teoricamente pelo padrão do IEEE conseguimos ter 4096 VLANs em uma
+rede Ethernet.</p>

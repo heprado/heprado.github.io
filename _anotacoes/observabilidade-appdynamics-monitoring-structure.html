@@ -1,0 +1,25 @@
+<img src="img/2f40ab0b3d634c02b6dbca3e62dcf387.png" loading="lazy" />
+<p>Application - O maior tier de monitoramento do AppDynamics, uma
+aplicação é composta por diversos tiers e nodes, o AppDynamics consegue
+saber quando uma aplicação chama outra aplicação e existem duas formas
+de monitorarmos aplicações que conversam entre si :</p>
+<p><img src="img/10c4138b129b4d6180dfaccbda838326.png"
+loading="lazy" /><br />
+Na imagem a cima o AppDynamics sabe que os nodes do Service Tier da
+aplicação de Customer Portal fazem requisições para os nodes do Service
+Tier da aplicação de Billing System, o problema nessa topologia é que
+fica um pouco mais dificil de encontrar o erro nas transações entre os
+nodes do Service Tier de ambas as aplicações.</p>
+<p><img src="img/5498d9f1672642768d6ba026f835fa0a.png"
+loading="lazy" /><br />
+Na topologia a cima juntamos as duas aplicações em uma só no
+AppDynamics, chamada de Enterprise Application, para diferenciar as
+aplicações podemos colocar um prefixo nos tiers como CP(Customer Portal)
+e BS(Billing System), assim fica mais facil de fazer troubleshooting, o
+problema se torna a escala pois o AppDynamics só consegue monitorar até
+200 transações em uma aplicação.</p>
+<p>Tiers - São partes da aplicação, cada tier é composto por um ou mais
+nodes, esses nodes podem ser por exemplo web servers que trabalham em
+conjunto para prover um front-end.</p>
+<p>Nodes - O menor tier de monitoramento do AppDynamics, cada node é um
+processo da aplicação rodando.</p>

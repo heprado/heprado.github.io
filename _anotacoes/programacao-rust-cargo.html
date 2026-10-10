@@ -1,0 +1,69 @@
+<p>O cargo é a ferramenta principal do Rust, abaixo segue as principais
+atividades que podemos fazer com o Cargo:</p>
+<h3 id="cargo-build">Cargo build</h3>
+<p>Com o comando <em>cargo build</em> podemos criar um binario do nosso
+projeto, por padrão esse binario é considerado de debug.</p>
+<p>No exemplo abaixo estamos executando o <em>cargo build</em></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">heprado@marvin:~/code/rust/hello_world$</span> cargo build</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   <span class="ex">Compiling</span> hello_world v0.1.0 <span class="er">(</span><span class="ex">/home/heprado/code/rust/hello_world</span><span class="kw">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Finished</span> dev [unoptimized + debuginfo] target<span class="er">(</span><span class="ex">s</span><span class="kw">)</span> <span class="er">in</span> <span class="ex">0.75s</span></span></code></pre></div>
+<p>Como não especificamos qual é o tipo da build, ele vai gerar o
+binário como debug e você encontrará o seu binário na pasta
+<em>target/debug</em> no diretório raiz do seu projeto:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">heprado@marvin:~/code/rust/hello_world/target/debug$</span> pwd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/heprado/code/rust/hello_world/target/debug</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">heprado@marvin:~/code/rust/hello_world/target/debug$</span> ls <span class="at">-la</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 3736</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 7 heprado heprado    4096 Feb 23 12:17 .</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 3 heprado heprado    4096 Feb 23 12:17 ..</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 heprado heprado       0 Feb 23 12:17 .cargo-lock</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 3 heprado heprado    4096 Feb 23 12:17 .fingerprint</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 2 heprado heprado    4096 Feb 23 12:17 build</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 2 heprado heprado    4096 Feb 23 12:17 deps</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 2 heprado heprado    4096 Feb 23 12:17 examples</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwxr-xr-x</span> 2 heprado heprado 3792568 Feb 23 12:17 hello_world <span class="co">#Binario</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 heprado heprado     110 Feb 23 12:17 hello_world.d</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 3 heprado heprado    4096 Feb 23 12:17 incremental</span></code></pre></div>
+<p>Se você rodar o <em>cargo build</em> com o seu binário já compilado e
+não tiver feito nenhuma modificação no seu projeto o cargo não irá
+compilar novamente seu código:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">heprado@marvin:~/code/rust/hello_world$</span> cargo build</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Finished</span> dev [unoptimized + debuginfo] target<span class="er">(</span><span class="ex">s</span><span class="kw">)</span> <span class="er">in</span> <span class="ex">0.00s</span></span></code></pre></div>
+<p>Caso você queira compilar seu código para uma versão que não seja de
+debug, precisamos falar para o <em>cargo</em> que é um versão de
+lançamento, fazemos isso da seguinte forma:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">heprado@marvin:~/code/rust/hello_world$</span> cargo build <span class="at">--release</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   <span class="ex">Compiling</span> hello_world v0.1.0 <span class="er">(</span><span class="ex">/home/heprado/code/rust/hello_world</span><span class="kw">)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Finished</span> release <span class="pp">[</span><span class="ss">optimized</span><span class="pp">]</span> target<span class="er">(</span><span class="ex">s</span><span class="kw">)</span> <span class="er">in</span> <span class="ex">0.81s</span></span></code></pre></div>
+<p>Você encontrará o seu binário na pasta <em>target/debug</em> no
+diretório raiz do seu projeto:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">heprado@marvin:~/code/rust/hello_world/target/release$</span> pwd</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/heprado/code/rust/hello_world/target/release</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">heprado@marvin:~/code/rust/hello_world/target/release$</span> ls <span class="at">-la</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">total</span> 3728</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 7 heprado heprado    4096 Feb 23 13:54 .</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 4 heprado heprado    4096 Feb 23 13:54 ..</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 heprado heprado       0 Feb 23 13:54 .cargo-lock</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 3 heprado heprado    4096 Feb 23 13:54 .fingerprint</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 2 heprado heprado    4096 Feb 23 13:54 build</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 2 heprado heprado    4096 Feb 23 13:54 deps</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 2 heprado heprado    4096 Feb 23 13:54 examples</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwxr-xr-x</span> 2 heprado heprado 3783896 Feb 23 13:54 hello_world <span class="co">#Binario</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-r--r--</span> 1 heprado heprado     112 Feb 23 13:54 hello_world.d</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxr-xr-x</span> 2 heprado heprado    4096 Feb 23 13:54 incremental</span></code></pre></div>
+<h3 id="cargo-run">Cargo Run</h3>
+<p>Quando executamos o comando <em>cargo run</em> o cargo fala para o
+<strong>rustc</strong> compilar o código e executar sem termos que
+executar o <em>cargo build</em> e executar na mão</p>
+<p>Executando um cargo run:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">heprado@marvin:~/code/rust/hello_world$</span> cargo run</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Finished</span> dev [unoptimized + debuginfo] target<span class="er">(</span><span class="ex">s</span><span class="kw">)</span> <span class="er">in</span> <span class="ex">0.27s</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     <span class="ex">Running</span> <span class="kw">`</span><span class="ex">target/debug/hello_world</span><span class="kw">`</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Hello,</span> world!</span></code></pre></div>
+<p>Podemos ver que depois que o código é compilado ele executa e nos
+mostra “Hello, world!”.</p>
+<p>Também podemos utilizar o <em>cargo run –release</em> para
+executarmos com todas as otimizações(leva mais tempo).</p>
+<p>Outra utilidade util do cargo run é executar com todos os núcleos do
+processador executando o comando cargo run -j {numero de núcleos}, por
+padrão o cargo já utiliza o maximo.</p>

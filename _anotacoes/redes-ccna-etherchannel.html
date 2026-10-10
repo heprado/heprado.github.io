@@ -1,0 +1,15 @@
+<p>Função utilizada para juntar até 8 portas em uma única porta
+logica.</p>
+<img src="img/a7fd7336f9ce4a9dbb5da4fb5f0c0839.gif" loading="lazy" />
+<p>Temos 3 tipos de Etherchannel:</p>
+<img src="img/99641f7d9a42494fb8113a8cecf0bcd5.png" loading="lazy" />
+<p>Etherchannel mode on, nesse modo nos vamos em cada porta e escolhemos
+quem participa do Etherchannel, o único problema de configurar assim é
+que se caso no outro switch não tivermos as portas fazendo um
+Etherchannel podemos gerar um loops, pois o switch que está fazendo
+Etherchannel não vai deixar a porta dele como Blocking.</p>
+<img src="img/66b2801538314292a2da708ca2c9caa9.png" loading="lazy" />
+<p>PAGP, protocolo padrão cisco para controle de Etherchannel, ele só
+fecha o Etherchannel caso o outro lado também esteja em Etherchannel,
+assim não teremos loops na rede.</p>
+<p>LACP, protocolo padrão aberto que faz a mesma coisa que o PAGP.</p>

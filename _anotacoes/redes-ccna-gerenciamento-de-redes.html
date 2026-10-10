@@ -1,0 +1,68 @@
+<p><strong>SNMP</strong></p>
+<p>Protocolo utilizado para monitorar equipamentos de rede.</p>
+<p>OID ( Object Identifier ) - Um numero geralmente escrito
+1.3.2.5.7.3.7.3, a combinação desses numeros é uma variavel, como CPU
+LOAD, RAM LOAD, UPTIME etc.</p>
+<p>MIB (Management Information Base) - MIB compacta todos os OIDs que
+existem em um equipamento de rede, o fabricante fornece a MIB para o
+cliente.</p>
+<p>SNMP Get - Requisição pedindo para o agente uma informação contida em
+uma OID.<br />
+SNMP Set - Requisição configurando o equipamento.<br />
+SNMP Trap - Quando um agente envia informações para um NMS sem ele
+pedir, podemos setar pra se caso uma interface caia ele envie a trap
+avisando o NMS.</p>
+<p>Existem 3 versões dele, SNMPv1 SNMPv2c e SNMPv3.</p>
+<p>SNMPV1 - Utiliza comunidades RO/RW como uma PSK, e só suportava
+contadores de até 32bits.</p>
+<p>SNMPv2c - Utiliza comunidades RO/RW como uma PSK, e suporta
+contadores de até 64bits.</p>
+<p>SNMPv3 - Utiliza comunidades , senhas e grupos de usuarios, suporta
+64bits também.</p>
+<p>Configurando SNMPv2c -</p>
+<p>Snmp-server community “nome” ro</p>
+<p>FIM.</p>
+<p>Configurando SNMPv3 -</p>
+<p>Snmp-server view “NOME” “OID” ( Esse comando é utilizado para criar
+uma View da MIB.</p>
+<p>Snmp-server group “NOME” priv read “Nome da VIEW criada”</p>
+<p>Snmp-server user “NOME” “GRUPO” v3 auth sha “SENHA” priv des56
+“outra-senha”</p>
+<p><strong>IP SLA</strong></p>
+<p>Protocolo usado para testar se um service provider realmente está
+entregando a velocidade que prometeu no contrato.</p>
+<p>Podemos utilizar um ping, um pacote SIP, uma requisição HTTP/HTTPS,
+qualquer coisa para medir a integridade do link</p>
+<p>Podemos configurar ele entre um roteador e um servidor/ computador,
+nesse caso não estaríamos monitorando somente a rede do service
+provider, mas a nossa também.</p>
+<p>Ou podemos configurar somente entre 2 roteadores, deles sendo o SLA
+Responder, esse SLA responder responde com os dados gerados de tempos em
+tempos.</p>
+<p>Para configurarmos:</p>
+<p>Ip sla 1<br />
+Icmp-echo “ip de destino”<br />
+Exit<br />
+Ip sla 1 scheduler life forever start-time now</p>
+<p><strong>SPAN</strong></p>
+<p>Switched Port Analyzer, configurações que podemos fazer na porta de
+um switch para que ela recebe frames vindos de outras interfaces do
+switch<strong>.</strong></p>
+<img src="img/aee64b70b0914342ae2f0314b95ddd92.jpg" loading="lazy" />
+<p>Temos como configurarmos de dois jeitos, para receber somente os
+frames enviados ou recebidos numa porta.</p>
+<p>Configurando para tráfego enviado para a porta pelo switch:</p>
+<p>Monitor session “numero da sessão” source interface “numero da
+interface” tx<br />
+Monitor session “numero da sessão” destination interface “numero da
+interface que vai estar o network analyzer.</p>
+<p>Configurando para tráfego enviado para o switch pela porta:</p>
+<p>Monitor session “numero da sessão” source interface “numero da
+interface” rx<br />
+Monitor session “numero da sessão” destination interface “numero da
+interface que vai estar o network analyzer.</p>
+<p>Configurando para ambos os tráfegos:</p>
+<p>Monitor session “numero da sessão” source interface “numero da
+interface” both<br />
+Monitor session “numero da sessão” destination interface “numero da
+interface que vai estar o network analyzer.</p>

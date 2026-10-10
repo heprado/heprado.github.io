@@ -1,0 +1,58 @@
+<p>Data Center Telemetry -</p>
+<p>Os ambientes de Data Center estão ficando cada vez maiores
+ferramentas como SNMP, SYSLOG ou simplesmente fazer um troubleshooting
+pela CLI já não é mais tão simples como antes pois essas ferramentas não
+da a visibilidade necessária para gerenciar ambientes tão complexos.</p>
+<p>Diferentes de ferramentas como SNMP, que a Manager que pede as
+informações para o equipamento, no ACI o equipamento que envia a
+telemetria para as Managers(NIR) processarem esses dados quando
+necessário.</p>
+<p>Utiliza padrões mais robustos como JSON e chamadas nas APIs da
+Manager via HTTP/HTTPS, como JSON é um dado estruturado podemos
+utiliza-lo para automatizar processos.</p>
+<img src="img/2a973a882a7b4b12af1253839504b275.png" loading="lazy" />
+<p>Software Telemetry - Mostra informações sobre o software do Switch,
+como os vizinhos LLDP, quanto de memoria está sendo gasta pelos
+processos, temperatura , etc.</p>
+<p>Hardware Telemetry - Mostra informações a nivel de hardware sobre o
+Data Plane, como informações como flows, queues, interfaces , protocolos
+etc.</p>
+<p>Com issos conseguimos visualizar informações como, qual interface
+começou um flow, de quem veio, qual protocolo, tamanho do flow, quanto
+tempo demorou etc.</p>
+<p>O legal disso é que essas informações não são mandadas para a CPU, o
+próprio ASIC envia as informações via HTTP para o Manager.</p>
+<img src="img/78c5881414e84e30866226cfec6a8ae6.png" loading="lazy" />
+<p>Network Insight Resources -</p>
+<p>Os dados enviados pelos ASICs estão pertos de linguagem de maquina,
+então o NIR recebe esses dados, normaliza ele e utiliza machine learning
+para analisar esses dados e nos dar informações valiosas sobre o
+ambiente como :</p>
+<img src="img/10c18a86a12f42798f2e53ff791bb5ea.png" loading="lazy" />
+<p>System: Informações sobre quantos GBps realmente estão passando no
+meu switch, como está minha routing table, como está minha MAC Table,
+informações sobre QoS etc.</p>
+<p>Operations: Estatisticas sobre o ambiente como um todo, informações
+sobre os flows.</p>
+<p>O NIR coleta todas essas informações e utiliza machine learning para
+nos dar diagnosticos sobre a rede, ele consegue analisar esses flows e
+te dizer o que aconteceu na sua rede. Um exemplo seria, a sua routing
+table estava configurada de certa forma, e alguém foi lá e fez uma
+alteração nos protocolos de roteamento, agora por conta disso dois hosts
+estão tendo problemas na sua comunicação, o NIR com todas as informações
+que ele coleta, consegue correlacionar esses dois eventos e te
+avisar.</p>
+<p>Com essas informações que ele coleta, ele também consegue analisar
+como sua rede geralmente se comporta, qual é a porcentagem de uso da CPU
+que geralmente seus switches trabalham e caso essa porcentagem suba ou
+aumente ele te avisa e te diz qual pode o motivo.</p>
+<p>Network Insights Advisor -</p>
+<p>Analisa sua rede e te prove informações como:</p>
+<p>Recomendações de como sua rede deveria ser configurada,<br />
+Patches que podem ser utilizados para resolverem certos problemas na sua
+rede.<br />
+Verifica se o sistema operacional é o correto para o ambiente e te diz
+qual é a versão recomendada.<br />
+Verifica os flows e preve problemas que podem acontecer na sua rede,
+como loops na rede.<br />
+Avisa sobre bugs conhecidos que estão acontecendo na sua rede.</p>

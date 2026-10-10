@@ -1,0 +1,37 @@
+<h3
+id="configuration-management-vs-infrastructure-orchestration"><strong>Configuration
+Management vs Infrastructure Orchestration</strong></h3>
+<p><strong>Configuration Managemen</strong>t - São softwares criados
+para inicialmente para instalação e gerenciamentos de softwares dentro
+do sistema operacional do servidor, elas geralmente conseguem também
+prover a infraestrutura mas não é o foco principal delas.</p>
+<p>Exemplos : Ansible,Chef,Puppet</p>
+<p><strong>Infrastructure Orchestration</strong> - São softwares criados
+para provisionar a infraestrutura, por exemplo subir uma VM, criar uma
+rede etc.</p>
+<p>Exemplos: Terraform, CloudFormation(AWS)</p>
+<p>Use o que for para configuration management para configurar o
+software e o que for Infrastructure Orchestration para prover infra.</p>
+<p>As duas juntas são muito poderosas como no caso abaixo:</p>
+<p>-Terraform prove a infraestrutura e passa para o Ansible por exemplo
+o IP do servidor para ele fazer SSH</p>
+<p>-Ansible configura o linux inteiro do servidor.</p>
+<img src="img/32b0c438743a4cd0853e0806415b3c82.png" loading="lazy" />
+<p><strong>Declarative vs Imperative</strong></p>
+<p><strong>Declarativo</strong> - Dizemos exatamente oque queremos fazer
+em linguagem de codigo, não utilizamos funções que abstraem oque está
+sendo feito.</p>
+<p><strong>COMO QUEREMOS FAZER.</strong></p>
+<p>Linguagens Declarativas: Python, Go, Javascript</p>
+<p><strong>Imperativo</strong> - Dizemos o que queremos fazer e a
+linguagem se vira para fazer através de funções que abstraem o que está
+sendo feito.</p>
+<p><strong>O QUE QUEREMOS FAZER.</strong></p>
+<p>Linguagens Declarativas: HCL (Terraform), YAML, JSON</p>
+<p><strong>Idempotent vs Consistent</strong></p>
+<p><strong>Idempotent</strong> - O Terraform é Idempotent, se você pedir
+para ele criar algo no código, caso rodemos ele de novo ele não vai
+recriar esse algo novamente, isso pois ele mantem o estado.</p>
+<p><strong>Consistent</strong> - Caso tivermos um codigo que cria algo,
+se pedirmos para rodar de novo, ele vai recriar tudo do zero, sempre
+entregando tudo da forma que pedimos, por isso consistente.</p>

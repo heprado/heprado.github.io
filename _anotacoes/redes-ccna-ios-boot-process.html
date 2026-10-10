@@ -1,0 +1,26 @@
+<p>IOS Boot Process</p>
+<p><strong>Processo de boot de router/switch</strong><br />
+****<br />
+1. Faz um POST para verificar o que está conectado nele, e se está tudo
+ok com o hardware.<br />
+2. Se estivar tudo ok , ele copia o programa de bootstrap para a RAM e
+executa ele.<br />
+3. Se algo tiver dado errado o bootstrap copia a ROMMON na RAM e executa
+ela.<br />
+4. O Bootstrap escolhe a IOS que esta na flash executa e coloca na
+RAM.<br />
+5. Após isso o bootstrap passa o controle para a IOS.<br />
+6. O IOS pega a Startup-config da NVRAM e copia para a RAM como
+Running-config</p>
+<img src="img/562ece946a3046d289a9ad7121271acb.png" loading="lazy" />
+<p><strong>Configurando Registros</strong></p>
+<p>Registros são configurações que o router checa na hora de bootar a
+IOS, eles são representados em numeros hexadecimais(0x2100),<br />
+Podemos usar essa configuração para por exemplo, bootar a ROMMON ao em
+vez da IOS, mesmo estando tudo ok com o router/switch.</p>
+<p>O ultimo numero hexadecimal define o que vai acontecer no boot:</p>
+<p>Se for 0 vai bootar na ROMMON</p>
+<p>Se for 1 vai bootar a primeiro imagem na flash</p>
+<p>Se for 2 vai bootar alguma imagem na flash definida pelo comando boot
+system, se não tiver nenhum boot system boota a primeira imagem na
+flash.</p>

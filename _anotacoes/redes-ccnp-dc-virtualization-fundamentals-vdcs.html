@@ -1,0 +1,55 @@
+<p>Virtual Device Context, são switches virtuais criados dentro de um
+switch, cada um desses switches tem seu proprio Data Plane, Control
+Plane e Management Plane. Por padrão os VDCs não conseguem se conversar,
+para isso você teria que ligar um numa porta em um VDC em outro porta em
+outro VDC, isso no mesmo switch fisico, como na imagem abaixo.</p>
+<img src="img/1cf8a3293415447ebcfb83c2bcad1112.png" loading="lazy" />
+<img src="img/9c8b9d011b45414bacb3b523cf5c594b.jpg" loading="lazy" />
+<p>Na imagem acima podemos ver que os VDCs podem ter VRFs com o mesmo
+nome e até mesmo VLANs com o mesmo ID, isso por conta da separação do
+control plane e data plane, são realmente switches dentro de um
+switch.</p>
+<p>Cada interface de um switch modular como o nexus 7k, devem pertencer
+somente a um VDC, podemos por exemplo num Nexus 7009, escolher a line
+card 3 como do VDC 1, a Line Card 4 como do VDC 2 e assim seguindo,
+podemos também misturar, metade da line card 3 ser do VDC 1 e a outra
+ser do VDC 2.</p>
+<p><strong>Para que serve um VDC?</strong></p>
+<p>Basicamente para fazermos zonas de segurança, também para dividirmos
+o dominio de falha um exemplo seria um looping de spanning tree em um
+VDC, somente ele seria afetado.</p>
+<p>Um outro motivo é a melhor utilização desses equipamentos, em um data
+center muitas vezes temos switches com muitas portas sobrando, mas
+imagine que esse switch pertence a uma equipe e outra equipe precisa
+utilizar ele, a gerencia desse equipamento se tornaria muito dificil,
+por isso preferem comprar outro equipamento ao em vez de usar o que tem
+portas livres.</p>
+<p>Outro exemplo são protocolos que não funcionam um com o outro,
+imagine um switch rodando PVSTP+ mas a nova equipe precisa ligar esse
+switch PVSTP+ em um Switch rodando MST, seria um problemão trocar o
+PVSTP+ por MST, as vezes isso nem é possivel por conta de
+compliance.</p>
+<p>Criando um VDC dentro desse switch, podemos separar um switch para
+cada equipe, assim cada uma possui seu switch virtual dentro de um
+switch fisico, com sua propria gerencia, protocolos de roteamento,
+protocolos de STP e VLANs ID.</p>
+<p>Podemos até fazer uma topologia 3 Tier com um VDC(ACHEI ISSO MUITO
+LOCO).</p>
+<img src="img/578da0679dc94a018354c40aa624c299.jpg" loading="lazy" />
+<p>Criariamos 2 VDCs para Agregação e ligariamos eles nos VDCs de Switch
+Core. MUITO LEGAL.</p>
+<p><strong>Criando um VDC</strong></p>
+<p>Por padrão todos os switches nexus que possuem a opção de configurar
+VDC já vem com um VDC configurado, esse é o VDC 1.</p>
+<img src="img/78341dd1577c4b5eb6057617526b338e.png" loading="lazy" />
+<p>O comando vdc Switch1 cria o VDC, o comando allocate interface
+ethernet 10/10 aloca a interface 10/10 do modulo 10 do switch fisico
+para esse VDC.</p>
+<p>Para checarmos a configuração:</p>
+<img src="img/958cbbf211204d0682cebd408b912ec1.png" loading="lazy" />
+<p>Podemos ver que no VDC Switch1 as interfaces 12,14 e 16 vieram junto
+com a interface 10 que alocamos, isso por contra do HARDWARE PORTGROUP,
+isso significa que a interface 10 está no mesmo hardware portgroup que
+as demais. Cada line card possui suas restrições.</p>
+<img src="img/a6f6d8ec39574a9a8fd5db75b909b267.png" loading="lazy" />
+<p><strong>Resource Allocation</strong></p>

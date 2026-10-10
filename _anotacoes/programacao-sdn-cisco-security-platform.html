@@ -1,0 +1,34 @@
+<p>As ferramentas de segurança são dividas em 3 categorias:</p>
+<ul>
+<li>Endpoint Security, como por exemplo o AMP.</li>
+<li>Network Security, Firewalls em geral, ASA/Firepower.</li>
+<li>Identity Management, com o ISE para fazer DOT1X por exemplo.</li>
+</ul>
+<p><strong>Firepower</strong></p>
+<img src="img/0337a1aff506484094f500e2cc45b16a.png" loading="lazy" />
+<p>O Firepower na realidade é um sistema, ele é composto por diversos
+componentes:</p>
+<ul>
+<li><p><strong>FTD</strong>, Firepower Threat Defense, é o sistema
+operacional que roda dentro do firewall, pode ser tanto físico quanto
+virtual, pode estar on-prem ou na nuvem também, BEM LEGAL ISSO…</p></li>
+<li><p><strong>FDM</strong>, Firepower Device Manager, é onde
+configuramos o firewall, caso não formos utilizar o FMC, é o ponto de
+gerencia único do firewall.</p></li>
+<li><p><strong>FMC</strong>, é o centralizador de tudo, nele conseguimos
+puxar informações de todos os outros FTD da rede e configurar eles com
+uma politica só, conseguimos gerenciar tantos os FTDs virtuais quando
+fisicos, não importa se estão na nuvem ou on-prem, MANEIRASSO….</p></li>
+</ul>
+<p><strong>AMP e Threat Security</strong></p>
+<img src="img/183aa24a789c437191006d1ac9749c70.png" loading="lazy" />
+<p>AMP é um programa que instalamos em nossos endpoints, que podem ser
+tanto celulares, quanto dispositivos de redes e até servidores de email,
+com isso quando o Threat Grid achar uma nova ameaça ele avisa todos os
+AMPS do MUNDO INTEIRO que tem uma ameaça nova e como combater ela.</p>
+<p><strong>Cisco Umbrella</strong></p>
+<p>Imagine que você tem equipamentos que não consegue instalar o AMP,
+então utilizamos o umbrella, ele bloqueia comunicação de endpoint
+internos da sua rede com a rede externa através do DNS, assim você
+consegue fazer com que informações não vazem, mesmo em equipamentos
+antigos que não são baseados na arquitetura X86 ou ARM.</p>

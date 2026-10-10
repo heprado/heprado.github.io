@@ -1,0 +1,81 @@
+<img src="img/13adff5424aa4bb898bafd453cc58979.png" loading="lazy" />
+<p><strong>VLANs Pools</strong></p>
+<p>É o equivalente ao comando switchport trunk allowed vlan “VLANS”,
+nessa policy especificamos quais VLANs vão poder passar pelo trunk das
+interfaces que colocarmos essa policy.</p>
+<p>Temos dois tipos de VLANs Pools Policies</p>
+<p>Static - Todas as VLANs que adicionarmos nas pools vão ser
+permitidas, independente delas estiverem sendo usadas ou não.<br />
+Dynamic - Se o ACI tiver integrado com o vSwitch da vmware, não faz
+diferença qual VLAN está sendo usada, pois o ACI consegue passar o
+tráfego layer 2 pelo layer 3, então o ACI falaria para o vSwitch
+escolher uma VLAN aleatoria para o port-group da maquina virtual. Por
+fim o ACI faz a conectividade via EPGs, então contanto que as maquinas
+virtuais estejam no mesmo EPG, elas vão conseguir se comunicar.</p>
+<img src="img/53420524d5b64e33b132131fa6573a13.jpeg" loading="lazy" />
+<p><strong>SE FOR UTILIZAR A INTEGRAÇÃO DO ACI COM O vDS DA VMWARE É
+OBRIGATORIO USAR DYNAMIC.</strong></p>
+<p><strong>SE ESTIVER USANDO UMA REDE LEGADO, USAR STATIC, POIS O ACI
+NÃO CONTROLA OS SWITCHES DA REDE LEGADO, E TERIAMOS PROBLEMAS DE VLANS
+CONFIGURADAS ERRADO.</strong></p>
+<p><strong>Domains Policies</strong></p>
+<p>As domains policies definem como um endpoint se conecta ao ACI, assim
+quando mapearmos o domain com um EPG, ele vai saber quando um Endpoint
+novo aparecer.</p>
+<p>O Fisico existe para quando um host bare-metal se conectar a uma
+interface do leaf, o ACI saber a qual EPG ele pertence.</p>
+<p>O Virtual existe para quando uma maquina virtual aparecer em um certo
+port-group que está mapeado para esse EPG, ele apareça no ACI como sendo
+desse EPG.</p>
+<p>Physical Domain Policy - Nessa policy especificamos que o endpoint se
+conecta fisicamente com o leaf, as vezes ele pode ser conecta através de
+outro switch.</p>
+<p>Virtual Domain Policy - Nessa policy especificamos que o endpoint se
+conecta virtual com o leaf, através de um vSwitch ou algum switch
+virtual que tenha integração com o ACI, vale apontar que caso o ACI não
+tenha integração com o switch virtual que vc estiver usando, ele vai
+tratar essa policy como uma Physical, porque ele não consegue
+diferenciar um host bare-metal de um host virtual sem integração.</p>
+<p>External Bridged Domain - É usado quando precisamos estender o Layer
+2 por um switch não ACI, para um endpoint conseguir se conectar.</p>
+<p>External Routed Domain - É usado quando precisamos estender o Layer 3
+por algum outro equipamento Layer 3, para um endpoint conseguir se
+conectar.</p>
+<img src="img/d53dead44f2d49ffbec7185accfdf7c9.png" loading="lazy" />
+<p><strong>Attachable Access Entity Profile(AAEP)</strong></p>
+<p>É uma Policy usada para juntar os dominios com um Interface Policy
+Group, podemos ter diversos dominios em um AAEP.</p>
+<img src="img/1b38982dc59342078f7c31e2cacb86d1.png" loading="lazy" />
+<p><strong>Interface Policies</strong></p>
+<p>São profiles utilizados para definir como a interface vai se
+comportar, se o CDP vai estar enable, se o LLDP vai estar disabled, qual
+a velocidade e etc, no final linkamos essas Interface Policies na
+Interface Profile.</p>
+<p><strong>Interface Policy Groups</strong> -</p>
+<p>São uma junção de todas as Interface Policies que vc configurou em um
+único grupo, no IPG escolhemos também a qual AAEP esse interface policy
+group pertence, assim atrelando as Interfaces com o Dominio
+escolhido.</p>
+<p>Existem três tipos de IPG:</p>
+<p>Access : Quando formos conectar um servidor com só uma interface
+escolhemos essa opção.<br />
+Port Channel : Quando formos conectar um servidor em duas interfaces
+escolhemos essa opção.<br />
+vPC: Quando formos conectar um servidor em 2 interfaces de switches
+diferentes escolhemos essa opção.</p>
+<p><strong>Interface Profile</strong></p>
+<p>O interface profile junta os IPGs com os Interface Selector, o
+Interface Selector seleciona quais portas vamos usar, após isso nos
+ligamos o Interface Profile com o Switch que queremos configurar.</p>
+<p>Interface Profile Override, é quando precisamos fazer uma
+configuração por cima de um Interface Selector, digamos que vc fez um
+selector 1/2-1/5, mas precisamos uma configuração especifica para a 1/3,
+com isso podemos fazer uma Interface Profile Override.</p>
+<p><strong>Switch Policies</strong></p>
+<p>Os switches Policies, servem para configurarmos o Switch, protocolos
+como STP,vPC e BFD são configurados nessas policies, por fim juntamos
+essas Switches Policies com um Switch Profile, igual as interfaces.</p>
+<p><strong>Switch Profile</strong></p>
+<p>No Switch Profile, juntamos tudo, as Switch Policies para
+configurarmos os Switches, e a Interface Profile para configurarmos as
+portas dos Leafs.</p>

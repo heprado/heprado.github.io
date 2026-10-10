@@ -1,0 +1,74 @@
+<p>VPN significa Virtual Private Network, ela é composta por:</p>
+<p>IPSEC:</p>
+<ul>
+<li>Confidencialidade</li>
+</ul>
+<p>Todos os dados mandados via VPN são encriptados, com isso conseguimos
+fazer com que pessoas não olhem nossos dados.</p>
+<ul>
+<li>Autenticação</li>
+</ul>
+<p>VPNs fornecem autenticação, para sabermos que quem está recebendo os
+dados encriptados é realmente a pessoa que desejamos.</p>
+<p>Utilizam Pre Shared Keys(PSK) ou Certificados.</p>
+<ul>
+<li>Integridade dos Dados</li>
+</ul>
+<p>Previne que os dados sejam modificados, utilizando hashes.</p>
+<ul>
+<li>Anti-Replay</li>
+</ul>
+<p>Elimina dejavus, um hacker pode muito bem capturar os 3 primeiros
+pacotes(pacotes de autenticação), e só reenviar para o servidor de VPN,
+conseguindo assim se autenticar, o anti replay previne isso.</p>
+<p><strong>Tipos de VPN</strong></p>
+<p>Site to site</p>
+<p>Conectar um escritório com outro escritório, criando um túnel IPSEC
+permanente entre os escritorios, utilizando firewalls ou roteadores com
+capacidades de firewall.</p>
+<p>Client</p>
+<p>Cria um túnel da rede de um cliente via internet, por exemplo um
+funcionário de férias, consegue se conectar na sua rede utilizando um
+túnel IPSEC.</p>
+<p>SSLVPN</p>
+<p>Utiliza os mesmos protocolos de criptografia que o HTTPS, para isso o
+cliente entre em um site, se autentica e lá ele tem acesso a uma
+intranet da empresa.</p>
+<p>DMVPN</p>
+<p>Utilizada para conectar múltiplos escritórios, utiliza interfaces
+GRE.</p>
+<p>GRE ( Generic Routing Encapsulation)</p>
+<p>O túnel GRE encapsula o pacote IP(layer3) com um header GRE, após
+isso o pacote é novamente encapsulado em outro pacote IP com o IP
+publico por exemplo.</p>
+<img src="img/0aab9b2b6a25429b9711c038c30cf819.jpg" loading="lazy" />
+<p>Pois lembre, um pacote IP não muda seu destination nem source
+headers, com o tunel GRE, encapsulamos esses destination e source em
+outro pacote IP, assim escondendo o real destino e origem.</p>
+<p>Com isso conseguimos criar uma conexão ponto a ponto entre dois
+sites, pois o roteador da operadora nem ninguém vai enxergar essas redes
+que você está enviando.(NÃO ESTÃO CRIPTOGRAFADAS)</p>
+<p>Configurando GRE:</p>
+<p>Router 1</p>
+<p>Interface g0/0<br />
+Ip address 51.23.2.1 255.255.255.252<br />
+No shut<br />
+Exit<br />
+Int tunnel 0<br />
+Ip address 192.168.0.1 255.255.255.252<br />
+Tunnel source 51.23.2.1<br />
+Tunnel destination 73.23.54.1<br />
+Exit</p>
+<p>Router 2<br />
+Interface g0/0<br />
+Ip address 73.23.54.1 255.255.255.252<br />
+No shut<br />
+Exit<br />
+Int tunnel 0<br />
+Ip address 192.168.0.2 255.255.255.252<br />
+Tunnel source 73.23.54.1<br />
+Tunnel destination 51.23.2.1</p>
+<p>Precisamos de uma rota default nos roteadores para alcançarmos o
+ISP.</p>
+<p>Assim os pacotes vão sair dos roteadores com destino para o ip que
+setamos no tunnel destination.</p>

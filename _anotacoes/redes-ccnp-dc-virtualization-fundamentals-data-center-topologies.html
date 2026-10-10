@@ -1,0 +1,83 @@
+<p>Topologias de data centers são diferentes de topologias de redes
+Campus, antigamente os servidores ficavam na mesma infraestrutura da
+rede campus, mas com o tempo se viu necessário uma infraestrutura
+somente para os Data Centers por conta da demanda, essa demanda que
+exigiu conexões redundantes, protocolos mais robustos e conexões com
+mais bandas que foram satisfeitas com padrões de conexões diferentes
+como o SFP,SFP+ e QSFP que geralmente não é visto na rede Campus a não
+ser nos uplinks, uma coisa importante também é que na rede campus um
+usuários geralmente não se comunica com outro usuário(chamado de trafégo
+EAST-WEST) ele geralmente faz uma conexão (SOUTH-NORTH) para sair para a
+internet, já num Data Center nos temos muito trafégo EAST-WEST entre os
+servidores, com isso a infraestrutura se torna totalmente diferente,
+pois precisamos de muito mais banda na camada de acesso e agregação.</p>
+<p>A imagem abaixo mostra bem essa migração, antes os servidores se
+conectavam diretamente na rede Campus, via o Core do Campus, que
+geralmente era um Catalyst da serie 6500, com o aumento da demanda dos
+servidores, eles dividiram essa infraestrutura, assim a rede Campus se
+conectava via Layer3 com a rede do Data Center.</p>
+<img src="img/656b054bc2bb4185875a6f47f1344267.jpg" loading="lazy" />
+<p><strong>Camadas de Rede em um Data Center</strong></p>
+<p>Em um Data Center a camada dos Switches Core é responsável por
+garantir grandes capacidades de encaminhar tráfegos ingress(de fora pra
+dentro) e egress(de dentro pra fora), e com protocolos de roteamento
+como o BGP/ISIS/OSPF conseguem oferecer conectividade entre os blocos de
+switches de agregação(PODS).</p>
+<p>Na camada de agregação geralmente é onde temos os gateways dos
+servidores, é geralmente onde o trafégo entre servidores se concentra,
+pois nem sempre os servidores estão no mesmo switch de acesso e se
+tiverem nem sempre na mesma VLAN. É geralmente na camada de agregação
+também que se encontram os FIREWALLS/LOADBALANCERS, pois é lá que se
+encontram os gateways dos servidores.</p>
+<p>Já a camada de acesso é onde possuímos a maior densidade de portas,
+por isso a configuração neles tendem a ser geralmente mais simples e
+sempre terem servidores na mesma VLAN para facilitar o tráfego entre
+eles, seja UNICAST/MULTICAST/BROADCAST.</p>
+<p><strong>Data Center Designs</strong></p>
+<p>Antes de fazermos o Design de um Data Center precisamos determinar
+bastante coisa, como quanto a rede vai crescer e quanto as aplicações
+vão exigir da rede no momento e no futuro.</p>
+<p>Para fazer esses calculos os arquitetos de Data Center calculam a
+oversubscription, Oversubscription em Data Centers se baseia em quanto o
+equipamento consegue oferecer de banda para o equipamento abaixo.
+Imaginas um Switch de Acesso com 32 portas 10GB ligadas a servidores e 8
+portas como uplink, teremos uma oversubscription de 4 servidores a 1
+uplink(4:1) o que daria 2,5GBps de banda por servidor.</p>
+<img src="img/2f110af8e825449bbde8bc8fca2e2cee.png" loading="lazy" />
+<p>Tipos de conexões usadas em Data Centers entre a camada de acesso e
+agregação, as Looped tem portas bloqueadas pelo spanning-tree, as
+Loop-free não tem loops, a Loop-Free U não tem loop pq o link entre os
+switches de agregação é layer 3 e a Loop-Free Inverted U não tem Loop
+pois servidores não funcionam igual um switch ethernet(CUIDADO COM O
+vSWITCH DO ESXI GENIOS).<br />
+<img src="img/f9b9ffd03a0c4ea691ad74714f8bf8ee.png"
+loading="lazy" /></p>
+<p><strong>Camada Física em um Data Center</strong></p>
+<p>Existem dois tipos de designes da Fisicos da camada de acesso:</p>
+<p>ToR: Top of Rack, nesse design cada Rack tem um switch que se conecta
+aos switches de agregação, isso claramente implica em mais portas usadas
+nos switches de agregação.</p>
+<p>EoR: End of Row, nesse design temos um rack só com switches de
+acesso, os cabos são passados pelo piso elevado até os servidores, isso
+implica em menos portas utilizadas nos switches de agregação e mais
+servidores por rack.</p>
+<img src="img/5d439e1e1b6f4c8389f9994b92f5dbc8.png" loading="lazy" />
+<p>Artigo sobre as vantagens e desvantagens de ambos:</p>
+<p><a
+href="http://bradhedlund.com/2009/04/05/top-of-rack-vs-end-of-row-data-center-designs/"
+class="uri">http://bradhedlund.com/2009/04/05/top-of-rack-vs-end-of-row-data-center-designs/</a></p>
+<p>TIA-942</p>
+<p>Entrance Room: É onde o Data Center se conecta externamente,
+geralmente se conectando a equipamentos da empresa de telecom.</p>
+<p>MDA: Main Distribution Area,é o ponto central onde se concentra o
+cabeamento estruturado, geralmente nesse ponto se encontra os switches
+Core por conta do cabeamento do MDA chegar mais facilmente em outros
+racks.</p>
+<p>HDA: Horizontal Distribution Area, é o ponto de distribuição do
+cabeamento estruturado, caso o MDA não consiga alcançar outros racks, é
+utilizado os HDAs.</p>
+<p>EDA: Equipment Distribution Area, é onde se encontram os servidores,
+nesses racks é onde se encontram os switches de acesso.</p>
+<p>ZDA: Zone Distribution Area, é onde o cabeamento das HDAs se conectam
+com os EDAs, eles servem para garantir flexibilidade no cabeamento.</p>
+<img src="img/1e4ea5a1b36041ac9367003996524e9b.jpg" loading="lazy" />

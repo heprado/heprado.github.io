@@ -1,0 +1,55 @@
+<p>Em uma determinada URI podemos ter diversos tipos de recursos podendo
+ser requisitados, de uma olhada na imagem a abaixo:</p>
+<img src="img/9abcaef859a24bee98b1304f5b9773b4.png" loading="lazy" />
+<p>O cliente está passando nos headers da requisição um header chamado
+Accept, esse header diz que ele aceita um recurso chamado text/html, o
+webserver então olha nos recursos dele e ve que tem uma pagina HTML ali,
+envia a resposta então com o header Content-Type text/html dizendo que
+no body tem um HTML, mas embaixo o cliente pede um application/json, que
+o server não tem então ele responde com 406 Not Acceptable.</p>
+<p>As negociações sempre acontecem no header das requisições e os mais
+famosos são:</p>
+<ul>
+<li><p>Accept: Esse header geralmente vem na requisição feita pelo
+cliente, ele envia o tipo de dado que espera receber no body da resposta
+do webserver. Ele utiliza categorias como text,audio application, para
+dizer o tipo de dado que espera receber no caso acima é text/html, ele
+espera receber um arquivo de texto html, mas poderiamos ter por exemplo
+application/json, dizendo que o json é uma aplicação do
+javascript.</p></li>
+<li><p>Accept-Charset: Diz qual o charset(UTF-8) que o cliente espera
+receber a resposta.</p></li>
+<li><p>Accept-Datetime: Diz que quer a versão do recurso num horario
+anterior ao qual a requisição está sendo feita, não vc não pode pedir
+coisas do futuro.</p></li>
+<li><p>Accept-Language: A lingua que o cliente espera receber o conteudo
+do body da resposta.</p></li>
+</ul>
+<p><strong>Quality Factor Weighting</strong></p>
+<p>Podemos também passar valores dentro do header para escolher um tipo
+ao em vez do outro por exemplo:</p>
+<p>Accept: text/html , application/json;eq=0.9 , application/xml;eq=0.8
+, *;eq=0.7</p>
+<p>No caso acima ele vai mostrar o text/html para você caso ele tenha,
+senão o application/json vai ser o segundo escolhido e o application/xml
+o terceiro, se ele não tiver nada a * diz para mostrar qualquer
+coisa.</p>
+<p>Temos dois tipos de negociação, a negociação feita pelo cliente e a
+negociação feita pelo servidor:</p>
+<p>Negociação feita pelo servidor:</p>
+<img src="img/1fe6267789984c9382eb6d96a17bd3c9.png" loading="lazy" />
+<ol type="1">
+<li>Cliente faz a requisição, e o servidor decide que tipo vai enviar
+para ele.</li>
+</ol>
+<p>Negociação feita pelo cliente:</p>
+<img src="img/f1dbaae1193e4cb992b246d8bcc341b2.png" loading="lazy" />
+<ol type="1">
+<li>O cliente faz uma requisição falando que quer um recurso em certa
+URI.</li>
+<li>O servidor responde com 300 Multiple Choises, falando tenho esses
+aqui qual vc quer?</li>
+<li>O cliente escolhe então XML no caso e faz a chamada para a URI
+especifica do recurso XML( HTTP REDIRECTION)</li>
+<li>200 OK com o body XML.</li>
+</ol>

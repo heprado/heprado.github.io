@@ -1,0 +1,53 @@
+<ul>
+<li><p>vNIC</p>
+<ul>
+<li>Pode ser uma vNIC que conecta uma VM a um vSwitch</li>
+<li>Pode ser uma vNIC criada numa VIC</li>
+</ul></li>
+<li><p>vmNIC</p>
+<ul>
+<li>Uma interface no vSwitch que está atrelada ou a uma interface real,
+ou a uma vNIC que a VIC criou.</li>
+</ul></li>
+<li><p>vSwitch</p>
+<ul>
+<li>Funciona como um switch de verdade só que no ESXi</li>
+</ul></li>
+<li><p>vmKernel Port</p>
+<ul>
+<li>Esse tipo de porta tem varias funcionabilidades
+<ul>
+<li>vMotion traffic</li>
+<li>Fault tolerance (FT) logging</li>
+<li>Management traffic</li>
+<li>vSphere replication traffic</li>
+<li>iSCSI traffic</li>
+<li>NFS traffic</li>
+</ul></li>
+<li>O ESXi cria uma dessas chamada vmk0 quando você instala ele, essa
+vmk0 usa o mesmo mac-address da interface fisica que está ligada.</li>
+</ul></li>
+<li><p>SCSI</p>
+<ul>
+<li>Protocolo usado para um S.O se comunicar com um HD</li>
+<li>Como se fosse a layer 2 do modelo OSI só que para SAN</li>
+</ul></li>
+<li><p>iSCSI</p>
+<ul>
+<li>Protocolo usado para um S.O se comunicar com um storage e reconhecer
+ele como se fosse dele, através de uma rede Ethernet.</li>
+<li>Como se fosse a Layer 3 do modelo OSI só que para SAN</li>
+</ul></li>
+<li><p>Fibre Channel</p>
+<ul>
+<li>Protocolo usado para um S.O se comunicar com um HD</li>
+<li>Como se fosse a layer 2 do modelo OSI só que para SAN</li>
+</ul></li>
+<li><p>Fibre Channel Over Ethernet</p></li>
+<li><p>Protoco usado para um S.O se comunicar com um storage e
+reconhecer ele como se fosse dele, através de uma rede
+Ethernet.</p></li>
+<li><p>Como se fosse layer 3 do modelo OSI so que para SAN</p></li>
+</ul>
+<p><strong>PRINCIPAL DIFERENÇA ENTRE NEXUS E CATALYST É QUE NEXUS É
+CUT-THROUGH e CATALYST É STORE-FORWARD.</strong></p>

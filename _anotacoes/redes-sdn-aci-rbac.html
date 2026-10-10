@@ -1,0 +1,42 @@
+<p>Role Based Access Control</p>
+<p>Configurando os perfis do operador em
+ADMIN&gt;AAA&gt;Security&gt;Roles :</p>
+<img src="img/8173ca14389748f287055f711e2f536c.png" loading="lazy" />
+<p>Para a Role escolhemos os privilégios, todos eles são definidos por
+padrão e podemos encontrar quais permissões eles dão no site : <a
+href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/2-x/Security_config/b_Cisco_APIC_Security_Configuration_Guide/b_Cisco_APIC_Security_Guide_chapter_01000.html#concept_A5EAE4EC5E164965B42AD0364B55E9CB"
+class="uri">https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/2-x/Security_config/b_Cisco_APIC_Security_Configuration_Guide/b_Cisco_APIC_Security_Guide_chapter_01000.html#concept_A5EAE4EC5E164965B42AD0364B55E9CB</a></p>
+<img src="img/16d731ef29e2453193ec18c30df4c2ae.png" loading="lazy" />
+<p>No meu caso vou usar o privilegio tenant-security, que da acesso
+somente aos contratos de um tenant.</p>
+<p>Após isso precisamos criar um Security Domain, esse dominio define
+qual tenants vamos poder acessar.</p>
+<img src="img/7b399a42aadb43038d9ba1fdc4e7a68f.png" loading="lazy" />
+<p>Agora vamos configurar um novo usuário sobre a aba
+ADMIN&gt;AAA&gt;Users</p>
+<img src="img/5256f9e3ec2c47f79a3d7b7baba3d7b2.png" loading="lazy" />
+<p>A primeira aba da configuração é bem simples, somente preencher com
+usuário e senha e clicar em next.</p>
+<img src="img/67c3c5eb67c940cbb114d20880dbd27d.png" loading="lazy" />
+<p>Após isso escolhemos o Security Domain que criamos</p>
+<img src="img/75ed6af6bf9f47c2a86d7bc403f9f799.png" loading="lazy" />
+<p>Agora escolhemos a role que configuramos e o tipo do privilegio, se o
+operador só puder ver as configurações em READ, se ele puder
+modificar<br />
+escolher WRITE<br />
+<img src="img/70fb2791ccdc4861aa240b250d6b55da.png"
+loading="lazy" /></p>
+<p>Entre na aba Policy do seu Tenant e clique em Security Domains e
+escolha o Security Domain que vc criou para seu usuário.</p>
+<img src="img/5397344e6f6049ed83d883192b838f78.png" loading="lazy" />
+<p>Logue com seu novo usuário, agora as abas que o usuário não tem
+acesso estarão em cinza e somente o tenant que colocamos o Security
+Domain vai aparecer</p>
+<img src="img/69ca633fb53048019bb7c991e66ca4b7.png" loading="lazy" />
+<p>Como o privilegio que escolhemos foi o tenant-security e colocamos
+como READ o usuário só poderá criar e ver contratos, no exemplo abaixo
+tentei criar um Bridge Domain<br />
+e não consegui pois meu usuário não tem esse privilegio, mas consigo
+criar contratos normalmente.</p>
+<img src="img/4b40e70ad01f4dd3b8d0ccfe382eaba4.png" loading="lazy" />
+<img src="img/118f7e5aa58c48179901c666ab6e14f4.png" loading="lazy" />

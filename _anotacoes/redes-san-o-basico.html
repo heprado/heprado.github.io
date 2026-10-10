@@ -1,0 +1,58 @@
+<p><strong>Initiator</strong> - Geralmente o HOST que vai fazer o acesso
+ao Storage(TARGET), pode ser uma VM,servidor,Hypervisor e muito
+outros.<br />
+Ele começa a sessão SCSI com o target para enviar diversos comandos SCSI
+e receber o I/O.</p>
+<p><strong>Target</strong> - Geralmente uma storage array(uma storage),
+espera uma sessão ser iniciada com ele pelo Initiator, pega os comandos
+SCSI e envia o I/O para o Initiator.</p>
+<img src="img/846cca8dbef64067bbed907deecab6b3.png" loading="lazy" />
+<p><strong>SCSI</strong> - Small Computer System Interface, é um
+protocolo utilizado para conversa entre o initiator e a target, dentro
+desse protocolo existe um comando chamado CDB(Command Descriptor Blocks)
+e possui duas instruções possiveis</p>
+<ul>
+<li>READ - O target recebe o SCSI com CDB pedindo para ler, o target
+envia os dados que o initiator pediu para ler.</li>
+<li>Write - O target recebe o SCSI com CDB pedindo para escrever, o
+target avisa o initiator que esta READY e guarda os dados no buffer para
+serem escritos, após o target escrever ele avisa se tudo ocorreu certo
+ou não para o initiator.</li>
+</ul>
+<p><strong>RAID</strong> - Redundant Array of Inexpensive Disks, é como
+juntamos diversos discos em uma só entidade, com isso conseguimos
+diversos fatores como:</p>
+<ul>
+<li>Performance - Já que temos mais discos, conseguimos escrever em
+diversos discos diferentes ao mesmo tempo, diminuindo assim a fila de
+escrita, geralmente não muda nada para leitura pois o dado está salvo em
+um disco só.</li>
+<li>Confiabilidade - Temos diversas formas de RAID, conseguimos fazer os
+discos trabalharem de forma redudante , assim caso um falhe o outro
+consegue recuperar os dados.</li>
+</ul>
+<p>Existem diversas formas de RAID, como
+RAID-0,RAID-1,RAID-5,RAID-6,RAID-10 etc, todas o numero se refere a soma
+dos dados e ao disco de paridade, por exemplo:</p>
+<p>RAID 5(DATA + 1) - Em RAID 5 um backup de todos os dados são
+armazenados de forma distribuida entre todos os discos, assim caso um
+disco do RAID falhe conseguimos recupera-lo, o 1 significa esse disco
+que conseguimos recuperar e o DATA a quantidade de discos que
+conseguimos ter efetivamente no RAID.</p>
+<p>RAID1(1,1) - Em RAID 1 temos somente 2 discos, um disco de dados e um
+de paridade que é uma copia exata do outro, assim caso um dos dois
+falhe, um assume.</p>
+<p>RAID10 - É um combo de RAID 0 e RAID 1, basicamente você vai ter 5
+discos de dados(DATA) e 5 discos de paridade. Como se 5 discos fossem um
+raid 0 e o RAID 1 fosse os outros 5 discos de paridade, assim você
+consegue ter a falha de 5 discos e ainda conseguir trabalhar
+normalente.</p>
+<p><strong>Storage Controller</strong> - São dispositivos que ficam
+dentro do Storage Array, ele que faz a comunicação entre os hosts e os
+discos fisicos do Storage Array, geralmente nele que vive a gerencia do
+equipamento, lá que configuramos os RAIDs etc.</p>
+<img src="img/e9c0639eecda4b629c3438ced17b6ef7.png" loading="lazy" />
+<p>Volume Manager - É um software que reside dentro do Storage Array que
+virtualiza varios discos para aparecerem como se fossem um só para o
+Device que quer acessar.</p>
+<img src="img/6dbf0de27d4349ea9920d0f2a7f55cb1.png" loading="lazy" />

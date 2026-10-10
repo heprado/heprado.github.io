@@ -1,0 +1,19 @@
+<p>Authentication, Authorization and Accounting</p>
+<p>AAA geralmente é estabelecido em servidores, neles instalamos
+aplicações como o Active Directory da Microsoft ou o FreeRadius e usamos
+ele para nos autenticarmos nos switches/roteadores ou até mesmo em
+VPNs.</p>
+<p>Existem 2 protocolos:</p>
+<ul>
+<li><p>Radius - Protocolo aberto, normalmente usado para autenticação de
+usuarios, somente a senha é encriptada num pacote RADIUS.</p></li>
+<li><p>Tacacs+ - Protocolo proprietario da cisco, a maior diferença do
+Radius pro TACACS+ é que o TACACS consegue fazer autenticação por
+comando, ou seja, um usuario escreve o comando show ip ospf neighbors, o
+roteador vai perguntar para o servidor TACACS+ se você pode mesmo fazer
+isso, e se sim o comando será executado, ele faz isso para cada
+comando.</p></li>
+</ul>
+<p>Os pacotes tambem são totalmente encriptados no TACACS enquanto no
+Radius só a senha é encriptada.</p>
+<p>É normalmente usado para autenticação em equipamentos de rede.</p>

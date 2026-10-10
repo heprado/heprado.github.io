@@ -1,0 +1,67 @@
+<h3 id="database-types">Database Types</h3>
+<h4 id="relational-databases">Relational Databases</h4>
+<p>Os dados são estruturados ou seja possui um esquema de como os dados
+das tabelas devem ser inseridos.</p>
+<h4 id="document-databases-nosql">Document Databases (noSQL)</h4>
+<p>Guarda documentos geralmente JSON,BSON,XML, podemos usar a query
+engine do banco para consultar esses documentos e retornar somente os
+que possuem certo valor.</p>
+<p>Você pode definir um schema para os documentos mas não é necessario
+igual a banco de dados Relacionais.</p>
+<h4 id="in-memory-databases">In Memory Databases</h4>
+<p>São bancos de dados que não persistem nenhuma informação, mas por
+estarem direto na memoria RAM são muito mais performáticos, pois não
+precisam passar pelo I/O para gravar os dados em um HD ou SSD por
+exemplo.</p>
+<h4 id="key-value-databases">Key-Value Databases</h4>
+<p>Podem possuir um esquema mas geralmente não possuem, são utilizadas
+para retornarem coleções de CHAVES:IDENTIFICADOR -&gt; VALORES, costuma
+ser mais performatico que um bancos de dados relacionais</p>
+<p>Exemplos: REDIS</p>
+<h4 id="graph-databases">Graph Databases</h4>
+<p>Utiliza grafos para representar os relacionamentos entre as entidades
+salvas no banco.</p>
+<h3 id="databases-na-amazon">Databases na Amazon</h3>
+<h4 id="relational">Relational</h4>
+<ul>
+<li>Amazon Aurora</li>
+<li>Amazon RDS</li>
+<li>Amazon Redshift</li>
+</ul>
+<h4 id="key-value">Key-Value</h4>
+<ul>
+<li>Amazon DynamoDB</li>
+</ul>
+<h4 id="document">Document</h4>
+<ul>
+<li>Amazon DocumentDB</li>
+</ul>
+<h4 id="graph">Graph</h4>
+<ul>
+<li>Amazon Neptune</li>
+</ul>
+<h4 id="in-memory">In Memory</h4>
+<ul>
+<li>Amazon ElasticCache</li>
+</ul>
+<h3 id="formas-de-usar">Formas de usar</h3>
+<p>Você pode utilizar os serviços de PaaS dos bancos de dados que são os
+citados a cima, mas se quiser você tem a total liberdade de subir uma
+instancia EC2(IaaS) e configurar o banco de dados que quiser dentro
+dela.</p>
+<h3 id="partitioning">Partitioning</h3>
+<p>Podemos particionar uma tabela em um banco de dados, vamos dizer que
+temos uma tabela chamada VENDAS com as seguintes colunas:</p>
+<ul>
+<li>PK id_produto</li>
+<li>INT valor_pago</li>
+<li>DATA data_venda</li>
+</ul>
+<p>Podemos particionar essa tabela utilizando o data_venda, separando em
+varias tabelas uma pra cada mês ou até por ano se tivermos vendas de
+mais de um ano.</p>
+<h3 id="sharding">Sharding</h3>
+<p>Sharding é pegarmos uma tabela e separar os dados dela em mais de um
+banco de dados, isso melhora bastante o throughput do banco de dados
+pois as consultas são dividas em duas instancias botamos menos pressão
+em no armazenamento do servidor que tá rodando o banco de dados.</p>

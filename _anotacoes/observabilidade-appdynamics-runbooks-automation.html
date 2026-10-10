@@ -1,0 +1,22 @@
+<p>No AppDynamics as metricas que são coletas todas passam por uma
+health rule, essa health rule calcula para ver se as metricas estão como
+o esperado ou não, caso não um evento é criado dentro da dashboard do
+AppDynamics.</p>
+<p>Esses eventos que são criados podem triggar uma ação do AppDynamics,
+basicamente uma forma de automação em resolução de problemas. Para
+triggar essa ação precisamos criar uma policy que vai monitorar os
+eventos.</p>
+<img src="img/0ee05af734ed4557b671cbfa83559770.png" loading="lazy" />
+<p><img src="img/b3ce8b2a1db340198c1dd6c4fde66875.png"
+loading="lazy" /><br />
+- Mandar uma notificação pra um email<br />
+- Começar uma diagnostic sessions para pegar full graph snapshots das
+transactions.<br />
+- Pegar um dump da thread que ta rodando a classe do programa que deu
+pau.<br />
+- Rodar um script .sh que está dentro dos nodes, o agente vai lá e
+starta eles, bem legal…<br />
+- Fazer uma requisição HTTP para alguma API externa, quem faz a
+requisição é a controladora.<br />
+- Usar auto-scaling de algumas nuvens publicas.<br />
+- Ou ações customizadas</p>

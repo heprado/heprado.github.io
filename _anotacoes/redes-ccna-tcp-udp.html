@@ -1,0 +1,44 @@
+<p>TCP: Transport Control Protocol, utiliza técnicas como o Flow Control
+e o Windowing para garantir uma entrega confiável do pacote.</p>
+<p>UDP: User Datagram Protocol, não tem controle nenhum se o pacote
+chegou o não ao destino, utilizado bastante em serviços de streaming e
+áudio.</p>
+<img src="img/ad880c2786364088a9d239fe5fdebd3f.png" loading="lazy" />
+<p>Segmento TCP</p>
+<img src="img/d5eace35a3574156883e18913be7eba3.png" loading="lazy" />
+<p>Segmento UDP</p>
+<img src="img/f4f7e5b09ab540e88421f2c14bcc326a.png" loading="lazy" />
+<ul>
+<li><strong>Triple-way Handshake</strong></li>
+</ul>
+<p>Algoritmo usado para garantir a conexão dos dois Pcs quando estão
+usando o protocolo TCP.</p>
+<p>O PC Cliente envia um segmento de SYN(Sincronização) dizendo que quer
+se conectar na porta 80 do PC Servidor, e que a porta de origem é 1027,
+o PC Servidor responde SYN,ACK(Sincronizar e Acknowledgement) , e o PC
+Cliente responde ACK e agora começam a transmissão de dados.</p>
+<p><strong>Esses SYNs e ACKs vão no header FLAG do protocolo
+TCP.</strong></p>
+<img src="img/7ebae9dc6fa34eb48fdbb805628a0259.png" loading="lazy" />
+<ul>
+<li>Error Recovery<br />
+O protocolo TCP também utiliza o Error Recovery para garantir que os
+dados chegarão íntegros do outros lado, ele vai enviando os segmentos
+com um numero de sequencia, no final ele espera receber um ack do numero
+da sequencia do ultimo que ele enviou, caso esteja tudo ok encerra.</li>
+</ul>
+<img src="img/80b1813d6fee46af992b40a67d67330a.png" loading="lazy" />
+<p>No caso abaixo a transmissão deu errado na sequencia 2000, o cliente
+envia o segmento com sequencia 3000, mas o server não respondeu o 2000,
+o cliente percebe que ouve uma falha e retransmite o 2000, agora o
+servidor pede o 4000, e continuam a transmissão.</p>
+<img src="img/e1c8490e408348738a5b4f940318685c.png" loading="lazy" />
+<ul>
+<li>Flow Control</li>
+</ul>
+<p>Através do janelamento o TCP consegue fazer com que o computador que
+está recebendo os segmentos encha e não consiga mais receber nada, ele
+utiliza o header Window, colocando nele a quantidade de bytes que ele
+quer receber, assim o cliente envia somente essa quantidade, após isso
+ele pode aumentar a janela até o quanto ele aguentar.</p>
+<img src="img/285facfd25dd4ddaa10342ddf26dc3d4.png" loading="lazy" />

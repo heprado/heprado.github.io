@@ -1,0 +1,73 @@
+<p>UML é linguagem utilizada para fazer sketches do design de um
+programa, ela é bem util quando outros programadores que não conhecem a
+linguagem que estamos utilizando no programa, pois eles conseguem
+entender a logica e criar integrações com as linguagens que eles
+conhecem.</p>
+<img src="img/a1d4040099414d5eac6fec2702e0b5d7.png" loading="lazy" />
+<p><strong>Architectural Patterns</strong></p>
+<p>A arquitetura de um projeto deve ser feita pensando nos seguintes
+pontos:</p>
+<ul>
+<li>Performance</li>
+<li>Availability</li>
+<li>Modifiability</li>
+<li>Testability</li>
+<li>Usability</li>
+<li>Security</li>
+</ul>
+<p><em>Tudo isso vai depender do que o seu cliente te pediu, você
+precisa pensar em como seu programa vai funcionar high-level para
+conseguir explicar para seu cliente.</em></p>
+<p>Um exemplo seria caso o cliente queria um sistema super disponivel,
+não pode cair nunca, você vai precisar pensar muito bem em como vai ser
+a arquitetura desse software para o failover acontecer.</p>
+<p>Existem diversas arquiteturas já testadas para isso e você pode se
+basear nelas, são as seguintes:</p>
+<ul>
+<li>Layered or multitier architecture pattern</li>
+<li>Event-driven architecture pattern</li>
+<li>Microservices architecture pattern</li>
+<li>Model-View-Controller (MVC) architecture pattern</li>
+<li>Space-based architecture</li>
+</ul>
+<p>Layered or Multitier Architecture Pattern</p>
+<p>Nessa arquitetura cada componente da solução possui uma função muito
+bem definida e são dividas em layers horizontais, não existe um maximo
+de layers tudo depende da sua aplicação, mas o mais comum são ter as
+seguintes:</p>
+<p><img src="img/7dfca65a999d4149850ad64fbee645c2.png"
+loading="lazy" /><br />
+**</p>
+<ul>
+<li>Presentation Layer :</li>
+</ul>
+<p>É onde o cliente interage com a aplicação, essa parte do software
+pega os inputs do usuario e joga para a layer inferior, que processa
+esses inputs e devolve ou não para a camada de apresentação para mostrar
+o resultado para o cliente (Tipo o Front End).</p>
+<ul>
+<li>Business Layer:</li>
+</ul>
+<p>É onde está a logica do negocio, por exemplo se for uma loja de
+compras, seria aqui que estaria as funções de salvar um produto num
+carrinho, comprar, verificar CEP etc.</p>
+<ul>
+<li>Persistence Layer:</li>
+</ul>
+<p>Essa camada faz a ponte entre a logica do negocio e o banco de dados,
+ela consegue pegar as informações e salvar novas informações no banco de
+dados, utilizando uma linguagem como SQL por exemplo.</p>
+<ul>
+<li>Database Layer:</li>
+</ul>
+<p>É onde fica os bancos de dados.</p>
+<p>Uma coisa interessante de se pensar é que por exemplo a camada de
+apresentação não se importa como os dados vão ser escritos no bancos de
+dados, quem tem que se preocupar com isso é a Persistence Layer, fazendo
+assim com que as funções sejam realmente bem definidas e o sistema seja
+bem independente em cada uma das layers.</p>
+<p><strong>Software Design Patterns</strong></p>
+<p>A arquitetura é uma visão mais high level, as patterns de Software
+definem como cada componente vai funcionar, como ele vai ser escrito e
+como serão integrados.</p>
+<img src="img/566f9cd869244aa7a49666787925c3a3.png" loading="lazy" />

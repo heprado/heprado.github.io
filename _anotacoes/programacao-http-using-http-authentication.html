@@ -1,0 +1,43 @@
+<p>Esse método é o menos utilizado mas vamos discutir ele mesmo assim pq
+eu sou teimoso :)</p>
+<p>Quando o API Endpoint está utilizando HTTP Authentication, muito
+provavalmente ele vai te responder 401 Unauthorized, mas se vc olhar nos
+headers da resposta vai ter lá um Header chamado WWW-Authenticate, esse
+header te diz que metodo vc deve usar para se autenticar na API.</p>
+<img src="img/6f6e994dd69b4f5f8563916e88ed9f1d.png" loading="lazy" />
+<p>Acima conseguimos ver isso:</p>
+<ol type="1">
+<li>Cliente tenta fazer uma request GET em /users.</li>
+<li>Recebe um 401 Unauthorized com o Header WWW-Authenticate falando que
+é no esquema Basic.</li>
+<li>O cliente então manda uma requisição com o Header Authorization com
+as informações de autenticação.</li>
+<li>Resposta do servidor.</li>
+</ol>
+<p>Temos vários esquemas de autenticação sendo utilizados mas os mais
+famosos são:</p>
+<ul>
+<li><strong>Anonymous</strong>(Anemonas), sem autenticação.</li>
+<li><strong>Basic</strong>, string “usuario:senha” encodada em
+base64.</li>
+<li><strong>Bearer Token</strong>, é a versão de custom authentication
+que vimos no capitulo passado, o token expira.</li>
+<li><strong>Digest</strong>, usuario e senha hasheados em MD5.</li>
+<li><strong>Mutual</strong>, tanto o cliente e o servidor precisam se
+autenticar um com o outro.</li>
+</ul>
+<p><strong>Proxies</strong></p>
+<p>Muitas vezes temos um proxy no meio do caminho, entre nós(Client) e o
+servidor(API), nesse caso vamos precisar primeiro nos autenticar no
+proxy e depois na API para isso utilizamos um header:</p>
+<img src="img/32cc1f504d1e41d4be0c3ae577a35fb2.png" loading="lazy" />
+<ol type="1">
+<li>O Cliente tenta se autenticar e recebe um Proxy-Authenticate header
+na resposta do proxy.</li>
+<li>Assim o cliente sabe que precisa se autenticar com um Token Bearer
+num Proxy primeiro e depois na API em cima, então ele passa dois headers
+na request o Proxy-Authorization e o Authorization em si.</li>
+<li>O Proxy recebe a requisição autentica o cliente e então passa a
+requisição para a API com o header Authentication ainda intacto.</li>
+<li>A reposta da requisição volta normal.</li>
+</ol>

@@ -1,0 +1,22 @@
+<img src="img/aac9cd53b0bd4778803b2c636431e198.png" loading="lazy" />
+<p>Em todos os clusters de K8s temos um Node que é o Control Plane Node
+ou Master node, esse node faz toda a parte de gerenciamento e controle
+de todos os nodes(worker nodes) do Cluster.</p>
+<p>Os principais compomentes dele são:</p>
+<p>API Server - É a parte central do Cluster, ele que cria todos os API
+Objects e salva seus estados dentro do ETCD, interagimos com ele
+enviando requisições HTTP com body no padrão JSON. Ele também conversa
+com todos os workers nodes do cluster atráves do kubelet existente em
+cada um deles, para pegar ou enviar configurações.</p>
+<p>Etcd - É um datastore do cluster K8s que armazena todos os estados
+dos API Objects, ele faz isso armazenando a configuração em arquivos
+JSON dentro de uma pasta chamada “/registry”.</p>
+<p>Scheduler - É um daemon que roda dentro Control Plane Node, ele fica
+verificando o API server para ver se temos novos pods para serem criados
+em algum node, ele também verifica as resources dos nodes para ver se
+eles tem as capacidades necessarias para rodar os Pods, ele também
+respeita parametros que podemos definir no deployment do Pod, como
+Pod-Affinity que são dois Pods no mesmo Node.</p>
+<p>Controller Manager - Cria todas as controllers necessarias para
+controlar os nossos Pods, como a ReplicaSet por exemplo que mantem
+sempre um ou mais copias daquele Pod rodando.</p>

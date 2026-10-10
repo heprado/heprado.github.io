@@ -1,0 +1,43 @@
+<p><strong>Queries &amp; Pagination</strong></p>
+<p>Quando fazemos uma request HTTP em uma API, ela pode nos voltar
+poucos dados ou MUITO DADOS MESMO, isso é algo ruim pois provavelmente
+não vamos usar nem 1% desses dados, para isso utilizamos queries que são
+passadas na URL da resource:</p>
+<img src="img/4c516a8ac72644d0b41687df76e1b0dc.png" loading="lazy" />
+<p>Podemos traduzir a query recebida na URL do recurso, isso como já
+aprendemos se da depois do “?”, assim o software do outro lado pode
+pegar essa query traduzir para comando SQL e fazer pesquisas na base de
+dados, na query acima estamos fazendo a paginação da resposta através de
+comando SQL. O problema dessa forma de fazer as coisas é que dependendo
+do tamanho da base de dados isso pode ser bastante lerdo.</p>
+<p>Algumas APIs tomam conta da paginação sozinho, você faz a query e ele
+já divide em varias paginas caso ela seja muito grande e passa no body
+da response qual a proxima pagina para você consultar o restante caso
+precise.</p>
+<img src="img/24a272cdea7d44a1bdb118037c520c26.png" loading="lazy" />
+<p><strong>Filtering</strong></p>
+<p>Outra coisa que podemos fazer é o Filtering utilizando a mesma forma
+de query SQL pela URL, só que dessa vez pedindo um dado especifico que o
+webserver vai consultar na base de dados, por exemplo:</p>
+<img src="img/d8787989505f4ca4a6c99416014cd030.png" loading="lazy" />
+<p>Assim não precisamos receber a resposta inteira e fazer o parse da
+informação no nosso lado, deixamos isso para o servidor :)</p>
+<p><strong>Rate Limiting</strong></p>
+<p>Precisamos limitar o numero de requests que um client faz numa API
+pois sabemos que pessoas na internet vão tentar fazer um DoS na nossa
+API, o ato de limitar essas requests é chamado de Rate Limiting, temos
+duas formas de limitar isso:</p>
+<ul>
+<li><p>Client-Side, o usuario da API da uma segurada nas requests
+através do código, geralmente coloca um timer e um numero maximo de
+retries.</p></li>
+<li><p>Server-Side, o lugar mais comum de se fazer o rate limiting pois
+nunca sabemos se o usuário é realmente o usuário, podemos fazer isso
+através de headers HTTP como o X-RateLimit, fazendo uma queue das
+requests para fazer o load balacing entre os API Endpoints, o Flask por
+exemplo também possui uma classe na sua library só pra controlar isso,
+também podemos usar proxies e load balancers.</p></li>
+</ul>
+<p>Caso o cliente passe desse limite que colocamos geralmente
+respondemos com HTTP 429 Too Many HTTP Requests e ela geralmente vem
+junto com um header de Retry-After: “Em tanto tempo”.</p>

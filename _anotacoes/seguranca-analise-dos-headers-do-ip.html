@@ -1,0 +1,42 @@
+<img src="img/bb64ab1b73794b02a670d7bf2a46f6f9.png" loading="lazy" />
+<p>Versão - Diz a versão do protocolo, os unicos validos são v4 e v6</p>
+<p>IHL - Diz o tamanho do header, serve basicamente para dizer onde
+começa e onde termina o header IP para sabermos onde começa o payload
+que esse pacote está levando, ele possui 4 bits e traduz ele valor para
+palavras em 32 bits , uma demonstração seria 0101 em bits seria 5 em
+decimal, ele faz 5x32 = 160 bits / 8 = 20 bytes, 20 bytes é o menor
+tamanho possivel do header, com o maximo sendo 15x32 = 480 / 8 = 60
+bytes .</p>
+<p>TOS - Tipo de Serviço, cabeçalho usado para QoS de pacotes IP</p>
+<p>Total Lenght - Campo em 16 bits contendo o valor com o tamanho do
+payload que o pacote IP está levando.</p>
+<p>Identification - É um header que possui 16 bits, ele identifica o ID
+do datagrama caso ocorra fragmentação em um link, exemplo estou enviando
+1480 bytes(tamanho maximo de um datagrama que um pacote IP pode levar)
+para uma interface que tem MTU de 1300, primeiro eu vou mandar 1280
+bytes + 20 Bytes (Header IP) e 220 +20 bytes (header ip ).</p>
+<p>IP Flags - são 3 bits, neles contem flags dizendo que o pacote foi
+fragmentado :</p>
+<p>X = Bit reservado, conhecido como evil-bit é uma piada do pessoal do
+IEEE, essa flag seria utilizada para avisar que o pacote é malicioso e
+todos os firewalls do mundo devem bloquear pacotes com esse bit
+ativo.</p>
+<p>M = More Fragments, significa que após esse pacote ip tem outro vindo
+com o restante da informação para quem receber saber que precisa fazer o
+reassembly dos dois.</p>
+<p>D = Do Not Fragment , significa que o pacote está integro sem
+fragmentação, pode continuar tudo normalmente.</p>
+<p>Fragment Offset - Composto por 13 bits, define onde nos dados que o
+pacote ip está levando que ocorreu a fragmentação, para que o endpoint
+receptor consiga juntar tudo dnv.</p>
+<p>Time to Live - Cada sistema operacional tem seu TTL, windows é 128 ,
+linux é 64 , esse valor é adicionado no header, e a cada roteador que
+ele passar ele diminui esse TTL em 1, isso previne loops e que um pacote
+demore muito para chegar no destino.</p>
+<p>Protocol - Possui um valor dizendo qual o protocolo ele está
+carregando dentro do seu datagrama, exemplos são UDP/TCP e ICMP, temos
+tbm EIGRP.</p>
+<p>Checksum - Verifica a consistencia do header, como se fosse um FCS
+Ethernet só que do IP.</p>
+<p>Source e Destination - 64 bits com o endereço IP de origem e destino,
+64/2 = 32(Tamanho de um IPv4).</p>

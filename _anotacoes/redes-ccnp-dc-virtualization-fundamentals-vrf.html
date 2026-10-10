@@ -1,0 +1,21 @@
+<p>Uma VRF é como se fosse outra instancia de roteamento dentro de um
+roteador, eu gosto de me referir a VRFs como VLANs de IP, uma VRF não
+conversa com a outra por padrão e cada uma possui sua propria RIB e FIB,
+podemos configurar uma VRF Leaking para passarmos rotas de uma VRF para
+outro VRF, mas isso não é tão comum.</p>
+<p>Diferente de uma VLAN que divide somente o control plane dos
+switches, as VRFs dividem o control plane e o data plane, cada VRF tem
+sua propria FIB no Data Plane.</p>
+<p>Uma VRF é como se fosse realmente outro roteador dentro do roteador,
+a foto abaixo demonstra isso:</p>
+<img src="img/fe74d653732644998b85fad50d81a619.jpg" loading="lazy" />
+<p>Podemos ver que os Partner Servers Ips 10.1.43.0/24 entram em
+conflitos com os Ips dos servidores da rede 10.1.0.0/16, para separarmos
+isso logicamente no switch 7k fazemos uma VRF, assim podemos ter redes
+com o mesmo IP existindo no mesmo switch/roteador.</p>
+<p>Todas as configurações feitas fora de uma VRF são feitas na tabela de
+roteamento global de um switch/roteador, para criarmos uma VRF:</p>
+<img src="img/9f2e790b05aa4542b016ce3439b147b1.png" loading="lazy" />
+<p>Quando criamos a vrf, entramos automaticamente nela, caso queiramos
+criar um processo OSPF nessa VRF, criamos dentro dela, e escolhemos as
+interfaces membros dessa vrf com o comando vrf member.</p>

@@ -1,0 +1,77 @@
+<p>Para que um API entenda oq queremos que ela faça precisamos passar
+parâmetros, e para passar esses parâmetros existem três tipos de
+formatos:</p>
+<img src="img/43209d075a8a499486f6fd22552cbb2b.png" loading="lazy" />
+<ul>
+<li>XML<br />
+eXtensible Markup Language, é usado para trocar de informações entre
+aplicações, geralmente dados muito estruturados, como informações de uma
+conta de banco e etc, Java utiliza bastante.</li>
+</ul>
+<p>XML utiliza tags que nem o HTML, para demonstramos valores fazemos
+&lt;chave&gt;valor&lt;/chave&gt;, e dentro dessas TAGS podemos ter
+outras tags com suas chaves, igual um JSON que utiliza “{}” ao em vez de
+<u>“&lt;&gt;”</u></p>
+<p><u>XML NAMESPACES</u></p>
+<p>Imagine que estamos montando um XML que vai ser mandado para duas
+APIs , as duas entendem as tags &lt;calçado&gt;&lt;/calçado&gt;, só que
+uma espera receber um sapato e a outra espera receber um tenis, para
+separar isso no mesmo XML utilizamos namespaces:</p>
+<p>&lt;sapato:calçado xmls:sapato=“cisco.sapatos.com”&gt;</p>
+<p>&lt;sapato:tipo&gt;Bico Fino&lt;/sapato:tipo&gt;</p>
+<p>&lt;sapato:cor&gt;Marrom&lt;/sapato:cor&gt;</p>
+<p>&lt;/sapato:calçado&gt;</p>
+<p>&lt;tenis:calçado xlms:tenis=“cisco.tenis.com”&gt;</p>
+<p>&lt;tenis:tipo&gt;Chuteira&lt;/tenis:tipo&gt;</p>
+<p>&lt;tenis:cor&gt;Laranja&lt;/tenis:cor&gt;<br />
+&lt;/tenis:calçado&gt;</p>
+<p><strong>A URI COLOCADA NO XLMS NÃO É UTILIZADA PELO PARSER PARA NADA,
+SÓ SERVE PARA DIZER DE QUEM É ESSE NAMESPACE POR ISSO O PESSOAL UTILIZA
+O SITE PARA DIZER QUE VEM DE UMA CERTA EMPRESA.</strong></p>
+<ul>
+<li>JSON<br />
+JavaScript Object Notation, serve para a mesma coisa que o XML, tirando
+que JSON é bem melhor para ler do XML, geralmente é utilizado em
+aplicações mais modernas e funciona muito bem com o proprio JavaScript
+já que esse tipo de formatação foi feito justamente para ele, é muito
+facil transformar um JSON em algo no seu código JS.</li>
+</ul>
+<p>JAVASCRIPT CONSEGUE TRANSFORMAR UM JSON EM UM OBJETO E VC CONSEGUE
+PUXAR OS DADOS COMO SE FOSSEM ATRIBUDOS DA CLASSE MEU DEUSSSSSSSSSSS</p>
+<p>Em JSON os dados são separados por “{}”, chaves e valores são
+separados por “:” e depois de um</p>
+<p>Valor sempre colocamos uma virgula, menos no ultimo.</p>
+<p>Também temos JSON Namespaces, geralmente utilizado em RESTCONF</p>
+<img src="img/96a7bb822fe34b1a8479a800f9970852.png" loading="lazy" />
+<p>Myapp é o namespace, isso significa que podemos utilizar as mesmas
+chaves só que com um namespace diferente como myapp2.</p>
+<ul>
+<li>YAML<br />
+Yaml ain’t markup language(recursividade TOP), é mais facil ainda de ler
+do que JSON, é geralmente utilizado para arquivos de configurações, um
+exemplo seria Ansible, fazemos um manifesto YAML e mandamos para ele, o
+Ansible cuida das chamadas API para gente. É bem popular com
+python.</li>
+</ul>
+<p>Identação é muito importante em YAML, geralmente utilizamos 2 espaços
+para demostrar que algo é um valor de um chave.</p>
+<p><strong>user:<br />
+name:john<br />
+location:<br />
+city:Austin<br />
+state:TX<br />
+roles:<br />
+- admin<br />
+- user</strong></p>
+<p>Todos os dados de um YAML devem ter um espaço depois de sua chave,
+para fazermos uma lista basta colocarmos a chave e um “-” traço para
+adicionarmos cada um desses itens para a lista(SIMPLESMENTE
+MARAVILHOSO).</p>
+<p>Também temos YAML Namespaces, geralmente utilizado em RESTCONF</p>
+<img src="img/d85eb06b66a34f47bd0b5447fda6c87a.png" loading="lazy" />
+<p>Myapp é o namespace, isso significa que podemos utilizar as mesmas
+chaves só que com um namespace diferente como myapp2.</p>
+<img src="img/f66432a482af4074a8d1a2840dd95190.png" loading="lazy" />
+<p>A API vai pegar esse parâmetros que utilizamos na chamada na API e
+serializar ele em algo que o código dele consiga entender e
+executar.</p>

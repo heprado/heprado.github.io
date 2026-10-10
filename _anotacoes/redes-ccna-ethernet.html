@@ -1,0 +1,15 @@
+<p>CSMA/CD</p>
+<p>Algoritmo que detecta colisões no meio físico (HALF-DUPLEX), ele ouve
+o meio físico caso ninguém esteja transmitindo envia o frame, caso
+aconteça uma colisão, envia um JAM para todos os dispositivos no meio
+físico, todos aguardam um tempo aleatorio e começam a enviar os frames
+novamente.</p>
+<img src="img/c6ca82b460bc48a6a5b3775a1795a35b.jpg" loading="lazy" />
+<p>Frames Ethernet<br />
+<img src="img/6cdd42ae2a634f7c9f752fba14129d18.png"
+loading="lazy" /></p>
+<img src="img/2d74f449c8ec426d80fb6f288e640de8.png" loading="lazy" />
+<p>A principal diferença é como o frame vai encapsular os dados do LLC,
+no Ethernet II ele encapsula no Ethertype o tipo de protocolo usado na
+camada de rede, no Ethernet 802.3 ele utiliza o DSAP e o SSAP para dizer
+a camada de rede se é IPv4 ou IPv6 o protocolo usado.</p>

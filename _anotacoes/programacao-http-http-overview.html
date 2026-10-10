@@ -1,0 +1,51 @@
+<p>HTTP é um protocolo stateless ele não precisa reter nenhuma
+informação do cliente para conseguir se comunicar com ele, existem os
+headers do HTTP que fazem ele se tornar stateful.</p>
+<p><strong>HTTP Request</strong></p>
+<p>É o pacote que o navegador cliente envia para o Servidor Web, ele é
+composto por diversos componentes:</p>
+<ul>
+<li>Request-line, é aqui onde escolhemos onde se encontra o metodo
+utilizado na requisição (GET,PATCH,PUT,POST), ele é composto por
+METHOD+URI+Versão do HTTP</li>
+</ul>
+<p>Exemplo:</p>
+<p><strong>GET /resources HTTP/3</strong></p>
+<ul>
+<li>Os Headers HTTP, você pode ou não utilizar eles.</li>
+</ul>
+<img src="img/da15092b44154903bfcee1ec824b2dab.png" loading="lazy" />
+<ul>
+<li><p>Linha em branco, dizendo que acabou os headers.</p></li>
+<li><p>O body da requisição, em requisições ele é opcional, geralmente é
+utilizado quando vamos fazer um POST.</p></li>
+</ul>
+<p><strong>HTTP Response</strong></p>
+<p>A resposta do servidor WEB para o browser cliente, componentes:</p>
+<ul>
+<li><p>Status -line, temos informações como versão do protocolo, status
+da requisição em numero e um formato de status da requisição em
+string</p></li>
+<li><p>Headers, que podem ou não ser utilizados que nem o HTTP
+Request.</p></li>
+<li><p>Linha em branco indicando final dos headers</p></li>
+<li><p>Body da resposta, informações que o cliente pediu, exemplo uma
+imagem, ou o arquivo HTML para ele montar a pagina no
+navegador.</p></li>
+</ul>
+<p><strong>HTTP URL</strong></p>
+<img src="img/fdcd91f6a8f84a3180f3ed694b3333e4.png" loading="lazy" />
+<p><u>Uma URL não é uma URI, URI é o Identificador de um recurso, já a
+URL é a localidade desse recurso.</u></p>
+<ol type="1">
+<li>Scheme, fala o protocolo que está sendo utilizado na URL, geralmente
+é HTTP ou HTTPS.</li>
+<li>Host, o endereço do site, que vai ser resolvido pelo DNS.</li>
+<li>Port, a porta em que o servidor WEB está esperando receber as
+requisições, padrão é 80(HTTP) e 443(HTTPS)</li>
+<li>Resource Path, o caminho de onde está o que vc quer acessar</li>
+<li>Query, sempre segue depois de um “?”, é para aplicar uma logica a
+URL, por exemplo você quer buscar só determinados arquivos.</li>
+<li>Fragment, aponta para um documento secundario, por exemplo a segunda
+pagina.</li>
+</ol>

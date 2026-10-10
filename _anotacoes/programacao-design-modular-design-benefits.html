@@ -1,0 +1,37 @@
+<p>Fazer software modular trás diversas coisas boas para um projeto mas
+temos sempre que pensar em algo muito importante:</p>
+<p><strong>UM MUDANÇA EM MODULO NÃO PODE QUEBRAR O SISTEMA INTEIRO, OS
+MODULOS PRECISAM SER INDEPENDENTES, E TER INTERFACES MUITO BEM DEFINIDAS
+PARA QUE AS MUDANÇAS NÃO QUEBREM TUDO.</strong></p>
+<p>Os principais designs utilizados são os seguintes:</p>
+<ul>
+<li>Acyclic dependencies principle</li>
+<li>Stable dependencies principle</li>
+<li>Single responsibility principle</li>
+</ul>
+<p>Veja a imagem abaixo, temos dois módulos, o modulo a consome e prove
+metodos para o modulo B, percebe que algum input errado no modulo C pode
+causar um problema no sistema inteiro? <strong>Isso abaixo deve ser
+evitado ao maximo.</strong></p>
+<img src="img/ccfc38ea1b564f809ae4c04d93882e6a.png" loading="lazy" />
+<img src="img/d04160d489e84a64815a7490df45db77.png" loading="lazy" />
+<p>O Modulo init testa o APP para ver se está tudo ok e só assim inicia,
+para quebrar esse ciclo só precisamos por mais um modulo :</p>
+<img src="img/438021d5032440f7b88ebc859459711b.png" loading="lazy" />
+<p><strong>Loose Coupling</strong></p>
+<p>Um modulo que depende de diversos metodos de outros modulos não é
+algo muito bom, pois fica INCRIVELMENTE dificil de fazer um
+troubleshooting, então utilizamos o Loose Coupling que é fazer um modulo
+que depende o minimo possivel de outros modulos para reduzir a
+complexicidade.</p>
+<p><strong>Cohesion</strong></p>
+<p>Para termos um bom codigo cada função precisa fazer uma COISA SÓ, não
+podemos ter uma função que por exemplo cria um log e envia esse log para
+tal email, precisamos criar uma função para criar os logs e outra para
+enviar os emails.</p>
+<p><strong>Função sem Cohesion</strong></p>
+<img src="img/aaac74b13a9c4d78b42d4de4dad65ddc.png" loading="lazy" />
+<p><strong>Função com Cohesion</strong>, como ela retorna os logs
+podemos utilizar eles para enviar em outra função.<br />
+<img src="img/0bd0a1e1af85462b8e057e96fb659220.png"
+loading="lazy" /></p>

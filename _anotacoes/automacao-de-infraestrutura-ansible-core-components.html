@@ -1,0 +1,37 @@
+<h3 id="executável">Executável</h3>
+<img src="img/7b319dde473344e295a83060fda4634b.png" loading="lazy" />
+<p>Ansible é utilizado através de um executável que podemos baixar no
+site da RedHat, esse executável consegue interpretar os módulos criados
+pela comunidade e é a nossa ferramenta principal para utilizarmos o
+ansible.</p>
+<h3 id="módulos">Módulos</h3>
+<img src="img/df862e33fb28471fbed2848705866b4c.png" loading="lazy" />
+<p>Módulos possuem funcionalidades para automatizar diversas tarefas
+relacionadas ao software/hardware que você quer configurar, se você
+possui familiaridade com Terraform eles são semelhantes aos
+provedores(Providers), eles são escritos pela comunidade ou por empresas
+e você pode utilizar um ou uma combinação de diversos deles para
+executar todas as configurações necessárias para sua infraestrutura.</p>
+<h3 id="playbook">Playbook</h3>
+<img src="img/fa6e726c22214814a6d8ebeec1b09f34.png" loading="lazy" />
+<p>Cada ação executada pelo ansible é chamada de play, essas plays podem
+ser agrupadas em ansible playbooks, , quando chamamos o ansible-playbook
+ele lê os comandos e executa eles.</p>
+<h3 id="inventários">Inventários</h3>
+<img src="img/f1fbfdafe6ab4915b6570dbaee94a075.png" loading="lazy" />
+<p>O ansible aplica as configurações nos equipamentos que definirmos no
+arquivo de inventario, esse arquivo pode conter por exemplo
+<strong>IPs</strong> ou <strong>Hostnames</strong> de :</p>
+<ul>
+<li>Servidores Linux/Windows .</li>
+<li>Gerencia de equipamentos de rede.</li>
+<li>Container .</li>
+<li>Servidor com docker rodando dentro.</li>
+<li>Gerencia de um storage array.</li>
+</ul>
+<p>Existem também os <strong>inventários dinâmicos</strong> (dynamic
+inventories) pois as vezes precisamos configurar uma infraestrutura que
+não sabemos ainda qual vão ser os endereços para nos conectarmos para
+executar as plays, com os inventários dinâmicos conseguimos puxar as
+informações de outra origem, um exemplo seria consultarmos via API o IP
+público de uma máquina virtual que a AWS está hospedando para nós.</p>

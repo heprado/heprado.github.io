@@ -1,0 +1,105 @@
+<h3
+id="infraestrutura-movida-a-politicas-policy-driven-infrastructure">Infraestrutura
+movida a politicas (Policy Driven Infrastructure)</h3>
+<p>Imagine um engenheiro de redes que recebeu uma politica estabelecida
+pela empresa de que a aplicação principal deles precisaria ter 10GBps de
+bandwidth garantida entre todos os componentes dela, essa aplicação é
+composta por um servidor Web que se conecta a uma API de consulta que
+posteriormente se conecta a diversos bancos de dados, dependendo do
+tamanho da infraestrutura esse engenheiro teria muito trabalho em
+encontrar as interfaces corretas para aplicar o QoS(Quality of Service)
+que garantiriam esses 10GBps de banda entre todos os componentes.</p>
+<p>Então a Cisco criou a Infraestrutura movida a politicas, com isso o
+engenheiro de redes consulta uma controladora, define como as
+configurações devem ser para atender a politica dessa aplicação e a
+controladora configura em todos os equipamentos necessários via APIs
+Southbound.</p>
+<p><span style="background:#40a9ff">Infraestrutura movida a politicas
+também é chamado de Redes baseadas em intenções(Intent-Based
+Networks).</span></p>
+<h3 id="componentes-do-aci">Componentes do ACI</h3>
+<p>O ACI possui os seguintes componentes:</p>
+<h4 id="endpoint">Endpoint</h4>
+<p>Qualquer máquina ou equipamento externo ao Fabric é considerado um
+Endpoint no ponto de vista do Fabric ACI.</p>
+<p>Exemplos de endpoints são:</p>
+<ul>
+<li>Switches</li>
+<li>Roteadores</li>
+<li>Mainframes</li>
+<li>Servidores(Físicos, virtuais, containers)</li>
+<li>Storages</li>
+</ul>
+<h4 id="apic">APIC</h4>
+<p>Geralmente é um servidor com arquitetura x86, nele gerenciamos o
+control plane de todos os equipamentos pertencentes ao fabric, formas de
+gerenciamos o control plane são as seguintes:</p>
+<ul>
+<li>Interface gráfica, através de um navegador utilizando HTTPs.</li>
+<li>Programaticamente através de REST APIs. (Northbound APIs)</li>
+<li>Utilizando a linha de comando através de conexão SSH ou porta
+console.</li>
+</ul>
+<p>As configurações que aplicamos através do APIC são propagadas para os
+equipamentos do fabric utilizando APIs Southbound utilizando OpFlex
+(Protocolo de APIs SDN da Cisco).</p>
+<p>O ideal é sempre termos 2 APICs sobressalentes para cada APIC, então
+o mínimo recomendado é sempre 3 APICs.</p>
+<h4 id="leaf">Leaf</h4>
+<p>Leaf é um switch onde conectamos máquinas externas ao fabric ACI,
+exemplos de máquinas são:</p>
+<ul>
+<li>Switches</li>
+<li>Roteadores</li>
+<li>Mainframes</li>
+<li>Servidores(Físicos, virtuais, containers)</li>
+</ul>
+<p>Dentro de um Fabric podemos ter diversos leaves(plural de leaf) e
+esses leaves são interconectados utilizando os spines, por conta disso
+todos os leaves devem ter pelo menos uma conexão com todos os spines do
+Fabric.</p>
+<h4 id="spine">Spine</h4>
+<p>Os spines fazem a intercomunicação entre os leaves, possuem
+informações de roteamento de todo o Fabric para que as máquinas externas
+ao fabric ACI consigam se comunicar mesmo estando entre leaves
+diferentes.</p>
+<p>Como os spines se conectam a todos os leaves eles costumam ser
+equipamentos mais poderosos, com um backplane com capacidade de receber
+e encaminhar frames simultaneamente em todas as suas portas.</p>
+<h4 id="fabric">Fabric</h4>
+<p>Um fabric ACI é definido por equipamentos de rede que são controlados
+por um conjunto de APICs, esses equipamentos possuem um underlay
+utilizando IS-IS como protocolo de roteamento para propagar as rotas de
+cada VTEP(VXLAN Tunnel Endpoint), esses VTEPs são utilizados como
+overlay para encaminhar frames camada 2 utilizando VXLAN entre os leaves
+utilizando os spines como intermédio.</p>
+<h3 id="porque-usar-aci">Porque usar ACI</h3>
+<p>Os quatro grandes motivos são:</p>
+<h4 id="segurança">Segurança</h4>
+<p>Numa rede tradicional , quando conectamos uma máquina e colocamos ela
+em uma VLAN(Virtual Local Area Network), ele vai conseguir se comunicar
+na Camada 2 com todos as outras máquinas nessa mesma VLAN através de
+tráfegos Unknown Unicast, para bloquear esse tráfego dentro da VLAN é
+necessário que o switch suporte Private VLANs em modo Isolated, o que
+não são todos os switches que possuem, ou escrever uma ACL para bloquear
+o tráfego na Camada 3 o que ainda não é o ideal pois o tráfego o
+ARP(Address Resolution Protocol) ainda irá ocorrer.</p>
+<p>O ACI usa EPGs(End Point Groups), que por padrão permite que todas as
+máquinas conectadas a esse EPG se comuniquem na Camada 2 caso Intra EPG
+Isolation seja ativado. Podemos também utilizar ESGs(Endpoint Security
+Groups) para micro segmentar o EPG definindo quais máquinas dentro do
+EPG podem se comunicar.</p>
+<h4 id="topologia-simplificada">Topologia Simplificada</h4>
+<p>Utiliza uma topologia do tipo <a
+href="redes-sdn-aci-topologia-clos.html">Topologia CLOS</a>, como o
+fabric inteiro possui um underlay em camada 3 entre os spines e leaves
+não existe Spanning Tree bloqueando as portas tornando possível utilizar
+todas as portas de uplink entre os leaves e spines simultaneamente
+usando ECMP(Equal Cost Multi Path).</p>
+<h4 id="gerenciamento">Gerenciamento</h4>
+<p>Como configuramos a rede inteira pelos APICs, fica muito mais facil
+gerenciar a rede do Data Center, os APICs também nos dão varias
+ferramentas para troubleshooting, como health scores.</p>
+<h4 id="programabilidade">Programabilidade</h4>
+<p>O APIC possui uma API Northbound, em que podemos criar
+scripts/programas para automatizar a configuração de politicas.</p>

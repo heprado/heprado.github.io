@@ -1,0 +1,20 @@
+<p>Em linguagens como C, quando compilamos um código utilizando uma
+maquina Linux por exemplo, esse código só vai funcionar para maquinas
+Linux, para resolver esse problema a Microsoft criou a CLR, que é como
+se fosse a JVM do java(copiaram na cara dura mesmo).</p>
+<h4 id="clr">CLR</h4>
+<p>Common Language Runtime, é uma maquina virtual executada na maquina
+quando um codigo C# é executado, ela não somente executa o codigo como
+também cuida de threads, pilha de execução etc., a CLR não é um
+interpretador como a PVM do Python, ela lê um codigo chamado CIL.</p>
+<h4 id="cil">CIL</h4>
+<p>Common intermediate language, é a linguagem que a CLR lê, quando
+compilamos um codigo C# ele não é compilado direto para linguagem de
+maquina, ele é compilado para essa linguagem intermediaria. Uma coisa
+interessante é que a CLR não lê o codigo em CIL e executa ele, ela
+somente traduz a CIL para codigo de maquina diretamente, esse metodo é
+chamado de JIT.</p>
+<h4 id="jit">JIT</h4>
+<p>Just in Time, é o compilador que traduz a CIL para linguagem de
+maquina na hora da execução do codigo, esse compilador está dentro da
+CLR.</p>

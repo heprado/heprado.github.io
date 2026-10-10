@@ -1,0 +1,39 @@
+<h4 id="motivações">Motivações</h4>
+<p>Quando vamos criar um aplicativo podemos separar a lógica de negócio
+da interface de usuário, isso facilita o desenvolvimento pois a lógica
+de negócio é sempre a mesma independente da interface de usuário, o
+maior problema é que temos diversas plataformas(MacOS ,Linux , Windows ,
+IOS, Android) que devemos levar em consideração, cada uma dessas
+plataformas possui uma forma diferente de definirmos a interface gráfica
+e a lógica do aplicativo.</p>
+<p>Mas e se pudéssemos definir a lógica do aplicativo e interface
+gráfica para todos as plataformas da mesma forma?</p>
+<h4 id="como">Como?</h4>
+<img src="img/pasted-image-20240214182355.png" loading="lazy" />
+<p><span style="background:#fff88f">O TEXTO EXPLICA A IMAGEM DE BAIXO
+PARA CIMA</span></p>
+<p>Para isso a Microsoft utiliza dois runtimes C# que são o Mono
+utilizados para rodar em plataformas iOS, MacOS e Android, é utilizado
+também o runtime .NET Core CLR para rodar as aplicações no Windows,
+runtimes recebem o código de alto nível já compilados para uma linguagem
+intermediaria (CIL) e esse código é traduzido para código de máquina
+conforme a aplicação vai rodando, semelhante a JVM(Java) da Oracle.</p>
+<p>Acima do Mono e do .NET CLR temos a biblioteca .NET BCL(Base Class
+Library), ela possui todas as classes com seus métodos e atributos que
+abstraem as diferentes implementações que teríamos que fazer para
+acessarmos recursos de hardware e software das diferentes
+plataformas.</p>
+<p>Como dependentes da biblioteca .NET BCL temos os frameworks para
+desenvolvimento de interfaces gráficas e lógicas de aplicação
+específicos para cada plataforma, segue nomes abaixo:</p>
+<ul>
+<li>.NET Android</li>
+<li>.NET iOS (iPadOS)</li>
+<li>.NET MacOS</li>
+<li>WinUI3 (Windows)</li>
+</ul>
+<p>Utilizando desses frameworks temos o MAUI, que abstrai as diferentes
+implementações para cada plataforma utilizando convertendo uma unica
+base de código para o framework de cada plataforma, lembrando que podem
+existir situações em que você precisará escrever códigos específicos
+para cada plataforma, mas o MAUI torna isso menos frequente.</p>

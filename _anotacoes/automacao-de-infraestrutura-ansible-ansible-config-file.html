@@ -1,0 +1,29 @@
+<p>Em ansible temos um arquivo que chama <strong>ansible.cfg</strong>,
+esse arquivo possui diversas configurações do ansible em si,
+exemplos:</p>
+<img src="img/33abe505d660477daa83305859f77177.png" loading="lazy" />
+<p>Eu posso ir até o arquivo ansible.cfg e escrever:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode toml"><code class="sourceCode toml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[defaults]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">host_key_checking</span> <span class="op">=</span> <span class="dt">False</span></span></code></pre></div>
+<p>Agora toda vez que eu rodar o ansible ele não vai parar naquele
+prompt para aceitarmos a fingerprint do certificado SSL tentamos fazer
+ssh pela primeira vez num servidor.</p>
+<p>Também é no ansible.cfg que referenciamos qual vai ser o arquivo de
+inventário que o ansible vai usar.</p>
+<p>O arquivo de configurações pode ficar em vários lugares do servidor
+que você irá utilizar para rodar o playbook, mas possuem uma prioridade
+para qual o ansible vai escolher como o principal:</p>
+<h5 id="ordem-de-prioridade">Ordem de Prioridade:</h5>
+<ol type="1">
+<li>Variável de ambiente <strong>ANSIBLE_CONFIG</strong> , podemos
+utiliza-la para especificar o diretório dentro do servidor do arquivo de
+configuração.</li>
+<li><strong>ansible.cfg</strong> no diretório que estivermos executando
+o ansible</li>
+<li><strong>~/.ansible.cfg</strong>, se o arquivo estiver como oculto e
+no diretorio home do seu usuario.</li>
+<li><strong>/etc/ansible/ansible.cfg</strong>, esse arquivo só é criado
+automaticamente caso você use um package manager(yum,apt,snap,dnf) para
+instalar o</li>
+</ol>

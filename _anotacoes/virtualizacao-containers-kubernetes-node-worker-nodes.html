@@ -1,0 +1,19 @@
+<img src="img/cd434e654c5c4698887502bea1f2ed11.png" loading="lazy" />
+<p>Nodes ou Worker Nodes são onde os Pods com nossas aplicações vão
+rodar.</p>
+<p>Os componentes acima rodam também dentro dos Control Plane Nodes pois
+precisamos subir Pods de serviços para controlar o cluster inteiro.</p>
+<p>Kubelet - Ele é o principal responsavel por gerenciar Pods dentro de
+um Node, ele monitora o API Server no Control Plane Node sempre para ver
+se temos algum novo Pod para ser criado dentro do Node, o Kubelet também
+cria e destroi Pods dentro de um Node e reporta o estado do Pods do Node
+para o API Server, também faz todas as Probes que definimos no yaml file
+do Pod.</p>
+<p>Kube-Proxy - É um Daemon que roda dentro de todos os nodes, ele faz
+diversas configurações dentro do iptables rodando dentro de cada Node
+para que as requisições cheguem nos Pods, ele também faz regras de Load
+Balacing dentro do iptables.</p>
+<p>Container Runtime - É onde os containers dos Pods vão rodar, ele é
+responsavel por baixar as imagens e rodar os containers, temos também a
+CRI que é uma interface do container runtime com o kubernetes, assim
+podemos ter diversos runtimes diferentes.</p>

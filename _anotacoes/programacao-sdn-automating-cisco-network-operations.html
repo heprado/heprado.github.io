@@ -1,0 +1,31 @@
+<p>Deployment de Equipamentos</p>
+<img src="img/d29ca70a9a1a456c92fa67dd549f5168.png" loading="lazy" />
+<p>Day 0 - É quando instalamos os equipamentos na rede, geralmente essa
+tarefa é muito dificil dependendo da complexidade da rede existente,
+precisamos tomar cuidado para não derrubar a rede inteira.</p>
+<p>Day 1 - Fazer a configuração desse equipamentos após ele ser colocado
+dentro da rede.</p>
+<p>Day 2 - Monitorar o equipamentos.</p>
+<p>Day 3 - Fazer ajustes nas configurações, upgrade de versão de
+software etc.</p>
+<p><strong>Tipos de SDN</strong></p>
+<img src="img/68f02f1e157a41a5985cdee79157d238.png" loading="lazy" />
+<p>1 - Nesse primeiro caso de SDN os equipamentos só apresentam uma API
+geralmente utilizando protocolos como NETCONF e RESTCONF, assim
+aplicações conseguem gerenciar o equipamentos, em Data Center um exemplo
+seria o DNCM configurando um NX-OS através das NX API.</p>
+<p>2a - Pure SDN, aqui temos uma controladora que tirou TODO o control
+plane do hardware, ele foi todo para o software, então decisões de
+roteamento e encaminhamento são todas tomadas dentro da controladora e
+passada para o Data Plane do equipamento atráves de APIs, utilizando
+protocolos como OpenFlow e NETCONF.</p>
+<p>2b Hybrid SDN, essa arquitetura é utilizada pelo ACI, nesse caso
+ainda temos uma parte do Control Plane dentro do Switch/Router, para ele
+conseguir tomar suas próprias decisões de roteamento, acredito que isso
+para ele conseguir fazer switching cut-through pois perguntar tudo para
+a controladora poderia trazer latência numa rede de Data Center.</p>
+<img src="img/pasted-image-20240808212921.png" loading="lazy" />
+<p>3b Overlays Network, nesse caso criamos redes virtuais por cima da
+rede existente, assim conseguimos fazer a automação por esse rede
+Overlay, geralmente o protocolo utilizado é VXLAN para fazer o overlay,
+com um protocolo de roteamento underlay como MP-BGP ou ISIS.</p>

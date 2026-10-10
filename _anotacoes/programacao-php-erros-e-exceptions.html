@@ -1,0 +1,27 @@
+<p>No PHP temos duas formas de criarmos erros:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">trigger_error</span>(<span class="st">&quot;Quebrou o brinquedo =(&quot;</span><span class="ot">,</span><span class="cn">E_USER_ERROR</span>)<span class="ot">;</span></span></code></pre></div>
+<p>e</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> my_func()<span class="ot">:</span><span class="dt">void</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>	<span class="cf">throw</span> <span class="kw">new</span> <span class="bu">Exception</span>(<span class="st">&quot;Função my_func quebrou =(&quot;</span>)<span class="ot">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>A maior diferença entre o <code>trigger_error()</code> e as
+Exceptions são os níveis de erro que cada uma consegue passar, a
+Exception sempre vai ser um erro de alguma ação do usuário, já o
+<code>trigger_error()</code> temos muito mais opções como:</p>
+<ul>
+<li>E_ALL = TODOS OS ERROS.</li>
+<li>E_ERROR = Erros que faz o script parar.</li>
+<li>E_WARNING = Erros que não fazem o script parar.</li>
+<li>E_PARSE = Erros de escrita do código, fazem o script não
+executar.</li>
+<li>E_NOTICE = Somente um aviso, podendo ser um possível erro ou
+não.</li>
+<li>E_USER_* = Habilita erros gerado pelo programador, esses erros são
+criados através da função trigger_error().</li>
+</ul>

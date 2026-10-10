@@ -1,0 +1,23 @@
+<img src="img/3655737229e346a78f5fed5b5146a967.png" loading="lazy" />
+<p>Antes no K8s os Pods só conseguiam acessar storage dentro do proprio
+node, essa storage era chamada de “Volumes”, isso era muito ruim pois
+caso um Pod em outro Node quisesse acessar esse dado dentro do Volume
+ele não conseguia, para isso surgiram os “Persistent Volume” que são
+armazenamentos compartilhados entre os nodes usando NFS, iSCSI ou outro
+protocolo.</p>
+<p>Cada Persistent Volume possui um tipo de storage, essas são as
+suportadas atualmente :</p>
+<img src="img/df5ae12624e247c1907f5c82bfc33e3d.png" loading="lazy" />
+<p>Quando criamos um objeto Persistent Storage também definimos um nome
+para ela, os deployments podem então criar Persistent Storage Claim para
+consumir essa storage atráves do nome dela:</p>
+<p>Criando um Persistent Volume:</p>
+<img src="img/63c8afefa8e84a3ba64863837224a754.png" loading="lazy" />
+<p>Podemos ver que o type da Persistent Volume é local, então ele vai
+usar o disco local do node.</p>
+<p>O nome da storage class é manual e vamos utilizar ele para dizer qual
+Persistant Volume o Persistant Volume Claim vai consumir:</p>
+<img src="img/1e5f420b512a4213851978f7e1675d6c.png" loading="lazy" />
+<p>Após isso vamos criar um POD consumindo esse PVC(Persistant Volume
+Claim):</p>
+<img src="img/191d986e495e42b1a73903b7a25e1dd1.png" loading="lazy" />

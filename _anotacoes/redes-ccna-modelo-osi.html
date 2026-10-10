@@ -1,0 +1,74 @@
+<p>É um modelo de referencia que foi criado para padronizar a
+comunicação de dispositivos processadores, permitindo a
+interoperabilidade entre eles.</p>
+<p>Consiste em 7 camadas:</p>
+<ul>
+<li><strong>Application</strong></li>
+</ul>
+<p>A camada mais próxima do usuario, nessa camada estão protocolos como
+FTP, HTTP,HTTPS, DNS, prove a disponibilidade da aplicação na maquina
+cliente e na maquina servidor.</p>
+<p>PDU: DATAGRAM</p>
+<ul>
+<li><strong>Presentation</strong><br />
+Camada responsavel pela formatação dos dados(ASCII), comprime os
+dados(JPG,GIF), e encripta eles(TLS,SSL).</li>
+</ul>
+<p>PDU: DATAGRAM</p>
+<ul>
+<li><strong>Session</strong></li>
+</ul>
+<p>Por exemplo temos uma sessão de download que está usando FTP, e uma
+sessão que está mandando e-mails usando SMTP, essa camada mantem os
+fluxos de dados separados.</p>
+<p>PDU:DATAGRAM</p>
+<ul>
+<li><strong>Transport</strong></li>
+</ul>
+<p>Camada responsavel pelo transporte de dados, divide os datagramas em
+diversos segmentos na origem e reconstroem eles na fonte.</p>
+<p>Possui controle de fluxo com o protocolo TCP(Transmission Control
+Protocol), que através do algoritmo triple way handshake garante a
+entrega dos segmentos ao destinatario, o TCP também faz o Windowing que
+define o tamanho dos segmentos que serão transmitidos na
+comunicação.</p>
+<p>Também temos o protocolo UDP que não possui ele controle de fluxo de
+dados, não se preocupa se o destinatario recebeu o segmento.</p>
+<p>PDU: SEGMENT</p>
+<ul>
+<li><strong>Network</strong></li>
+</ul>
+<p>Camada responsavel pelo transporte de dados entre sistemas que não
+estão diretamente conectados, faz esse transporte atraves do protocolo
+Ipv4 ou Ipv6, esses protocolos são roteaveis e podem ser transmitidos
+entre redes diferentes com ajuda de roteadores, também temos os
+protocolos de roteamento (RIP, RIPV2,OSPF,EIGRP,BGP), esses protocolos
+trocam router update packets para preencherem suas tabelas de
+roteamentos e criarem os caminhos entre as redes.</p>
+<p>PDU: Packet</p>
+<ul>
+<li><strong>Datalink</strong><br />
+Camada responsavel pelo transporte de dados entre sistemas diretamente
+conectados, faz o transporte através do MAC Address, que é o endereço
+fisico único de cada equipamento.</li>
+</ul>
+<p>Evita colisões atraves do CSMA/CD e garante a a intregridade dos
+dados atraves do trailer FCS.</p>
+<p>Possui duas sub camadas:<br />
+- Subcamada LLC:<br />
+Responsavel pela identificação dos protocolos da camada de Rede, um
+computador lê o cabeçalho LLC para entender qual o protocolo usado(
+Ipv6, ipv4).<br />
+- Subcamada MAC:<br />
+Define como os frames serão formatados e transmitidos pelos diversos
+meios fisicos(Ar,Luz,Eletrico).</p>
+<p>PDU: FRAMES</p>
+<ul>
+<li><strong>Physical</strong></li>
+</ul>
+<p>Camada onde ficam os meios fisicos onde os dados passam(Fibra otica,
+Cabo UTP, Wi-Fi,5G)</p>
+<p>PDU : Bits</p>
+<img src="img/cb60807deeae4db48d9f982ec2a6b2d6.png" loading="lazy" />
+<p>Modelo TCP/IP é o mais usado hoje em dia, ele aglomera as camadas do
+modelo OSI em camadas menores.</p>

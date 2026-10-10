@@ -1,0 +1,36 @@
+<p><strong>Point-to-Point</strong></p>
+<img src="img/fabf15bec5324663a7f6a2f60abbcacd.png" loading="lazy" />
+<p>Uma conexão ponto a ponto entre dois roteadores, nesse link ocorre a
+eleição do DR e BDR, um dos roteadores vai ser eleito DR e o outro
+BDR.</p>
+<p><strong>Em redes Point-to-point o hello-timer padrão é 10
+segundos.</strong></p>
+<p><strong>Broadcast</strong></p>
+<img src="img/8b43da066ada4bc086413077b9226a78.png" loading="lazy" />
+<p>Uma conexão entre roteadores em uma rede que suporta
+broadcast(Ethernet), um roteador conectado a uma rede broadcast pode
+enviar seus LSAs em multicast(224.0.0.5 e 6) pois ele não precisa saber
+o endereço IP de cada roteador, diferente de uma rede non-broadcast em
+que ele precisaria saber o endereço de cada roteador.<br />
+Numa rede broadcast temos somente um DR e um BDR, e os outros
+roteadores(Internal Routers) só fecham adjacencia com eles, para não
+termos muitas adjancencias, IR com IR nunca ficam FULL sempre ficam
+2WAY.</p>
+<p><strong>Em redes broadcast o hello-timer padrão é 10
+segundos.</strong></p>
+<p><strong>Non-Broadcast</strong></p>
+<p><strong>Em redes non-broadcast o hello-timer padrão é 30
+segundos.</strong></p>
+<p>Temos dois tipos de redes Non-Broadcast , NBMA e Point-to-MultiPoint
+abaixo as diferenças:</p>
+<p><strong>NBMA</strong></p>
+<img src="img/b3b0d0d0a3344ee68c432e8ba5e9a86c.png" loading="lazy" />
+<p>Redes NBMA como Frame Relay e ATM não suportam broadcast então
+precisamos configurar todos os neighbors na mão com o comando neighbor
+dentro do processo OSPF, o tipo de rede NBMA tenta emular uma rede
+broadcast então ele elege DR e BDR entre os links(PVCs).</p>
+<p>Point-To-MultiPoint</p>
+<img src="img/143c9c7895ca45cd9a6d4d992c1eadee.png" loading="lazy" />
+<p>Redes point to multi point tratam a rede como se fosse varios links
+point-to-point então não ocorrem eleição de DR e BDR, e também
+precisamos configurar todos os neighbors na mão.</p>

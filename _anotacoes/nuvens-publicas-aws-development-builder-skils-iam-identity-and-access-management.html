@@ -1,0 +1,21 @@
+<h4 id="usuário-iam">Usuário IAM</h4>
+<p>Um usuario IAM é uma pessoa OU robo que interage com a API da AWS,
+ele possui uma ou varias ROLES</p>
+<h3 id="grupo-iam">Grupo IAM</h3>
+<p>Um grupo IAM é uma coleção de diversos usuarios que possuem as mesmas
+roles.</p>
+<h3 id="role-iam">Role IAM</h3>
+<p>Uma role pode ser atribuida a um usuario ou a um grupo de usuarios e
+ela que permite o acesso a um recurso atraves de POLICIES.</p>
+<h2 id="policy-iam">Policy IAM</h2>
+<p>Uma policy determina qual role pode acessar qual serviço da AWS.</p>
+<h2 id="tokens-de-segurança">Tokens de segurança</h2>
+<p>A AWS utilizada 3 tokens JWTs para permitir acesso a seus serviços
+atraves do Cognito</p>
+<ul>
+<li>Identity Token</li>
+<li>Access Token</li>
+<li>Refresh Token</li>
+</ul>
+<p>Você pode utilizar esse Cognito para autenticar e autorizar os
+usuarios da sua aplicação utilizando o IAM da AWS.</p>

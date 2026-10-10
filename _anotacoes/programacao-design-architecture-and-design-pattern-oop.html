@@ -1,0 +1,49 @@
+<p><strong>Programação Orientada a Objetos</strong></p>
+<p>Programação orientada a objetos é composta por 4 principios:</p>
+<ul>
+<li>Abstraction</li>
+<li>Encapsulation</li>
+<li>Polymorphism</li>
+<li>Inheritence</li>
+</ul>
+<p><strong>Abstraction</strong></p>
+<p>Um metodo abstrato dentro de uma classe significa que as classes
+filhas não vão conseguir utilizar esse metodo, ele só vai ser
+<strong>UTIL DENTRO DA CLASSE PAI.</strong> Cada classe filha vai ter
+que criar sua propria implementação desse metodo como por exemplo no
+caso abaixo:</p>
+<img src="img/8cd1a4ab6c4146368c3b4e873df12298.png" loading="lazy" />
+<p>A classe payment(PAI) possui dois metodos, a print_slip um metodo
+normal que vai ser herdado pelas classes filhas e um metodo payment que
+possui um <span class="citation"
+data-cites="abstractmethod">@abstractmethod</span> antes dizendo que é
+um metodo abstrato, quando instaciarmos um objeto de uma das classes
+filhas como a CreditCardPayment, não conseguimos utilizar o metodo
+payment da classe pai que é Payment pois é um metodo abstrato, mas
+conseguimos utilizar o metodo print_slip no objeto, referenciando ao
+metodo da classe pai que não é abstrato.</p>
+<p><strong>Conversa com Vitão</strong><br />
+**<br />
+<img src="img/db88620f511a48a795473f50a28b4342.png"
+loading="lazy" /></p>
+<img src="img/cef60ef7a5d442fb870754b406affb63.png" loading="lazy" />
+<p><strong>Encapsulation</strong></p>
+<p>É uma forma de fazer dados não poderem ser alterados ou referenciados
+em outras classes filhas ou instancias delas.<br />
+Em python não tem metodos e nem parametros privados de uma função, só
+conseguimos por um double underscore antes deles para dizer que
+pertencem a essa classe e não podem ser modificados por subclasses.</p>
+<img src="img/5c895eb0c4ca450981a6e4823e4ec994.png" loading="lazy" />
+<p><a href="https://www.geeksforgeeks.org/encapsulation-in-python/"
+class="uri">https://www.geeksforgeeks.org/encapsulation-in-python/</a></p>
+<p><strong>Inheritence</strong></p>
+<p>É quando temos uma classe pai e uma classe filha que herda essas um
+parametro ou metodo da classe pai, para fazermos isso precisamos
+utilizar a função super() do python:</p>
+<img src="img/370de6fbda52415bb09e1aaf645189a4.png" loading="lazy" />
+<p><strong>Polymorphism</strong></p>
+<p>Em python é uma função que consegue ser usada para diferentes tipos,
+temos também o method overriding que é quando temos uma classe filha
+tendo um metodo com o mesmo nome da classe pai, só que ela faz coisas
+diferentes.</p>
+<img src="img/b7518a96bfa14e128ef86c994900ddd3.png" loading="lazy" />

@@ -1,0 +1,179 @@
+<h4 id="unário">Unário</h4>
+<p>Todos nos em algum momento da vida já contamos números com a mão, a
+cada dedo que levantamos adicionamos 1 ao número que estamos
+pensando:</p>
+<img src="img/unary-counting-on-hands.png" loading="lazy" />
+<p>Essa adição ou subtração que você fez com os dedos é chamada de
+operação unária, você possui um operando(número) que você vai
+adicionando ou removendo 1 ou mais.</p>
+<p>O sistema unário também é conhecido como base-1 e resumidamente ele
+representa numeros pela quantidade de números UM que possui por
+exemplo:</p>
+<p>1 = 1</p>
+<p>111 = 3</p>
+<p>11111111 = 8</p>
+<p>Um algoritmo em python que representa isso seria:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adicao_unaria(mao):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>	 mao <span class="op">+=</span> <span class="dv">1</span> <span class="co">#mao = mao + 1</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> substracao_unaria(mao):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>	<span class="cf">if</span> mao <span class="op">!=</span> <span class="dv">0</span>: <span class="co">#Se a mao não for zero, não temos dedos negativos rsrsrs.</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>	</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>		mao <span class="op">-=</span> <span class="dv">1</span> <span class="co">#mao = mao - 1</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>mao <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>adicao_unaria(mao) <span class="co">#mao = 1, ou seja levantamos um dedo.</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>subtracao_unaria(mao) <span class="co">#mao = 0, ou seja abaixamos um dedo.</span></span></code></pre></div>
+<h4 id="decimal">Decimal</h4>
+<p>Temos também o base-10 ou decimal, esse é o sistema numeral mais
+utilizado, um exemplo seria o número 181, mesmo que os dígitos dele
+sejam 1 8 1 você não lê ele como 1 + 8 + 1 = 10 e sim da seguinte
+forma:</p>
+<p>1 x 100 + 8 x 10 + 1 x 1 = 100 + 80 + 1 = 181.</p>
+<h4 id="binário">Binário</h4>
+<p>Os computadores utilizam o sistema numeral base-2, em que cada
+digito(dedo) representasse um expoente para potencializarmos o 2,
+sendo:</p>
+<ul>
+<li>Dedão = 0</li>
+<li>Indicador = 1</li>
+<li>Meio = 2</li>
+<li>Anelar = 3</li>
+<li>Mindinho = 4</li>
+</ul>
+<p>Dessa forma cada dedo levantado significaria a soma da potencia 2 ^
+dedo ao operando.</p>
+<p>Dedão e Indicador levantados resultaria na seguinte conta:</p>
+<p>2<sup>0</sup>+ 2<sup>1</sup> = 1 + 2 = 3</p>
+<p>Já se tivéssemos o mindinho e o anelar levantados:</p>
+<p>2<sup>3</sup> + 2<sup>4</sup> = 8 + 16 = 24</p>
+<img src="img/pasted-image-20240407150137.png" loading="lazy" />
+<p>Até agora vimos binários sendo representados com as posições dos
+dedos, mas a real forma que os computadores veem binários é pela
+representação e posição dos bits que só podem representar 0 ou 1.</p>
+<p>A representação mais comum de um numero em binário é utilizando 8
+bits(1 byte), segue abaixo uma tabela representando um byte:</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr>
+<th>2<sup>7</sup></th>
+<th>2<sup>6</sup></th>
+<th>2<sup>5</sup></th>
+<th>2<sup>4</sup></th>
+<th>2<sup>3</sup></th>
+<th>2<sup>2</sup></th>
+<th>2<sup>1</sup></th>
+<th>2<sup>0</sup></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>128</td>
+<td>64</td>
+<td>32</td>
+<td>16</td>
+<td>8</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Dependendo da posição do bit e se ele está como 1 devemos somar o
+valor decimal da coluna, se for 0 pulamos:</p>
+<table>
+<thead>
+<tr>
+<th>128</th>
+<th>64</th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>128 +</td>
+<td>64 +</td>
+<td>32 +</td>
+<td>16 +</td>
+<td>8 +</td>
+<td>4 +</td>
+<td>2 +</td>
+<td>1</td>
+<td>255</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>128</th>
+<th>64</th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>0 +</td>
+<td>64 +</td>
+<td>32 +</td>
+<td>0 +</td>
+<td>0 +</td>
+<td>0 +</td>
+<td>0 +</td>
+<td>0</td>
+<td>96</td>
+</tr>
+</tbody>
+</table>
+<p>Com o sistema numeral binary podemos representar 2<sup>32</sup> = 256
+valores, como começamos do ZERO o maior número decimal que conseguimos
+representar é 255.</p>
+<p>Ir para o proximo assunto : <a
+href="programacao-cs50-ascii.html">ASCII</a></p>

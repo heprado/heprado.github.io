@@ -1,0 +1,28 @@
+<img src="img/1abbd429867c490883670eabeb220189.png" loading="lazy" />
+<p>PODs são a menor unidade de objeto dentro do K8s, eles representam um
+container rodando ou mais de um, pra dar um exemplo, cada POD tem um IP
+mas podemos ter dois containers ouvindo um em cada porta do localhost
+pois os dois containers consomem a mesma interface eth, pods com mais de
+um container são chamados de Multi-Container Pods.</p>
+<p>Geralmente cada POD roda uma aplicação, o use-case para
+Multi-Container Pods seria se você estivesse usando Istio no seu
+cluster, precisamos sempre ter um container sidecar ali rodando junto
+com a aplicação, para conseguirmos enviar requisições para outros Pods
+atráves do proxy do Istio.</p>
+<p>Um POD nunca é recriado igualzinho ao que ele era antes, ele é
+totalmente destruido e criado novamente caso alguma falha ocorra no Pod,
+por isso podemos dizer que um POD é efemero, caso queria guardar os
+dados da aplicação que está rodando dentro do POD precisamos de um
+volume persistente.</p>
+<img src="img/1519ffd0ce134f78a4f30f992b08dce0.png" loading="lazy" />
+<p>As controllers sempre vão estar observando os seus Pods para manter
+eles no estado desejado, mas além disso as controllers também checam a
+saude da aplicação dentro do containers, por exemplo imagine um servidor
+HTTP rodando dentro do container, podemos definir probes no yaml file do
+deployment para fazer as controllers ficarem checando se a URL do
+servidor HTTP está funcionando, se não estiverem as controllers avisam o
+API server para destruir o POD e criar de novo.</p>
+<img src="img/5673f5cd400e450a8bfdda25c0746a8d.png" loading="lazy" />
+<p>Esse tipo de Pod geralmente prove algum serviço para o cluster, como
+DNS para resolução de nomes, ingress pra fazer load balancing baseado
+aplicações (Layer 7), temos também a dashboard do Kubernetes.</p>

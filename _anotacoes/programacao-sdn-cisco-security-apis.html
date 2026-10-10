@@ -1,0 +1,48 @@
+<p>No ecossistema do Firepower temos 3 APIs principais:</p>
+<ul>
+<li><p><strong>FTD API</strong>, essa api é utilizada para fazermos
+automações em um dispositivo Firepower com o FTD instalado.</p></li>
+<li><p><strong>FMC AP</strong>I, essa API é utilizada para automações
+utilizando o FMC que gerencia todos os outros FTDs.</p></li>
+<li><p><strong>FXOS Chassis API</strong>, essa API é utilizada para
+gerenciarmos e automatizarmos o Chassi do Firepower 9300, esse firepower
+é como se fosse um chassis UCS 5108, podemos ter diversos FTD dentro
+dele, tanto fisico como virtuais.</p></li>
+</ul>
+<p>Já na parte de defesa de Endpoints temos 3 APIs:</p>
+<ul>
+<li><p><strong>Umbrella API</strong>, essa API é feita para parceiros
+enviarem evento sobre certo dominios para a Umbrella, assim mantendo a
+base de dados de dominios perigosos mais rica, também podemos fazer o
+contrario e consumir essa base de dados para nos precavermos.</p></li>
+<li><p>Cisco ISE ERS API, essa api é utilizada para fazermos
+automatização da plataforma ISE, ele oferece operações CRUD
+basicamente.</p></li>
+<li><p>AMP API, utilizada para pegar informações sobre os endpoints
+geralmente.</p></li>
+</ul>
+<p><strong>FTD API</strong></p>
+<img src="img/77769e00a32f44f786cc85b9eb1e84a8.png" loading="lazy" />
+<ul>
+<li>Suporta GET,POST,PUT,DELETE</li>
+<li>Possui uma documentaçao da API igual o NXOS.</li>
+</ul>
+<p><strong>Cisco ISE ERS API</strong></p>
+<img src="img/49612bdbfd7a42339fc1ddd587e630cc.png" loading="lazy" />
+<ul>
+<li>Suporta GET,POST,PUT,DELETE</li>
+<li>Utiliza basic HTTP authorization então precisamos passar
+user:password em base64.</li>
+<li>Conseguimos passar parametros pela URL, como equals, greater than,
+etc.</li>
+</ul>
+<p><strong>/ers/config/internaluser?filter=name.STARTW.a&amp;filter=identityGroup.EQ.Finance</strong></p>
+<p><strong>AMP API</strong></p>
+<img src="img/e8cd640fd0a648dc8aa1d6e1f3c19ae2.png" loading="lazy" />
+<ul>
+<li>Suporta GET,POST,PATCH,DELETE e OPTIONS.</li>
+<li>Passamos o ID do endpoint que queremos chegar e a API Key do mesmo
+na URL, escolhemos qual vai ser a API do AMP(Existe uma para cada
+região) que vamos chamar e a versão.</li>
+</ul>
+<p><strong>Threat Grid API</strong></p>

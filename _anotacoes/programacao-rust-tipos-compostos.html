@@ -1,0 +1,31 @@
+<h2 id="tuplas">Tuplas</h2>
+<p>Tuplas são variáveis que podem representar diversos valores, veja o
+exemplo abaixo:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> tup<span class="op">:</span>(<span class="dt">i8</span><span class="op">,</span><span class="dt">i8</span><span class="op">,</span><span class="dt">i8</span>) <span class="op">=</span> (<span class="dv">1</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">1</span>)</span></code></pre></div>
+<p>Essa variável irá possuir 3 valores, os 3 sendo do tipo inteiro de 8
+bits com sinal de mais ou menos, passamos a ela 3 valores
+<code>1,1,1</code>, esses valores podem ser mudados caso a variável
+esteja declarada como <code>mut</code> mas devem ser do mesmo tipo e não
+podem extrapolar o tamanho(3) da tupla.</p>
+<p>Caso seja necessário que cada valor de dentro da tupla seja uma nova
+variável você pode desconstruir ela da seguinte maneira:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">//O underline serve somente para dizer que não vamos utilizar essas váriaveis.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> (_a<span class="op">,</span>_b<span class="op">,</span>_c) <span class="op">=</span> tup<span class="op">;</span></span></code></pre></div>
+<p>Quando passamos valores para tuplas não é necessário que os valores
+sejam do mesmo tipo, você só precisa especificar antes da seguinte
+maneira:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> tup<span class="op">:</span>(<span class="dt">u8</span><span class="op">,</span><span class="dt">u16</span><span class="op">,</span><span class="dt">u32</span>) <span class="op">=</span> (<span class="dv">255</span><span class="op">,</span><span class="dv">65535</span><span class="op">,</span><span class="dv">4_000_000_000</span>)</span></code></pre></div>
+<h2 id="arrays">Arrays</h2>
+<p>Arrays também são variáveis que podem representar diversos valores,
+as diferenças entre arrays e tuplas são que arrays só podem ter valores
+de um tipo, podemos também ter um array com tuplas dentro para podermos
+ter diversos tipos dentro de um array;</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">//let array1[tipo;tamanho] = [valores]</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> array1<span class="op">:</span>[<span class="dt">u8</span><span class="op">;</span><span class="dv">2</span>] <span class="op">=</span> [<span class="dv">1</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> array2<span class="op">:</span>[(<span class="dt">u8</span><span class="op">,</span><span class="dt">u8</span>)<span class="op">;</span><span class="dv">2</span>] <span class="op">=</span> [(<span class="dv">0</span><span class="op">,</span><span class="dv">255</span>)<span class="op">,</span>(<span class="dv">255</span><span class="op">,</span><span class="dv">0</span>)]<span class="op">;</span></span></code></pre></div>
+<h2 id="vetores">Vetores</h2>

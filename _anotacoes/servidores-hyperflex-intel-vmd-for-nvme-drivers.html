@@ -1,0 +1,16 @@
+<p>Um dos problemas que apareceram quando foram introduzidos os drivers
+nvme é que eles não suportavam você ir lá e tirar o driver NVMe, isso
+dava tela azul(rosa ESXI), isso tudo pois quem controlava isso nas
+arquiteturas SAS/SATA eram as storages controllers, em NVMe não temos
+essas storages controllers, para isso a intel inventou o VMD.</p>
+<img src="img/8452c70772b346babceb12ab3e309def.png" loading="lazy" />
+<p>O VMD consegue suportar esse tipo de situação de retirada surpresa do
+Driver, HOTPLUG e falha do hardware mesmo, ele faz isso através dos
+novos processadores Xeon que possuem o VMD falando diretamente com as
+lanes PCIe dos drivers NVMe, o sistema operacional também utiliza um
+driver especial do VMD para falar com os SSDs NVMe.</p>
+<img src="img/e93a8a60ba3e41f1bb39bfb19d36eaa1.png" loading="lazy" />
+<p><a
+href="https://www.intel.com/content/www/us/en/architecture-and-technology/intel-volume-management-device-overview.html"
+class="uri">https://www.intel.com/content/www/us/en/architecture-and-technology/intel-volume-management-device-overview.html</a>
+(ROT)</p>

@@ -1,0 +1,22 @@
+<p>O correto é nunca utilizarmos a branch master/main para
+desenvolvimento, nela só deve estar código que funciona em produção.</p>
+<p>O melhor jeito é criar uma branch copia da master/main, caso
+queiramos arrumar um bug ou adicionar uma nova funcionalidade na
+aplicação, quando terminamos o codigo podemos fazer git merge com a
+master.</p>
+<img src="img/1c670ef0d90b4bd18cf63868df854c3a.png" loading="lazy" />
+<p><strong>Comandos</strong></p>
+<ul>
+<li><strong>git branch</strong></li>
+</ul>
+<p>Se usarmos somente como git branch ele mostra quais branches existem,
+se colocarmos git branch NOVA_BRANCH ele cria.</p>
+<p>ESSA BRANCH É SÓ NO REPOSITORIO LOCAL.</p>
+<ul>
+<li><strong>git checkout</strong></li>
+</ul>
+<p>Esse comando troca de branch no repositorio local, assim quando
+fizermos um commit ele será guardado nessa branch.</p>
+<p>git checkout NOVA_BRANCH</p>
+<p>Git checkout -b NOVA_BRANCH , CRIA E MUDA SUA BRANCH ATUAL PARA A
+CRIADA.</p>

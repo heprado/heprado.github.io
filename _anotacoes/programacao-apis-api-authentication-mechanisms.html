@@ -1,0 +1,24 @@
+<p>APIs são recursos publicos que geralmente estão abertos na internet,
+para isso precisamos de uma forma de evitar ataques e identificar
+usuarios para isso utilizamos, os termos utilizados para definir isso
+são:</p>
+<ul>
+<li><p>Authentication, é ato de identificar um usuario ou
+sistema.</p></li>
+<li><p>Authorization, é classificar quais permissões esse usuario tem em
+nosso sistema(API).</p></li>
+</ul>
+<p>Geralmente utilizamos os headers de uma requisição HTTP para nos
+autenticarmos em uma API, utilizar ou o header Authorization, X-API-Key
+ou Cookie.</p>
+<p>Exemplo de codigo em python se autenticando em uma API:</p>
+<img src="img/35fdefb3beec4ea59d036939dfd5c8ff.png" loading="lazy" />
+<p>O problema de usarmos uma API-Key pré generada é que essa chave pode
+ser roubada no meio do caminho já eu usamos ela demais, para isso
+utilizamos o mecanismo abaixo:</p>
+<img src="img/59b560e0649e4ec5be29acebfb6d7dae.png" loading="lazy" />
+<p>O usuario da API manda usuario e senha para a API, ela redireciona
+para um servidor de authentication geralmente OpenID ou OAuth2, ele cria
+um token temporario e te manda de volta, você utiliza esse token até ele
+expirar, depois precisa fazer o login dnv(O ACI é exatamente assim, o
+bom é fazer uma função de ficar checando se o token está valido).</p>

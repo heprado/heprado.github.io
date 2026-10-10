@@ -1,0 +1,15 @@
+<img src="img/f7fdaf59cb714ea69adc1e05e85cd162.png" loading="lazy" />
+<p>Controladoras são objetos da API que ajudam o K8s a manter o estado
+da aplicação, essas controladores ficam dentro do Master rodando em um
+daemon chamado kube-controller-manager, dentro dela rodam loops que
+ficam checando a saude e estado da sua aplicação e cluster
+infinitamente.</p>
+<p>Vamos falar sobre uma das controllers mais usadas, ReplicaSet:</p>
+<p>ReplicaSet basicamente verifica quantas copias daquele Pod você quer
+rodando, caso um de crash a controller do ReplicaSet vai lá mata ele e
+cria dnv.</p>
+<p>Geralmente não criamos um ReplicaSet sozinho e fazemos ele adotar
+algum Pod, criamos quase sempre um “Deployment” que faz o DEPLOY dos
+Pods e dos ReplicaSets e mantem o desired-state de ambos que é UP AND
+RUNNING YAY.</p>
+<img src="img/34e291fe3ec74b7cad0866e1af3e3db4.png" loading="lazy" />

@@ -1,0 +1,129 @@
+<p>Protocolo que previne loops na rede, existem 4 tipos o
+802.1D(Spanning-tree Original), 802.1W(Rapid Spanning-tree),Multiple
+Spanning Tree e o PVLAN</p>
+<p>Sempre que colocamos redundância na rede corremos o perigo de ocorrer
+um loop na rede, pois em uma rede a todo momento temos quadros de
+broadcast passando, e isso faz com que os switches mandem esses pacotes
+por todas as portas menos as que receberam, com 3 switches interligados
+esses pacotes ficariam eternamente em loop, todos os computadores da
+rede iam receber os pacotes e processar eles, o problema é que o loop
+começa a crescer e o processamento dos computadores começa a travar.</p>
+<img src="img/7346d250c9e2445ba8fae377b14c462b.jpg" loading="lazy" />
+<p>O spanning-tree faz com que isso não aconteça mais bloqueando uma das
+portas, caso o link principal caia, essa porta que estava bloqueada
+assume o trafégo.</p>
+<p><strong>Eleição do Root</strong></p>
+<p>Bridge Priority: Qualquer numero entre 0-65535, o padrão de quando
+tiramos os switches da caixa é 32768, podemos mudar esse valor para
+tornar o switch que queremos o Root-Bridge, a prioridade precisa ser
+incrementos de 4096, pois em um ambiente cisco nos rodamos PVSTP, e os o
+PVSTP faz é adicionar o ID da VLAN no Bridge Priority, então precisamos
+de 4096 números para as VLANS.</p>
+<p>Bridge MAC: Mac Address do Switch.</p>
+<p>Bridge ID: A junção dos Bridge MAC com o Bridge Priority</p>
+<img src="img/4efff8fc2ae54061b3f0e3deaa0925a9.png" loading="lazy" />
+<p>O menor Bridge-ID ganha a eleição.</p>
+<img src="img/95a46d4d43ba406394ca193690ca01f7.png" loading="lazy" />
+<p>Todos os switches se apresentam para a topologia como sendo o root,
+após receberem um BPDU com um BID menor que o deles, ele começam a
+propagar BPDUs dizendo que esse BID é o Root Bridge.</p>
+<p>Os switches elegem o Root Bridge utilizando o Bridge-ID, o bridge-id
+é um numero pela priority (padrão 32768) mais o numero hexadecimal do
+MAC-ADDRESS, o menor Bridge-ID é eleito o root do Spanning-tree.</p>
+<p>Após isso os switches que não são o root precisam decidir suas root
+ports, que são as portas que vão para o Root-Bridge, eles fazem isso
+calculando o custo de cada porta que vai para o Root-bridge, a cada
+salto ele adiciona um valor, esse valor depende da bandwidth da porta,
+quanto menor for o custo total, melhor.</p>
+<p>Caso o custo para o root seja o mesmo em ambas as portas o switch vai
+utilizar outro valor que é o menor bridge-ID, a porta que estiver
+conectada para o menor bridge-id vai se tornar a root port.</p>
+<p>O ultimo desempate depende do numero da porta, a menor porta se
+tornara a root-port.</p>
+<p><strong><mark>Convergencia do Spanning-tree 802.1D 30-50
+SEGUNDOS</mark></strong></p>
+<p><strong><mark>Convergencia do Rapid Spanning-tree 802.1W 2-5
+SEGUNDOS</mark></strong></p>
+<p>Temos também o Per Vlan Spanning-tree, esse Spanning-tree cria uma
+instancia de Spanning-tree para cada VLAN diferente, assim podemos
+utilizar todos os links da rede.</p>
+<img src="img/ca130b88ce2648c7880572b270e7c38d.png" loading="lazy" />
+<p>No caso acima, para a VLAN 10 o link em Blocking, seria o link entre
+o SW2 e o SW3, e para a VLAN 20 seria o link entre o SW1 e o SW3.</p>
+<p>No spanning-tree temos 3 tipos de portas, Root Ports, Designated
+Ports e Blocking Ports, o STP evita os loops deixando as portas
+redundantes em blocking.</p>
+<img src="img/b0f64349d814495097d11ae647028b49.jpg" loading="lazy" />
+<p>Na imagem acima o switch root é o CAT1, todas as portas do CAT1
+estarão como Designated ports, porque ele é o root, ele tem o menor BID,
+o CAT2 estará com a porta FA0/23 como Root port, pois é a porta que tem
+como destino o Root, já a porta FA0/24 do CAT2 estará como Blocking,
+pois a FA0/24 do CAT1 está como Designated, e como o CAT2 já tem uma
+root port, ele percebe que tem dois caminhos para o Root e escolhe a
+menor porta para ser a Root Port.</p>
+<img src="img/d45c8053786d47768142b13d77743fbf.png" loading="lazy" />
+<p><strong>Estados da Convergência do Spanning-Tree</strong></p>
+<p>Blocking - Não está recebendo nenhum frame a não ser BPDUs.<br />
+Listening - A porta está ativa, mas só recebendo BPDUs, para aprender
+quem é o Root-Bridge, e ver se a topologia não vai mudar de novo (15
+segundos)<br />
+Learning - A porta está ativa, recebendo frames e BPDUs para o Switch
+conhecer alguns MACs e não gerar loops na rede<br />
+Forwarding - A porta está ativa, recebendo frames e BPDUs e encaminhando
+todos normalmente.<br />
+Disabled - Não participa do spanning-tree pois a porta está
+desligada.</p>
+<p><strong>Portfast</strong></p>
+<p>Desabilita os estados listening e Learning e vai direto para
+Forwading, usamos esse comando em portas que não são trunks entre
+switches, ou seja, portas que estão ligadas a end-devices.</p>
+<p><strong>BPDU Guard</strong></p>
+<p>Coloca a porta em err-disable caso receba um BPDU nessa porta, mas
+continua enviando BPDUs normalmente, assim conseguimos evitar de alguém
+colocar um switch na nossa rede e tentar se tornar o root.</p>
+<p><strong>BPDU Filter</strong></p>
+<p>BPDU Filter desabilita o STP completamente na porta, o switch para de
+enviar e receber BPDUs na porta configurada.</p>
+<p><strong>Rapid Spanning-Tree</strong></p>
+<p>802.1W, conhecido como Rapid Spanning-tree é um Spanning-tree(802.1D)
+aprimorado, ele define portas alternativas para o root, tornando a
+convergência caso o caminho principal para o root caia muito mais
+rápida.</p>
+<p>Principais diferenças do RSTP para o STP:</p>
+<ul>
+<li>MaxAge é só 3 vezes o tempo de Hellos, MaxAge = 6 Hello Timer =
+2</li>
+<li>Define portas como Alternate e Backup, além das Designated e Root
+Port</li>
+<li>O estado de blocking agora é chamado de Discarding</li>
+<li>Não temos mais o estado de Listening no RSTP, somente
+Discarding,Learning e Forwarding.</li>
+</ul>
+<p>Tipos de portas:</p>
+<ul>
+<li>Root Port = Porta que foi elegida como o melhor caminho para o
+root.</li>
+<li>Alternate Port = Porta com o segundo melhor caminho par o Root, ela
+sobe automaticamente caso a Root Port caia, passando de discarding para
+Forwarding direto.</li>
+<li>Backup = Caso tenhamos duas portas ligadas a um HUB, uma porta fica
+em modo Designated e a outra fica em modo Backup</li>
+<li>Designated Port = porta escolhida num meio fisico para mandar
+trafégo.</li>
+<li>Disabled Port = Porta desabilitada.</li>
+</ul>
+<p>Estados das portas RSTP:</p>
+<p>Discarding: É a aglutinação do modo Disabled e Blocking do STP
+normal, nesse modo ou a porta está administrativamente desligada ou a
+porta não foi escolhida como designated/root/alternate/backup
+port.<br />
+Learning: Estado usado para preencher um pouco da tabela MAC do
+switch.<br />
+Forwarding : Enviando tráfego.</p>
+<p>Tipos de links RSTP:</p>
+<p>Point-to-point port : São portas em qual um switch se conecta com
+outro.<br />
+Pointo-to-point edge port : São portas de um switch conectadas a um
+computador.<br />
+Shared port : são portas de um switch conectadas a um HUB.</p>
+<img src="img/43ae079cbd164bbc8df1e32e3fd1d711.png" loading="lazy" />

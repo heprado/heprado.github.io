@@ -1,0 +1,18 @@
+<p>Passo 1 - Baixar LLVM <a
+href="https://github.com/llvm/llvm-project/releases/">Releases ·
+llvm/llvm-project (github.com)</a></p>
+<p>Passo 2 - Colocar a pasta raiz do LLVM em algum lugar e adicionar no
+PATH do windows.</p>
+<p>Passo 3 - Abrir o CMD e executar o comando clang e lld para ver se o
+compilador e o linker estão no PATH.</p>
+<p>Passo 4 - Adicionar essa configuração no config.toml no diretório de
+configuração do cargo, que geralmente fica no diretorio raiz do seu
+usuário na pasta .cargo (~/.cargo/config.toml).</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode toml"><code class="sourceCode toml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[target.x86_64-unknown-linux-musl]</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">linker</span> <span class="op">=</span> <span class="st">&quot;rust-lld&quot;</span></span></code></pre></div>
+<p>Se você não souber tente onde a pasta de configuração tente:</p>
+<pre class="powershell/cmd"><code>where cargo</code></pre>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whereis</span> cargo</span></code></pre></div>

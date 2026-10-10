@@ -1,0 +1,14 @@
+<img src="img/40615dbb91f948ba95427d80e671889d.png" loading="lazy" />
+<p>O NSX consegue fazer SDN para diversos tipos de workload, como um
+host ESX um host KVM ou um servidor bare-metal, mas os principais
+componentes do NSX são:</p>
+<p>NSX-T Manager - Uma OVA que fazemos deploy em algum hypervisor, elas
+não precisam necessariamente estar na mesma subnet. Essas controladores
+fazem todo o control plane do NSX, popula a tabela do TEPs com o
+endereço MAC e IP das VMs e dos TEPS para os hosts saberem para onde
+mandar os pacotes, também é nela que fazemos as configurações no NSX,
+via API ou GUI.</p>
+<p>NSX Edge - Essa appliance virtual faz toda a parte de serviços de uma
+rede NSX, como Firewall/NAT/Load Balancing/DHCP/VPN.</p>
+<p>Public Cloud Gateway - Mesma coisa que o NSX Edge só que na nuvem
+publica.</p>

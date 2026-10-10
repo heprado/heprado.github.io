@@ -1,0 +1,67 @@
+<p>A base de codigo de um programa deve ser muito bem estruturada antes
+de começarmos a fazer o codigo, isso pois se não fizermos isso vai ser
+muito complicado depois de adicionar novas funcionalidades ou arrumar
+bugs.</p>
+<p>Hoje em dia as pessoas fazem Softwares Modulares isso é, os
+componentes das aplicações estão separados como front-end,back-end e
+banco de dados todo eles são entidades que se conversam e o jeito como o
+software é escrito afeta muito a escalabilidade desse software, pois um
+back-end que aponta direto pra somente um banco de dados, caso precise
+escalonar para mais bancos, teriamos que fazer uma mudança brusca no
+código que pode quebrar o ambiente inteiro.</p>
+<p>Isso também muda de empresa para empresa, por exemplo uma startup
+faria um ambiente na nuvem em que tudo é escalável pois eles não sabem
+ainda o quanto vão crescer, diferente de uma grande empresa que quer um
+ambiente mais simples com que eles consigam prever o que vai acontecer e
+planejar caso precisem aumentar a infraestrutura.</p>
+<img src="img/5938b9180658445faad90772ff7a780f.png" loading="lazy" />
+<p>As aplicações na nuvem são feitas baseadas em software modulares, são
+pequenas partes que conversam entre si que conversam atraves de REST
+API, esse modelo é chamado de micro-serviços.</p>
+<p><strong>Microserviços</strong></p>
+<img src="img/9db39065e51a4659ace418024a53c41e.png" loading="lazy" />
+<img src="img/1c1edd575bae4e31b3bab9508a1cbe7b.png" loading="lazy" />
+<p>Como dito acima microseviços são um software dividido em pequenas
+partes que fazem comunicações via APIs, isso faz com que cada
+funcionalidade do codigo possa ser modificada e escalonada separadamente
+sem afetar os outros serviços da aplicação, isso ajuda bastante pois não
+queremos tudo junto em uma caixa só, pois muitas vezes precisamos
+aumentar o banco de dados mas não precisamos o software de pagamento, se
+os dois estiverem MUITO acoplados como por exemplo na mesma VM isso
+atrapalha bastante pois para aumentarmos o banco de dados vamos aumentar
+tbm o software de pagamento. Nas imagens acima conseguimos ver isso
+visualmente a imagem de cima com varias funções lambda da AWS
+conversando com bancos de dados SEPARADOS um para ordens e outro para
+inventario, já na de baixo vemos TODO o software dentro de uma única
+caixa, conversando com somente UM banco de dados.</p>
+<p><strong>Funções</strong></p>
+<p>Em softwares modulares as pessoas utilizam funções , funções essas
+que podem reutilizadas durante o código e até em outro código, em python
+para se criar uma função fazemos o seguinte:</p>
+<p><img src="img/9fa05417c143422b9404c906a22a2a95.png"
+loading="lazy" /><br />
+Com esse código conseguimos utilizar ele diversas vezes e criar diversos
+usuários ao em vez de escrever o mesmo pedaço de código toda vez que
+quisermos criar um usuário.</p>
+<p><strong>Módulos</strong></p>
+<p>Todos os arquivos de python são considerados Módulos para importarmos
+eles fazemos o seguinte:</p>
+<img src="img/027516ad4f224f1aa66d2cfcfc77c0d6.png" loading="lazy" />
+<p>No caso acima importei a função que criei em outro arquivos nesse
+codigo python e utilizei ele.</p>
+<p>Algo interessante são as variaveis __name__ e __main__, quando
+executamos um codigo o python faz essas variaveis, __name__ vai ser o
+nome do arquivo e __main__ o nome do arquivo sendo executado, então caso
+o modulo backend por exemplo seja executado o __name__ dele vai ser
+backend e o main também por isso o pessoal usa o seguinte código:</p>
+<img src="img/8d3af98fcd924ff38db43d1048a582c1.png" loading="lazy" />
+<p><strong>Classes e Métodos</strong></p>
+<p>Classes e métodos são utilizados para organizar melhor ainda o seu
+código, a utilização desses dois faz com que a Programação orientada a
+objetos seja possível, veja o seguinte código:</p>
+<img src="img/f28d4a0487944fc29e14894f5d7b6ecb.png" loading="lazy" />
+<p>Nesse caso criamos a classe usuário e uma função dentro dela(METODO),
+essa função __init__ é executada sempre que a classe é instanciada em um
+objeto, vamos salvar esse codigo como user.py</p>
+<p>Agora vamos importar ele em outro codigo e utilizar essa classe:</p>
+<img src="img/c424d68065024d5ea86a797c4eb654a6.png" loading="lazy" />

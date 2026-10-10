@@ -1,0 +1,36 @@
+<p>Usado em switches para permitirmos somente dispositivos que confiamos
+na rede. Fazemos isso utilizando o MAC-ADDRESS do equipamento.</p>
+<p>Podemos configurar os MAC-ADDRESS nas portas de dois modos:</p>
+<p>Estático: Configuramos na porta esse MAC-ADDRESS estático, caso outro
+MAC-ADDRESS apareça na porta além do máximo estipulado, o port-security
+vai tomar a medida escolhida. (PADRÃO SHUTDOWN)</p>
+<p>Int f0/1<br />
+Switchport port-security mac-address 000100020001</p>
+<p>Dinâmico: Configuramos a porta para pegar o mac-address
+dinamicamente, o primeiro que bater na porta ficará como o MAC-ADDRESS
+dessa porta, isso também vale para o Maximum configurado na porta, se
+configurarmos MAXIMUM 3, ele vai guardar 3 mac-address dinâmicos na
+running-config, se vc não salvar a running-config na startup config ele
+vai perder esse 3 mac dinâmicos, mas caso você salve pode reiniciar o
+switch que vai continuar os mac-address salvos.</p>
+<p>Int f0/1<br />
+Switchport port-security sticky</p>
+<p>Também podemos configurar o maximo de MAC-ADDRESS que poderão ser
+configurados nessa interface</p>
+<p>Int f0/1 switchport port-security maximum “numero”</p>
+<p><strong>Medidas -</strong></p>
+<ul>
+<li>Shutdown</li>
+</ul>
+<p>Desliga a porta.</p>
+<ul>
+<li>Protect</li>
+</ul>
+<p>Bloqueia o tráfego , não desliga a porta e não aumenta o contador de
+violações, não gera um log.</p>
+<ul>
+<li>Restrict<br />
+Bloqueia o tráfego igual o protect, só muda que ele aumenta o número de
+violações na porta a cada pacote dropado, com isso podemos gerar uma
+trap SNMP ou um log de Syslog :)</li>
+</ul>
