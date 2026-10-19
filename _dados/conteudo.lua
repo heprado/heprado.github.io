@@ -114,6 +114,11 @@ return {
   -- data: AAAA-MM-DD (vira DD/MM/AAAA na página); titulo; texto: um parágrafo.
   pensamentos = {
     {
+      data = "2026-10-19",
+      titulo = "Máquina",
+      texto = "A máquina só serve para criar outra máquina, que vai criar outra e assim por diante, até o final.",
+    },
+    {
       data = "2025-06-30",
       titulo = "Confusão",
       texto = "Gosto de ficar sozinho mas não 80% do meu tempo aqui.",
